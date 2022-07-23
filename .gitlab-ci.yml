@@ -5,10 +5,9 @@ before_script:
   - pacman-key --init
   - pacman-key --populate
   - pacman -Syy --noconfirm
-  - pacman -S qt6-base gcc cmake ninja python --noconfirm
-build:
-  stage: build
+  - pacman -S qt5-base gcc cmake ninja python --noconfirm
   
+build:
   script:
     - mkdir build && cd build
     - cmake .. -G Ninja
@@ -19,6 +18,5 @@ build:
       - build
 
 test:
-  stage: test
   script:
     - python scripts/get_wallpaper.py
