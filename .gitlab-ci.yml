@@ -4,8 +4,8 @@ before_script:
   - echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" > mirror
   - pacman-key --init
   - pacman-key --populate
-  - pacman -Syy
-  - pacman -S qt6-base python cmake make
+  - pacman -Syy --noconfirm
+  - pacman -S qt6-base python cmake make --noconfirm
 build:
   stage: build
   
