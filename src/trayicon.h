@@ -25,6 +25,6 @@ class TrayIcon : public QSystemTrayIcon
     void OnExit();         //退出程序
     void showConfigPage(); //显示配置界面
     void checkConfig();    //检查配置文件
-    void restartThread();  //启动线程
+    void reloadSettings(); //启动线程
     void handle();
 };

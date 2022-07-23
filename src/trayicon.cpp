@@ -55,7 +55,7 @@ void TrayIcon::showConfigPage()
     this->configPage = new Config;
     configPage->show();
     //重载设置
-    connect(this->configPage, &Config::configChanged, this, &TrayIcon::restartThread);
+    connect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
 }
 
 void TrayIcon::checkConfig()
@@ -70,11 +70,11 @@ void TrayIcon::checkConfig()
     }
     else
     {
-        restartThread();
+        reloadSettings();
     }
 }
 
-void TrayIcon::restartThread()
+void TrayIcon::reloadSettings()
 {
     timer.stop();
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
