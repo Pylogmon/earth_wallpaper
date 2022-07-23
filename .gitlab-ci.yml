@@ -1,0 +1,23 @@
+image: archlinux:latest
+
+before_script:
+  - pacman-key --init
+  - pacman-key --populate
+  - pacman -Syy
+  - pacman -S qt6-base python cmake make
+build:
+  stage: build
+  
+  script:
+    - mkdir build && cd build
+    - cmake .. -G Ninja
+    - ninja
+    - cd ..
+  artifacts:
+    paths:
+      - build
+
+test:
+  stage: test
+  script:
+    - python scripts/get_wallpaper.py
