@@ -5,6 +5,7 @@
 #include <QStandardPaths>
 #include <qnumeric.h>
 #include <qstandardpaths.h>
+
 TrayIcon::TrayIcon(QSystemTrayIcon *parent)
 {
     initTrayIcon();
@@ -16,10 +17,13 @@ TrayIcon::~TrayIcon()
     config->deleteLater();
     exit->deleteLater();
     trayIconMenu->deleteLater();
+    thread->deleteLater();
 }
 void TrayIcon::initConnect()
 {
+    //退出程序
     connect(this->exit, &QAction::triggered, this, &TrayIcon::OnExit);
+    //打开设置页面
     connect(this->config, &QAction::triggered, this, &TrayIcon::showConfigPage);
 }
 void TrayIcon::initTrayIcon()
@@ -49,6 +53,8 @@ void TrayIcon::showConfigPage()
 {
     this->configPage = new Config;
     configPage->show();
+    //重启线程
+    connect(this->configPage, &Config::configChanged, this, &TrayIcon::restartThread);
 }
 
 void TrayIcon::checkConfig()
@@ -61,4 +67,26 @@ void TrayIcon::checkConfig()
         qInfo() << "首次运行，打开设置页面";
         this->showConfigPage();
     }
+    else
+    {
+        restartThread();
+    }
+}
+
+void TrayIcon::restartThread()
+{
+    if (this->thread != nullptr)
+    {
+        thread->deleteLater();
+    }
+    QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+    configPath += "/earth_wallpaper/config_user";
+    if (settings != nullptr)
+    {
+        delete settings;
+    }
+    //重新读取配置文件
+    this->settings = new QSettings(configPath, QSettings::IniFormat);
+    thread = new Thread(settings);
+    thread->start();
 }

@@ -13,6 +13,8 @@ QT_END_NAMESPACE
 class Config : public QWidget
 {
     Q_OBJECT
+  signals:
+    void configChanged();
 
   public:
     QString configPath;

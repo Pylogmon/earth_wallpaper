@@ -21,7 +21,8 @@ set(PROJECT_SOURCES
         src/config.ui
         src/trayicon.cpp
         src/trayicon.h
-
+        src/thread.cpp
+        src/thread.h
         resource/resource.qrc
 )
 

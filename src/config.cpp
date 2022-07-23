@@ -40,6 +40,7 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 Config::~Config()
 {
     settings->deleteLater();
+    this->disconnect();
     delete ui;
 }
 void Config::initUI()
@@ -82,4 +83,5 @@ void Config::writeConfig()
     settings->setValue("startWithSystem", ui->startWithSystem->isChecked());
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
+    emit configChanged();
 }

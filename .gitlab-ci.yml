@@ -8,6 +8,7 @@ before_script:
   - pacman -S qt5-base gcc cmake ninja python --noconfirm
   
 build:
+  stage: C++
   script:
     - mkdir build && cd build
     - cmake .. -G Ninja
@@ -18,5 +19,6 @@ build:
       - build
 
 test:
+  stage: python
   script:
     - python scripts/get_wallpaper.py
