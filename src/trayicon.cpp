@@ -3,8 +3,8 @@
 #include <QDebug>
 #include <QFile>
 #include <QStandardPaths>
+#include <cstdlib>
 #include <qnumeric.h>
-#include <qstandardpaths.h>
 
 TrayIcon::TrayIcon(QSystemTrayIcon *parent)
 {
@@ -17,7 +17,6 @@ TrayIcon::~TrayIcon()
     config->deleteLater();
     exit->deleteLater();
     trayIconMenu->deleteLater();
-    thread->deleteLater();
 }
 void TrayIcon::initConnect()
 {
@@ -25,6 +24,8 @@ void TrayIcon::initConnect()
     connect(this->exit, &QAction::triggered, this, &TrayIcon::OnExit);
     //打开设置页面
     connect(this->config, &QAction::triggered, this, &TrayIcon::showConfigPage);
+    //定时器
+    connect(&this->timer, &QTimer::timeout, this, &TrayIcon::handle);
 }
 void TrayIcon::initTrayIcon()
 {
@@ -53,7 +54,7 @@ void TrayIcon::showConfigPage()
 {
     this->configPage = new Config;
     configPage->show();
-    //重启线程
+    //重载设置
     connect(this->configPage, &Config::configChanged, this, &TrayIcon::restartThread);
 }
 
@@ -75,10 +76,7 @@ void TrayIcon::checkConfig()
 
 void TrayIcon::restartThread()
 {
-    if (this->thread != nullptr)
-    {
-        thread->deleteLater();
-    }
+    timer.stop();
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     configPath += "/earth_wallpaper/config_user";
     if (settings != nullptr)
@@ -87,6 +85,12 @@ void TrayIcon::restartThread()
     }
     //重新读取配置文件
     this->settings = new QSettings(configPath, QSettings::IniFormat);
-    thread = new Thread(settings);
-    thread->start();
+    handle();
+}
+void TrayIcon::handle()
+{
+    qDebug() << "handling...";
+    // TODO 根据设置下载、更新壁纸
+    system("python get_wallpaper.py");
+    timer.start(100 * settings->value("APP/updateTime").toInt());
 }

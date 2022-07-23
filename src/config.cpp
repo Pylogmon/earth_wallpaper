@@ -6,7 +6,6 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QStandardPaths>
-#include <qmessagebox.h>
 
 Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 {
