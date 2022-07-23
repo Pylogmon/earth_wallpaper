@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>250</width>
+    <width>257</width>
     <height>306</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Config</string>
+   <string>设置</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0" colspan="3">
@@ -40,7 +40,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>更新间隔：</string>
+         <string>更新间隔(分钟)：</string>
         </property>
        </widget>
       </item>

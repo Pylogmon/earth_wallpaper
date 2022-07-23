@@ -1,5 +1,6 @@
 #pragma once
 
+#include "config.h"
 #include <QApplication>
 #include <QMenu>
 #include <QSystemTrayIcon>
@@ -11,6 +12,7 @@ class TrayIcon : public QSystemTrayIcon
     void updateTrayIconSignal();
 
   public:
+    Config *configPage;
     QMenu *trayIconMenu;
     QAction *config;
     QAction *exit;
@@ -21,4 +23,5 @@ class TrayIcon : public QSystemTrayIcon
     void initConnect();    //初始化信号槽
     void OnExit();         //退出程序
     void showConfigPage(); //显示配置界面
+    void checkConfig();    //检查配置文件
 };
