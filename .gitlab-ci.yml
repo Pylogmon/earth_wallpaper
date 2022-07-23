@@ -1,7 +1,7 @@
 image: archlinux:latest
 
 before_script:
-  - echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" > mirror
+  - echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
   - pacman-key --init
   - pacman-key --populate
   - pacman -Syy --noconfirm
