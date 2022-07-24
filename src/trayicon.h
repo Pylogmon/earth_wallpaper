@@ -12,6 +12,8 @@ class TrayIcon : public QSystemTrayIcon
     Q_OBJECT
   public:
     QTimer timer;
+    int height;
+    int width;
     QSettings *settings = nullptr;
     Config *configPage;
     QMenu *trayIconMenu;

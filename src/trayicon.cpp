@@ -1,13 +1,19 @@
 #include "trayicon.h"
 #include "config.h"
+#include "src/thread.h"
+#include "thread.h"
 #include <QDebug>
 #include <QFile>
+#include <QScreen>
 #include <QStandardPaths>
-#include <cstdlib>
-#include <qnumeric.h>
 
 TrayIcon::TrayIcon(QSystemTrayIcon *parent)
 {
+    //获取屏幕分辨率
+    QScreen *desktop = QApplication::primaryScreen();
+    QRect desktopRect = desktop->availableGeometry();
+    this->height = desktopRect.height() + desktopRect.top();
+    this->width = desktopRect.width() + desktopRect.left();
     initTrayIcon();
     initConnect();
     checkConfig();
@@ -90,7 +96,13 @@ void TrayIcon::reloadSettings()
 void TrayIcon::handle()
 {
     qDebug() << "handling...";
-    // TODO 根据设置下载、更新壁纸
-    system("python get_wallpaper.py");
-    timer.start(100 * settings->value("APP/updateTime").toInt());
+    QString earthSource = settings->value("APP/earthSource").toString();
+    QString earthSize = settings->value("APP/earthSize").toString();
+    QString command = "python " + earthSource + ".py " + QString::number(this->height) + " " +
+                      QString::number(this->width) + " " + earthSize;
+    // 根据设置下载、更新壁纸
+    qDebug() << command;
+    Thread *thread = new Thread(command);
+    thread->start();
+    timer.start(60000 * settings->value("APP/updateTime").toInt());
 }

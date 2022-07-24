@@ -21,6 +21,8 @@ set(PROJECT_SOURCES
         src/config.ui
         src/trayicon.cpp
         src/trayicon.h
+        src/thread.cpp
+        src/thread.h
         resource/resource.qrc
 )
 
@@ -57,6 +59,8 @@ set_target_properties(earth_wallpaper PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
+file(COPY ${PROJECT_SOURCE_DIR}/scripts DESTINATION ${PROJECT_BINARY_DIR})
+file(COPY ${PROJECT_SOURCE_DIR}/template DESTINATION ${PROJECT_BINARY_DIR})
 install(TARGETS earth_wallpaper
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

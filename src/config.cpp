@@ -52,6 +52,7 @@ void Config::initUI()
     ui->updateTime->addItem("60");
     ui->updateTime->addItem("120");
     ui->updateTime->addItem("180");
+    ui->alwaysUpdate->setEnabled(false);
 }
 void Config::initConnect()
 {
@@ -65,6 +66,7 @@ void Config::readConfig()
     settings->beginGroup("APP");
     ui->earthSource->setCurrentIndex(settings->value("earthSource").toInt());
     ui->updateTime->setCurrentText(settings->value("updateTime").toString());
+    ui->earthSize->setValue(settings->value("earthSize").toInt());
     ui->alwaysUpdate->setChecked(settings->value("alwaysUpdate").toBool());
     settings->endGroup();
     settings->beginGroup("System");
@@ -76,6 +78,7 @@ void Config::writeConfig()
     settings->beginGroup("APP");
     settings->setValue("earthSource", ui->earthSource->currentIndex());
     settings->setValue("updateTime", ui->updateTime->currentText());
+    settings->setValue("earthSize", ui->earthSize->value());
     settings->setValue("alwaysUpdate", ui->alwaysUpdate->isChecked());
     settings->endGroup();
     settings->beginGroup("System");
