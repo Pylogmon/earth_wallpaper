@@ -98,7 +98,7 @@ void TrayIcon::handle()
     qDebug() << "handling...";
     QString earthSource = settings->value("APP/earthSource").toString();
     QString earthSize = settings->value("APP/earthSize").toString();
-    QString command = "python " + earthSource + ".py " + QString::number(this->height) + " " +
+    QString command = "python scripts/" + earthSource + ".py " + QString::number(this->height) + " " +
                       QString::number(this->width) + " " + earthSize;
     // 根据设置下载、更新壁纸
     qDebug() << command;
