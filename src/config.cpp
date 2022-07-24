@@ -12,16 +12,23 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
     this->setAttribute(Qt::WA_DeleteOnClose);
     //检查配置文件
     this->configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    configPath += "/earth_wallpaper/config_user";
-    QString path = configPath;
+    configPath += "/earth_wallpaper";
+    QString path = configPath + "/config_user";
     auto configFile = new QFile(path);
     if (!configFile->exists())
     {
+        if (!QDir(configPath).exists())
+        {
+            QDir(configPath).mkpath(configPath);
+        }
         path = path.remove("_user");
         auto tempFile = QFile(path);
         if (!tempFile.exists())
         {
-            qFatal("配置文件缺失！");
+            auto tempFile1 = QFile("./template/config");
+            tempFile1.copy(path);
+            path += "_user";
+            tempFile.copy(path);
         }
         else
         {

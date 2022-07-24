@@ -19,4 +19,4 @@ build:
 
 test:
   script:
-    - python scripts/get_wallpaper.py
+    - python scripts/1.py
