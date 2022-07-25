@@ -1,7 +1,7 @@
 [APP]
 earthSource=1
 updateTime=30
-earthSize=61
+earthSize=60
 alwaysUpdate=true
 
 [System]

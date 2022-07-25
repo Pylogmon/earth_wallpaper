@@ -12,30 +12,19 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
     this->setAttribute(Qt::WA_DeleteOnClose);
     //检查配置文件
     this->configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
+
     configPath += "/earth_wallpaper";
-    QString path = configPath + "/config_user";
+    QString path = configPath + "/config";
     auto configFile = new QFile(path);
+    auto configDir = new QDir(configPath);
     if (!configFile->exists())
     {
-        if (!QDir(configPath).exists())
+        if (!configDir->exists())
         {
-            QDir(configPath).mkpath(configPath);
+            configDir->mkpath(configPath);
         }
-        path = path.remove("_user");
-        auto tempFile = QFile(path);
-        if (!tempFile.exists())
-        {
-            auto tempFile1 = QFile("./template/config");
-            tempFile1.copy(path);
-            path += "_user";
-            tempFile.copy(path);
-        }
-        else
-        {
-            qInfo("用户配置不存在，创建配置文件");
-            path += "_user";
-            tempFile.copy(path);
-        }
+        auto tempFile = new QFile("./template/config");
+        tempFile->copy(path);
     }
     ui->setupUi(this);
     initUI();
@@ -68,7 +57,7 @@ void Config::initConnect()
 }
 void Config::readConfig()
 {
-    this->settings = new QSettings(configPath, QSettings::IniFormat);
+    this->settings = new QSettings(configPath + "/config", QSettings::IniFormat);
     settings->setIniCodec("UTF8");
     settings->beginGroup("APP");
     ui->earthSource->setCurrentIndex(settings->value("earthSource").toInt());

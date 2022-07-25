@@ -16,7 +16,3 @@ build:
   artifacts:
     paths:
       - build
-
-test:
-  script:
-    - python scripts/1.py

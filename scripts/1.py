@@ -36,16 +36,18 @@ def concat_images(image_names, name, path):
     target.save(path + name, quality=100)  # 成品图保存
 
 
-def fill_img(path):
+def fill_img(path, name):
     global X, Y  # 屏幕分辨率
     global SIZE
     height = int(float(Y) / (float(SIZE) * 0.01))
     width = int(height * (float(X) / float(Y)))
-    img = Image.open(path)
+    img = Image.open(path + name)
     new_img = Image.new(img.mode, (width, height), color='black')
     new_img.paste(img, (int(width / 2 - 687), int(height / 2 - 687)))
-    new_img.save(path)
-    # print("合成成功")
+    today = datetime.datetime.utcnow()
+    name = today.strftime("%Y%m%d%H%M%s")
+    new_img.save(path + name + ".png")
+    set_wallpaper(path + name + ".png")
 
 
 def get_time_path():
@@ -75,11 +77,10 @@ def main():
     download(url4, path + '4' + name)
 
     concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name, path)
-    fill_img(path + name)
-    set_wallpaper()
+    fill_img(path, name)
 
 
-def set_wallpaper():
+def set_wallpaper(file):
     if (DE == "Deepin"):
         os.system("export primary_screen=\
                 (xrandr|grep 'connected primary'|awk '{print $1}')")
@@ -87,11 +88,12 @@ def set_wallpaper():
         dbus = f"dbus-send --dest=com.deepin.daemon.Appearance \
             /com/deepin/daemon/Appearance --print-reply \
                 com.deepin.daemon.Appearance.SetMonitorBackground \
-                    string:\"{primary_screen}\" string:\"file:/{path+name}\""
+                    string:\"{primary_screen}\" string:\"file:/{file}\""
 
         os.system(dbus)
     elif (DE == "KDE"):
-        dbus = f"qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {{d = allDesktops[i];d.wallpaperPlugin = \"org.kde.image\";d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");d.writeConfig(\"Image\", \"file://{path+name}\")}}'"
+        print(file)
+        dbus = f"qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {{d = allDesktops[i];d.wallpaperPlugin = \"org.kde.image\";d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");d.writeConfig(\"Image\", \"file://{file}\")}}'"
         os.system(dbus)
     else:
         print("该桌面环境暂不支持")
