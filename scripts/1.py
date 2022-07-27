@@ -1,4 +1,5 @@
 from PIL import Image
+from setWallpaper import set_wallpaper
 import requests
 import datetime
 import sys
@@ -78,25 +79,6 @@ def main():
 
     concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name, path)
     fill_img(path, name)
-
-
-def set_wallpaper(file):
-    if (DE == "Deepin"):
-        os.system("export primary_screen=\
-                (xrandr|grep 'connected primary'|awk '{print $1}')")
-        primary_screen = os.getenv('primary_screen')
-        dbus = f"dbus-send --dest=com.deepin.daemon.Appearance \
-            /com/deepin/daemon/Appearance --print-reply \
-                com.deepin.daemon.Appearance.SetMonitorBackground \
-                    string:\"{primary_screen}\" string:\"file:/{file}\""
-
-        os.system(dbus)
-    elif (DE == "KDE"):
-        print(file)
-        dbus = f"qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript 'var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {{d = allDesktops[i];d.wallpaperPlugin = \"org.kde.image\";d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");d.writeConfig(\"Image\", \"file://{file}\")}}'"
-        os.system(dbus)
-    else:
-        print("该桌面环境暂不支持")
 
 
 if __name__ == '__main__':

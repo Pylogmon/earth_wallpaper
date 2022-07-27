@@ -1,5 +1,5 @@
 [APP]
-earthSource=1
+earthSource=0
 updateTime=30
 earthSize=60
 alwaysUpdate=true
