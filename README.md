@@ -18,6 +18,12 @@
 - [x] KDE
 - [x] Deepin
 
+## 依赖
+- Qt5
+- Python3
+  - pillow
+  - requests
+
 ## 软件截图
 
 ![image-20220725124921280](https://jihulab.com/ambition-echo/img_bed/raw/main/img/image-20220725124921280.png)
