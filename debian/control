@@ -1,0 +1,5 @@
+Package: earth_wallpaper
+Version: 1.0.0
+Architecture: amd64
+Maintainer: ambition-echo
+Description: 实时获取地球照片作为壁纸
