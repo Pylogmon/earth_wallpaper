@@ -4,8 +4,7 @@ import os
 def set_wallpaper(file):
     DE = os.getenv('XDG_CURRENT_DESKTOP')
     if (DE == "Deepin"):
-        os.system("export primary_screen=\
-                (xrandr|grep 'connected primary'|awk '{print $1}')")
+        os.system("export primary_screen=($(xrandr|grep 'connected primary'))")
         primary_screen = os.getenv('primary_screen')
 
         dbus = f"qdbus com.deepin.daemon.Appearance /com/deepin/daemon/Appearance com.deepin.daemon.Appearance.SetMonitorBackground \"{primary_screen}\" \"{file}\""
