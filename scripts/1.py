@@ -4,9 +4,9 @@ import datetime
 import sys
 import os
 # 屏幕分辨率
-Y = sys.argv[1]
-X = sys.argv[2]
-SIZE = sys.argv[3]
+Y = int(sys.argv[1])
+X = int(sys.argv[2])
+SIZE = int(sys.argv[3])
 DE = os.getenv('XDG_CURRENT_DESKTOP')
 path = '/tmp/'
 name = '1.png'
@@ -39,7 +39,7 @@ def concat_images(image_names, name, path):
 def fill_img(path, name):
     global X, Y  # 屏幕分辨率
     global SIZE
-    height = int(float(Y) / (float(SIZE) * 0.01))
+    height = int(1374.0 / (float(SIZE) * 0.01))
     width = int(height * (float(X) / float(Y)))
     img = Image.open(path + name)
     new_img = Image.new(img.mode, (width, height), color='black')
