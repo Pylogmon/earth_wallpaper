@@ -1,5 +1,5 @@
 #/bin/bash
-mkdir package_space
+mkdir -p package_space/opt/earth_wallpaper
 cp -r ../debian ./package_space/DEBIAN
 cp ../build/earth_wallpaper ./package_space/opt/earth_wallpaper/earth_wallpaper
 cp -r ../build/scripts ./package_space/opt/earth_wallpaper/scripts
