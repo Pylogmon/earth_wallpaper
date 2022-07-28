@@ -12,6 +12,7 @@
 
 - [x] 向日葵八号
 - [x] 风云四号
+- [x] 必应壁纸([@xCss](https://github.com/xCss/bing)提供接口)
 
 ## 支持桌面环境
 
@@ -24,6 +25,10 @@
 - Python3
   - pillow
   - requests
+
+
+## 开放API
+bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 ## 软件截图
 

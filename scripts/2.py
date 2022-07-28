@@ -1,31 +1,32 @@
-from PIL import Image
 from setWallpaper import set_wallpaper
 import requests
 import datetime
 import sys
-import json
 
-api_url = "https://api.waifu.im/random"
+height = int(sys.argv[1])
+width = int(sys.argv[2])
 
-
-def get_img_url():
-    res = requests.get(api_url).text
-    print(res)
-    res_json = json.loads(requests.get(api_url).text)
-    return [res_json["images"][0]["url"], res_json["images"][0]["extension"]]
+api_url = "http://bing.ioliu.cn/v1/rand"
 
 
-def download(url, path):
-    img = requests.get(url)
+def download(path):
+    headers = {
+        "user-agent":
+        "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+    }
+    body = {
+        "w": width, "h": height
+    }
+    img = requests.get(api_url, headers=headers, data=body)
     with open(path, "wb") as fwi:
         fwi.write(img.content)
 
 
 def main():
     today = datetime.datetime.utcnow()
-    img_info = get_img_url()
-    name = "/tmp/" + today.strftime("%Y%m%d%H%M%s") + img_info[1]
-    download(img_info[0], name)
+    name = "/tmp/" + today.strftime("%Y%m%d%H%M%s") + ".png"
+    download(name)
+    set_wallpaper(name)
 
 
 if __name__ == '__main__':

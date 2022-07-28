@@ -1,0 +1,3 @@
+#/bin/bash
+cd ~/.config
+rm -r earth_wallpaper

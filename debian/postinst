@@ -1,3 +1,4 @@
 #/bin/bash
 cd /opt/earth_wallpaper
 chmod +x ./earth_wallpaper
+cp /usr/share/applications/earth_wallpaper.desktop ~/.config/autostart/earth_wallpaper.desktop
