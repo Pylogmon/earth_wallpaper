@@ -45,7 +45,9 @@ jobs:
       #4打包
       - name: Package
         run: |
-          cd ../package
+          pwd
+          ls
+          cd package
           chmod +x package.sh
           ./package.sh
       #5上传artifact
