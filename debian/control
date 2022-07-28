@@ -1,5 +1,6 @@
-Package: earth_wallpaper
+Package: earth-wallpaper
 Version: 1.0.0
 Architecture: amd64
-Maintainer: ambition-echo
+Maintainer: ambition-echo <ambition_echo@outlook.com>
 Description: 实时获取地球照片作为壁纸
+Depends: python-pil,libqt5core5a,libqt5gui5,libqt5widgets5,python3-requests

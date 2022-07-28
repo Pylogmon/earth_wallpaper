@@ -1,0 +1,57 @@
+name: Linux
+on:
+  push:
+    paths-ignore:
+      - '.gitlab-ci.yml'
+      - '*.md'
+      - 'LICENSE'
+  pull_request:
+    paths-ignore:
+      - '.gitlab-ci.yml'
+      - '*.md'
+      - 'LICENSE'
+
+jobs:
+  #Linux编译
+  Build-Linux:
+    #运行平台
+    name: Build on Linux
+    runs-on: ubuntu-20.04
+    #编译步骤
+    steps:
+      #1安装Qt
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+        with:
+          version: '5.15.2'
+          host: 'linux'
+          arch: 'gcc_64'
+          target: 'desktop'
+      - name: Install build tool
+        run: |
+          sudo apt install -y cmake make dpkg
+      #2拉取代码
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      #3编译构建
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make
+      #4打包
+      - name: Package
+        run: |
+          cd ../package
+          chmod +x package.sh
+          ./package.sh
+      #5上传artifact
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: earth-wallpaper-amd64.deb
+          path: package/earth-wallpaper-amd64.deb
+          if-no-files-found: error
