@@ -1,5 +1,10 @@
 image: ubuntu:20.04
 
+stages:
+  - build
+  - upload
+  - release
+
 variables:
   # Package version can only contain numbers (0-9), and dots (.).
   # Must be in the format of X.Y.Z, i.e. should match /\A\d+\.\d+\.\d+\z/ regular expresion.
@@ -18,6 +23,7 @@ before_script:
 
   
 build:
+  stage: build
   script:
     - mkdir build && cd build
     - cmake ..
