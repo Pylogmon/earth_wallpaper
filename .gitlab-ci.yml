@@ -7,8 +7,6 @@ stages:
 debian:
   stage: build
   image: ambitionecho/ubuntu-with-qt:latest
-  before_script:
-  - apt install -y git
   script:
     - mkdir build && cd build
     - cmake ..
