@@ -10,4 +10,6 @@ sed -i "s/Version: .*/Version: $(git describe --long 2>/dev/null | sed  's/\([^-
 
 chmod 755 package_space/DEBIAN/postinst
 chmod 755 package_space/DEBIAN/postrm
+chmod 755 package_space/DEBIAN/preinst
+
 dpkg -b ./package_space earth-wallpaper-amd64.deb
