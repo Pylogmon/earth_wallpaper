@@ -1,10 +1,11 @@
 image: ubuntu:20.04
 
 before_script:
+  - apt install software-properties-common
   - add-apt-repository ppa:beineri/opt-qt-5.15.3-focal
   - apt update
   - apt install -y qt515base
-  - Source /opt/qt515/bin/qt515-env.sh
+  - . /opt/qt515/bin/qt515-env.sh
   - apt install -y cmake gcc ninja
   
 build:
