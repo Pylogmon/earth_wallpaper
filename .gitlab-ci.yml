@@ -1,4 +1,4 @@
-image: ubuntu:20.04
+image: ambitionecho/ubuntu-with-qt:latest
 
 stages:
   - build
@@ -12,14 +12,6 @@ variables:
   PACKAGE_VERSION: "${git describe --long}"
   LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
-
-before_script:
-  - apt update
-  - apt install -y cmake gcc make
-  - apt install -y software-properties-common
-  - add-apt-repository ppa:beineri/opt-qt-5.15.3-focal
-  - apt update
-  - apt install -y qt515base
 
   
 build:
