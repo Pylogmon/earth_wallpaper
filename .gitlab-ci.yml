@@ -5,14 +5,6 @@ stages:
   - upload
   - release
 
-variables:
-  # Package version can only contain numbers (0-9), and dots (.).
-  # Must be in the format of X.Y.Z, i.e. should match /\A\d+\.\d+\.\d+\z/ regular expresion.
-  # See https://docs.gitlab.com/ee/user/packages/generic_packages/#publish-a-package-file
-  PACKAGE_VERSION: "${git describe --long}"
-  LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
-  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
-
   
 build:
   stage: build
@@ -33,6 +25,13 @@ build:
 upload:
   stage: upload
   image: curlimages/curl:latest
+  variables:
+  # Package version can only contain numbers (0-9), and dots (.).
+  # Must be in the format of X.Y.Z, i.e. should match /\A\d+\.\d+\.\d+\z/ regular expresion.
+  # See https://docs.gitlab.com/ee/user/packages/generic_packages/#publish-a-package-file
+    PACKAGE_VERSION: "${CI_COMMIT_TAG}"
+    LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
+    PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
   rules:
     - if: $CI_COMMIT_TAG
   script:
@@ -44,6 +43,13 @@ release:
   # https://gitlab.com/gitlab-org/gitlab/-/issues/299384
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
+  variables:
+  # Package version can only contain numbers (0-9), and dots (.).
+  # Must be in the format of X.Y.Z, i.e. should match /\A\d+\.\d+\.\d+\z/ regular expresion.
+  # See https://docs.gitlab.com/ee/user/packages/generic_packages/#publish-a-package-file
+    PACKAGE_VERSION: "${CI_COMMIT_TAG}"
+    LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
+    PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
   rules:
     - if: $CI_COMMIT_TAG
   script:
