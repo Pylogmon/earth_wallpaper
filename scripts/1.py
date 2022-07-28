@@ -3,12 +3,12 @@ from setWallpaper import set_wallpaper
 import requests
 import datetime
 import sys
-import os
+
 # 屏幕分辨率
 Y = int(sys.argv[1])
 X = int(sys.argv[2])
 SIZE = int(sys.argv[3])
-DE = os.getenv('XDG_CURRENT_DESKTOP')
+
 path = '/tmp/'
 name = '1.png'
 
