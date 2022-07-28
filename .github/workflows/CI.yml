@@ -21,12 +21,11 @@ jobs:
     steps:
       #1安装Qt
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-        with:
-          version: '5.15.2'
-          host: 'linux'
-          arch: 'gcc_64'
-          target: 'desktop'
+        run: |
+          sudo add-apt-repository ppa:beineri/opt-qt-5.15.3-focal
+          sudo apt update
+          sudo apt install qt515-meta-minimal
+          Source /opt/qt515/bin/qt515-env.sh
       - name: Install build tool
         run: |
           sudo apt install -y cmake make dpkg
