@@ -1,4 +1,3 @@
 #/bin/bash
 rm -r /opt/earth_wallpaper
 rm /usr/share/applications/earth_wallpaper.desktop
-rm ~/.config/autostart/earth_wallpaper.desktop
