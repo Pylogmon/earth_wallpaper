@@ -17,6 +17,7 @@
 
 - [x] KDE
 - [x] Deepin
+- [x] Gnome
 
 ## 依赖
 - Qt5
