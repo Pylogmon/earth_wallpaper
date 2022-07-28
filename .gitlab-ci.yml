@@ -2,7 +2,7 @@ image: ubuntu:20.04
 
 before_script:
   - apt update
-  - apt install -y cmake gcc ninja
+  - apt install -y cmake gcc make
   - apt install -y software-properties-common
   - add-apt-repository ppa:beineri/opt-qt-5.15.3-focal
   - apt update
@@ -12,8 +12,8 @@ before_script:
 build:
   script:
     - mkdir build && cd build
-    - cmake .. -G Ninja
-    - ninja
+    - cmake ..
+    - make
     - cd ../package
     - ./package.sh
   artifacts:
