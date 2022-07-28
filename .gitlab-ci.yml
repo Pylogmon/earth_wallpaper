@@ -12,7 +12,8 @@ variables:
   PACKAGE_VERSION: "${git describe --long}"
   LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
   PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
-
+before_script:
+  - apt install -y git
   
 build:
   stage: build
