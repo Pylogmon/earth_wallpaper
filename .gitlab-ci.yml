@@ -1,18 +1,19 @@
-image: archlinux:latest
+image: ubuntu:20.04
 
 before_script:
-  - echo "Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist
-  - pacman-key --init
-  - pacman-key --populate
-  - pacman -Syy --noconfirm
-  - pacman -S qt5-base gcc cmake ninja python --noconfirm
+  - add-apt-repository ppa:beineri/opt-qt-5.15.3-focal
+  - apt update
+  - apt install -y qt515base
+  - Source /opt/qt515/bin/qt515-env.sh
+  - apt install -y cmake gcc ninja
   
 build:
   script:
     - mkdir build && cd build
     - cmake .. -G Ninja
     - ninja
-    - cd ..
+    - cd ../package
+    - ./package.sh
   artifacts:
     paths:
-      - build
+      - earth-wallpaper-amd64.deb
