@@ -2,9 +2,10 @@
 
 resname=earth_wallpaper
 appid=cn.huguoyang.earthwallpaper
-pkgname=earth-wallpaper
-pkgver=1.2.0
-pkgrel=0
+pkgname=earth-wallpaper-git
+name=earth-wallpaper
+pkgver=1.2.1.r1.gb989f24
+pkgrel=1
 pkgdesc="实时获取地球照片作为壁纸"
 arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
@@ -33,10 +34,10 @@ build() {
 
 package() {
     cd $srcdir/$resname
-    install -Dm644 ./resource/$appid.png $pkgdir/opt/apps/$appid/entries/icons/hicolor/256x256/apps/$appid.png
-    install -Dm644 ./package/packageSpace/opt/apps/$appid/entries/applications/$appid.desktop $pkgdir/usr/share/applications/$appid.desktop
+    install -Dm644 ./resource/$appid.png $pkgdir/opt/$pkgname/$name.png
+    install -Dm644 ./package/$name.desktop $pkgdir/usr/share/applications/$name.desktop
     cd ../build
-    install -D ./$pkgname $pkgdir/opt/apps/$appid/files/bin/$pkgname
-    install -D ./scripts/* -t $pkgdir/opt/apps/$appid/files/bin/scripts
-    install -Dm666 ./template/* -t $pkgdir/opt/apps/$appid/files/bin/template
+    install -D ./$name $pkgdir/opt/$pkgname/$name
+    install -D ./scripts/* -t $pkgdir/opt/$pkgname/scripts
+    install -Dm666 ./template/* -t $pkgdir/opt/$pkgname/template
 }
