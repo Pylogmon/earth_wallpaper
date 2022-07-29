@@ -50,6 +50,7 @@ void Config::initUI()
     ui->updateTime->addItem("60");
     ui->updateTime->addItem("120");
     ui->updateTime->addItem("180");
+    ui->updateTime->addItem("720");
 }
 void Config::initConnect()
 {
