@@ -61,6 +61,8 @@ bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 ## 软件截图
 
-![image-20220725124921280](https://jihulab.com/ambition-echo/img_bed/raw/main/img/image-20220725124921280.png)
+![Image20220729131452](https://jihulab.com/ambition-echo/img_bed/raw/main/img/Image20220729131452.png)
 
-![image-20220725124950954](https://jihulab.com/ambition-echo/img_bed/raw/main/img/image-20220725124950954.png)
+![Image20220729131537](/home/hgy/Desktop/Image20220729131537.png)
+
+![Image20220729131605](https://jihulab.com/ambition-echo/img_bed/raw/main/img/Image20220729131605.png)
