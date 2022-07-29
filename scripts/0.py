@@ -1,5 +1,6 @@
 from PIL import Image
 from setWallpaper import set_wallpaper
+from checkWakkpaperDir import check
 import requests
 import datetime
 import sys
@@ -10,7 +11,7 @@ X = int(sys.argv[2])
 SIZE = int(sys.argv[3])
 
 # 存储路径
-path = '/tmp/'
+path = '/tmp/earth-wallpaper/'
 name = '0.png'
 
 
@@ -47,7 +48,7 @@ def get_time_path():
 
 def main():
     global today, path_today, path, name
-
+    check()
     get_time_path()
     url = f"https://himawari8-dl.nict.go.jp/himawari8/img/D531106/1d/550/{path_today}00_0_0.png"
 

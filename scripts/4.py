@@ -1,4 +1,5 @@
 from setWallpaper import set_wallpaper
+from checkWakkpaperDir import check
 import requests
 import datetime
 import json
@@ -19,13 +20,14 @@ def get_img_url():
 def download(url, ext):
     img = requests.get(url)
     today = datetime.datetime.utcnow()
-    path = "/tmp/" + today.strftime("%Y%m%d%H%M%s") + ext
+    path = "/tmp/earth-wallpaper/" + today.strftime("%Y%m%d%H%M%s") + ext
     with open(path, "wb") as fwi:
         fwi.write(img.content)
     set_wallpaper(path)
 
 
 def main():
+    check()
     res = get_img_url()
     download(res["img_url"], res["img_ext"])
 
