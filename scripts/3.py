@@ -6,7 +6,7 @@ import sys
 height = int(sys.argv[1])
 width = int(sys.argv[2])
 
-api_url = "http://bing.ioliu.cn/v1/rand"
+api_url = "http://bing.ioliu.cn/v1"
 
 
 def download(path):

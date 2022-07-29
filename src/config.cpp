@@ -44,6 +44,7 @@ void Config::initUI()
     ui->earthSource->addItem("向日葵八号");
     ui->earthSource->addItem("风云四号");
     ui->earthSource->addItem("必应壁纸(随机)");
+    ui->earthSource->addItem("必应壁纸(每日)");
     ui->updateTime->addItem("10");
     ui->updateTime->addItem("30");
     ui->updateTime->addItem("60");
