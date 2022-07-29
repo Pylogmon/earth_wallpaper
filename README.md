@@ -18,7 +18,8 @@
 
 - [x] 向日葵八号
 - [x] 风云四号
-- [x] 必应壁纸([@xCss](https://github.com/xCss/bing)提供接口)
+- [x] 必应壁纸(调用 [@xCss](https://github.com/xCss/bing) API)
+- [x] 动漫壁纸(调用 [waifu.im](https://waifu.im/) API)
 
 ## 支持桌面环境
 
