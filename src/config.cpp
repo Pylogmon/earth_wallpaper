@@ -13,7 +13,7 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
     //检查配置文件
     this->configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
 
-    configPath += "/earth_wallpaper";
+    configPath += "/earth-wallpaper";
     QString path = configPath + "/config";
     auto configFile = new QFile(path);
     auto configDir = new QDir(configPath);
@@ -49,7 +49,6 @@ void Config::initUI()
     ui->updateTime->addItem("60");
     ui->updateTime->addItem("120");
     ui->updateTime->addItem("180");
-    ui->alwaysUpdate->setEnabled(false);
 }
 void Config::initConnect()
 {
@@ -64,10 +63,6 @@ void Config::readConfig()
     ui->earthSource->setCurrentIndex(settings->value("earthSource").toInt());
     ui->updateTime->setCurrentText(settings->value("updateTime").toString());
     ui->earthSize->setValue(settings->value("earthSize").toInt());
-    ui->alwaysUpdate->setChecked(settings->value("alwaysUpdate").toBool());
-    settings->endGroup();
-    settings->beginGroup("System");
-    ui->startWithSystem->setChecked(settings->value("startWithSystem").toBool());
     settings->endGroup();
 }
 void Config::writeConfig()
@@ -76,10 +71,6 @@ void Config::writeConfig()
     settings->setValue("earthSource", ui->earthSource->currentIndex());
     settings->setValue("updateTime", ui->updateTime->currentText());
     settings->setValue("earthSize", ui->earthSize->value());
-    settings->setValue("alwaysUpdate", ui->alwaysUpdate->isChecked());
-    settings->endGroup();
-    settings->beginGroup("System");
-    settings->setValue("startWithSystem", ui->startWithSystem->isChecked());
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();

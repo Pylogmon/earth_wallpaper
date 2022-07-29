@@ -67,7 +67,7 @@ void TrayIcon::showConfigPage()
 void TrayIcon::checkConfig()
 {
     QString path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    path += "/earth_wallpaper/config";
+    path += "/earth-wallpaper/config";
     auto configFile = QFile(path);
     if (!configFile.exists())
     {
@@ -84,7 +84,7 @@ void TrayIcon::reloadSettings()
 {
     timer.stop();
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
-    configPath += "/earth_wallpaper/config";
+    configPath += "/earth-wallpaper/config";
     if (settings != nullptr)
     {
         delete settings;
