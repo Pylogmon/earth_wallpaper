@@ -32,8 +32,8 @@ def fill_img(path):
     new_img.paste(img, (int(width / 2 - 250), int(height / 2 - 250)))
     today = datetime.datetime.utcnow()
     name = today.strftime("%Y%m%d%H%M%s")
-    new_img.save(path + name + ".png")
-    set_wallpaper(path + name + ".png")
+    new_img.save(path[:-4] + name + ".png")
+    set_wallpaper(path[:-4] + name + ".png")
 
 
 def get_time_path():
