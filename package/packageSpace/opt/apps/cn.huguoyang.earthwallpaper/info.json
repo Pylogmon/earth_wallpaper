@@ -1,0 +1,21 @@
+{
+    "appid": "cn.huguoyang.earthwallpaper",
+    "name": "earth-wallpaper",
+    "version": "1.1.0",
+    "arch": [
+        "amd64"
+    ],
+    "permissions": {
+        "autostart": true,
+        "notification": false,
+        "trayicon": true,
+        "clipboard": false,
+        "account": false,
+        "bluetooth": false,
+        "camera": false,
+        "audio_record": false,
+        "installed_apps": false
+    },
+    "support-plugins": [],
+    "plugins": []
+}

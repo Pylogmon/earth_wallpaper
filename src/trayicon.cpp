@@ -35,7 +35,7 @@ void TrayIcon::initConnect()
 }
 void TrayIcon::initTrayIcon()
 {
-    this->setIcon(QIcon(":/img/icon.png"));
+    this->setIcon(QIcon(":/img/cn.huguoyang.earthwallpaper.png"));
 
     trayIconMenu = new QMenu();
     config = new QAction();
@@ -98,7 +98,7 @@ void TrayIcon::handle()
     qDebug() << "handling...";
     QString earthSource = settings->value("APP/earthSource").toString();
     QString earthSize = settings->value("APP/earthSize").toString();
-    QString command = "python3 /opt/earth_wallpaper/scripts/" + earthSource + ".py " + QString::number(this->height) + " " +
+    QString command = "python3 /opt/apps/cn.huguoyang.earthwallpaper/files/bin/scripts/" + earthSource + ".py " + QString::number(this->height) + " " +
                       QString::number(this->width) + " " + earthSize;
     // 根据设置下载、更新壁纸
     qDebug() << command;

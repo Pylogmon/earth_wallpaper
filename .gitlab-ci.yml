@@ -13,10 +13,10 @@ debian:
     - make
     - cd ../package
     - ./package.sh
+    - mkdir ../upload
+    - cp $(ls *.deb) ../upload/$(ls *.deb)
+    - cp PKGBUILD ../upload/PKGBUILD
     - cd ..
-    - mkdir upload
-    - cp package/earth-wallpaper-amd64.deb ./upload/earth-wallpaper-amd64.deb
-    - cp package/PKGBUILD ./upload/PKGBUILD
   artifacts:
     paths:
       - upload

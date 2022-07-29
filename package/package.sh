@@ -1,16 +1,10 @@
 #/bin/bash
-mkdir -p package_space/opt/earth_wallpaper
-cp -r ../debian ./package_space/DEBIAN
-cp ../build/earth_wallpaper ./package_space/opt/earth_wallpaper/earth_wallpaper
-cp -r ../build/scripts ./package_space/opt/earth_wallpaper/scripts
-cp -r ../build/template ./package_space/opt/earth_wallpaper/template
-cp ../resource/icon.png ./package_space/opt/earth_wallpaper/icon.png
-cp -r ./usr ././package_space/usr
-sed -i "s/Version: .*/Version: $(git describe --long 2>/dev/null | sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" package_space/DEBIAN/control && git describe --long 2>/dev/null || sed -i "s/Version: .*/Version: r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)/g"  package_space/DEBIAN/control
+mkdir -p packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin
+cp -r ../debian ./packageSpace/DEBIAN
+cp ../build/earth_wallpaper ./packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin/earth-wallpaper
+cp -r ../build/scripts ./packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin/scripts
+cp -r ../build/template ./packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin/template
 
-chmod 755 package_space/DEBIAN/postinst
-chmod 755 package_space/DEBIAN/postrm
-chmod 755 package_space/DEBIAN/preinst
-chmod 755 package_space/DEBIAN/prerm
+sed -i "s/Version: .*/Version: $(git describe --long 2>/dev/null | sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" packageSpace/DEBIAN/control && git describe --long 2>/dev/null || sed -i "s/Version: .*/Version: r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)/g"  packageSpace/DEBIAN/control
 
-dpkg -b ./package_space earth-wallpaper-amd64.deb
+dpkg -b ./packageSpace earth-wallpaper-amd64.deb

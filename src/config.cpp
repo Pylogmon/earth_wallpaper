@@ -23,7 +23,7 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
         {
             configDir->mkpath(configPath);
         }
-        auto tempFile = new QFile("./template/config");
+        auto tempFile = new QFile("/opt/apps/cn.huguoyang.earthwallpaper/files/bin/template/config");
         tempFile->copy(path);
     }
     ui->setupUi(this);
