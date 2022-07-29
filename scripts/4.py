@@ -9,7 +9,6 @@ global img_url
 
 def get_img_url():
     res = requests.get(request_url).text
-    print(res)
     res = json.loads(res)
     return {
         "img_url": res["images"][0]["url"],

@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QStandardPaths>
+#include <qcombobox.h>
 
 Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 {
@@ -31,6 +32,7 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
     initUI();
     initConnect();
     readConfig();
+    controlSizeButton();
 }
 
 Config::~Config()
@@ -54,10 +56,12 @@ void Config::initUI()
     ui->updateTime->addItem("180");
     ui->updateTime->addItem("720");
 }
+
 void Config::initConnect()
 {
     connect(ui->apply, &QPushButton::clicked, this, &Config::writeConfig);
     connect(ui->close, &QPushButton::clicked, this, &Config::close);
+    connect(ui->earthSource, &QComboBox::currentTextChanged, this, &Config::controlSizeButton);
 }
 void Config::readConfig()
 {
@@ -78,4 +82,17 @@ void Config::writeConfig()
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
+}
+void Config::controlSizeButton()
+{
+    if (ui->earthSource->currentIndex() == 0 || ui->earthSource->currentIndex() == 1)
+    {
+        ui->label_3->show();
+        ui->earthSize->show();
+    }
+    else
+    {
+        ui->label_3->hide();
+        ui->earthSize->hide();
+    }
 }

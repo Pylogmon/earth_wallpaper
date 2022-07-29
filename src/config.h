@@ -26,6 +26,7 @@ class Config : public QWidget
     void initConnect();
     void readConfig();
     void writeConfig();
+    void controlSizeButton();
 
   private:
     Ui::Config *ui;
