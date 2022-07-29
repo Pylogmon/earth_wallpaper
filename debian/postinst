@@ -1,5 +1,0 @@
-#/bin/bash
-cd /opt/apps/cn.huguoyang.earthwallpaper
-chmod +x ./files/bin/earth-wallpaper
-ln -s ./entries/applications/cn.huguoyang.earthwallpaper.desktop /usr/share/applications/cn.huguoyang.earthwallpaper.desktop
-ln -s ./entries/autostart/cn.huguoyang.earthwallpaper.desktop ${XDG_CONFIG_HOME}/autostart/cn.huguoyang.earthwallpaper.desktop

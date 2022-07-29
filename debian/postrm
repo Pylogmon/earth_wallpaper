@@ -1,3 +1,0 @@
-#/bin/bash
-rm /usr/share/applications/cn.huguoyang.earthwallpaper.desktop
-rm ${XDG_CONFIG_HOME}/autostart/cn.huguoyang.earthwallpaper.desktop
