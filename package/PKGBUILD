@@ -1,8 +1,9 @@
 # Maintainer: Ambition_echo <ambition_echo@outlook.com>
 
 resname=earth_wallpaper
+appid=cn.huguoyang.earthwallpaper
 pkgname=earth-wallpaper
-pkgver=1.0.4.r1.gd72f550
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="实时获取地球照片作为壁纸"
 arch=('x86_64')
@@ -18,7 +19,7 @@ sha256sums=("SKIP")
 pkgver() {
     cd $resname
     ( set -o pipefail
-        git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+        git describe --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
     )
 }
@@ -31,12 +32,11 @@ build() {
 }
 
 package() {
-    cd $resname
-    install -Dm644 ./resource/icon.png $pkgdir/opt/$resname/icon.png
-    install -Dm644 ./package/usr/share/applications/$resname.desktop $pkgdir/usr/share/applications/$resname.desktop
+    cd $srcdir/$resname
+    install -Dm644 ./resource/$appid.png $pkgdir/opt/apps/$appid/entries/icons/hicolor/256x256/apps/$appid.png
+    install -Dm644 ./package/packageSpace/opt/apps/$appid/entries/applications/$appid.desktop $pkgdir/usr/share/applications/$appid.desktop
     cd ../build
-    install -D ./$resname $pkgdir/opt/$resname/$resname
-
-    install -D ./scripts/* -t $pkgdir/opt/$resname/scripts
-    install -Dm666 ./template/* -t $pkgdir/opt/$resname/template
+    install -D ./$pkgname $pkgdir/opt/apps/$appid/files/bin/$pkgname
+    install -D ./scripts/* -t $pkgdir/opt/apps/$appid/files/bin/scripts
+    install -Dm666 ./template/* -t $pkgdir/opt/apps/$appid/files/bin/template
 }
