@@ -6,6 +6,7 @@
 #include <QSettings>
 #include <QSystemTrayIcon>
 #include <QTimer>
+#include <qaction.h>
 
 class TrayIcon : public QSystemTrayIcon
 {
@@ -20,6 +21,7 @@ class TrayIcon : public QSystemTrayIcon
     QAction *config;
     QAction *exit;
     QAction *refresh;
+    QAction *save;
     explicit TrayIcon(QSystemTrayIcon *parent = nullptr);
     ~TrayIcon() override;
 
@@ -30,4 +32,5 @@ class TrayIcon : public QSystemTrayIcon
     void checkConfig();    //检查配置文件
     void reloadSettings(); //启动线程
     void handle();
+    void saveCurrentImg();
 };
