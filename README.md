@@ -2,6 +2,12 @@
 
 实时获取地球照片作为壁纸(Linux Only)
 
+## 快速开始
+
+到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载最新版安装包，双击安装即可
+
+第一次运行时会弹出设置窗口，点击```应用```即可开始运行
+
 ## 基础功能
 
 - [x] 自动获取地球照片
@@ -21,13 +27,36 @@
 - [x] Gnome
 
 ## 依赖
+
 - Qt5
 - Python3
   - pillow
   - requests
 
+## 手动编译安装
+
+- 克隆仓库
+```shell
+git clone https://jihulab.com/ambition-echo/earth_wallpaper.git
+cd earth_wallpaper
+mkdir build && cd build
+```
+
+- 编译构建
+```shell
+cmake ..
+make
+```
+
+- 打包安装
+```shell
+cd ../package
+chmod +x ./package.sh
+./package.sh
+```
 
 ## 开放API
+
 bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 ## 软件截图
