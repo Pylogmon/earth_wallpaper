@@ -12,5 +12,5 @@ Thread::~Thread()
 
 void Thread::run()
 {
-    system(this->command.toUtf8());
+    int result = system(this->command.toUtf8());
 }
