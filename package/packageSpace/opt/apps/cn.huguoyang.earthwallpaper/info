@@ -15,7 +15,5 @@
         "camera": false,
         "audio_record": false,
         "installed_apps": false
-    },
-    "support-plugins": [],
-    "plugins": []
+    }
 }
