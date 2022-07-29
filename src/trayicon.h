@@ -19,6 +19,7 @@ class TrayIcon : public QSystemTrayIcon
     QMenu *trayIconMenu;
     QAction *config;
     QAction *exit;
+    QAction *refresh;
     explicit TrayIcon(QSystemTrayIcon *parent = nullptr);
     ~TrayIcon() override;
 

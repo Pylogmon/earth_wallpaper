@@ -6,6 +6,7 @@
 #include <QFile>
 #include <QScreen>
 #include <QStandardPaths>
+#include <qaction.h>
 
 TrayIcon::TrayIcon(QSystemTrayIcon *parent)
 {
@@ -30,6 +31,8 @@ void TrayIcon::initConnect()
     connect(this->exit, &QAction::triggered, this, &TrayIcon::OnExit);
     //打开设置页面
     connect(this->config, &QAction::triggered, this, &TrayIcon::showConfigPage);
+    //刷新壁纸
+    connect(this->refresh, &QAction::triggered, this, &TrayIcon::handle);
     //定时器
     connect(&this->timer, &QTimer::timeout, this, &TrayIcon::handle);
 }
@@ -40,10 +43,13 @@ void TrayIcon::initTrayIcon()
     trayIconMenu = new QMenu();
     config = new QAction();
     exit = new QAction();
+    refresh = new QAction();
     config->setText("设置");
+    refresh->setText("更新壁纸");
     exit->setText("退出");
 
     trayIconMenu->addAction(config);
+    trayIconMenu->addAction(refresh);
     trayIconMenu->addAction(exit);
 
     this->setContextMenu(trayIconMenu);
