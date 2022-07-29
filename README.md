@@ -4,7 +4,15 @@
 
 ## 快速开始
 
+### Deepin
+
 到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载最新版安装包，双击安装即可
+
+### Arch
+
+Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-git)下载
+
+### 使用须知
 
 第一次运行时会弹出设置窗口，点击```应用```即可开始运行
 
