@@ -63,6 +63,6 @@ bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 ![Image20220729131452](https://jihulab.com/ambition-echo/img_bed/raw/main/img/Image20220729131452.png)
 
-![Image20220729131537](/home/hgy/Desktop/Image20220729131537.png)
+![Image20220729131537](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/Image20220729131537.png)
 
 ![Image20220729131605](https://jihulab.com/ambition-echo/img_bed/raw/main/img/Image20220729131605.png)
