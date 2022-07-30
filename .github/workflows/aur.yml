@@ -1,4 +1,4 @@
-name: Deb
+name: Aur
 on:
   push:
     paths-ignore:
