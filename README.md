@@ -10,7 +10,7 @@
 
 ### Arch
 
-Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-git)下载
+Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-nightly)下载
 
 ### 使用须知
 
