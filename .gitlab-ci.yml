@@ -15,8 +15,7 @@ debian:
     - cd ../package
     - ./package.sh
     - mkdir ../upload
-    - cp $(ls *.deb) ../upload/$(ls *.deb)
-    - cp PKGBUILD ../upload/PKGBUILD
+    - cp ./*.deb ../upload/
     - cd ..
   artifacts:
     paths:
@@ -30,14 +29,13 @@ upload:
   # Must be in the format of X.Y.Z, i.e. should match /\A\d+\.\d+\.\d+\z/ regular expresion.
   # See https://docs.gitlab.com/ee/user/packages/generic_packages/#publish-a-package-file
     PACKAGE_VERSION: "${CI_COMMIT_TAG}"
-    LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
     PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
   rules:
     - if: $CI_COMMIT_TAG
   script:
     - |
-      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/${LINUX_AMD64_BINARY} "${PACKAGE_REGISTRY_URL}/${LINUX_AMD64_BINARY}"
-      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/PKGBUILD "${PACKAGE_REGISTRY_URL}/PKGBUILD"
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/earth-wallpaper-deepin-amd64.deb "${PACKAGE_REGISTRY_URL}/earth-wallpaper-deepin-amd64.deb"
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/earth-wallpaper-other-amd64.deb "${PACKAGE_REGISTRY_URL}/earth-wallpaper-other-amd64.deb"
 
 
 release:
@@ -50,12 +48,11 @@ release:
   # Must be in the format of X.Y.Z, i.e. should match /\A\d+\.\d+\.\d+\z/ regular expresion.
   # See https://docs.gitlab.com/ee/user/packages/generic_packages/#publish-a-package-file
     PACKAGE_VERSION: "${CI_COMMIT_TAG}"
-    LINUX_AMD64_BINARY: "earth-wallpaper-amd64.deb"
     PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/earth_wallpaper/${PACKAGE_VERSION}"
   rules:
     - if: $CI_COMMIT_TAG
   script:
     - |
       release-cli create --name "Release $CI_COMMIT_TAG" --tag-name $CI_COMMIT_TAG \
-        --assets-link "{\"name\":\"PKGBUILD\",\"url\":\"${PACKAGE_REGISTRY_URL}/PKGBUILD\"}" \
-        --assets-link "{\"name\":\"${LINUX_AMD64_BINARY}\",\"url\":\"${PACKAGE_REGISTRY_URL}/${LINUX_AMD64_BINARY}\"}"
+        --assets-link "{\"name\":\"earth-wallpaper-deepin-amd64.deb\",\"url\":\"${PACKAGE_REGISTRY_URL}/earth-wallpaper-deepin-amd64.deb\"}"\
+        --assets-link "{\"name\":\"earth-wallpaper-other-amd64.deb\",\"url\":\"${PACKAGE_REGISTRY_URL}/earth-wallpaper-other-amd64.deb\"}"

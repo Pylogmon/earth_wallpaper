@@ -1,0 +1,7 @@
+#/bin/bash
+appid="cn.huguoyang.earthwallpaper"
+filePath="/usr/share/applications/$appid.desktop"
+if [ -f "$filePath" ]; then
+    rm $filePath
+fi
+ln -s /opt/apps/$appid/entries/applications/$appid.desktop /usr/share/applications/cn.huguoyang.earthwallpaper.desktop
