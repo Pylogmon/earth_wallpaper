@@ -43,7 +43,7 @@ Config::~Config()
 }
 void Config::initUI()
 {
-    this->setWindowIcon(QIcon(":/img/icon.png"));
+    this->setWindowIcon(QIcon(":/img/cn.huguoyang.earthwallpaper.png"));
     ui->earthSource->addItem("向日葵八号");
     ui->earthSource->addItem("风云四号");
     ui->earthSource->addItem("必应壁纸(随机)");
