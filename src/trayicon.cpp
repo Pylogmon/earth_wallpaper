@@ -124,7 +124,7 @@ void TrayIcon::handle()
     QString wallpaperDir = settings->value("APP/wallpaperDir").toString();
     QString exePath = QCoreApplication::applicationDirPath();
     QString command = "python3 " + exePath + "/scripts/" + earthSource + ".py " + QString::number(this->height) + " " +
-                      QString::number(this->width) + " " + earthSize + wallpaperDir;
+                      QString::number(this->width) + " " + earthSize + " " + wallpaperDir;
     // 根据设置下载、更新壁纸
     qDebug() << command;
     Thread *thread = new Thread(command);
