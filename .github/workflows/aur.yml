@@ -29,7 +29,7 @@ jobs:
       - name: Publish AUR package
         uses: KSXGitHub/github-actions-deploy-aur@v2.4.1
         with:
-          pkgname: earth-wallpaper-git
+          pkgname: earth-wallpaper-nightly
           pkgbuild: package/PKGBUILD
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
