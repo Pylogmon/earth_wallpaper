@@ -69,6 +69,7 @@ chmod +x ./package.sh
 ## 开放API
 
 bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
+waifu.im: [https://waifu.im/](https://waifu.im/)
 
 ## 软件截图
 
