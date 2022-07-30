@@ -7,6 +7,8 @@ cp -r ../build/template ./packageSpace/opt/apps/cn.huguoyang.earthwallpaper/file
 sed -i "s/Version: .*/Version: $(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" packageSpace/DEBIAN/control
 sed -i "s/\"version\": .*/\"version\": \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\",/g" packageSpace/opt/apps/cn.huguoyang.earthwallpaper/info
 
+chmod 755 ./packageSpace/DEBIAN
+chmod 755 ./packageSpace/DEBIAN/control
 dpkg -b ./packageSpace earth-wallpaper-deepin-amd64.deb
 
 cp -r ../DEBIAN/ ./packageSpace/
