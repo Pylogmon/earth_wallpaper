@@ -91,7 +91,7 @@ jobs:
           fetch-depth: 0
       - name: change version
         run: |
-          sed -i "s/pkgver=.*/pkgver=$(git describe --long 2>/dev/null | sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" package/PKGBUILD && git describe --long 2>/dev/null || sed -i "s/pkgver=.*/pkgver=r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)/g"  package/PKGBUILD
+          sed -i "s/pkgver=.*/pkgver=$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" package/PKGBUILD
       #6上传AUR
       - name: Publish AUR package
         uses: KSXGitHub/github-actions-deploy-aur@v2.2.5

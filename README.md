@@ -31,16 +31,18 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-git)
 
 ## 支持桌面环境
 
-- [x] KDE
+- [x] KDE Plasma
 - [x] Deepin
-- [x] Gnome
+- [x] GNOME
+- [x] ubuntu:GNOME
 
 ## 依赖
 
 - Qt5
 - Python3
-  - pillow
-  - requests
+- qdbus
+- python3-pil.imagetk
+- python3-requests
 
 ## 手动编译安装
 
