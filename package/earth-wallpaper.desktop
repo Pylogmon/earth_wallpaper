@@ -1,8 +1,8 @@
 [Desktop Entry]
 Categories=Application;
 Comment=实时获取地球照片作为壁纸
-Exec=/opt/earth-wallpaper-git/earth-wallpaper
-Icon=/opt/earth-wallpaper-git/earth-wallpaper.png
+Exec=/opt/earth-wallpaper-nightly/earth-wallpaper
+Icon=/opt/earth-wallpaper-nightly/earth-wallpaper.png
 GenericName=earth-wallpaper
 Keywords=earth
 Name=earth-wallpaper
