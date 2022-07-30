@@ -3,10 +3,11 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QFileDialog>
 #include <QMessageBox>
 #include <QSettings>
 #include <QStandardPaths>
-#include <qcombobox.h>
+#include <qfiledialog.h>
 
 Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 {
@@ -32,7 +33,7 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
     initUI();
     initConnect();
     readConfig();
-    controlSizeButton();
+    controlOption();
 }
 
 Config::~Config()
@@ -49,6 +50,7 @@ void Config::initUI()
     ui->earthSource->addItem("必应壁纸(随机)");
     ui->earthSource->addItem("必应壁纸(每日)");
     ui->earthSource->addItem("动漫壁纸");
+    ui->earthSource->addItem("本地壁纸");
     ui->updateTime->addItem("10");
     ui->updateTime->addItem("30");
     ui->updateTime->addItem("60");
@@ -61,7 +63,8 @@ void Config::initConnect()
 {
     connect(ui->apply, &QPushButton::clicked, this, &Config::writeConfig);
     connect(ui->close, &QPushButton::clicked, this, &Config::close);
-    connect(ui->earthSource, &QComboBox::currentTextChanged, this, &Config::controlSizeButton);
+    connect(ui->earthSource, &QComboBox::currentTextChanged, this, &Config::controlOption);
+    connect(ui->select, &QPushButton::clicked, this, &Config::selectDir);
 }
 void Config::readConfig()
 {
@@ -71,6 +74,7 @@ void Config::readConfig()
     ui->earthSource->setCurrentIndex(settings->value("earthSource").toInt());
     ui->updateTime->setCurrentText(settings->value("updateTime").toString());
     ui->earthSize->setValue(settings->value("earthSize").toInt());
+    ui->wallpaperDir->setText(settings->value("wallpaperDir").toString());
     settings->endGroup();
 }
 void Config::writeConfig()
@@ -79,11 +83,12 @@ void Config::writeConfig()
     settings->setValue("earthSource", ui->earthSource->currentIndex());
     settings->setValue("updateTime", ui->updateTime->currentText());
     settings->setValue("earthSize", ui->earthSize->value());
+    settings->setValue("wallpaperDir", ui->wallpaperDir->text());
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
 }
-void Config::controlSizeButton()
+void Config::controlOption()
 {
     if (ui->earthSource->currentIndex() == 0 || ui->earthSource->currentIndex() == 1)
     {
@@ -95,4 +100,21 @@ void Config::controlSizeButton()
         ui->label_3->hide();
         ui->earthSize->hide();
     }
+    if (ui->earthSource->currentIndex() == 5)
+    {
+        ui->label_4->show();
+        ui->wallpaperDir->show();
+        ui->select->show();
+    }
+    else
+    {
+        ui->label_4->hide();
+        ui->wallpaperDir->hide();
+        ui->select->hide();
+    }
+}
+void Config::selectDir()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("选择壁纸文件夹"));
+    ui->wallpaperDir->setText(dir);
 }
