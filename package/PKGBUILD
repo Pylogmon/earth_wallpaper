@@ -12,7 +12,7 @@ url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 
 depends=('qt5-base')
-makedepends=('cmake' 'git' 'make')
+makedepends=('cmake' 'git' 'ninja')
 
 source=("git+$url.git")
 sha256sums=("SKIP")
@@ -28,8 +28,8 @@ pkgver() {
 build() {
     mkdir build
     cd build
-    cmake ../$resname
-    make
+    cmake ../$resname -G Ninja
+    ninja
 }
 
 package() {

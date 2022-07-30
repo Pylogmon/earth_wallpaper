@@ -135,6 +135,6 @@ void TrayIcon::saveCurrentImg()
     QFile target = QFile("/tmp/earth-wallpaper/" + files[files.count() - 1]);
     if (target.copy(picturePath + "/" + files[files.count() - 1]))
     {
-        QMessageBox::information(nullptr, "保存", "保存成功!", QMessageBox::Yes);
+        QMessageBox::information(nullptr, "保存", "当前壁纸已保存到Picture目录", QMessageBox::Yes);
     }
 }

@@ -38,12 +38,12 @@ def concat_images(image_names, name, path):
     target.save(path + name, quality=100)  # 成品图保存
 
 
-def fill_img(path, name):
+def fill_img(download_path, name):
     global X, Y  # 屏幕分辨率
     global SIZE
     height = int(1374.0 / (float(SIZE) * 0.01))
     width = int(height * (float(X) / float(Y)))
-    img = Image.open(path + name)
+    img = Image.open(download_path + name)
     new_img = Image.new(img.mode, (width, height), color='black')
     new_img.paste(img, (int(width / 2 - 687), int(height / 2 - 687)))
     today = datetime.datetime.utcnow()
@@ -73,13 +73,14 @@ def main():
 
     url4 = f"http://rsapp.nsmc.org.cn/swapQuery/public/tileServer/getTile/fy-4a/full_disk/NatureColor/{path_today}00/jpg/1/1/1.png"
 
-    download(url1, path + '1' + name)
-    download(url2, path + '2' + name)
-    download(url3, path + '3' + name)
-    download(url4, path + '4' + name)
+    download(url1, "/tmp/" + '1' + name)
+    download(url2, "/tmp/" + '2' + name)
+    download(url3, "/tmp/" + '3' + name)
+    download(url4, "/tmp/" + '4' + name)
 
-    concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name, path)
-    fill_img(path, name)
+    concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name,
+                  "/tmp/")
+    fill_img("/tmp/", name)
 
 
 if __name__ == '__main__':
