@@ -1,12 +1,12 @@
 #pragma once
 
+#include "about.h"
 #include "config.h"
 #include <QApplication>
 #include <QMenu>
 #include <QSettings>
 #include <QSystemTrayIcon>
 #include <QTimer>
-#include <qaction.h>
 
 class TrayIcon : public QSystemTrayIcon
 {
@@ -17,11 +17,13 @@ class TrayIcon : public QSystemTrayIcon
     int width;
     QSettings *settings = nullptr;
     Config *configPage;
+    About *aboutPage;
     QMenu *trayIconMenu;
     QAction *config;
     QAction *exit;
     QAction *refresh;
     QAction *save;
+    QAction *about;
     explicit TrayIcon(QSystemTrayIcon *parent = nullptr);
     ~TrayIcon() override;
 
@@ -29,6 +31,7 @@ class TrayIcon : public QSystemTrayIcon
     void initConnect();    //初始化信号槽
     void OnExit();         //退出程序
     void showConfigPage(); //显示配置界面
+    void showAboutPage();
     void checkConfig();    //检查配置文件
     void reloadSettings(); //启动线程
     void handle();

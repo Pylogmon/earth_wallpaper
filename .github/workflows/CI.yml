@@ -38,6 +38,7 @@ jobs:
         run: |
           mkdir build
           cd build
+          sed -i "s/#define VERSION .*/#define VERSION \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" ../src/about.h
           cmake ..
           make
       #4打包

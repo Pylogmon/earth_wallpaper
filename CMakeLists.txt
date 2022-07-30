@@ -19,6 +19,9 @@ set(PROJECT_SOURCES
         src/config.cpp
         src/config.h
         src/config.ui
+        src/about.cpp
+        src/about.h
+        src/about.ui
         src/trayicon.cpp
         src/trayicon.h
         src/thread.cpp

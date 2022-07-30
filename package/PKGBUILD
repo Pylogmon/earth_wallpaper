@@ -28,6 +28,7 @@ pkgver() {
 build() {
     mkdir build
     cd build
+    sed -i "s/#define VERSION .*/#define VERSION \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" ../$resname/src/about.h
     cmake ../$resname -G Ninja
     ninja
 }

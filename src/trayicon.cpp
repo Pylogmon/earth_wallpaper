@@ -31,6 +31,8 @@ void TrayIcon::initConnect()
     connect(this->exit, &QAction::triggered, this, &TrayIcon::OnExit);
     //打开设置页面
     connect(this->config, &QAction::triggered, this, &TrayIcon::showConfigPage);
+    //打开关于页面
+    connect(this->about, &QAction::triggered, this, &TrayIcon::showAboutPage);
     //刷新壁纸
     connect(this->refresh, &QAction::triggered, this, &TrayIcon::handle);
     //保存壁纸
@@ -47,15 +49,18 @@ void TrayIcon::initTrayIcon()
     exit = new QAction();
     refresh = new QAction();
     save = new QAction();
+    about = new QAction();
 
     config->setText("设置");
     refresh->setText("更新壁纸");
     save->setText("保存当前壁纸");
     exit->setText("退出");
+    about->setText("关于");
 
     trayIconMenu->addAction(save);
     trayIconMenu->addAction(refresh);
     trayIconMenu->addAction(config);
+    trayIconMenu->addAction(about);
     trayIconMenu->addAction(exit);
 
     this->setContextMenu(trayIconMenu);
@@ -74,6 +79,12 @@ void TrayIcon::showConfigPage()
     configPage->show();
     //重载设置
     connect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
+}
+
+void TrayIcon::showAboutPage()
+{
+    this->aboutPage = new About;
+    aboutPage->show();
 }
 
 void TrayIcon::checkConfig()

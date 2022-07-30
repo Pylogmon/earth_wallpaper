@@ -9,6 +9,7 @@ debian:
   image: ambitionecho/ubuntu-with-qt:latest
   script:
     - mkdir build && cd build
+    - sed -i "s/#define VERSION .*/#define VERSION \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" ../src/about.h
     - cmake ..
     - make
     - cd ../package
