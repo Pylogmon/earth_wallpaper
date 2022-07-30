@@ -23,7 +23,7 @@
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>地球样式：</string>
+         <string>壁纸来源：</string>
         </property>
        </widget>
       </item>
