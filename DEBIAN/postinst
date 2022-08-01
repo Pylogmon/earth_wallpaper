@@ -4,5 +4,5 @@ filePath="/usr/share/applications/$appid.desktop"
 if [ -f "$filePath" ]; then
     rm $filePath
 fi
-ln -s /opt/apps/$appid/entries/applications/$appid.desktop /usr/share/applications/cn.huguoyang.earthwallpaper.desktop
+ln -s /opt/apps/$appid/entries/applications/$appid.desktop /usr/share/applications/appid.desktop
 chmod +x /opt/apps/$appid/files/bin/scripts/xfce.sh

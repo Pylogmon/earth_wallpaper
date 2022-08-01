@@ -13,4 +13,5 @@ dpkg -b ./packageSpace earth-wallpaper-deepin-amd64.deb
 
 cp -r ../DEBIAN/ ./packageSpace/
 chmod 755 ./packageSpace/DEBIAN/postinst
+chmod 755 ./packageSpace/DEBIAN/postrm
 dpkg -b ./packageSpace earth-wallpaper-other-amd64.deb
