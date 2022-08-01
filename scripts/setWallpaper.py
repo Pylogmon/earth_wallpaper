@@ -21,6 +21,7 @@ def set_wallpaper(file):
         os.system(gs1)
         os.system(gs2)
     elif (DE == "XFCE"):
-        os.system("./xfce.sh {}".format(file))
+        path = os.path.split(os.path.realpath(__file__))[0]
+        os.system(path + "/xfce.sh {}".format(file))
     else:
         print("该桌面环境暂不支持")
