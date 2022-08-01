@@ -35,6 +35,7 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-nigh
 - [x] Deepin
 - [x] GNOME
 - [x] ubuntu:GNOME
+- [x] XFCE
 
 ## 依赖
 
