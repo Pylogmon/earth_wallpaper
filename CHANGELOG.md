@@ -1,6 +1,6 @@
 # 更新日志
 
-## [unreleased]
+## [1.5.2] - 2022-08-03
 
 ### 代码样式
 
@@ -10,6 +10,13 @@
 ### 文档
 
 - 📃 docs(README): Update README
+
+
+### 新特性
+
+- ✨ feat(scripts): 添加Cinnamon桌面环境支持
+
+https://github.com/ambition-echo/earth_wallpaper/issues/2
 
 
 ## [1.5.1] - 2022-08-01
