@@ -6,11 +6,11 @@
 
 ### Deepin
 
-到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```eearth-wallpaper-deepin-amd64.deb```安装包，双击安装即可
+到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```earth-wallpaper-deepin-amd64.deb```安装包，双击安装即可
 
 ### Debian/Ubuntu
 
-到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```eearth-wallpaper-other-amd64.deb```安装包，双击安装即可
+到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```earth-wallpaper-other-amd64.deb```安装包，双击安装即可
 
 ### Arch
 
