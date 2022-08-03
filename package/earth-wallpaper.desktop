@@ -1,5 +1,5 @@
 [Desktop Entry]
-Categories=Application;
+Categories=Application;Network;
 Comment=实时获取地球照片作为壁纸
 Exec=/opt/earth-wallpaper-nightly/earth-wallpaper
 Icon=/opt/earth-wallpaper-nightly/earth-wallpaper.png
