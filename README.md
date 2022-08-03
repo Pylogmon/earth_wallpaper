@@ -1,7 +1,13 @@
-# earth_wallpaper
+# 🌏earth_wallpaper
 
 实时获取地球照片作为壁纸(Linux Only)
 
+[![Deb](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/deb.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/deb.yml)
+[![Aur](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/aur.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/aur.yml)
+[![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
+
+[![pipeline](https://jihulab.com/ambition-echo/earth_wallpaper/badges/main/pipeline.svg)](https://jihulab.com/ambition-echo/earth_wallpaper/commits/main)
+[![Latest Release](https://jihulab.com/ambition-echo/earth_wallpaper/-/badges/release.svg)](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)
 ## 快速开始
 
 ### Deepin
