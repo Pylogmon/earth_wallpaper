@@ -23,5 +23,9 @@ def set_wallpaper(file):
     elif (DE == "XFCE"):
         path = os.path.split(os.path.realpath(__file__))[0]
         os.system(path + "/xfce.sh {}".format(file))
+    elif (DE == 'X-Cinnamon'):
+        gs = "gsettings set org.cinnamon.desktop.background picture-uri file://{}".format(
+            file)
+        os.system(gs)
     else:
         print("该桌面环境暂不支持")
