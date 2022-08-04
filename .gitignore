@@ -2,3 +2,5 @@ build
 *.user
 .cache
 __py*
+cmake-build*
+.idea
