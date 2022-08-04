@@ -8,9 +8,9 @@
 #include <QScreen>
 #include <QStandardPaths>
 
-TrayIcon::TrayIcon(QSystemTrayIcon *parent)
+TrayIcon::TrayIcon(QSystemTrayIcon *parent) : QSystemTrayIcon(parent)
 {
-    //获取屏幕分辨率
+    // 获取屏幕分辨率
     QScreen *desktop = QApplication::primaryScreen();
     QRect desktopRect = desktop->availableGeometry();
     this->height = desktopRect.height() + desktopRect.top();
@@ -27,17 +27,17 @@ TrayIcon::~TrayIcon()
 }
 void TrayIcon::initConnect()
 {
-    //退出程序
+    // 退出程序
     connect(this->exit, &QAction::triggered, this, &TrayIcon::OnExit);
-    //打开设置页面
+    // 打开设置页面
     connect(this->config, &QAction::triggered, this, &TrayIcon::showConfigPage);
-    //打开关于页面
+    // 打开关于页面
     connect(this->about, &QAction::triggered, this, &TrayIcon::showAboutPage);
-    //刷新壁纸
+    // 刷新壁纸
     connect(this->refresh, &QAction::triggered, this, &TrayIcon::handle);
-    //保存壁纸
+    // 保存壁纸
     connect(this->save, &QAction::triggered, this, &TrayIcon::saveCurrentImg);
-    //定时器
+    // 定时器
     connect(&this->timer, &QTimer::timeout, this, &TrayIcon::handle);
 }
 void TrayIcon::initTrayIcon()
@@ -77,7 +77,7 @@ void TrayIcon::showConfigPage()
 {
     this->configPage = new Config;
     configPage->show();
-    //重载设置
+    // 重载设置
     connect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
 }
 
@@ -108,11 +108,8 @@ void TrayIcon::reloadSettings()
     timer.stop();
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     configPath += "/earth-wallpaper/config";
-    if (settings != nullptr)
-    {
-        delete settings;
-    }
-    //重新读取配置文件
+    delete settings;
+    // 重新读取配置文件
     this->settings = new QSettings(configPath, QSettings::IniFormat);
     handle();
 }
@@ -127,14 +124,14 @@ void TrayIcon::handle()
                       QString::number(this->width) + " " + earthSize + " " + wallpaperDir;
     // 根据设置下载、更新壁纸
     qDebug() << command;
-    Thread *thread = new Thread(command);
+    auto *thread = new Thread(command);
     thread->start();
     timer.start(60000 * settings->value("APP/updateTime").toInt());
 }
 void TrayIcon::saveCurrentImg()
 {
-    QString dirpath = "/tmp/earth-wallpaper";
-    QDir dir(dirpath);
+    QString dirPath = "/tmp/earth-wallpaper";
+    QDir dir(dirPath);
     QStringList nameFilters;
     nameFilters << "[1-9]*";
     dir.setNameFilters(nameFilters);

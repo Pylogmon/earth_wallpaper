@@ -1,14 +1,14 @@
 #include "trayicon.h"
 #include <QApplication>
-#include <QSharedMemory>
 #include <QMessageBox>
+#include <QSharedMemory>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QApplication::setQuitOnLastWindowClosed(false); // 最后一个窗口关闭时，禁止退出应用程序
-    QSharedMemory shared("colutius");
-    
+    QSharedMemory shared("earth-wallpaper");
+
     // 防止重复运行
     if (shared.attach())
     {

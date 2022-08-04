@@ -15,8 +15,8 @@ class About : public QWidget
 {
     Q_OBJECT
   public:
-    About(QWidget *parent = nullptr);
-    ~About();
+    explicit About(QWidget *parent = nullptr);
+    ~About() override;
 
     void initUI();
     void initConnect();

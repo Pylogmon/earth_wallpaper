@@ -3,7 +3,6 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
-#include <QFileDialog>
 #include <QMessageBox>
 #include <QSettings>
 #include <QStandardPaths>
@@ -12,7 +11,7 @@
 Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 {
     this->setAttribute(Qt::WA_DeleteOnClose);
-    //检查配置文件
+    // 检查配置文件
     this->configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
 
     configPath += "/earth-wallpaper";

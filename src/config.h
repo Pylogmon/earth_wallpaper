@@ -18,9 +18,9 @@ class Config : public QWidget
 
   public:
     QString configPath;
-    QSettings *settings;
-    Config(QWidget *parent = nullptr);
-    ~Config();
+    QSettings *settings{};
+    explicit Config(QWidget *parent = nullptr);
+    ~Config() override;
 
     void initUI();
     void initConnect();

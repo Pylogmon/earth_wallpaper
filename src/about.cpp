@@ -10,9 +10,7 @@ About::About(QWidget *parent) : QWidget(parent), ui(new Ui::About)
     initUI();
     initConnect();
 }
-About::~About()
-{
-}
+About::~About() = default;
 
 void About::initUI()
 {

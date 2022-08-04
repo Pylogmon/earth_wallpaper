@@ -3,7 +3,7 @@ from checkWakkpaperDir import check
 import requests
 import datetime
 
-api_url = "http://bing.ioliu.cn/v1/rand"
+api_url = "https://bing.ioliu.cn/v1/rand"
 
 
 def download(path):

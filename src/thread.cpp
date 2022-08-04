@@ -3,14 +3,12 @@
 
 Thread::Thread(QString command)
 {
-    this->command = command;
+    this->command = std::move(command);
 }
 
-Thread::~Thread()
-{
-}
+Thread::~Thread() = default;
 
 void Thread::run()
 {
-    int result = system(this->command.toUtf8());
+    qDebug() << system(this->command.toUtf8());
 }
