@@ -20,7 +20,7 @@
 
 ### Arch
 
-Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-nightly)下载
+Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)下载
 
 ### 使用须知
 
@@ -81,6 +81,7 @@ chmod +x ./package.sh
 ## 开放API
 
 bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
+
 waifu.im: [https://waifu.im/](https://waifu.im/)
 
 ## 软件截图
