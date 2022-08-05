@@ -86,7 +86,7 @@ void Config::writeConfig()
     settings->setValue("updateTime", ui->updateTime->currentText());
     settings->setValue("earthSize", ui->earthSize->value());
     settings->setValue("wallpaperDir", ui->wallpaperDir->text());
-    settings->setValue("wallpaperFile", ui->wallpaperDir->text());
+    settings->setValue("wallpaperFile", ui->wallpaperFile->text());
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
