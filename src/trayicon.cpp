@@ -145,7 +145,7 @@ void TrayIcon::handle()
         command = "python3 " + exePath + "/scripts/" + "5.py " + wallpaperDir;
         break;
     case 6:
-        settings->setValue("APP/updateTime", "60");
+        settings->setValue("APP/updateTime", "10");
         command = "python3 " + exePath + "/scripts/" + "6.py " + wallpaperFile;
         break;
     }
