@@ -2,7 +2,6 @@ import os
 import sys
 import json
 import time
-import math
 from setWallpaper import set_wallpaper
 import requests
 
@@ -22,10 +21,13 @@ def unpack():
 
 
 def get_location():
-    ip = requests.get('https://myip.ipip.net', timeout=5).text.split(" ")[1][3:]
+    ip = requests.get('https://myip.ipip.net',
+                      timeout=5).text.split(" ")[1][3:]
     loc = json.loads(
-        requests.get('https://api.ipbase.com/v2/info?apikey=hNJIYCzO8Enm5SiGtas9o6WAHpl33TR5xLDt2QtP&ip=' + ip,
-                     timeout=5).text)
+        requests.get(
+            'https://api.ipbase.com/v2/info?apikey=hNJIYCzO8Enm5SiGtas9o6WAHpl33TR5xLDt2QtP&ip='
+            + ip, timeout=5).text
+    )
     latitude = loc["data"]["location"]["latitude"]
     longitude = loc["data"]["location"]["longitude"]
     calculate_sun(latitude, longitude)
@@ -58,23 +60,35 @@ def read_json(sunrise, day, sunset, night):
         hour += 1
 
     if hour in sunrise:
-        num = math.ceil(len(sunrise) / len(theme["sunriseImageList"]))
+        print(sunrise)
+        num = len(sunrise) // len(theme["sunriseImageList"])
         index = sunrise.index(hour) // num
+        if index >= len(theme["sunriseImageList"]):
+            index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["sunriseImageList"][index])))
     elif hour in day:
-        num = math.ceil(len(day) / len(theme["dayImageList"]))
+        print(day)
+        num = len(day) // len(theme["dayImageList"])
         index = day.index(hour) // num
+        if index >= len(theme["sunriseImageList"]):
+            index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["dayImageList"][index])))
     elif hour in sunset:
-        num = math.ceil(len(sunset) / len(theme["sunsetImageList"]))
+        print(sunset)
+        num = len(sunset) // len(theme["sunsetImageList"])
         index = sunset.index(hour) // num
+        if index >= len(theme["sunriseImageList"]):
+            index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["sunsetImageList"][index])))
     elif hour in night:
-        num = math.ceil(len(night) / len(theme["nightImageList"]))
+        print(night)
+        num = len(night) // len(theme["nightImageList"])
         index = night.index(hour) // num
+        if index >= len(theme["sunriseImageList"]):
+            index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["nightImageList"][index])))
     else:
