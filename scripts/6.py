@@ -8,11 +8,6 @@ import requests
 
 file = sys.argv[1]
 unpackDir = "/tmp/" + file.split("/")[-1].split(".")[0]
-hours = list(range(0, 24))
-sunrise = []
-day = []
-sunset = []
-night = []
 
 
 def check():
@@ -41,21 +36,18 @@ def calculate_sun(la, lo):
 
     sunrise_time = 5
     sunset_time = 18  # 由上面计算得出
-    for i in hours:
-        if i < sunrise_time:
-            night.append(i)
-        elif sunrise_time <= i < sunrise_time + 4:
-            sunrise.append(i)
-        elif sunrise_time + 4 <= i < sunset_time:
-            day.append(i)
-        elif sunset_time <= i < sunset_time + 4:
-            sunset.append(i)
-        else:
-            night.append(i)
-    read_json()
+
+    sunrise = list(range(sunrise_time, sunrise_time + 4))
+    day = list(range(sunrise_time + 4, sunset_time))
+    sunset = [x % 24 for x in range(sunset_time, sunset_time + 4)]
+    if sunset[-1] < sunrise_time:
+        night = list(range(sunset[-1], sunrise_time))
+    else:
+        night = list(range(sunset_time + 4, 24)) + list(range(0, sunrise_time))
+    read_json(sunrise, day, sunset, night)
 
 
-def read_json():
+def read_json(sunrise, day, sunset, night):
     with open(unpackDir + "/theme.json", "r") as f:
         theme = json.load(f)
 
