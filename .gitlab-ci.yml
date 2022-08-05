@@ -34,8 +34,8 @@ upload:
     - if: $CI_COMMIT_TAG
   script:
     - |
-      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/earth-wallpaper-deepin-amd64.deb "${PACKAGE_REGISTRY_URL}/earth-wallpaper-deepin-amd64.deb"
-      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/earth-wallpaper-other-amd64.deb "${PACKAGE_REGISTRY_URL}/earth-wallpaper-other-amd64.deb"
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/earth-wallpaper-deepin-amd64.deb "${PACKAGE_REGISTRY_URL}/earth-wallpaper-deepin-amd64-$CI_COMMIT_TAG.deb"
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file upload/earth-wallpaper-other-amd64.deb "${PACKAGE_REGISTRY_URL}/earth-wallpaper-other-amd64-$CI_COMMIT_TAG.deb"
 
 
 release:
@@ -54,5 +54,5 @@ release:
   script:
     - |
       release-cli create --name "Release $CI_COMMIT_TAG" --tag-name $CI_COMMIT_TAG \
-        --assets-link "{\"name\":\"earth-wallpaper-deepin-amd64.deb\",\"url\":\"${PACKAGE_REGISTRY_URL}/earth-wallpaper-deepin-amd64.deb\"}"\
-        --assets-link "{\"name\":\"earth-wallpaper-other-amd64.deb\",\"url\":\"${PACKAGE_REGISTRY_URL}/earth-wallpaper-other-amd64.deb\"}"
+        --assets-link "{\"name\":\"earth-wallpaper-deepin-amd64-$CI_COMMIT_TAG.deb\",\"url\":\"${PACKAGE_REGISTRY_URL}/earth-wallpaper-deepin-amd64-$CI_COMMIT_TAG.deb\"}"\
+        --assets-link "{\"name\":\"earth-wallpaper-other-amd64-$CI_COMMIT_TAG.deb\",\"url\":\"${PACKAGE_REGISTRY_URL}/earth-wallpaper-other-amd64-$CI_COMMIT_TAG.deb\"}"
