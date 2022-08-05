@@ -50,6 +50,7 @@ void Config::initUI()
     ui->earthSource->addItem("必应壁纸(每日)");
     ui->earthSource->addItem("动漫壁纸");
     ui->earthSource->addItem("本地壁纸");
+    ui->earthSource->addItem("24h壁纸");
     ui->updateTime->addItem("10");
     ui->updateTime->addItem("30");
     ui->updateTime->addItem("60");
@@ -64,6 +65,7 @@ void Config::initConnect()
     connect(ui->close, &QPushButton::clicked, this, &Config::close);
     connect(ui->earthSource, &QComboBox::currentTextChanged, this, &Config::controlOption);
     connect(ui->select, &QPushButton::clicked, this, &Config::selectDir);
+    connect(ui->selectFile, &QPushButton::clicked, this, &Config::selectFile);
 }
 void Config::readConfig()
 {
@@ -74,6 +76,7 @@ void Config::readConfig()
     ui->updateTime->setCurrentText(settings->value("updateTime").toString());
     ui->earthSize->setValue(settings->value("earthSize").toInt());
     ui->wallpaperDir->setText(settings->value("wallpaperDir").toString());
+    ui->wallpaperFile->setText(settings->value("wallpaperFile").toString());
     settings->endGroup();
 }
 void Config::writeConfig()
@@ -83,6 +86,7 @@ void Config::writeConfig()
     settings->setValue("updateTime", ui->updateTime->currentText());
     settings->setValue("earthSize", ui->earthSize->value());
     settings->setValue("wallpaperDir", ui->wallpaperDir->text());
+    settings->setValue("wallpaperFile", ui->wallpaperDir->text());
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
@@ -111,9 +115,31 @@ void Config::controlOption()
         ui->wallpaperDir->hide();
         ui->select->hide();
     }
+    if (ui->earthSource->currentIndex() == 6)
+    {
+        ui->label_5->show();
+        ui->wallpaperFile->show();
+        ui->selectFile->show();
+        ui->updateTime->hide();
+        ui->label_2->hide();
+    }
+    else
+    {
+        ui->label_5->hide();
+        ui->wallpaperFile->hide();
+        ui->selectFile->hide();
+        ui->updateTime->show();
+        ui->label_2->show();
+    }
 }
 void Config::selectDir()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("选择壁纸文件夹"));
     ui->wallpaperDir->setText(dir);
+}
+void Config::selectFile()
+{
+    QString file =
+        QFileDialog::getOpenFileName(this, "选择24h壁纸文件", "", "24h壁纸文件 (*.ddw *.zip);; 所有文件 (*.*);; ");
+    ui->wallpaperFile->setText(file);
 }

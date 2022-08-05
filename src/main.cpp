@@ -18,5 +18,5 @@ int main(int argc, char *argv[])
     shared.create(1);
 
     TrayIcon tray;
-    return a.exec();
+    return QApplication::exec();
 }

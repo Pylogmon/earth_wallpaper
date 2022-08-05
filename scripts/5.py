@@ -2,7 +2,7 @@ import sys
 import os
 from setWallpaper import set_wallpaper
 
-wallpaperDir = sys.argv[4]
+wallpaperDir = sys.argv[1]
 currentFile = wallpaperDir + "/current.txt"
 
 currentWallpaper = "None"

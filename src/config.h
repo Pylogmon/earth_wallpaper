@@ -28,6 +28,7 @@ class Config : public QWidget
     void writeConfig();
     void controlOption();
     void selectDir();
+    void selectFile();
 
   private:
     Ui::Config *ui;

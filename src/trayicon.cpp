@@ -116,12 +116,40 @@ void TrayIcon::reloadSettings()
 void TrayIcon::handle()
 {
     qDebug() << "handling...";
-    QString earthSource = settings->value("APP/earthSource").toString();
+    int earthSource = settings->value("APP/earthSource").toInt();
     QString earthSize = settings->value("APP/earthSize").toString();
     QString wallpaperDir = settings->value("APP/wallpaperDir").toString();
+    QString wallpaperFile = settings->value("APP/wallpaperFile").toString();
     QString exePath = QCoreApplication::applicationDirPath();
-    QString command = "python3 " + exePath + "/scripts/" + earthSource + ".py " + QString::number(this->height) + " " +
-                      QString::number(this->width) + " " + earthSize + " " + wallpaperDir;
+    QString command = "";
+    switch (earthSource)
+    {
+    case 0:
+        command = "python3 " + exePath + "/scripts/" + "0.py " + QString::number(this->height) + " " +
+                  QString::number(this->width) + " " + earthSize;
+        break;
+    case 1:
+        command = "python3 " + exePath + "/scripts/" + "1.py " + QString::number(this->height) + " " +
+                  QString::number(this->width) + " " + earthSize;
+        break;
+    case 2:
+        command = "python3 " + exePath + "/scripts/" + "2.py";
+        break;
+    case 3:
+        command = "python3 " + exePath + "/scripts/" + "3.py";
+        break;
+    case 4:
+        command = "python3 " + exePath + "/scripts/" + "4.py";
+        break;
+    case 5:
+        command = "python3 " + exePath + "/scripts/" + "5.py " + wallpaperDir;
+        break;
+    case 6:
+        settings->setValue("APP/updateTime", "60");
+        command = "python3 " + exePath + "/scripts/" + "6.py " + wallpaperFile;
+        break;
+    }
+
     // 根据设置下载、更新壁纸
     qDebug() << command;
     auto *thread = new Thread(command);
