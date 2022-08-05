@@ -38,6 +38,12 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 - [x] 风云四号
 - [x] 必应壁纸(调用 [@xCss](https://github.com/xCss/bing) API)
 - [x] 动漫壁纸(调用 [waifu.im](https://waifu.im/) API)
+- [x] 本地壁纸
+- [x] 24h壁纸(灵感来自于[windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
+
+> 24h壁纸推荐下载地址: 
+> [https://github.com/MiniBusiest/24Hour-Wallppe](https://github.com/MiniBusiest/24Hour-Wallppe)
+> [https://windd.info/themes/index.html](https://windd.info/themes/index.html)
 
 ## 支持桌面环境
 
