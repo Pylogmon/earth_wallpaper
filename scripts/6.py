@@ -77,7 +77,7 @@ def read_json(sunrise, day, sunset, night):
         print(day)
         num = len(day) // len(theme["dayImageList"])
         index = day.index(hour) // num
-        if index >= len(theme["sunriseImageList"]):
+        if index >= len(theme["dayImageList"]):
             index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["dayImageList"][index])))
@@ -85,7 +85,7 @@ def read_json(sunrise, day, sunset, night):
         print(sunset)
         num = len(sunset) // len(theme["sunsetImageList"])
         index = sunset.index(hour) // num
-        if index >= len(theme["sunriseImageList"]):
+        if index >= len(theme["sunsetImageList"]):
             index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["sunsetImageList"][index])))
@@ -93,7 +93,7 @@ def read_json(sunrise, day, sunset, night):
         print(night)
         num = len(night) // len(theme["nightImageList"])
         index = night.index(hour) // num
-        if index >= len(theme["sunriseImageList"]):
+        if index >= len(theme["nightImageList"]):
             index = -1
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["nightImageList"][index])))
