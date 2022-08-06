@@ -21,13 +21,14 @@ def unpack():
 
 
 def get_location():
-    ip = requests.get('https://myip.ipip.net',
-                      timeout=5).text.split(" ")[1][3:]
+    session = requests.Session()
+    session.trust_env = False
+    ip = session.get('https://myip.ipip.net', timeout=5).text.split(" ")[1][3:]
     loc = json.loads(
         requests.get(
             'https://api.ipbase.com/v2/info?apikey=hNJIYCzO8Enm5SiGtas9o6WAHpl33TR5xLDt2QtP&ip='
-            + ip, timeout=5).text
-    )
+            + ip,
+            timeout=5).text)
     latitude = loc["data"]["location"]["latitude"]
     longitude = loc["data"]["location"]["longitude"]
     calculate_sun(latitude, longitude)
@@ -50,7 +51,10 @@ def calculate_sun(la, lo):
 
 
 def read_json(sunrise, day, sunset, night):
-    with open(unpackDir + "/theme.json", "r") as f:
+    json_name = str(
+        os.popen(
+            "cd {} && ls *.json".format(unpackDir)).read().splitlines()[0])
+    with open(unpackDir + "/" + json_name, "r") as f:
         theme = json.load(f)
 
     hour = time.localtime(time.time()).tm_hour
