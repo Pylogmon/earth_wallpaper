@@ -1,4 +1,5 @@
 # 🌏earth_wallpaper
+
 ### [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
 
 实时获取地球照片作为壁纸(Linux Only)
@@ -17,11 +18,13 @@
 
 ### Deepin
 
-到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```earth-wallpaper-deepin-amd64.deb```安装包，双击安装即可
+到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```earth-wallpaper-deepin-amd64.deb```
+安装包，双击安装即可
 
 ### Debian/Ubuntu
 
-到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```earth-wallpaper-other-amd64.deb```安装包，双击安装即可
+到[发布页](https://jihulab.com/ambition-echo/earth_wallpaper/-/releases)下载```earth-wallpaper-other-amd64.deb```
+安装包，双击安装即可
 
 ### Arch
 
@@ -40,10 +43,10 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 - [x] 本地壁纸
 - [x] 24h壁纸(灵感来自于[windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
 
-> 24h壁纸推荐下载地址: 
-> 
+> 24h壁纸推荐下载地址:
+>
 > [https://github.com/MiniBusiest/24Hour-Wallppe](https://github.com/MiniBusiest/24Hour-Wallppe)
-> 
+>
 > [https://windd.info/themes/index.html](https://windd.info/themes/index.html)
 
 ## 支持桌面环境
@@ -66,6 +69,7 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 ## 手动编译安装
 
 - 克隆仓库
+
 ```shell
 git clone https://jihulab.com/ambition-echo/earth_wallpaper.git
 cd earth_wallpaper
@@ -73,12 +77,14 @@ mkdir build && cd build
 ```
 
 - 编译构建
+
 ```shell
 cmake ..
 make
 ```
 
 - 打包安装
+
 ```shell
 cd ../package
 chmod +x ./package.sh
@@ -87,9 +93,13 @@ chmod +x ./package.sh
 
 ## 开放API
 
-bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
+bing 壁纸: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
-waifu.im: [https://waifu.im/](https://waifu.im/)
+waifu.im 动漫壁纸: [https://waifu.im/](https://waifu.im/)
+
+myip 获取ip地址：[https://myip.ipip.net](https://myip.ipip.net)
+
+ipbase 获取ip地理位置：[https://api.ipbase.com](https://api.ipbase.com)
 
 ## 软件截图
 

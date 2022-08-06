@@ -1,4 +1,5 @@
 # 🌏earth_wallpaper
+
 ### [中文](https://github.com/ambition-echo/earth_wallpaper#readme)
 
 Get real-time earth photos as wallpapers(Linux Only)
@@ -17,11 +18,13 @@ Not only real-time earth
 
 ### Deepin
 
-Go to the [release](https://github.com/ambition-echo/earth_wallpaper/releases) page to download the installation package ```earth-wallpaper-deepin-amd64.deb```
+Go to the [release](https://github.com/ambition-echo/earth_wallpaper/releases) page to download the installation
+package ```earth-wallpaper-deepin-amd64.deb```
 
 ### Debian/Ubuntu
 
-Go to the [release](https://github.com/ambition-echo/earth_wallpaper/releases)page to download the installation package ```earth-wallpaper-other-amd64.deb```
+Go to the [release](https://github.com/ambition-echo/earth_wallpaper/releases)page to download the installation
+package ```earth-wallpaper-other-amd64.deb```
 
 ### Arch
 
@@ -40,10 +43,10 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] Local Wallpaper
 - [x] 24h Wallpaper(Inspired by [windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
 
-> 24h Wallpaper recommended download address: 
-> 
+> 24h Wallpaper recommended download address:
+>
 > [https://github.com/MiniBusiest/24Hour-Wallppe](https://github.com/MiniBusiest/24Hour-Wallppe)
-> 
+>
 > [https://windd.info/themes/index.html](https://windd.info/themes/index.html)
 
 ## Supported Desktop Environment
@@ -66,6 +69,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 ## Compile Manually
 
 - Clone the repository
+
 ```shell
 git clone https://jihulab.com/ambition-echo/earth_wallpaper.git
 cd earth_wallpaper
@@ -73,12 +77,14 @@ mkdir build && cd build
 ```
 
 - Compile and Build
+
 ```shell
 cmake ..
 make
 ```
 
 - Package
+
 ```shell
 cd ../package
 chmod +x ./package.sh
@@ -90,6 +96,10 @@ chmod +x ./package.sh
 bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 waifu.im: [https://waifu.im/](https://waifu.im/)
+
+myip: [https://myip.ipip.net](https://myip.ipip.net)
+
+ipbase: [https://api.ipbase.com](https://api.ipbase.com)
 
 ## ScreenShot
 
