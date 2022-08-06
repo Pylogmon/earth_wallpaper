@@ -3,6 +3,7 @@ import sys
 import json
 import time
 from setWallpaper import set_wallpaper
+from sunCalculator import SunCalculator, DateTime
 import requests
 
 file = sys.argv[1]
@@ -35,10 +36,11 @@ def get_location():
 
 
 def calculate_sun(la, lo):
-    # TODO calculate the sunrise time and sunset time
-
-    sunrise_time = 5
-    sunset_time = 18  # 由上面计算得出
+    dt = DateTime()
+    sunCalculator = SunCalculator(dt.Y, dt.M, dt.D, la, lo)
+    st = sunCalculator.getSunTimes()
+    sunrise_time = int(st.sunrise)
+    sunset_time = int(st.sunset)
 
     sunrise = list(range(sunrise_time, sunrise_time + 4))
     day = list(range(sunrise_time + 4, sunset_time))
