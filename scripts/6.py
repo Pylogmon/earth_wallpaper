@@ -60,10 +60,6 @@ def read_json(sunrise, day, sunset, night):
         theme = json.load(f)
 
     hour = time.localtime(time.time()).tm_hour
-    minute = time.localtime(time.time()).tm_min
-
-    if minute > 30:
-        hour += 1
 
     if hour in sunrise:
         print(sunrise)
