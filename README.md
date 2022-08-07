@@ -49,6 +49,35 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 >
 > [https://windd.info/themes/index.html](https://windd.info/themes/index.html)
 
+## 接口贡献指南
+
+- 在scripts文件夹下新建python脚本，注意脚本开头写清楚脚本信息
+- 第一行，```source```：接口名称
+- 第二行，设置界面需要配置项，可选(updateTime/wallpaperDir/wallpaperFile)
+- 可用 python 命令行参数：
+    1. 屏幕分辨率高
+    2. 屏幕分辨率宽
+    3. 地球大小
+    4. 壁纸文件夹路径
+    5. 壁纸文件路径
+       示例代码：
+
+```python
+# source: 风景壁纸
+# updateTime
+
+from setWallpaper import set_wallpaper
+
+
+# 1. 获取壁纸
+def get_wallpaper():
+    ...
+
+
+# 2. 设置桌面壁纸
+set_wallpaper(绝对路径)
+```
+
 ## 支持桌面环境
 
 - [x] KDE Plasma
