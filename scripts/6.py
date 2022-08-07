@@ -24,24 +24,28 @@ def unpack():
 def get_location():
     session = requests.Session()
     session.trust_env = False
-    ip = session.get('https://myip.ipip.net', timeout=5).text.split(" ")[1][3:]
-    loc = json.loads(
-        requests.get(
-            'https://api.ipbase.com/v2/info?apikey=hNJIYCzO8Enm5SiGtas9o6WAHpl33TR5xLDt2QtP&ip='
-            + ip,
-            timeout=5).text)
-    latitude = loc["data"]["location"]["latitude"]
-    longitude = loc["data"]["location"]["longitude"]
-    calculate_sun(latitude, longitude)
+    try:
+        ip = session.get('https://myip.ipip.net', timeout=5).text.split(" ")[1][3:]
+        loc = json.loads(
+            requests.get(
+                'https://api.ipbase.com/v2/info?apikey=hNJIYCzO8Enm5SiGtas9o6WAHpl33TR5xLDt2QtP&ip='
+                + ip,
+                timeout=5).text)
+        latitude = loc["data"]["location"]["latitude"]
+        longitude = loc["data"]["location"]["longitude"]
+        calculate_sun(latitude, longitude)
+    finally:
+        calculate_time(5, 18)
 
 
 def calculate_sun(la, lo):
     dt = DateTime()
     sunCalculator = SunCalculator(dt.Y, dt.M, dt.D, la, lo)
     st = sunCalculator.getSunTimes()
-    sunrise_time = int(st.sunrise)
-    sunset_time = int(st.sunset)
+    calculate_time(int(st.sunrise), int(st.sunset))
 
+
+def calculate_time(sunrise_time, sunset_time):
     sunrise = list(range(sunrise_time, sunrise_time + 4))
     day = list(range(sunrise_time + 4, sunset_time))
     sunset = [x % 24 for x in range(sunset_time, sunset_time + 4)]
