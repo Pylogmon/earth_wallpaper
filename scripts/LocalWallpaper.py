@@ -1,8 +1,10 @@
+# source: 本地壁纸
+# updateTime wallpaperDir
 import sys
 import os
 from setWallpaper import set_wallpaper
 
-wallpaperDir = sys.argv[1]
+wallpaperDir = sys.argv[4]
 currentFile = wallpaperDir + "/current.txt"
 
 currentWallpaper = "None"

@@ -3,10 +3,10 @@
 #include <QDebug>
 #include <QDir>
 #include <QFile>
+#include <QFileDialog>
 #include <QMessageBox>
 #include <QSettings>
 #include <QStandardPaths>
-#include <qfiledialog.h>
 
 Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 {
@@ -32,7 +32,7 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
     initUI();
     initConnect();
     readConfig();
-    controlOption();
+    controlOption(ui->earthSource->currentText());
 }
 
 Config::~Config()
@@ -44,19 +44,28 @@ Config::~Config()
 void Config::initUI()
 {
     this->setWindowIcon(QIcon(":/img/cn.huguoyang.earthwallpaper.png"));
-    ui->earthSource->addItem("向日葵八号");
-    ui->earthSource->addItem("风云四号");
-    ui->earthSource->addItem("必应壁纸(随机)");
-    ui->earthSource->addItem("必应壁纸(每日)");
-    ui->earthSource->addItem("动漫壁纸");
-    ui->earthSource->addItem("本地壁纸");
-    ui->earthSource->addItem("24h壁纸");
     ui->updateTime->addItem("10");
     ui->updateTime->addItem("30");
     ui->updateTime->addItem("60");
     ui->updateTime->addItem("120");
     ui->updateTime->addItem("180");
     ui->updateTime->addItem("720");
+    QString exePath = QCoreApplication::applicationDirPath();
+    QDir scriptsDir(exePath + "/scripts");
+    QStringList nameFilters;
+    nameFilters << "*.py";
+    scriptsDir.setNameFilters(nameFilters);
+    QStringList files = scriptsDir.entryList(QDir::Files, QDir::Name);
+    foreach (QString file, files)
+    {
+        QFile scriptFile(exePath + "/scripts/" + file);
+        scriptFile.open(QIODevice::ReadOnly);
+        QString info = scriptFile.readLine();
+        if (info.split(" ")[1] == "source:")
+        {
+            ui->earthSource->addItem(info.split(" ")[2].remove("\n"));
+        }
+    }
 }
 
 void Config::initConnect()
@@ -72,7 +81,7 @@ void Config::readConfig()
     this->settings = new QSettings(configPath + "/config", QSettings::IniFormat);
     settings->setIniCodec("UTF8");
     settings->beginGroup("APP");
-    ui->earthSource->setCurrentIndex(settings->value("earthSource").toInt());
+    ui->earthSource->setCurrentText(settings->value("earthSource").toString());
     ui->updateTime->setCurrentText(settings->value("updateTime").toString());
     ui->earthSize->setValue(settings->value("earthSize").toInt());
     ui->wallpaperDir->setText(settings->value("wallpaperDir").toString());
@@ -82,7 +91,8 @@ void Config::readConfig()
 void Config::writeConfig()
 {
     settings->beginGroup("APP");
-    settings->setValue("earthSource", ui->earthSource->currentIndex());
+    settings->setIniCodec("UTF8");
+    settings->setValue("earthSource", ui->earthSource->currentText());
     settings->setValue("updateTime", ui->updateTime->currentText());
     settings->setValue("earthSize", ui->earthSize->value());
     settings->setValue("wallpaperDir", ui->wallpaperDir->text());
@@ -91,45 +101,71 @@ void Config::writeConfig()
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
 }
-void Config::controlOption()
+void Config::controlOption(QString source)
 {
-    if (ui->earthSource->currentIndex() == 0 || ui->earthSource->currentIndex() == 1)
+    QString exePath = QCoreApplication::applicationDirPath();
+    QDir scriptsDir(exePath + "/scripts");
+    QStringList nameFilters;
+    nameFilters << "*.py";
+    scriptsDir.setNameFilters(nameFilters);
+    QStringList files = scriptsDir.entryList(QDir::Files, QDir::Name);
+    foreach (QString file, files)
     {
-        ui->label_3->show();
-        ui->earthSize->show();
-    }
-    else
-    {
-        ui->label_3->hide();
-        ui->earthSize->hide();
-    }
-    if (ui->earthSource->currentIndex() == 5)
-    {
-        ui->label_4->show();
-        ui->wallpaperDir->show();
-        ui->select->show();
-    }
-    else
-    {
-        ui->label_4->hide();
-        ui->wallpaperDir->hide();
-        ui->select->hide();
-    }
-    if (ui->earthSource->currentIndex() == 6)
-    {
-        ui->label_5->show();
-        ui->wallpaperFile->show();
-        ui->selectFile->show();
-        ui->updateTime->hide();
-        ui->label_2->hide();
-    }
-    else
-    {
-        ui->label_5->hide();
-        ui->wallpaperFile->hide();
-        ui->selectFile->hide();
-        ui->updateTime->show();
-        ui->label_2->show();
+        QFile scriptFile(exePath + "/scripts/" + file);
+        scriptFile.open(QIODevice::ReadOnly);
+        QString info = scriptFile.readLine();
+        if (info.split(" ")[1] == "source:")
+        {
+            if (info.split(" ")[2].remove("\n") == source)
+            {
+                QString itemInfo = scriptFile.readLine();
+                if (itemInfo.contains("updateTime"))
+                {
+                    ui->label_2->show();
+                    ui->updateTime->show();
+                }
+                else
+                {
+                    settings->setValue("APP/updateTime", "10");
+                    ui->label_2->hide();
+                    ui->updateTime->hide();
+                }
+                if (itemInfo.contains("earthSize"))
+                {
+                    ui->label_3->show();
+                    ui->earthSize->show();
+                }
+                else
+                {
+                    ui->label_3->hide();
+                    ui->earthSize->hide();
+                }
+                if (itemInfo.contains("wallpaperDir"))
+                {
+                    ui->label_4->show();
+                    ui->wallpaperDir->show();
+                    ui->select->show();
+                }
+                else
+                {
+                    ui->label_4->hide();
+                    ui->wallpaperDir->hide();
+                    ui->select->hide();
+                }
+                if (itemInfo.contains("wallpaperFile"))
+                {
+                    ui->label_5->show();
+                    ui->wallpaperFile->show();
+                    ui->selectFile->show();
+                }
+                else
+                {
+                    ui->label_5->hide();
+                    ui->wallpaperFile->hide();
+                    ui->selectFile->hide();
+                }
+            }
+        }
     }
 }
 void Config::selectDir()

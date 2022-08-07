@@ -116,38 +116,40 @@ void TrayIcon::reloadSettings()
 void TrayIcon::handle()
 {
     qDebug() << "handling...";
-    int earthSource = settings->value("APP/earthSource").toInt();
-    QString earthSize = settings->value("APP/earthSize").toString();
-    QString wallpaperDir = settings->value("APP/wallpaperDir").toString();
-    QString wallpaperFile = settings->value("APP/wallpaperFile").toString();
-    QString exePath = QCoreApplication::applicationDirPath();
+    settings->beginGroup("APP");
+    settings->setIniCodec("UTF8");
+    QString earthSource = settings->value("earthSource").toString();
+    QString earthSize = settings->value("earthSize").toString();
+    QString wallpaperDir = settings->value("wallpaperDir").toString();
+    QString wallpaperFile = settings->value("wallpaperFile").toString();
+    settings->endGroup();
     QString command = "";
-    switch (earthSource)
+    QString exePath = QCoreApplication::applicationDirPath();
+    QDir scriptsDir(exePath + "/scripts");
+    QStringList nameFilters;
+    nameFilters << "*.py";
+    scriptsDir.setNameFilters(nameFilters);
+    QStringList files = scriptsDir.entryList(QDir::Files, QDir::Name);
+    qDebug() << earthSource;
+    foreach (QString file, files)
     {
-    case 0:
-        command = "python3 " + exePath + "/scripts/" + "0.py " + QString::number(this->height) + " " +
-                  QString::number(this->width) + " " + earthSize;
-        break;
-    case 1:
-        command = "python3 " + exePath + "/scripts/" + "1.py " + QString::number(this->height) + " " +
-                  QString::number(this->width) + " " + earthSize;
-        break;
-    case 2:
-        command = "python3 " + exePath + "/scripts/" + "2.py";
-        break;
-    case 3:
-        command = "python3 " + exePath + "/scripts/" + "3.py";
-        break;
-    case 4:
-        command = "python3 " + exePath + "/scripts/" + "4.py";
-        break;
-    case 5:
-        command = "python3 " + exePath + "/scripts/" + "5.py " + wallpaperDir;
-        break;
-    case 6:
-        settings->setValue("APP/updateTime", "10");
-        command = "python3 " + exePath + "/scripts/" + "6.py " + wallpaperFile;
-        break;
+        QFile scriptFile(exePath + "/scripts/" + file);
+        scriptFile.open(QIODevice::ReadOnly);
+        QString info = scriptFile.readLine();
+        if (info.split(" ")[1] == "source:")
+        {
+
+            qDebug() << info.split(" ")[2].remove("\n");
+            if (info.split(" ")[2].remove("\n") == earthSource)
+            {
+                command = "python3 " + exePath + "/scripts/" + file + " " + QString::number(this->height) + " " +
+                          QString::number(this->width) + " " + earthSize + " " + wallpaperDir + " " + wallpaperFile;
+                if (file == "24h.py")
+                {
+                    settings->setValue("APP/updateTime", "10");
+                }
+            }
+        }
     }
 
     // 根据设置下载、更新壁纸

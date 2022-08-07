@@ -1,3 +1,5 @@
+# source: 动漫壁纸
+# updateTime
 from setWallpaper import set_wallpaper
 from checkWakkpaperDir import check
 import requests

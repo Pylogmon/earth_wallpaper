@@ -26,7 +26,7 @@ class Config : public QWidget
     void initConnect();
     void readConfig();
     void writeConfig();
-    void controlOption();
+    void controlOption(QString source);
     void selectDir();
     void selectFile();
 

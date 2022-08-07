@@ -1,3 +1,5 @@
+# source: 24h壁纸
+# updateTime wallpaperFile
 import os
 import sys
 import json
@@ -6,7 +8,7 @@ from setWallpaper import set_wallpaper
 from sunCalculator import SunCalculator, DateTime
 import requests
 
-file = sys.argv[1]
+file = sys.argv[5]
 unpackDir = "/tmp/" + file.split("/")[-1].split(".")[0]
 
 

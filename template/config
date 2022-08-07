@@ -1,6 +1,6 @@
 [APP]
-earthSource=0
+earthSource=风云四号
 updateTime=30
 earthSize=60
-wallpaperDir=""
-wallpaperFile=""
+wallpaperDir="/"
+wallpaperFile="/"

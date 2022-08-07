@@ -1,15 +1,17 @@
+# source: 必应壁纸(随机)
+# updateTime
 from setWallpaper import set_wallpaper
 from checkWakkpaperDir import check
 import requests
 import datetime
 
-api_url = "https://bing.ioliu.cn/v1"
+api_url = "https://bing.ioliu.cn/v1/rand"
 
 
 def download(path):
     headers = {
         "user-agent":
-            "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
+        "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
     }
 
     img = requests.get(api_url, headers=headers)

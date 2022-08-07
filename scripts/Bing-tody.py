@@ -1,9 +1,11 @@
+# source: 必应壁纸(今日)
+# updateTime
 from setWallpaper import set_wallpaper
 from checkWakkpaperDir import check
 import requests
 import datetime
 
-api_url = "https://bing.ioliu.cn/v1/rand"
+api_url = "https://bing.ioliu.cn/v1"
 
 
 def download(path):

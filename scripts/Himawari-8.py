@@ -1,3 +1,6 @@
+# source: 向日葵八号
+# updateTime earthSize
+
 from PIL import Image
 from setWallpaper import set_wallpaper
 from checkWakkpaperDir import check
