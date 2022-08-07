@@ -99,7 +99,7 @@ waifu.im: [https://waifu.im/](https://waifu.im/)
 
 myip: [https://myip.ipip.net](https://myip.ipip.net)
 
-ipbase: [https://api.ipbase.com](https://api.ipbase.com)
+ipapi: [https://ipapi.co](https://ipapi.co)
 
 ## ScreenShot
 
