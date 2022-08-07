@@ -1,3 +1,16 @@
+# CHANGELOG
+
+## 1.6.5 (2022-08-07)
+
+### Bugs fixed:
+
+- **scripts**: 修改IP地理位置api为ipapi.co([`2d771ee`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/2d771eef1c20a808a7c55582165829b290beccfa)) (by ambition_echo)
+- **scripts**: 修复ipbase API失效问题([`080c283`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/080c283cd19218eb3b12cabbf943c783455a82cd)) (by ambition_echo)
+
+### Performance improves:
+
+- **scripts**: 删除时间进位([`0ba2072`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/0ba20726911a7c014265dd8b7ef29a679bfabce7)) (by ambition_echo)
+
 ## 1.6.4 (2022-08-06)
 
 ### Bugs fixed:
