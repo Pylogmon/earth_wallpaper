@@ -1,5 +1,5 @@
 # source: 24h壁纸
-# updateTime wallpaperFile
+# wallpaperFile
 import os
 import sys
 import json

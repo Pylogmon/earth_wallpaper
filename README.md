@@ -60,7 +60,8 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
     3. 地球大小
     4. 壁纸文件夹路径
     5. 壁纸文件路径
-       示例代码：
+
+示例代码：
 
 ```python
 # source: 风景壁纸
