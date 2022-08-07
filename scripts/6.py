@@ -25,16 +25,16 @@ def get_location():
     session = requests.Session()
     session.trust_env = False
     try:
-        ip = session.get('https://myip.ipip.net', timeout=5).text.split(" ")[1][3:]
-        loc = json.loads(
-            requests.get(
-                'https://api.ipbase.com/v2/info?apikey=hNJIYCzO8Enm5SiGtas9o6WAHpl33TR5xLDt2QtP&ip='
-                + ip,
-                timeout=5).text)
-        latitude = loc["data"]["location"]["latitude"]
-        longitude = loc["data"]["location"]["longitude"]
+        ip = session.get('https://myip.ipip.net').text.split(" ")[1][3:]
+        loc = requests.get("https://ipapi.co/{}/json/".format(ip)).json()
+        latitude = loc["latitude"]
+        longitude = loc["longitude"]
         calculate_sun(latitude, longitude)
-    finally:
+    except ConnectionResetError:
+        print("使用默认时间")
+        calculate_time(5, 18)
+    except KeyError:
+        print("使用默认时间")
         calculate_time(5, 18)
 
 
