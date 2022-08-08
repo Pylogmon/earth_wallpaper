@@ -97,8 +97,6 @@ bing: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 waifu.im: [https://waifu.im/](https://waifu.im/)
 
-myip: [https://myip.ipip.net](https://myip.ipip.net)
-
 ipapi: [https://ipapi.co](https://ipapi.co)
 
 ## ScreenShot

@@ -127,8 +127,6 @@ bing 壁纸: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 waifu.im 动漫壁纸: [https://waifu.im/](https://waifu.im/)
 
-myip 获取ip地址：[https://myip.ipip.net](https://myip.ipip.net)
-
 ipapi 获取ip地理位置：[https://ipapi.co](https://ipapi.co)
 
 ## 软件截图

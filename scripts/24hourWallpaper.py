@@ -27,8 +27,8 @@ def get_location():
     session = requests.Session()
     session.trust_env = False
     try:
-        ip = requests.get('https://checkip.amazonaws.com', timeout=10).text.strip()
-        loc = requests.get("https://ipapi.co/{}/json/".format(ip), timeout=10).json()
+        loc = session.get("https://ipapi.co/json/", timeout=10).json()
+        print(loc)
         latitude = float(loc["latitude"])
         longitude = float(loc["longitude"])
         calculate_sun(latitude, longitude)
@@ -74,7 +74,7 @@ def read_json(sunrise, day, sunset, night):
     hour = time.localtime(time.time()).tm_hour
 
     if hour in sunrise:
-        print(sunrise)
+        print('sunrise')
         num = len(sunrise) // len(theme["sunriseImageList"])
         index = sunrise.index(hour) // num
         if index >= len(theme["sunriseImageList"]):
@@ -82,7 +82,7 @@ def read_json(sunrise, day, sunset, night):
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["sunriseImageList"][index])))
     elif hour in day:
-        print(day)
+        print('day')
         num = len(day) // len(theme["dayImageList"])
         index = day.index(hour) // num
         if index >= len(theme["dayImageList"]):
@@ -90,7 +90,7 @@ def read_json(sunrise, day, sunset, night):
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["dayImageList"][index])))
     elif hour in sunset:
-        print(sunset)
+        print('sunset')
         num = len(sunset) // len(theme["sunsetImageList"])
         index = sunset.index(hour) // num
         if index >= len(theme["sunsetImageList"]):
@@ -98,7 +98,7 @@ def read_json(sunrise, day, sunset, night):
         set_wallpaper(unpackDir + "/" + theme["imageFilename"].replace(
             "*", str(theme["sunsetImageList"][index])))
     elif hour in night:
-        print(night)
+        print('night')
         num = len(night) // len(theme["nightImageList"])
         index = night.index(hour) // num
         if index >= len(theme["nightImageList"]):
