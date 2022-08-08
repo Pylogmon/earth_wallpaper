@@ -27,7 +27,7 @@ def get_location():
     session = requests.Session()
     session.trust_env = False
     try:
-        ip = session.get('https://myip.ipip.net').text.split(" ")[1][3:]
+        ip = requests.get('https://checkip.amazonaws.com').text.strip()
         loc = requests.get("https://ipapi.co/{}/json/".format(ip)).json()
         latitude = float(loc["latitude"])
         longitude = float(loc["longitude"])
