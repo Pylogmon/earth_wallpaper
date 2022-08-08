@@ -4,3 +4,4 @@ build
 __py*
 cmake-build*
 .idea
+.vscode
