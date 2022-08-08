@@ -27,8 +27,8 @@ def get_location():
     session = requests.Session()
     session.trust_env = False
     try:
-        ip = requests.get('https://checkip.amazonaws.com').text.strip()
-        loc = requests.get("https://ipapi.co/{}/json/".format(ip)).json()
+        ip = requests.get('https://checkip.amazonaws.com', timeout=10).text.strip()
+        loc = requests.get("https://ipapi.co/{}/json/".format(ip), timeout=10).json()
         latitude = float(loc["latitude"])
         longitude = float(loc["longitude"])
         calculate_sun(latitude, longitude)
@@ -40,6 +40,9 @@ def get_location():
         calculate_time(5, 18)
     except TypeError:
         print("该IP获取不到地理坐标")
+        calculate_time(5, 18)
+    except TimeoutError:
+        print("请求超时")
         calculate_time(5, 18)
 
 
