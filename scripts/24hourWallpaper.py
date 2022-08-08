@@ -29,14 +29,17 @@ def get_location():
     try:
         ip = session.get('https://myip.ipip.net').text.split(" ")[1][3:]
         loc = requests.get("https://ipapi.co/{}/json/".format(ip)).json()
-        latitude = loc["latitude"]
-        longitude = loc["longitude"]
+        latitude = float(loc["latitude"])
+        longitude = float(loc["longitude"])
         calculate_sun(latitude, longitude)
     except ConnectionResetError:
-        print("使用默认时间")
+        print("本机IP获取失败，使用默认时间")
         calculate_time(5, 18)
     except KeyError:
-        print("使用默认时间")
+        print("API响应错误，使用默认时间")
+        calculate_time(5, 18)
+    except TypeError:
+        print("该IP获取不到地理坐标")
         calculate_time(5, 18)
 
 
