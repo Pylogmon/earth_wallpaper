@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8)
 
-project(earth-wallpaper VERSION 0.1 LANGUAGES CXX)
+project(earth-wallpaper LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -53,14 +53,6 @@ else()
 endif()
 
 target_link_libraries(earth-wallpaper PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
-
-set_target_properties(earth-wallpaper PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-    MACOSX_BUNDLE TRUE
-    WIN32_EXECUTABLE TRUE
-)
 
 file(COPY ${PROJECT_SOURCE_DIR}/scripts DESTINATION ${PROJECT_BINARY_DIR})
 file(COPY ${PROJECT_SOURCE_DIR}/template DESTINATION ${PROJECT_BINARY_DIR})
