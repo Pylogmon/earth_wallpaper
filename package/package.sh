@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 mkdir -p packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin
 cp ../build/earth-wallpaper ./packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin/earth-wallpaper
 cp -r ../build/scripts ./packageSpace/opt/apps/cn.huguoyang.earthwallpaper/files/bin/scripts
