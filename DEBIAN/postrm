@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 appid="cn.huguoyang.earthwallpaper"
 filePath="/usr/share/applications/$appid.desktop"
