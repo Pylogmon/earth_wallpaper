@@ -1,9 +1,10 @@
 # source: 必应壁纸(今日)
 # updateTime
 from setWallpaper import set_wallpaper
-from checkWakkpaperDir import check
 import requests
 import datetime
+import os
+import shutil
 
 api_url = "https://bing.ioliu.cn/v1"
 
@@ -20,9 +21,13 @@ def download(path):
 
 
 def main():
-    check()
     today = datetime.datetime.utcnow()
-    name = "/tmp/earth-wallpaper/" + today.strftime("%Y%m%d%H%M%s") + ".png"
+    home = os.getenv("HOME")
+    wallpaper_dir = home + '/.cache/earth-wallpaper/wallpaper/'
+    if os.path.exists(wallpaper_dir):
+        shutil.rmtree(wallpaper_dir)
+    os.makedirs(wallpaper_dir)
+    name = wallpaper_dir + today.strftime("%Y%m%d%H%M%s") + ".png"
     download(name)
     set_wallpaper(name)
 

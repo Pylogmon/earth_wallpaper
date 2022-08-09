@@ -9,10 +9,14 @@ from sunCalculator import SunCalculator, DateTime
 import requests
 
 file = sys.argv[5]
-unpackDir = "/tmp/" + file.split("/")[-1].split(".")[0]
+home = os.getenv("HOME")
+cache = home + "/.cache/earth-wallpaper/"
+unpackDir = cache + file.split("/")[-1].split(".")[0]
 
 
 def check():
+    if not os.path.exists(cache):
+        os.makedirs(cache)
     if not os.path.exists(unpackDir):
         unpack()
 

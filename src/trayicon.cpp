@@ -160,7 +160,8 @@ void TrayIcon::handle()
 }
 void TrayIcon::saveCurrentImg()
 {
-    QString dirPath = "/tmp/earth-wallpaper";
+    QString dirPath =
+        QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.cache/earth-wallpaper/wallpaper/";
     QDir dir(dirPath);
     QStringList nameFilters;
     nameFilters << "[1-9]*";
@@ -171,7 +172,7 @@ void TrayIcon::saveCurrentImg()
     {
         QDir(picturePath).mkpath(picturePath);
     }
-    QFile target = QFile("/tmp/earth-wallpaper/" + files[files.count() - 1]);
+    QFile target = QFile(dirPath + files[0]);
     if (target.copy(picturePath + "/" + files[files.count() - 1]))
     {
         QMessageBox::information(nullptr, "保存", "当前壁纸已保存到Picture目录", QMessageBox::Yes);

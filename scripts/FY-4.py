@@ -6,13 +6,20 @@ from checkWakkpaperDir import check
 import requests
 import datetime
 import sys
+import os
+import shutil
 
 # 屏幕分辨率
 Y = int(sys.argv[1])
 X = int(sys.argv[2])
 SIZE = int(sys.argv[3])
 
-path = '/tmp/earth-wallpaper/'
+home = os.getenv("HOME")
+wallpaper_dir = home + '/.cache/earth-wallpaper/wallpaper/'
+if os.path.exists(wallpaper_dir):
+    shutil.rmtree(wallpaper_dir)
+os.makedirs(wallpaper_dir)
+path = wallpaper_dir
 name = '1.png'
 
 
