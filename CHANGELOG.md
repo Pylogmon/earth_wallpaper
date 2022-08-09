@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 1.7.2 (2022-08-09)
+
+### Bugs fixed:
+
+- **scripts/src**: 修改当前壁纸保存路径，防止重启后壁纸消失([`46206b9`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/46206b9fe4ffe3ac92fecb199cd96f06ddb094fc)) (by ambition_echo)
+
+### Performance improves:
+
+- **scripts**: 删除获取ip步骤，改为api自动获取([`4540524`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/4540524c22e394c2af9a8e87d89fd2ba85bb3136)) (by ambition_echo)
+
+## 1.7.1 (2022-08-08)
+
+### Bugs fixed:
+
+- **scripts**: 更换获取公网ip接口([`09475da`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/09475da13743b33e56d069aef0971ff04e0a65e6)) (by ambition_echo)
+- **scripts**: 修复某些IP无法获取到坐标的问题([`2f6d837`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/2f6d837f9b8866ad23511d08a808922a08ec58d6)) (by ambition_echo)
+
 ## 1.6.5 (2022-08-07)
 
 ### Bugs fixed:
