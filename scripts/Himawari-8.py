@@ -3,7 +3,6 @@
 
 from PIL import Image
 from setWallpaper import set_wallpaper
-from checkWakkpaperDir import check
 import requests
 import datetime
 import sys

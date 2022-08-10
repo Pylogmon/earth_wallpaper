@@ -2,7 +2,6 @@
 # updateTime earthSize
 from PIL import Image
 from setWallpaper import set_wallpaper
-from checkWakkpaperDir import check
 import requests
 import datetime
 import sys
@@ -28,7 +27,7 @@ def download(url, path):
         url,
         headers={
             'user-agent':
-            'Mozilla/5.0 (X11; Linux x86_64; rv:102.0)Gecko/20100101 Firefox/102.0'
+                'Mozilla/5.0 (X11; Linux x86_64; rv:102.0)Gecko/20100101 Firefox/102.0'
         })
     with open(path, "wb") as fwi:
         fwi.write(img.content)
