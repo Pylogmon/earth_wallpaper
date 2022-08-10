@@ -57,7 +57,6 @@ def get_time_path():
 
 def main():
     global today, path_today, path, name
-    check()
     get_time_path()
     url = f"https://himawari8-dl.nict.go.jp/himawari8/img/D531106/1d/550/{path_today}00_0_0.png"
 

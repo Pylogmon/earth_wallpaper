@@ -71,7 +71,6 @@ def get_time_path():
 
 def main():
     global today, path_today, path, name
-    check()
     get_time_path()
     url1 = f"http://rsapp.nsmc.org.cn/swapQuery/public/tileServer/getTile/fy-4a/full_disk/NatureColor/{path_today}00/jpg/1/0/0.png"
 
