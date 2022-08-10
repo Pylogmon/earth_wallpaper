@@ -30,24 +30,35 @@ def unpack():
 def get_location():
     session = requests.Session()
     session.trust_env = False
-    try:
-        loc = session.get("https://ipapi.co/json/", timeout=10).json()
-        print(loc)
-        latitude = float(loc["latitude"])
-        longitude = float(loc["longitude"])
-        calculate_sun(latitude, longitude)
-    except ConnectionResetError:
-        print("本机IP获取失败，使用默认时间")
-        calculate_time(5, 18)
-    except KeyError:
-        print("API响应错误，使用默认时间")
-        calculate_time(5, 18)
-    except TypeError:
-        print("该IP获取不到地理坐标")
-        calculate_time(5, 18)
-    except TimeoutError:
-        print("请求超时")
-        calculate_time(5, 18)
+    i = 0
+    while i < 3:
+        try:
+            ip = session.get("https://checkip.amazonaws.com/", timeout=5).text.strip()
+            print(ip)
+            loc = session.get("https://ipapi.co/{}/json/".format(ip), timeout=5).json()
+            print(loc)
+            latitude = float(loc["latitude"])
+            longitude = float(loc["longitude"])
+            i = 3
+            calculate_sun(latitude, longitude)
+        except ConnectionResetError:
+            print("本机IP获取失败")
+            if i == 3:
+                calculate_time(5, 18)
+            else:
+                i += 1
+        except KeyError:
+            print("API响应错误，使用默认时间")
+            calculate_time(5, 18)
+        except TypeError:
+            print("该IP获取不到地理坐标")
+            calculate_time(5, 18)
+        except TimeoutError:
+            print("请求超时")
+            if i == 3:
+                calculate_time(5, 18)
+            else:
+                i += 1
 
 
 def calculate_sun(la, lo):

@@ -130,7 +130,7 @@ void TrayIcon::handle()
     nameFilters << "*.py";
     scriptsDir.setNameFilters(nameFilters);
     QStringList files = scriptsDir.entryList(QDir::Files, QDir::Name);
-    qDebug() << earthSource;
+    // qDebug() << earthSource;
     foreach (QString file, files)
     {
         QFile scriptFile(exePath + "/scripts/" + file);
@@ -139,7 +139,7 @@ void TrayIcon::handle()
         if (info.split(" ")[1] == "source:")
         {
 
-            qDebug() << info.split(" ")[2].remove("\n");
+            // qDebug() << info.split(" ")[2].remove("\n");
             if (info.split(" ")[2].remove("\n") == earthSource)
             {
                 command = "python3 " + exePath + "/scripts/" + file + " " + QString::number(this->height) + " " +
