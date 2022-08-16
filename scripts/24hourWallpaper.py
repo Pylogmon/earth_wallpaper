@@ -1,16 +1,22 @@
 # source: 24h壁纸
 # wallpaperFile
+from setWallpaper import set_wallpaper
+from sunCalculator import SunCalculator, DateTime
 import os
 import sys
 import json
 import time
-from setWallpaper import set_wallpaper
-from sunCalculator import SunCalculator, DateTime
 import requests
+import platform
 
 file = sys.argv[5]
-home = os.getenv("HOME")
-cache = home + "/.cache/earth-wallpaper/"
+myPlatform = platform.system().upper()
+if myPlatform == "WINDOWS":
+    cache = "C:/ProgramData/earth-wallpaper/"
+elif myPlatform == "LINUX":
+    home = os.getenv("HOME")
+    cache = home + "/.cache/earth-wallpaper/"
+    
 unpackDir = cache + file.split("/")[-1].split(".")[0]
 
 
