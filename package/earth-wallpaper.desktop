@@ -2,7 +2,7 @@
 Categories=Application;Network;
 Comment=实时获取地球照片作为壁纸
 Exec=/opt/earth-wallpaper-nightly/earth-wallpaper
-Icon=/opt/earth-wallpaper-nightly/earth-wallpaper.png
+Icon=earth
 GenericName=earth-wallpaper
 Keywords=earth
 Name=earth-wallpaper

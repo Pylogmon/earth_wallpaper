@@ -14,7 +14,7 @@ About::~About() = default;
 
 void About::initUI()
 {
-    this->setWindowIcon(QIcon(":/img/cn.huguoyang.earthwallpaper.png"));
+    this->setWindowIcon(QIcon("earth"));
     ui->version->setText(VERSION);
 }
 
