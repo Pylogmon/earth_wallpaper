@@ -30,6 +30,7 @@
 
 Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)下载
 
+注意```earth-wallpaper-git```包已经弃用，请安装```earth-wallpaper-nightly```或```earth-wallpaper-bin```包。
 ### 使用须知
 
 第一次运行时会弹出设置窗口，点击```应用```即可开始运行
