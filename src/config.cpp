@@ -43,7 +43,7 @@ Config::~Config()
 }
 void Config::initUI()
 {
-    this->setWindowIcon(QIcon("earth"));
+    this->setWindowIcon(QIcon(":/img/cn.huguoyang.earthwallpaper.png"));
     ui->updateTime->addItem("10");
     ui->updateTime->addItem("30");
     ui->updateTime->addItem("60");

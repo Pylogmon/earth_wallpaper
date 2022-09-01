@@ -2,7 +2,7 @@
 Categories=Application;Network;
 Comment=实时获取地球照片作为壁纸
 Exec=/opt/apps/cn.huguoyang.earthwallpaper/files/bin/earth-wallpaper
-Icon=earth
+Icon=/opt/apps/cn.huguoyang.earthwallpaper/entries/icons/hicolor/256x256/apps/cn.huguoyang.earthwallpaper.png
 GenericName=earth-wallpaper
 Keywords=earth
 Name=earth-wallpaper
