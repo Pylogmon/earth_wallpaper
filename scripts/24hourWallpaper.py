@@ -59,6 +59,12 @@ def get_location():
                 calculate_time(5, 18)
             else:
                 i += 1
+        except requests.exceptions.ConnectionError:
+            print("无网络连接")
+            if i == 3:
+                calculate_time(5, 18)
+            else:
+                i += 1
 
 
 def calculate_sun(la, lo):
