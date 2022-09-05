@@ -1,5 +1,31 @@
 # CHANGELOG
 
+## 1.7.5 (2022-09-05)
+
+### New feature:
+
+- **scripts**: 支持MATE桌面环境([`1942db0`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/1942db060c44f38c2c27e32cdcebb29cfd2d0312)) (by ambition_echo)
+
+### Bugs fixed:
+
+- **scripts**: 修复MATE桌面设置壁纸失败([`2cece82`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/2cece821e6130fda689f37b4a75648e093e1d38d)) (by ambition_echo)
+- **scripts**: 修复dbus导入错误([`4fb73ee`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/4fb73eeb41a59209b3bd047ca10457f6abc01ce6)) (by ambition_echo)
+- **scripts**: 修复24h壁纸无网络状态下更新失败([`f1e557f`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/f1e557f547f5f2086667458de20caa95ba1526e0)) (by ambition_echo)
+
+## 1.7.4 (2022-09-01)
+
+### Bugs fixed:
+
+- **package**: 修复aur nightly包依赖缺失([`0528648`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/05286483f6649470eabb622824ebaa2eb719a335)) (by ambition_echo)
+
+## 1.7.3 (2022-08-12)
+
+### Bugs fixed:
+
+- **scripts**: 删除无效引用([`b3b0403`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/b3b0403bc57999dbee7392eb956fc550b5ddc60c)) (by ambition_echo)
+- **scripts**: 删除无用import([`10bb4fd`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/10bb4fdf955336955df14446a72f22fb023c7345)) (by ambition_echo)
+- **scripts/src**: 获取Ipv4地址([`3cd11d6`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/3cd11d685b97ba21e0b43aba3547c68a20c209e7)) (by ambition_echo)
+
 ## 1.7.2 (2022-08-09)
 
 ### Bugs fixed:
