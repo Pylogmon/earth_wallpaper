@@ -24,18 +24,17 @@ def set_wallpaper(file):
             f"var allDesktops = desktops();print (allDesktops);for (i=0;i<allDesktops.length;i++) {{d = allDesktops[i];d.wallpaperPlugin = \"org.kde.image\";d.currentConfigGroup = Array(\"Wallpaper\", \"org.kde.image\", \"General\");d.writeConfig(\"Image\", \"file://{file}\")}}"
         )
     elif de == 'GNOME' or de == 'ubuntu:GNOME':
-        gs1 = "gsettings set org.gnome.desktop.background picture-uri {}".format(
-            file)
-        gs2 = "gsettings set org.gnome.desktop.background picture-uri-dark {}".format(
-            file)
+        gs1 = "gsettings set org.gnome.desktop.background picture-uri {}".format(file)
+        gs2 = "gsettings set org.gnome.desktop.background picture-uri-dark {}".format(file)
         os.system(gs1)
         os.system(gs2)
     elif de == "XFCE":
         path = os.path.split(os.path.realpath(__file__))[0]
         os.system(path + "/xfce.sh {}".format(file))
     elif de == 'X-Cinnamon':
-        gs = "gsettings set org.cinnamon.desktop.background picture-uri file://{}".format(
-            file)
+        gs = "gsettings set org.cinnamon.desktop.background picture-uri file://{}".format(file)
         os.system(gs)
+    elif de == 'MATE':
+        gs = "gsettings set org.mate.background picture-filename {}".format(file)
     else:
         print("该桌面环境暂不支持")
