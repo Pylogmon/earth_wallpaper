@@ -1,10 +1,10 @@
 import os
-import dbus
 
 
 def set_wallpaper(file):
     de = os.getenv('XDG_CURRENT_DESKTOP')
     if de == "Deepin":
+        import dbus
         primary_screen = os.popen("xrandr|grep 'connected primary'")
         primary_screen = primary_screen.read().splitlines()
         bus = dbus.SessionBus()
@@ -16,6 +16,7 @@ def set_wallpaper(file):
             screen_name = i.split(" ")[0]
             appearance_interface.SetMonitorBackground(screen_name, file)
     elif de == "KDE":
+        import dbus
         bus = dbus.SessionBus()
         shell = bus.get_object('org.kde.plasmashell', '/PlasmaShell')
         shell_interface = dbus.Interface(shell,
