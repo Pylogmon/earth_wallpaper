@@ -37,5 +37,6 @@ def set_wallpaper(file):
         os.system(gs)
     elif de == 'MATE':
         gs = "gsettings set org.mate.background picture-filename {}".format(file)
+        os.system(gs)
     else:
         print("该桌面环境暂不支持")
