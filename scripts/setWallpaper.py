@@ -38,5 +38,17 @@ def set_wallpaper(file):
     elif de == 'MATE':
         gs = "gsettings set org.mate.background picture-filename {}".format(file)
         os.system(gs)
+    elif de =='LXQT':
+        import dbus
+        primary_screen = os.popen("xrandr|grep 'connected primary'")
+        primary_screen = primary_screen.read().splitlines()
+        bus = dbus.SessionBus()
+        desktop = bus.get_object('org.freedesktop.portal.Desktop',
+                                    '/org/freedesktop/portal/desktop')
+        desktop_interface = dbus.Interface(
+            desktop, dbus_interface='org.freedesktop.portal.Wallpaper')
+        for i in primary_screen:
+            screen_name = i.split(" ")[0]
+            desktop_interface.SetWallpaperURI(screen_name, f'file://{file}')
     else:
         print("该桌面环境暂不支持")
