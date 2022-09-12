@@ -2,7 +2,7 @@
 
 #include <QWidget>
 
-#define VERSION "1.3.0.r5.g28c8bf6"
+#define VERSION "1.7.6"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -20,6 +20,7 @@ class About : public QWidget
 
     void initUI();
     void initConnect();
+    void checkUpdate();
 
   private:
     Ui::About *ui;

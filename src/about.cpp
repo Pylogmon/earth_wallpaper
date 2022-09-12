@@ -1,7 +1,7 @@
 #include "about.h"
 #include "ui_about.h"
-#include <qapplication.h>
-#include <qpushbutton.h>
+#include <QDesktopServices>
+#include <QUrl>
 
 About::About(QWidget *parent) : QWidget(parent), ui(new Ui::About)
 {
@@ -21,4 +21,10 @@ void About::initUI()
 void About::initConnect()
 {
     connect(ui->aboutQt, &QPushButton::clicked, qApp, &QApplication::aboutQt);
+    connect(ui->checkUpdate, &QPushButton::clicked, this, &About::checkUpdate);
+}
+
+void About::checkUpdate()
+{
+    QDesktopServices::openUrl(QUrl(QString("https://github.com/ambition-echo/earth_wallpaper/releases")));
 }
