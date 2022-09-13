@@ -13,7 +13,8 @@ class PlatformInfo:
 
     def getDownloadPath(self) -> str:
         if self.sys == "WINDOWS":
-            return "C:/ProgramData/earth-wallpaper/wallpaper/"
+            appdata = os.getenv("APPDATA").replace("\\", "/")
+            return appdata + "/earth-wallpaper/wallpaper/"
         elif self.sys == "LINUX":
             home = os.getenv("HOME")
             return home + '/.cache/earth-wallpaper/wallpaper/'
