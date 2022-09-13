@@ -3,6 +3,7 @@
 
 from PIL import Image
 from setWallpaper import set_wallpaper
+from PlatformInfo import PlatformInfo
 import requests
 import datetime
 import sys
@@ -15,8 +16,7 @@ X = int(sys.argv[2])
 SIZE = int(sys.argv[3])
 
 # 存储路径
-home = os.getenv("HOME")
-wallpaper_dir = home + '/.cache/earth-wallpaper/wallpaper/'
+wallpaper_dir = PlatformInfo().getDownloadPath()
 if os.path.exists(wallpaper_dir):
     shutil.rmtree(wallpaper_dir)
 os.makedirs(wallpaper_dir)
@@ -27,7 +27,7 @@ name = '0.png'
 # 下载图像
 def download(url, path):
     img = requests.get(url)
-    with open("/tmp/0.png", "wb") as fwi:
+    with open(PlatformInfo().getDownloadPath() + "0.png", "wb") as fwi:
         fwi.write(img.content)
 
 
@@ -40,7 +40,7 @@ def fill_img(download_path):
     new_img = Image.new(img.mode, (width, height), color='black')
     new_img.paste(img, (int(width / 2 - 250), int(height / 2 - 250)))
     today = datetime.datetime.utcnow()
-    name = today.strftime("%Y%m%d%H%M%s")
+    name = today.strftime("%Y%m%d%H%M%S")
     new_img.save(path + name + ".png")
     set_wallpaper(path + name + ".png")
 
@@ -62,7 +62,7 @@ def main():
 
     # name = "00_0_0.png"
     download(url, path + name)
-    fill_img("/tmp/0.png")
+    fill_img(path + name)
 
 
 if __name__ == '__main__':

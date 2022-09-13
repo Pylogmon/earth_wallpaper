@@ -2,6 +2,7 @@
 # updateTime earthSize
 from PIL import Image
 from setWallpaper import set_wallpaper
+from PlatformInfo import PlatformInfo
 import requests
 import datetime
 import sys
@@ -13,8 +14,7 @@ Y = int(sys.argv[1])
 X = int(sys.argv[2])
 SIZE = int(sys.argv[3])
 
-home = os.getenv("HOME")
-wallpaper_dir = home + '/.cache/earth-wallpaper/wallpaper/'
+wallpaper_dir = PlatformInfo().getDownloadPath()
 if os.path.exists(wallpaper_dir):
     shutil.rmtree(wallpaper_dir)
 os.makedirs(wallpaper_dir)
@@ -55,7 +55,7 @@ def fill_img(download_path, name):
     new_img = Image.new(img.mode, (width, height), color='black')
     new_img.paste(img, (int(width / 2 - 687), int(height / 2 - 687)))
     today = datetime.datetime.utcnow()
-    name = today.strftime("%Y%m%d%H%M%s")
+    name = today.strftime("%Y%m%d%H%M%S")
     new_img.save(path + name + ".png")
     set_wallpaper(path + name + ".png")
 
@@ -80,14 +80,14 @@ def main():
 
     url4 = f"http://rsapp.nsmc.org.cn/swapQuery/public/tileServer/getTile/fy-4a/full_disk/NatureColor/{path_today}00/jpg/1/1/1.png"
 
-    download(url1, "/tmp/" + '1' + name)
-    download(url2, "/tmp/" + '2' + name)
-    download(url3, "/tmp/" + '3' + name)
-    download(url4, "/tmp/" + '4' + name)
+    download(url1, path + '1' + name)
+    download(url2, path + '2' + name)
+    download(url3, path + '3' + name)
+    download(url4, path + '4' + name)
 
     concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name,
-                  "/tmp/")
-    fill_img("/tmp/", name)
+                  path)
+    fill_img(path, name)
 
 
 if __name__ == '__main__':

@@ -40,10 +40,10 @@ Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 
 - [x] 向日葵八号
 - [x] 风云四号
-- [x] 必应壁纸(调用 [@xCss](https://github.com/xCss/bing) API)
-- [x] 动漫壁纸(调用 [waifu.im](https://waifu.im/) API)
-- [x] 本地壁纸
-- [x] 24h壁纸(灵感来自于[windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
+- [x] 必应壁纸 (调用 [@xCss](https://github.com/xCss/bing) API)
+- [x] 动漫壁纸 (调用 [waifu.im](https://waifu.im/) API)
+- [x] 本地壁纸 (注：目前Windows下使用本地壁纸，路径需要全英文且无空格)
+- [x] 24h壁纸 (灵感来自于[windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
 
 > 24h壁纸推荐下载地址:
 >
@@ -83,6 +83,7 @@ set_wallpaper(绝对路径)
 
 ## 支持桌面环境
 
+### Linux
 - [x] KDE Plasma
 - [x] Deepin
 - [x] GNOME
@@ -91,6 +92,9 @@ set_wallpaper(绝对路径)
 - [x] XFCE
 - [x] MATE
 
+### Windows
+- [x] Windows 10 (测试环境：Windows 10 专业版 21H1，其他版本自行测试)
+
 ## 依赖
 
 - Qt5
@@ -98,8 +102,9 @@ set_wallpaper(绝对路径)
 - qdbus
 - python3-pil.imagetk
 - python3-requests
+- pywin32 (Windows 10 下需要，使用 `pip3 install pywin32` 安装)
 
-## 手动编译安装
+## 手动编译安装 （Linux）
 
 - 克隆仓库
 

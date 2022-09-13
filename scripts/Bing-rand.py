@@ -1,6 +1,7 @@
 # source: 必应壁纸(随机)
 # updateTime
 from setWallpaper import set_wallpaper
+from PlatformInfo import PlatformInfo
 import requests
 import datetime
 import os
@@ -22,12 +23,11 @@ def download(path):
 
 def main():
     today = datetime.datetime.utcnow()
-    home = os.getenv("HOME")
-    wallpaper_dir = home + '/.cache/earth-wallpaper/wallpaper/'
+    wallpaper_dir = PlatformInfo().getDownloadPath()
     if os.path.exists(wallpaper_dir):
         shutil.rmtree(wallpaper_dir)
     os.makedirs(wallpaper_dir)
-    name = wallpaper_dir + today.strftime("%Y%m%d%H%M%s") + ".png"
+    name = wallpaper_dir + today.strftime("%Y%m%d%H%M%S") + ".png" # windows S
     download(name)
     set_wallpaper(name)
 

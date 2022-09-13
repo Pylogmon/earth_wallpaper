@@ -1,16 +1,18 @@
 # source: 24h壁纸
 # wallpaperFile
+from setWallpaper import set_wallpaper
+from sunCalculator import SunCalculator, DateTime
+from PlatformInfo import PlatformInfo
 import os
 import sys
 import json
 import time
-from setWallpaper import set_wallpaper
-from sunCalculator import SunCalculator, DateTime
 import requests
+import platform
 
 file = sys.argv[5]
-home = os.getenv("HOME")
-cache = home + "/.cache/earth-wallpaper/"
+myPlatform = PlatformInfo()
+cache = myPlatform.getDownloadPath()    
 unpackDir = cache + file.split("/")[-1].split(".")[0]
 
 
@@ -82,10 +84,15 @@ def calculate_time(sunrise_time, sunset_time):
     read_json(sunrise, day, sunset, night)
 
 
+def find_first_json(dir):
+    files = os.listdir(dir)
+    for file in files:
+        if file.endswith(".json"):
+            return file
+
+
 def read_json(sunrise, day, sunset, night):
-    json_name = str(
-        os.popen(
-            "cd {} && ls *.json".format(unpackDir)).read().splitlines()[0])
+    json_name = find_first_json(unpackDir)
     with open(unpackDir + "/" + json_name, "r") as f:
         theme = json.load(f)
 
