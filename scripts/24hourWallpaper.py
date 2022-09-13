@@ -44,7 +44,7 @@ def get_location():
             i = 3
             calculate_sun(latitude, longitude)
         except ConnectionResetError:
-            print("本机IP获取失败")
+            print(f"本机IP获取失败，第{i + 1}次重试")
             if i == 3:
                 calculate_time(5, 18)
             else:
@@ -53,14 +53,17 @@ def get_location():
             print("API响应错误，使用默认时间")
             calculate_time(5, 18)
         except TypeError:
-            print("该IP获取不到地理坐标")
+            print("该IP获取不到地理坐标，使用默认时间")
             calculate_time(5, 18)
-        except TimeoutError:
-            print("请求超时")
+        except requests.exceptions.ReadTimeout:
+            print(f"请求超时,第{i + 1}次重试...")
             if i == 3:
                 calculate_time(5, 18)
             else:
                 i += 1
+        except requests.exceptions.ConnectionError:
+            print("无网络连接,使用默认时间")
+            calculate_time(5, 18)
 
 
 def calculate_sun(la, lo):

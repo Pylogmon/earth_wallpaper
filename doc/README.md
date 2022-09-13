@@ -57,6 +57,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] ubuntu:GNOME
 - [x] Cinnamon
 - [x] XFCE
+- [x] MATE
 
 ## Depends
 
