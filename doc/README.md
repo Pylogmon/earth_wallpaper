@@ -2,7 +2,7 @@
 
 ### [中文](https://github.com/ambition-echo/earth_wallpaper#readme)
 
-Get real-time earth photos as wallpapers(Linux Only)
+Get real-time earth photos as wallpapers
 
 Not only real-time earth
 
@@ -36,12 +36,12 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 
 ## Support Interface
 
-- [x] Himawari-8(Weather satellites from Japan)
-- [x] FY-4A(Weather satellites from China)
-- [x] Bing Wallpaper(Call [@xCss](https://github.com/xCss/bing) API)
-- [x] Anime Wallpaper(Call [waifu.im](https://waifu.im/) API)
+- [x] Himawari-8 (Weather satellites from Japan)
+- [x] FY-4A (Weather satellites from China)
+- [x] Bing Wallpaper (Call [@xCss](https://github.com/xCss/bing) API)
+- [x] Anime Wallpaper (Call [waifu.im](https://waifu.im/) API)
 - [x] Local Wallpaper
-- [x] 24h Wallpaper(Inspired by [windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
+- [x] 24h Wallpaper (Inspired by [windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
 
 > 24h Wallpaper recommended download address:
 >
@@ -51,6 +51,8 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 
 ## Supported Desktop Environment
 
+### Linux
+
 - [x] KDE Plasma
 - [x] Deepin
 - [x] GNOME
@@ -58,6 +60,10 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] Cinnamon
 - [x] XFCE
 - [x] MATE
+
+### Windows
+
+- [x] Windows 10
 
 ## Depends
 

@@ -2,7 +2,7 @@
 
 ### [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
 
-实时获取地球照片作为壁纸(Linux Only)
+实时获取地球照片作为壁纸
 
 不仅仅是地球壁纸
 
