@@ -1,4 +1,25 @@
 # CHANGELOG
+## 1.8.0 (2022-09-14)
+
+### New feature:
+
+- **about**: 添加检查更新功能([`69c031a`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/69c031ad7083bafab21bf54bd4353e8226f77228)) (by ambition_echo)
+
+- **scripts**: 添加Windows10支持([`#8`](https://github.com/ambition-echo/earth_wallpaper/pull/8)) (by Ccslykx)
+
+### Bugs fixed:
+
+- **scripts**: 修复timeout问题([`21a4015`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/21a40155d6d3267950e908f7d323d5ae4e23f113)) (by ambition_echo)
+
+## 1.7.6 (2022-09-09)
+
+### New feature:
+
+- **scripts**: 添加XFQT桌面支持([`e28fc11`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/e28fc11cc3b5ef7209f172465339db06ebd93966)) (by ambition_echo)
+
+### Bugs fixed:
+
+- **scripts/package**: 删除LXQt,修复dbus-python依赖([`f74ceab`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/f74ceab9f83f9100f688d0886de4110b7bb6c648)) (by ambition_echo)
 
 ## 1.7.5 (2022-09-05)
 
