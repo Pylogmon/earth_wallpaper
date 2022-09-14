@@ -110,13 +110,15 @@ jobs:
           cmake --build .
       #4打包部署
       - name: package
+        shell: powershell
         run: |
           md D:/a/earth_wallpaper/earth_wallpaper/build
           dir
           copy D:/a/earth_wallpaper/earth_wallpaper/build1/Debug/earth-wallpaper.exe D:/a/earth_wallpaper/earth_wallpaper/build
-          xcopy D:/a/earth_wallpaper/earth_wallpaper/scripts D:/a/earth_wallpaper/earth_wallpaper/build/scripts /e
-          xcopy D:/a/earth_wallpaper/earth_wallpaper/template D:/a/earth_wallpaper/earth_wallpaper/build/template /e
           windeployqt.exe D:/a/earth_wallpaper/earth_wallpaper/build/earth-wallpaper.exe
+          copy D:/a/earth_wallpaper/earth_wallpaper/scripts/* D:/a/earth_wallpaper/earth_wallpaper/build/scripts/
+          copy D:/a/earth_wallpaper/earth_wallpaper/template/* D:/a/earth_wallpaper/earth_wallpaper/build/template/
+          
       #5打包成zip
       - name: To zip
         uses: thedoctor0/zip-release@master
