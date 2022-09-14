@@ -116,8 +116,8 @@ jobs:
           dir
           copy D:/a/earth_wallpaper/earth_wallpaper/build1/Debug/earth-wallpaper.exe D:/a/earth_wallpaper/earth_wallpaper/build
           windeployqt.exe D:/a/earth_wallpaper/earth_wallpaper/build/earth-wallpaper.exe
-          copy D:/a/earth_wallpaper/earth_wallpaper/scripts/* D:/a/earth_wallpaper/earth_wallpaper/build/scripts/
-          copy D:/a/earth_wallpaper/earth_wallpaper/template/* D:/a/earth_wallpaper/earth_wallpaper/build/template/
+          Copy-Item D:/a/earth_wallpaper/earth_wallpaper/scripts -Recurse D:/a/earth_wallpaper/earth_wallpaper/build
+          Copy-Item D:/a/earth_wallpaper/earth_wallpaper/template -Recurse D:/a/earth_wallpaper/earth_wallpaper/build
           
       #5打包成zip
       - name: To zip
