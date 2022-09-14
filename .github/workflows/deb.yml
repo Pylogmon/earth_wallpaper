@@ -104,7 +104,7 @@ jobs:
         shell: cmd
         run: |
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake --build .
+          cmake --build ./cmake_build
           dir
       #4打包部署
       - name: package
