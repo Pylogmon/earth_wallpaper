@@ -5,8 +5,8 @@
 class Thread : public QThread
 {
   public:
-    QString command;
-    explicit Thread(QString command);
+    QStringList command;
+    explicit Thread(QStringList command);
     ~Thread() override;
 
     void run() override;

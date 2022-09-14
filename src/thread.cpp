@@ -1,22 +1,26 @@
 #include "thread.h"
 #include <QDebug>
+#include <QProcess>
 
-Thread::Thread(QString command)
+Thread::Thread(QStringList command)
 {
-    this->command = std::move(command);
+    this->command = command;
 }
 
 Thread::~Thread() = default;
 
 void Thread::run()
 {
-    int ret = system(this->command.toUtf8());
-    if (ret == 0)
-    {
-        qDebug() << "脚本执行成功！";
-    }
-    else
-    {
-        qDebug() << "脚本执行失败，返回值 " << ret;
+    QProcess process(0);
+    process.start("python3",command);
+    process.waitForStarted();
+    process.waitForFinished();
+
+    QStringList output = QString::fromLocal8Bit(process.readAllStandardOutput()).split("\n");
+    foreach(QString i,output){
+        if(!i.isEmpty())
+        {
+            qDebug() << "[python3]" << i;
+        }
     }
 }

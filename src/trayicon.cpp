@@ -123,7 +123,7 @@ void TrayIcon::handle()
     QString wallpaperDir = settings->value("wallpaperDir").toString();
     QString wallpaperFile = settings->value("wallpaperFile").toString();
     settings->endGroup();
-    QString command = "";
+    QStringList command = QStringList();
     QString exePath = QCoreApplication::applicationDirPath();
     QDir scriptsDir(exePath + "/scripts");
     QStringList nameFilters;
@@ -142,8 +142,12 @@ void TrayIcon::handle()
             // qDebug() << info.split(" ")[2].remove("\n");
             if (info.split(" ")[2].remove("\n") == earthSource)
             {
-                command = "python3 " + exePath + "/scripts/" + file + " " + QString::number(this->height) + " " +
-                          QString::number(this->width) + " " + earthSize + " " + wallpaperDir + " " + wallpaperFile;
+                command.append(exePath + "/scripts/" + file);
+                command.append(QString::number(this->height));
+                command.append(QString::number(this->width));
+                command.append(earthSize);
+                command.append(wallpaperDir);
+                command.append(wallpaperFile);
                 if (file == "24h.py")
                 {
                     settings->setValue("APP/updateTime", "10");
