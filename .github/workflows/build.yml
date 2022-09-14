@@ -113,10 +113,10 @@ jobs:
         run: |
           md D:/a/earth_wallpaper/earth_wallpaper/build1
           dir
-          copy D:/a/earth_wallpaper/earth_wallpaper/build/earth-wallpaper.exe D:/a/earth_wallpaper/earth_wallpaper/build1
+          copy D:/a/earth_wallpaper/earth_wallpaper/build/Debug/earth-wallpaper.exe D:/a/earth_wallpaper/earth_wallpaper/build1
           xcopy D:/a/earth_wallpaper/earth_wallpaper/scripts D:/a/earth_wallpaper/earth_wallpaper/build1/scripts /e
           xcopy D:/a/earth_wallpaper/earth_wallpaper/template D:/a/earth_wallpaper/earth_wallpaper/build1/template /e
-          windeployqt.exe D:/a/earth_wallpaper/earth_wallpaper/build/earth-wallpaper.exe
+          windeployqt.exe D:/a/earth_wallpaper/earth_wallpaper/build1/earth-wallpaper.exe
       #5打包成zip
       - name: To zip
         uses: thedoctor0/zip-release@master
@@ -131,3 +131,12 @@ jobs:
           name: earth_wallpaper_Windows
           path: D:/a/earth_wallpaper/earth_wallpaper/build1
           if-no-files-found: error
+      #7发布release
+      - name: Upload Release
+        if: startsWith(github.ref, 'refs/tags')
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.TOKEN }}
+          file: earth_wallpaper_Windows.zip
+          tag: ${{ github.ref }}
+          overwrite: true
