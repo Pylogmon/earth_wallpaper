@@ -107,7 +107,7 @@ jobs:
           md build
           cd build
           cmake ..
-          cmake --build
+          cmake --build .
       #4打包部署
       - name: package
         run: |
