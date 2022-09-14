@@ -104,28 +104,27 @@ jobs:
         shell: cmd
         run: |
           call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" x64
-          cmake --build ./cmake_build
-          dir
+          cmake --build
       #4打包部署
       - name: package
         run: |
-          md D:/a/earth_wallpaper/earth_wallpaper/build
+          md D:/a/earth_wallpaper/earth_wallpaper/build1
           dir
-          copy D:/a/earth_wallpaper/earth_wallpaper/earth-wallpaper.exe D:/a/earth_wallpaper/earth_wallpaper/build
-          xcopy D:/a/earth_wallpaper/earth_wallpaper/scripts D:/a/earth_wallpaper/earth_wallpaper/build/scripts /e
-          xcopy D:/a/earth_wallpaper/earth_wallpaper/template D:/a/earth_wallpaper/earth_wallpaper/build/template /e
+          copy D:/a/earth_wallpaper/earth_wallpaper/build/earth-wallpaper.exe D:/a/earth_wallpaper/earth_wallpaper/build1
+          xcopy D:/a/earth_wallpaper/earth_wallpaper/scripts D:/a/earth_wallpaper/earth_wallpaper/build1/scripts /e
+          xcopy D:/a/earth_wallpaper/earth_wallpaper/template D:/a/earth_wallpaper/earth_wallpaper/build1/template /e
           windeployqt.exe D:/a/earth_wallpaper/earth_wallpaper/build/earth-wallpaper.exe
       #5打包成zip
       - name: To zip
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          path: 'build'
+          path: 'build1'
           filename: 'earth_wallpaper_Windows.zip'
       #6上传artifact
       - name: upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: earth_wallpaper_Windows
-          path: D:/a/earth_wallpaper/earth_wallpaper/build
+          path: D:/a/earth_wallpaper/earth_wallpaper/build1
           if-no-files-found: error
