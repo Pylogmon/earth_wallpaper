@@ -6,7 +6,7 @@
 
 不仅仅是地球壁纸
 
-[![Deb](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/deb.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/deb.yml)
+[![Build](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/build.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/build.yml)
 [![Aur](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/aur.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/aur.yml)
 [![pipeline](https://jihulab.com/ambition-echo/earth_wallpaper/badges/main/pipeline.svg)](https://jihulab.com/ambition-echo/earth_wallpaper/commits/main)
 
