@@ -18,8 +18,22 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      #6发布release
-      - name: change version
+      # 发布nightly包
+      - name: change nightly version
+        run: |
+          sed -i "s/pkgver=.*/pkgver=$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" package/aur/nightly/PKGBUILD
+      - name: Upload Release to AUR
+        uses: KSXGitHub/github-actions-deploy-aur@v2.4.1
+        with:
+          pkgname: earth-wallpaper-nightly
+          pkgbuild: package/aur/nightlu/PKGBUILD
+          commit_username: ${{ secrets.AUR_USERNAME }}
+          commit_email: ${{ secrets.AUR_EMAIL }}
+          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+          commit_message: Update AUR package
+          ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
+      # 发布bin包
+      - name: change bin version
         if: startsWith(github.ref, 'refs/tags')
         run: |
           sed -i "s/pkgver=.*/pkgver=$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" package/aur/bin/PKGBUILD
