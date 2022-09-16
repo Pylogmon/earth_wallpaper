@@ -1,4 +1,17 @@
 # CHANGELOG
+
+## 1.8.2 (2022-09-16)
+
+### New feature:
+
+- **config**: 添加设置网络代理功能([`ff61407`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/ff614071836e8928317d324ec74c43389662ad56)) (by ambition_echo)
+
+## 1.8.1 (2022-09-14)
+
+### Bugs fixed:
+
+- **thread**: 改用QProcess调用代替system,解决windows运行弹出cmd窗口的问题([`2ede6f5`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/2ede6f53d129259dc1faa9b4b87d0deb5372db01)) (by ambition_echo)
+
 ## 1.8.0 (2022-09-14)
 
 ### New feature:
