@@ -4,3 +4,7 @@ updateTime=30
 earthSize=60
 wallpaperDir="/"
 wallpaperFile="/"
+[System]
+proxy=0
+proxyAdd=""
+proxyPort=""

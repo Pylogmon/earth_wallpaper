@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QScreen>
 #include <QStandardPaths>
+#include <QMap>
 
 TrayIcon::TrayIcon(QSystemTrayIcon *parent) : QSystemTrayIcon(parent)
 {
@@ -123,6 +124,12 @@ void TrayIcon::handle()
     QString wallpaperDir = settings->value("wallpaperDir").toString();
     QString wallpaperFile = settings->value("wallpaperFile").toString();
     settings->endGroup();
+    settings->beginGroup("System");
+    QMap<int,QString> proxyMap;
+    proxyMap.insert(0,"None");
+    proxyMap.insert(1,"http://"+settings->value("proxyAdd").toString()+":"+settings->value("proxyPort").toString());
+    proxyMap.insert(2,"socks5://"+settings->value("proxyAdd").toString()+":"+settings->value("proxyPort").toString());
+    settings->endGroup();
     QStringList command = QStringList();
     QString exePath = QCoreApplication::applicationDirPath();
     QDir scriptsDir(exePath + "/scripts");
@@ -148,6 +155,7 @@ void TrayIcon::handle()
                 command.append(earthSize);
                 command.append(wallpaperDir);
                 command.append(wallpaperFile);
+                command.append(proxyMap[settings->value("System/proxy").toInt()]);
                 if (file == "24h.py")
                 {
                     settings->setValue("APP/updateTime", "10");

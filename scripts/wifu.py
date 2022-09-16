@@ -1,6 +1,6 @@
 # source: 动漫壁纸
 # updateTime
-
+import sys
 from setWallpaper import set_wallpaper
 from PlatformInfo import PlatformInfo
 import requests
@@ -14,7 +14,8 @@ global img_url
 
 
 def get_img_url():
-    res = requests.get(request_url).text
+    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
+    res = requests.get(request_url,proxies=proxies).text
     res = json.loads(res)
     return {
         "img_url": res["images"][0]["url"],
@@ -23,7 +24,8 @@ def get_img_url():
 
 
 def download(url, ext):
-    img = requests.get(url)
+    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
+    img = requests.get(url,proxies=proxies)
     today = datetime.datetime.utcnow()
     wallpaper_dir = PlatformInfo().getDownloadPath()
     if os.path.exists(wallpaper_dir):

@@ -26,7 +26,8 @@ name = '0.png'
 
 # 下载图像
 def download(url, path):
-    img = requests.get(url)
+    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
+    img = requests.get(url, proxies=proxies)
     with open(PlatformInfo().getDownloadPath() + "0.png", "wb") as fwi:
         fwi.write(img.content)
 

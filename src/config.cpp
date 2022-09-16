@@ -87,6 +87,15 @@ void Config::readConfig()
     ui->wallpaperDir->setText(settings->value("wallpaperDir").toString());
     ui->wallpaperFile->setText(settings->value("wallpaperFile").toString());
     settings->endGroup();
+    settings->beginGroup("System");
+    switch(settings->value("proxy").toInt()){
+    case 0:ui->proxyNone->setChecked(true);break;
+    case 1:ui->proxyHttp->setChecked(true);break;
+    case 2:ui->proxySocks->setChecked(true);break;
+    }
+    ui->addEdit->setText(settings->value("proxyAdd").toString());
+    ui->portEdit->setText(settings->value("proxyPort").toString());
+    settings->endGroup();
 }
 void Config::writeConfig()
 {
@@ -97,6 +106,17 @@ void Config::writeConfig()
     settings->setValue("earthSize", ui->earthSize->value());
     settings->setValue("wallpaperDir", ui->wallpaperDir->text());
     settings->setValue("wallpaperFile", ui->wallpaperFile->text());
+    settings->endGroup();
+    settings->beginGroup("System");
+    if(ui->proxyNone->isChecked()){
+        settings->setValue("proxy",0);
+    }else if(ui->proxyHttp->isChecked()){
+        settings->setValue("proxy",1);
+    }else if(ui->proxySocks->isChecked()){
+        settings->setValue("proxy",2);
+    }
+    settings->setValue("proxyAdd",ui->addEdit->text());
+    settings->setValue("proxyPort",ui->portEdit->text());
     settings->endGroup();
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
