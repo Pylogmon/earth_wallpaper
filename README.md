@@ -139,8 +139,10 @@ ipapi 获取ip地理位置：[https://ipapi.co](https://ipapi.co)
 
 ## 软件截图
 
-![Image20220729131452](https://jihulab.com/ambition-echo/img_bed/raw/main/img/Image20220729131452.png)
+![image-20220917003305855](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003305855.png)
 
-![Image20220729131537](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/Image20220729131537.png)
+![image-20220917003345620](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003345620.png)
 
-![Image20220729131605](https://jihulab.com/ambition-echo/img_bed/raw/main/img/Image20220729131605.png)
+![image-20220917003459088](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003459088.png)
+
+![image-20220917003531050](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003531050.png)
