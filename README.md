@@ -28,6 +28,9 @@
 
 ### Arch
 
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
+
 Arch用户可以到[AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)下载
 
 注意```earth-wallpaper-git```包已经弃用，请安装```earth-wallpaper-nightly```或```earth-wallpaper-bin```包。

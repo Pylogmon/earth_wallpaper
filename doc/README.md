@@ -28,6 +28,9 @@ package ```earth-wallpaper-other-amd64.deb```
 
 ### Arch
 
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
+
 Download PKGBUILD from [AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 
 ### Usage Notice
