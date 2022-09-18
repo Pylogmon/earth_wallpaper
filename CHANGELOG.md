@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.8.3 (2022-09-18)
+
+### Bugs fixed:
+
+- **scripts**: 修复没有设置代理时下载壁纸下载失败的问题([`6c9c0d2`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/6c9c0d28ddb1883e5d93fe40626982d4408ed257)) (by ambition_echo)
+
 ## 1.8.2 (2022-09-16)
 
 ### New feature:
