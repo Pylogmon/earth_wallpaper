@@ -23,15 +23,16 @@ name = '1.png'
 
 
 def download(url, path):
-    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
-    img = requests.get(
-        url,
-        headers={
-            'user-agent':
-                'Mozilla/5.0 (X11; Linux x86_64; rv:102.0)Gecko/20100101 Firefox/102.0'
-        },
-        proxies=proxies
-    )
+
+    header = {
+        'user-agent':
+        'Mozilla/5.0 (X11; Linux x86_64; rv:102.0)Gecko/20100101 Firefox/102.0'
+    }
+    if (sys.argv[6] == "None"):
+        img = requests.get(url, headers=header)
+    else:
+        proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+        img = requests.get(url, headers=header, proxies=proxies)
     with open(path, "wb") as fwi:
         fwi.write(img.content)
 
@@ -88,8 +89,7 @@ def main():
     download(url3, path + '3' + name)
     download(url4, path + '4' + name)
 
-    concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name,
-                  path)
+    concat_images(['1' + name, '2' + name, '3' + name, '4' + name], name, path)
     fill_img(path, name)
 
 

@@ -16,8 +16,12 @@ def download(path):
         "user-agent":
         "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
     }
-    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
-    img = requests.get(api_url, headers=headers,proxies=proxies)
+
+    if (sys.argv[6] == "None"):
+        img = requests.get(api_url, headers=headers)
+    else:
+        proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+        img = requests.get(api_url, headers=headers, proxies=proxies)
     with open(path, "wb") as fwi:
         fwi.write(img.content)
 

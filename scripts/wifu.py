@@ -14,8 +14,11 @@ global img_url
 
 
 def get_img_url():
-    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
-    res = requests.get(request_url,proxies=proxies).text
+    if (sys.argv[6] == "None"):
+        res = requests.get(request_url).text
+    else:
+        proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+        res = requests.get(request_url, proxies=proxies).text
     res = json.loads(res)
     return {
         "img_url": res["images"][0]["url"],
@@ -24,8 +27,11 @@ def get_img_url():
 
 
 def download(url, ext):
-    proxies = {"http": str(sys.argv[6]),"https": str(sys.argv[6])}
-    img = requests.get(url,proxies=proxies)
+    if (sys.argv[6] == "None"):
+        img = requests.get(url)
+    else:
+        proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+        img = requests.get(url, proxies=proxies)
     today = datetime.datetime.utcnow()
     wallpaper_dir = PlatformInfo().getDownloadPath()
     if os.path.exists(wallpaper_dir):

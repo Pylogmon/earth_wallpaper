@@ -8,11 +8,10 @@ import sys
 import json
 import time
 import requests
-import platform
 
 file = sys.argv[5]
 myPlatform = PlatformInfo()
-cache = myPlatform.getDownloadPath()    
+cache = myPlatform.getDownloadPath()
 unpackDir = cache + file.split("/")[-1].split(".")[0]
 
 
@@ -35,9 +34,11 @@ def get_location():
     i = 0
     while i < 3:
         try:
-            ip = session.get("https://checkip.amazonaws.com/", timeout=5).text.strip()
+            ip = session.get("https://checkip.amazonaws.com/",
+                             timeout=5).text.strip()
             print(ip)
-            loc = session.get("https://ipapi.co/{}/json/".format(ip), timeout=5).json()
+            loc = session.get("https://ipapi.co/{}/json/".format(ip),
+                              timeout=5).json()
             print(loc)
             latitude = float(loc["latitude"])
             longitude = float(loc["longitude"])
