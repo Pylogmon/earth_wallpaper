@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.8.4 (2022-09-19)
+
+### New feature:
+
+- **scripts**: 必应随机壁纸获取高清壁纸而不是1080p([`1654643`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/165464355dc4fb3e0c036792eef71516ef092518)) (by ambition_echo)
+- **scripts**: 必应每日壁纸改用官方高清壁纸([`70ffe79`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/70ffe792153f5cc17c22bfb09f46661317d3be98)) (by ambition_echo)
+
 ## 1.8.3 (2022-09-18)
 
 ### Bugs fixed:
