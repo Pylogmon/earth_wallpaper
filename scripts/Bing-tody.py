@@ -6,24 +6,36 @@ import requests
 import datetime
 import os
 import shutil
+from requests.structures import CaseInsensitiveDict
+import json
 import sys
 
-api_url = "https://bing.ioliu.cn/v1"
+bing_addr = "https://www.bing.com"
+json_link = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
 
 
 def download(path):
-    headers = {
-        "user-agent":
-        "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
-    }
-
+    headers = CaseInsensitiveDict()
+    headers["Accept"] = "application/json"
     if (sys.argv[6] == "None"):
-        img = requests.get(api_url, headers=headers)
+        resp = requests.get(json_link, headers=headers)
     else:
         proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
-        img = requests.get(api_url, headers=headers, proxies=proxies)
-    with open(path, "wb") as fwi:
-        fwi.write(img.content)
+        resp = requests.get(json_link, headers=headers, proxies=proxies)
+    if resp.ok:
+        webjson = json.loads(resp.content.decode())
+        imageurl = (bing_addr + webjson['images'][0]['url']).replace(
+            "1920x1080", "UHD")
+        if (sys.argv[6] == "None"):
+            imager = requests.get(imageurl)
+        else:
+            proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+            imager = requests.get(imageurl, proxies=proxies)
+
+        with open(path, 'wb') as f:
+            f.write(imager.content)
+    else:
+        raise ValueError('Fetching website failed.')
 
 
 def main():
