@@ -25,6 +25,13 @@ def set_wallpaper(file):
             for i in primary_screen:
                 screen_name = i.split(" ")[0]
                 appearance_interface.SetMonitorBackground(screen_name, file)
+        elif de == "Cutefish":
+            import dbus
+            bus = dbus.SessionBus()
+            settings = bus.get_object('com.cutefish.Settings', '/Theme')
+            theme_interface = dbus.Interface(settings,
+                                             dbus_interface='com.cutefish.Theme')
+            theme_interface.setWallpaper(file)
         elif de == "KDE":
             import dbus
             bus = dbus.SessionBus()
