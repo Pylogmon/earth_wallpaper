@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.8.5 (2022-09-29)
+
+### New feature:
+- **scripts**: 增加对 Linux 桌面环境 Cutefish 的支持([`#9`](https://github.com/ambition-echo/earth_wallpaper/pull/9)) (by [lisuke](https://github.com/lisuke))
+
 ## 1.8.4 (2022-09-19)
 
 ### New feature:

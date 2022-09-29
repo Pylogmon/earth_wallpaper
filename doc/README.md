@@ -63,6 +63,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] Cinnamon
 - [x] XFCE
 - [x] MATE
+- [x] Cutefish
 
 ### Windows
 
