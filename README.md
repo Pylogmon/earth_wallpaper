@@ -94,6 +94,7 @@ set_wallpaper(绝对路径)
 - [x] Cinnamon
 - [x] XFCE
 - [x] MATE
+- [x] Cutefish
 
 ### Windows
 - [x] Windows 10 (测试环境：Windows 10 专业版 21H1，其他版本自行测试)
