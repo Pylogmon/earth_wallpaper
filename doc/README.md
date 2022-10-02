@@ -64,6 +64,8 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] XFCE
 - [x] MATE
 - [x] Cutefish
+- [x] LXQt (pcmanfm-qt 或者 pcmanfm)
+- [x] LXDE (pcmanfm)
 
 ### Windows
 
