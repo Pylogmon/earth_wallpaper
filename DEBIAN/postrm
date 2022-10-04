@@ -1,7 +1,0 @@
-#!/bin/bash
-
-appid="cn.huguoyang.earthwallpaper"
-filePath="/usr/share/applications/$appid.desktop"
-if [ -f "$filePath" ]; then
-    rm $filePath
-fi
