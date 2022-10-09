@@ -1,8 +1,8 @@
 # source: 24h壁纸
 # wallpaperFile
-from setWallpaper import set_wallpaper
-from sunCalculator import SunCalculator, DateTime
-from PlatformInfo import PlatformInfo
+from .utils.setWallpaper import set_wallpaper
+from .utils.sunCalculator import SunCalculator, DateTime
+from .utils.PlatformInfo import PlatformInfo
 import os
 import sys
 import json

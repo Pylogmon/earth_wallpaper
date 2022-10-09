@@ -1,6 +1,7 @@
 from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QSystemTrayIcon, QMenu
-from .about import About
+from about import About
+from config import Config
 import sys
 import os
 
@@ -10,7 +11,7 @@ class SystemTray(QSystemTrayIcon):
     def __init__(self):
         super(SystemTray, self).__init__()
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setIcon(QIcon(os.path.join(self.path, "../resource/earth-wallpaper.png")))
+        self.setIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.save = QAction("保存当前壁纸")
         self.update = QAction("更新壁纸")
         self.config = QAction("设置")
@@ -29,6 +30,10 @@ class SystemTray(QSystemTrayIcon):
     def _connect_(self):
         self.exit.triggered.connect(sys.exit)
         self.about.triggered.connect(self.show_about)
+        self.config.triggered.connect(self.show_config)
 
     def show_about(self):
         self.about_page = About()
+
+    def show_config(self):
+        self.config_page = Config()
