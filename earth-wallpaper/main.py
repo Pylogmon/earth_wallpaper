@@ -1,5 +1,5 @@
 #!/bin/python3
-from PySide2.QtWidgets import QApplication, QMessageBox
+from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtCore import QSharedMemory
 from settings.systemtray import SystemTray
 import sys
@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     QApplication.setQuitOnLastWindowClosed(False)
 
-    lock = QSharedMemory("earth-wallpaper-PySide2")
+    lock = QSharedMemory("earth-wallpaper-PySide6")
     if lock.attach():
         message = QMessageBox()
         QMessageBox.information(message, "警告", "程序已经运行", QMessageBox.Yes)
@@ -17,4 +17,4 @@ if __name__ == "__main__":
     lock.create(10)
 
     tray = SystemTray()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
