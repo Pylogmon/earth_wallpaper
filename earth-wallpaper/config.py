@@ -6,6 +6,12 @@ import interfaces
 import os
 
 
+def _get_class_name_(name: str):
+    for i in dir(interfaces):
+        if getattr(interfaces, i).name() == name:
+            return i
+
+
 class Config(QWidget, Ui_Config):
 
     def __init__(self):
@@ -26,12 +32,7 @@ class Config(QWidget, Ui_Config):
                 break
             name = getattr(interfaces, i).name()
             self.source.addItem(name)
-            print(self._get_class_name_(name))
-
-    def _get_class_name_(self, name: str):
-        for i in dir(interfaces):
-            if getattr(interfaces, i).name() == name:
-                return i
+            print(_get_class_name_(name))
 
     def _update_layout_(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
@@ -39,7 +40,7 @@ class Config(QWidget, Ui_Config):
         wallpaperDirGroup = [self.wallpaperDir, self.wallpaperDir_l, self.selectDir]
         wallpaperFileGroup = [self.wallpaperFile, self.wallpaperFile_l, self.selectFile]
         all_layout = [updateTimeGroup, earthSizeGroup, wallpaperDirGroup, wallpaperFileGroup]
-        class_name = self._get_class_name_(self.source.currentText())
+        class_name = _get_class_name_(self.source.currentText())
         layout_list = getattr(interfaces, class_name).layout()
         for i in all_layout:
             for j in i:
