@@ -2,7 +2,7 @@
 
 #include <QWidget>
 
-#define VERSION "1.7.6"
+#define VERSION "1.8.6"
 
 QT_BEGIN_NAMESPACE
 namespace Ui
