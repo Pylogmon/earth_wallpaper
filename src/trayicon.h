@@ -2,6 +2,7 @@
 
 #include "about.h"
 #include "config.h"
+#include "thread.h"
 #include <QApplication>
 #include <QMenu>
 #include <QSettings>
@@ -12,9 +13,10 @@ class TrayIcon : public QSystemTrayIcon
 {
     Q_OBJECT
   public:
-    QTimer timer;
     int height;
     int width;
+    QTimer timer;
+    Thread *thread = nullptr;
     QSettings *settings{};
     Config *configPage{};
     About *aboutPage{};
@@ -24,6 +26,7 @@ class TrayIcon : public QSystemTrayIcon
     QAction *refresh{};
     QAction *save{};
     QAction *about{};
+
     explicit TrayIcon(QSystemTrayIcon *parent = nullptr);
     ~TrayIcon() override;
 
