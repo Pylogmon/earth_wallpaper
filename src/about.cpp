@@ -10,7 +10,7 @@ About::About(QWidget *parent) : QWidget(parent), ui(new Ui::About)
     initUI();
     initConnect();
 }
-About::~About() = default;
+About::~About() { delete ui; };
 
 void About::initUI()
 {
@@ -27,4 +27,9 @@ void About::initConnect()
 void About::checkUpdate()
 {
     QDesktopServices::openUrl(QUrl(QString("https://github.com/ambition-echo/earth_wallpaper/releases")));
+}
+
+void About::closeEvent(QCloseEvent *event)
+{
+    emit closed();
 }

@@ -15,10 +15,11 @@ class Config : public QWidget
     Q_OBJECT
   signals:
     void configChanged();
+    void closed();
 
   public:
     QString configPath;
-    QSettings *settings{};
+    QSettings *settings = nullptr;
     explicit Config(QWidget *parent = nullptr);
     ~Config() override;
 
@@ -29,6 +30,8 @@ class Config : public QWidget
     void controlOption(QString source);
     void selectDir();
     void selectFile();
+
+    void closeEvent(QCloseEvent *event) override;
 
   private:
     Ui::Config *ui;

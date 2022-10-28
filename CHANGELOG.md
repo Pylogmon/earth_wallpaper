@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.8.6 (2022-10-27)
+- **trayicon** 使`src/trayicon.cpp`中`handle()`函数中的`thread`自我析构，防止内存泄露。
+- **trayicon** 修复"关于"、"设置"会创建多个实例的问题。
+- **trayicon** 修复Windows下"保存当前壁纸"闪退的问题。
+- **config** 优化内存管理
+
 ## 1.8.5 (2022-09-29)
 
 ### New feature:

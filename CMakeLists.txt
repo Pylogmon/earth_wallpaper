@@ -45,6 +45,11 @@ else()
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+    elseif(WIN32) # Remove DOS window.
+        add_executable(earth-wallpaper
+            WIN32
+            ${PROJECT_SOURCES}
+        )
     else()
         add_executable(earth-wallpaper
             ${PROJECT_SOURCES}

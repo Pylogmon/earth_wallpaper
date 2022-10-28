@@ -51,7 +51,9 @@ void TrayIcon::initTrayIcon()
     refresh = new QAction();
     save = new QAction();
     about = new QAction();
-
+    /* Todo
+     *   Translation
+     */
     config->setText("设置");
     refresh->setText("更新壁纸");
     save->setText("保存当前壁纸");
@@ -76,23 +78,38 @@ void TrayIcon::OnExit()
 
 void TrayIcon::showConfigPage()
 {
-    this->configPage = new Config;
+    if (!configPage) { // 没有if会创建多个实例
+        this->configPage = new Config();
+    }
     configPage->show();
+
     // 重载设置
     connect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
+    connect(configPage, &Config::closed, this, [&](){
+        disconnect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
+        configPage->deleteLater();
+        this->configPage = nullptr;
+    });
 }
 
 void TrayIcon::showAboutPage()
 {
-    this->aboutPage = new About;
+    if (!aboutPage) { // 没有if会创建多个实例
+        this->aboutPage = new About();
+    }
     aboutPage->show();
+    aboutPage->setAttribute(Qt::WA_DeleteOnClose);
+    connect(aboutPage, &About::closed, this, [&](){
+        aboutPage->deleteLater();
+        this->aboutPage = nullptr;
+    });
 }
 
 void TrayIcon::checkConfig()
 {
     QString path = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     path += "/earth-wallpaper/config";
-    auto configFile = QFile(path);
+    QFile configFile = QFile(path);
     if (!configFile.exists())
     {
         qInfo() << "首次运行，打开设置页面";
@@ -109,7 +126,9 @@ void TrayIcon::reloadSettings()
     timer.stop();
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     configPath += "/earth-wallpaper/config";
-    delete settings;
+    if (this->settings) {
+        this->settings->deleteLater();
+    }
     // 重新读取配置文件
     this->settings = new QSettings(configPath, QSettings::IniFormat);
     handle();
@@ -117,6 +136,7 @@ void TrayIcon::reloadSettings()
 void TrayIcon::handle()
 {
     qDebug() << "handling...";
+
     settings->beginGroup("APP");
     settings->setIniCodec("UTF8");
     QString earthSource = settings->value("earthSource").toString();
@@ -124,12 +144,14 @@ void TrayIcon::handle()
     QString wallpaperDir = settings->value("wallpaperDir").toString();
     QString wallpaperFile = settings->value("wallpaperFile").toString();
     settings->endGroup();
+
     settings->beginGroup("System");
     QMap<int,QString> proxyMap;
     proxyMap.insert(0,"None");
     proxyMap.insert(1,"http://"+settings->value("proxyAdd").toString()+":"+settings->value("proxyPort").toString());
     proxyMap.insert(2,"socks5://"+settings->value("proxyAdd").toString()+":"+settings->value("proxyPort").toString());
     settings->endGroup();
+
     QStringList command = QStringList();
     QString exePath = QCoreApplication::applicationDirPath();
     QDir scriptsDir(exePath + "/scripts");
@@ -166,14 +188,19 @@ void TrayIcon::handle()
 
     // 根据设置下载、更新壁纸
     qDebug() << command;
-    auto *thread = new Thread(command);
+    Thread *thread = new Thread(command);
     thread->start();
+    connect(thread, &Thread::finished, thread, &Thread::deleteLater); // 自断经脉
     timer.start(60000 * settings->value("APP/updateTime").toInt());
 }
 void TrayIcon::saveCurrentImg()
 {
-    QString dirPath =
-        QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.cache/earth-wallpaper/wallpaper/";
+    QString dirPath; // 缓存目录
+    if (QSysInfo::productType() == "windows") { // 修复点击“保存当前壁纸”闪退的Bug
+        dirPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/AppData/Roaming/earth-wallpaper/wallpaper/";
+    } else {
+        dirPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.cache/earth-wallpaper/wallpaper/";
+    }
     QDir dir(dirPath);
     QStringList nameFilters;
     nameFilters << "[1-9]*";
@@ -184,9 +211,18 @@ void TrayIcon::saveCurrentImg()
     {
         QDir(picturePath).mkpath(picturePath);
     }
-    QFile target = QFile(dirPath + files[0]);
-    if (target.copy(picturePath + "/" + files[files.count() - 1]))
-    {
-        QMessageBox::information(nullptr, "保存", "当前壁纸已保存到Picture目录", QMessageBox::Yes);
+
+    QFile source = QFile(dirPath + files[0]); // changed from target to "source"
+    QFile target = QFile(picturePath + "/" + files[files.count() - 1]);
+    if (!target.exists()) {
+        if (source.copy(target.fileName()))
+        {
+            QMessageBox::information(nullptr, "保存", "保存成功，已保存到用户Picture目录", QMessageBox::Yes);
+        } else {
+            QMessageBox::warning(nullptr, "保存", "保存失败，原因未知（懒）", QMessageBox::Yes);
+        }
+    } else {
+        QMessageBox::information(nullptr, "保存", "当前壁纸已存在，未做任何处理", QMessageBox::Yes);
     }
+
 }
