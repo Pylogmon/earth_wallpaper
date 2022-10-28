@@ -82,8 +82,14 @@ void TrayIcon::showConfigPage()
         this->configPage = new Config();
     }
     configPage->show();
+
     // 重载设置
     connect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
+    connect(configPage, &Config::closed, this, [&](){
+        disconnect(this->configPage, &Config::configChanged, this, &TrayIcon::reloadSettings);
+        configPage->deleteLater();
+        this->configPage = nullptr;
+    });
 }
 
 void TrayIcon::showAboutPage()
@@ -92,6 +98,11 @@ void TrayIcon::showAboutPage()
         this->aboutPage = new About();
     }
     aboutPage->show();
+    aboutPage->setAttribute(Qt::WA_DeleteOnClose);
+    connect(aboutPage, &About::closed, this, [&](){
+        aboutPage->deleteLater();
+        this->aboutPage = nullptr;
+    });
 }
 
 void TrayIcon::checkConfig()
@@ -116,7 +127,7 @@ void TrayIcon::reloadSettings()
     QString configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
     configPath += "/earth-wallpaper/config";
     if (this->settings) {
-        delete this->settings;
+        this->settings->deleteLater();
     }
     // 重新读取配置文件
     this->settings = new QSettings(configPath, QSettings::IniFormat);

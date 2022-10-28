@@ -14,6 +14,10 @@ QT_END_NAMESPACE
 class About : public QWidget
 {
     Q_OBJECT
+
+  signals:
+    void closed();
+
   public:
     explicit About(QWidget *parent = nullptr);
     ~About() override;
@@ -21,6 +25,8 @@ class About : public QWidget
     void initUI();
     void initConnect();
     void checkUpdate();
+
+    void closeEvent(QCloseEvent *event) override;
 
   private:
     Ui::About *ui;

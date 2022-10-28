@@ -16,17 +16,17 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 
     configPath += "/earth-wallpaper";
     QString path = configPath + "/config";
-    auto configFile = new QFile(path);
-    auto configDir = new QDir(configPath);
-    if (!configFile->exists())
+    QFile configFile = QFile(path);
+    QDir configDir = QDir(configPath);
+    if (!configFile.exists())
     {
-        if (!configDir->exists())
+        if (!configDir.exists())
         {
-            configDir->mkpath(configPath);
+            configDir.mkpath(configPath);
         }
         QString exePath = QCoreApplication::applicationDirPath();
-        auto tempFile = new QFile(exePath + "/template/config");
-        tempFile->copy(path);
+        QFile tempFile = QFile(exePath + "/template/config");
+        tempFile.copy(path);
     }
     ui->setupUi(this);
     initUI();
@@ -37,7 +37,9 @@ Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 
 Config::~Config()
 {
-    settings->deleteLater();
+    if (settings) {
+        settings->deleteLater();
+    }
     this->disconnect();
     delete ui;
 }
@@ -78,8 +80,12 @@ void Config::initConnect()
 }
 void Config::readConfig()
 {
+    if (settings) {
+        settings->deleteLater();
+    }
     this->settings = new QSettings(configPath + "/config", QSettings::IniFormat);
     settings->setIniCodec("UTF8");
+
     settings->beginGroup("APP");
     ui->earthSource->setCurrentText(settings->value("earthSource").toString());
     ui->updateTime->setCurrentText(settings->value("updateTime").toString());
@@ -87,6 +93,7 @@ void Config::readConfig()
     ui->wallpaperDir->setText(settings->value("wallpaperDir").toString());
     ui->wallpaperFile->setText(settings->value("wallpaperFile").toString());
     settings->endGroup();
+
     settings->beginGroup("System");
     switch(settings->value("proxy").toInt()){
     case 0:ui->proxyNone->setChecked(true);break;
@@ -99,14 +106,16 @@ void Config::readConfig()
 }
 void Config::writeConfig()
 {
-    settings->beginGroup("APP");
     settings->setIniCodec("UTF8");
+
+    settings->beginGroup("APP");
     settings->setValue("earthSource", ui->earthSource->currentText());
     settings->setValue("updateTime", ui->updateTime->currentText());
     settings->setValue("earthSize", ui->earthSize->value());
     settings->setValue("wallpaperDir", ui->wallpaperDir->text());
     settings->setValue("wallpaperFile", ui->wallpaperFile->text());
     settings->endGroup();
+
     settings->beginGroup("System");
     if(ui->proxyNone->isChecked()){
         settings->setValue("proxy",0);
@@ -118,6 +127,7 @@ void Config::writeConfig()
     settings->setValue("proxyAdd",ui->addEdit->text());
     settings->setValue("proxyPort",ui->portEdit->text());
     settings->endGroup();
+
     QMessageBox::information(this, tr("设置"), tr("设置保存成功！"));
     emit configChanged();
 }
@@ -198,4 +208,9 @@ void Config::selectFile()
     QString file =
         QFileDialog::getOpenFileName(this, "选择24h壁纸文件", "", "24h壁纸文件 (*.ddw *.zip);; 所有文件 (*.*);; ");
     ui->wallpaperFile->setText(file);
+}
+
+void Config::closeEvent(QCloseEvent *event)
+{
+    emit closed();
 }

@@ -17,15 +17,15 @@ class TrayIcon : public QSystemTrayIcon
     int width;
     QTimer timer;
     Thread *thread = nullptr;
-    QSettings *settings{};
-    Config *configPage{};
-    About *aboutPage{};
-    QMenu *trayIconMenu{};
-    QAction *config{};
-    QAction *exit{};
-    QAction *refresh{};
-    QAction *save{};
-    QAction *about{};
+    QSettings *settings = nullptr;
+    Config *configPage = nullptr;
+    About *aboutPage = nullptr;
+    QMenu *trayIconMenu = nullptr;
+    QAction *config = nullptr;
+    QAction *exit = nullptr;
+    QAction *refresh = nullptr;
+    QAction *save = nullptr;
+    QAction *about = nullptr;
 
     explicit TrayIcon(QSystemTrayIcon *parent = nullptr);
     ~TrayIcon() override;
