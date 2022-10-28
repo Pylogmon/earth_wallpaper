@@ -98,7 +98,6 @@ void TrayIcon::showAboutPage()
         this->aboutPage = new About();
     }
     aboutPage->show();
-    aboutPage->setAttribute(Qt::WA_DeleteOnClose);
     connect(aboutPage, &About::closed, this, [&](){
         aboutPage->deleteLater();
         this->aboutPage = nullptr;

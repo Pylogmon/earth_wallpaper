@@ -10,7 +10,6 @@
 
 Config::Config(QWidget *parent) : QWidget(parent), ui(new Ui::Config)
 {
-    this->setAttribute(Qt::WA_DeleteOnClose);
     // 检查配置文件
     this->configPath = QStandardPaths::writableLocation(QStandardPaths::ConfigLocation);
 
