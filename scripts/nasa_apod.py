@@ -1,4 +1,5 @@
-# NASA Astronomy Picture of the Day
+# source: NASA每日天文图片
+# updateTime
 import requests
 import shutil
 import sys
@@ -10,21 +11,28 @@ from html.parser import HTMLParser
 
 
 class MyParser(HTMLParser):
+
     def __init__(self):
         HTMLParser.__init__(self)
         self.mytag = []
         self.myattr = []
         self.mydata = []
+
     def handle_starttag(self, tag, attrs):
         self.mytag.append(tag)
         self.myattr.append(attrs)
+
     def handle_data(self, data):
         self.mydata.append(data)
 
 
 def download(path):
     page_link = "https://apod.nasa.gov/apod/"
-    rqst = requests.get(page_link)
+    if (sys.argv[6] == "None"):
+        rqst = requests.get(page_link)
+    else:
+        proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+        rqst = requests.get(page_link, proxies=proxies)
     if rqst.ok:
         content = rqst.content.decode().strip()
         parser = MyParser()

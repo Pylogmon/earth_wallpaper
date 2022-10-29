@@ -1,4 +1,5 @@
-# NASA Image of the Day
+# source: NASA每日图片
+# updateTime
 import requests
 import shutil
 import sys
@@ -11,7 +12,11 @@ import xml.etree.ElementTree as ET
 
 def download(path):
     page_link = "https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss"
-    rqst = requests.get(page_link)
+    if (sys.argv[6] == "None"):
+        rqst = requests.get(page_link)
+    else:
+        proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+        rqst = requests.get(page_link, proxies=proxies)
     if rqst.ok:
         content = rqst.content.decode().strip()
         root = ET.fromstring(content)
