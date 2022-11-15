@@ -1,0 +1,11 @@
+[Desktop Entry]
+Categories=Application;Network;
+Comment=Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
+Exec=/opt/apps/cn.huguoyang.earthwallpaper/files/bin/main.py
+Icon=/opt/apps/cn.huguoyang.earthwallpaper/entries/icons/hicolor/256x256/apps/cn.huguoyang.earthwallpaper.png
+GenericName=earth-wallpaper
+Keywords=earth
+Name=earth-wallpaper
+StartupNotify=false
+Terminal=false
+Type=Application
