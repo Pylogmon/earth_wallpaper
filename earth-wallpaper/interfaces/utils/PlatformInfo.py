@@ -6,11 +6,6 @@ class PlatformInfo:
 
     def __init__(self):
         self.sys = platform.system().upper()
-        if self.sys == "WINDOWS":
-            print("Current OS is Windows.")
-
-        elif self.sys == "LINUX":
-            print("Current OS is Linux.")
 
     def getDownloadPath(self) -> str:
         if self.sys == "WINDOWS":

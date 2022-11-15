@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>305</width>
-    <height>405</height>
+    <width>308</width>
+    <height>398</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -109,14 +109,14 @@
     </spacer>
    </item>
    <item row="2" column="1">
-    <widget class="QPushButton" name="apply">
+    <widget class="QPushButton" name="applyBtn">
      <property name="text">
       <string>应用</string>
      </property>
     </widget>
    </item>
    <item row="2" column="2">
-    <widget class="QPushButton" name="close">
+    <widget class="QPushButton" name="closeBtn">
      <property name="text">
       <string>关闭</string>
      </property>

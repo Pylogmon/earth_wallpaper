@@ -1,4 +1,5 @@
 import sys
+from PySide6.QtCore import QSettings, QStandardPaths
 from .utils.setWallpaper import set_wallpaper
 from .utils.PlatformInfo import PlatformInfo
 import requests
@@ -9,17 +10,25 @@ import shutil
 
 
 class Anime(object):
-    def __init__(self, proxy="None"):
-        self.proxy = proxy
+    def __init__(self):
+        self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
+                                        "earth-wallpaper/config")
+        self.settings = QSettings(self.config_path, QSettings.IniFormat)
+        type = ["None", "http", "socks"]
+        self.settings.beginGroup("APP")
+        self.prx_type = int(self.settings.value("proxy"))
+        self.prx_add = self.settings.value("proxyAdd")
+        self.prx_port = self.settings.value("proxyPort")
         self.request_url = "https://api.waifu.im/random?orientation=LANDSCAPE"
         self.img_url = ""
         self.img_ext = ""
 
     def get_img_url(self):
-        if self.proxy == "None":
+        if self.prx_type == "None":
             res = requests.get(self.request_url).text
         else:
-            proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+            proxies = {"http": f"{self.prx_type}://{self.prx_add}:{self.prx_port}",
+                       "https": f"{self.prx_type}://{self.prx_add}:{self.prx_port}"}
             res = requests.get(self.request_url, proxies=proxies).text
         res = json.loads(res)
 
@@ -27,10 +36,11 @@ class Anime(object):
         self.img_ext = res["images"][0]["extension"]
 
     def download(self):
-        if self.proxy == "None":
+        if self.prx_type == "None":
             img = requests.get(self.img_url)
         else:
-            proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+            proxies = {"http": f"{self.prx_type}://{self.prx_add}:{self.prx_port}",
+                       "https": f"{self.prx_type}://{self.prx_add}:{self.prx_port}"}
             img = requests.get(self.img_url, proxies=proxies)
         today = datetime.datetime.utcnow()
         wallpaper_dir = PlatformInfo().getDownloadPath()

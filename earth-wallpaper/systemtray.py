@@ -38,12 +38,14 @@ class SystemTray(QSystemTrayIcon):
         self.about.triggered.connect(self.show_about)
         self.config.triggered.connect(self.show_config)
         self.timer.timeout.connect(self.start_timer)
+        self.update.triggered.connect(self.start_timer)
 
     def show_about(self):
         self.about_page = About()
 
     def show_config(self):
         self.config_page = Config()
+        self.config_page.configChanged.connect(self.start_timer)
 
     def check_config(self):
         if not os.path.exists(self.config_path):
@@ -55,7 +57,7 @@ class SystemTray(QSystemTrayIcon):
 
     def start_timer(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
-        
+
         self.thread = Thread(settings.value("APP/earthSource"))
         self.thread.start()
 

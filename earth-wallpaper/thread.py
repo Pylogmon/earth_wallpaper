@@ -16,4 +16,6 @@ class Thread(QThread):
 
     def run(self):
         x = getattr(interfaces, self.class_name)()
+        print(f"Start run {x.name()}...")
         x.run()
+        print("Run completed!")

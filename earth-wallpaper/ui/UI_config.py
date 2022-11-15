@@ -24,7 +24,7 @@ class Ui_Config(object):
     def setupUi(self, Config):
         if not Config.objectName():
             Config.setObjectName(u"Config")
-        Config.resize(305, 405)
+        Config.resize(308, 398)
         self.gridLayout_3 = QGridLayout(Config)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.SystemSettings = QGroupBox(Config)
@@ -95,15 +95,15 @@ class Ui_Config(object):
 
         self.gridLayout_3.addItem(self.applySpacer, 2, 0, 1, 1)
 
-        self.apply = QPushButton(Config)
-        self.apply.setObjectName(u"apply")
+        self.applyBtn = QPushButton(Config)
+        self.applyBtn.setObjectName(u"applyBtn")
 
-        self.gridLayout_3.addWidget(self.apply, 2, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.applyBtn, 2, 1, 1, 1)
 
-        self.close = QPushButton(Config)
-        self.close.setObjectName(u"close")
+        self.closeBtn = QPushButton(Config)
+        self.closeBtn.setObjectName(u"closeBtn")
 
-        self.gridLayout_3.addWidget(self.close, 2, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.closeBtn, 2, 2, 1, 1)
 
         self.AppSettings = QGroupBox(Config)
         self.AppSettings.setObjectName(u"AppSettings")
@@ -199,8 +199,8 @@ class Ui_Config(object):
         self.proxySocks.setText(QCoreApplication.translate("Config", u"socks", None))
         self.add_l.setText(QCoreApplication.translate("Config", u"\u5730\u5740\uff1a", None))
         self.port_l.setText(QCoreApplication.translate("Config", u":", None))
-        self.apply.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
-        self.close.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
+        self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
+        self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
         self.AppSettings.setTitle(QCoreApplication.translate("Config", u"\u5e94\u7528\u8bbe\u7f6e", None))
         self.source_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6765\u6e90\uff1a", None))
         self.updateTime_l.setText(QCoreApplication.translate("Config", u"\u66f4\u65b0\u95f4\u9694\uff1a", None))

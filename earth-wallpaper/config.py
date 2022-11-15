@@ -1,6 +1,6 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QSettings, QStandardPaths, Signal
 from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from ui.UI_config import Ui_Config
 import interfaces
 import os
@@ -13,15 +13,18 @@ def _get_class_name_(name: str):
 
 
 class Config(QWidget, Ui_Config):
+    configChanged = Signal()
 
     def __init__(self):
-        print(dir(interfaces))
         super(Config, self).__init__()
         self.setAttribute(Qt.WA_DeleteOnClose)
+        self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
+                                        "earth-wallpaper/config")
         self.path = os.path.split(os.path.realpath(__file__))[0]
         self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
+        self.read_config()
         self._update_layout_()
         self._connect_()
         self.show()
@@ -32,7 +35,6 @@ class Config(QWidget, Ui_Config):
                 break
             name = getattr(interfaces, i).name()
             self.source.addItem(name)
-            print(_get_class_name_(name))
 
     def _update_layout_(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
@@ -51,3 +53,64 @@ class Config(QWidget, Ui_Config):
 
     def _connect_(self):
         self.source.currentIndexChanged.connect(self._update_layout_)
+        self.closeBtn.clicked.connect(self.close)
+        self.applyBtn.clicked.connect(self.write_config)
+        self.selectFile.clicked.connect(self.select_file)
+        self.selectDir.clicked.connect(self.select_dir)
+
+    def read_config(self):
+        settings = QSettings(self.config_path, QSettings.IniFormat)
+
+        settings.beginGroup("APP")
+        self.source.setCurrentText(settings.value("earthSource"))
+        self.updateTime.setValue(int(settings.value("updateTime")))
+        self.earthSize.setValue(int(settings.value("earthSize")))
+        self.wallpaperDir.setText(settings.value("wallpaperDir"))
+        self.wallpaperFile.setText(settings.value("wallpaperFile"))
+        settings.endGroup()
+
+        settings.beginGroup("System")
+        if int(settings.value("proxy")) == 0:
+            self.proxyNone.setChecked(True)
+        elif int(settings.value("proxy")) == 1:
+            self.proxyHttp.setChecked(True)
+        else:
+            self.proxySocks.setChecked(True)
+
+        self.addEdit.setText(settings.value("proxyAdd"))
+        self.portEdit.setText(settings.value("proxyPort"))
+        settings.endGroup()
+
+    def write_config(self):
+        settings = QSettings(self.config_path, QSettings.IniFormat)
+        settings.beginGroup("APP")
+        settings.setValue("earthSource", self.source.currentText())
+        settings.setValue("updateTime", self.updateTime.value())
+        settings.setValue("earthSize", self.earthSize.value())
+        settings.setValue("wallpaperDir", self.wallpaperDir.text())
+        settings.setValue("wallpaperFile", self.wallpaperFile.text())
+        settings.endGroup()
+
+        settings.beginGroup("System")
+        if self.proxyNone.isChecked():
+            settings.setValue("proxy", 0)
+        elif self.proxyHttp.isChecked():
+            settings.setValue("proxy", 1)
+        else:
+            settings.setValue("proxy", 2)
+
+        settings.setValue("proxyAdd", self.addEdit.text())
+        settings.setValue("proxyPort", self.portEdit.text())
+        settings.endGroup()
+        message = QMessageBox()
+        QMessageBox.information(message, "设置", "设置保存成功！", QMessageBox.Yes)
+        self.configChanged.emit()
+
+    def select_dir(self):
+        dir = QFileDialog.getExistingDirectory(self, "选择壁纸文件夹")
+        self.wallpaperDir.setText(dir)
+
+    def select_file(self):
+        file = QFileDialog.getOpenFileName(self, "选择24h壁纸文件", "",
+                                           "24h壁纸文件 (*.ddw *.zip);; 所有文件 (*.*);; ")
+        self.wallpaperFile.setText(file)
