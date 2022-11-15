@@ -1,6 +1,6 @@
-from PySide6.QtCore import QStandardPaths, QTimer, QSettings
+from PySide6.QtCore import QStandardPaths, QTimer, QSettings, QSysInfo, QDir, QFile
 from PySide6.QtGui import QIcon, QAction
-from PySide6.QtWidgets import QSystemTrayIcon, QMenu
+from PySide6.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox
 from about import About
 from config import Config
 from thread import Thread
@@ -39,6 +39,7 @@ class SystemTray(QSystemTrayIcon):
         self.config.triggered.connect(self.show_config)
         self.timer.timeout.connect(self.start_timer)
         self.update.triggered.connect(self.start_timer)
+        self.save.triggered.connect(self.save_current_img)
 
     def show_about(self):
         self.about_page = About()
@@ -62,3 +63,32 @@ class SystemTray(QSystemTrayIcon):
         self.thread.start()
 
         self.timer.start(60000 * int(settings.value("APP/updateTime")))
+
+    def save_current_img(self):
+        dir_path = ""
+        if QSysInfo.productType() == "windows":
+            dir_path = QStandardPaths.writableLocation(
+                QStandardPaths.HomeLocation) + "/AppData/Roaming/earth-wallpaper/wallpaper/"
+        else:
+            dir_path = QStandardPaths.writableLocation(
+                QStandardPaths.HomeLocation) + "/.cache/earth-wallpaper/wallpaper/"
+
+        dir_ = QDir(dir_path)
+        nameFilters = ["[1-9]*"]
+        dir_.setNameFilters(nameFilters)
+        files = dir_.entryList(QDir.Files, QDir.Name)
+        picturePath = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
+        if not QDir(picturePath).exists():
+            QDir(picturePath).mkpath(picturePath)
+        source = QFile(dir_path + files[0])
+
+        target = QFile(picturePath + "/" + files[len(files) - 1])
+        message = QMessageBox()
+        if not target.exists():
+            if source.copy(target.fileName()):
+                QMessageBox.information(message, "保存", "保存成功，已保存到用户Picture目录", QMessageBox.Yes)
+            else:
+                QMessageBox.warning(message, "保存", "保存失败，原因未知（懒）", QMessageBox.Yes)
+
+        else:
+            QMessageBox.information(message, "保存", "当前壁纸已存在，未做任何处理", QMessageBox.Yes)

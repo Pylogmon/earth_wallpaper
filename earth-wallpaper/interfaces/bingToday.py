@@ -1,38 +1,45 @@
-# source: 必应壁纸(今日)
-# updateTime
 from .utils.setWallpaper import set_wallpaper
 from .utils.PlatformInfo import PlatformInfo
+from PySide6.QtCore import QSettings, QStandardPaths
 import requests
 import datetime
 import os
 import shutil
 from requests.structures import CaseInsensitiveDict
 import json
-import sys
 
 
 class BingToday(object):
     def __init__(self, proxy="None"):
-        self.proxy = proxy
+        self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
+                                        "earth-wallpaper/config")
+        self.settings = QSettings(self.config_path, QSettings.IniFormat)
+        type = ["None", "http", "socks"]
+        self.settings.beginGroup("System")
+        self.prx_type = type[int(self.settings.value("proxy"))]
+        self.prx_add = self.settings.value("proxyAdd")
+        self.prx_port = self.settings.value("proxyPort")
         self.bing_addr = "https://www.bing.com"
         self.json_link = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
 
     def download(self, path):
         headers = CaseInsensitiveDict()
         headers["Accept"] = "application/json"
-        if self.proxy == "None":
+        if self.prx_type == "None":
             resp = requests.get(self.json_link, headers=headers)
         else:
-            proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+            proxies = {"http": f"{self.prx_type}://{self.prx_add}:{self.prx_port}",
+                       "https": f"{self.prx_type}://{self.prx_add}:{self.prx_port}"}
             resp = requests.get(self.json_link, headers=headers, proxies=proxies)
         if resp.ok:
             web_json = json.loads(resp.content.decode())
             image_url = (self.bing_addr + web_json['images'][0]['url']).replace(
                 "1920x1080", "UHD")
-            if self.proxy == "None":
+            if self.prx_type == "None":
                 imager = requests.get(image_url)
             else:
-                proxies = {"http": str(sys.argv[6]), "https": str(sys.argv[6])}
+                proxies = {"http": f"{self.prx_type}://{self.prx_add}:{self.prx_port}",
+                           "https": f"{self.prx_type}://{self.prx_add}:{self.prx_port}"}
                 imager = requests.get(image_url, proxies=proxies)
 
             with open(path, 'wb') as f:
