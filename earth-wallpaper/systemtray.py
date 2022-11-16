@@ -60,7 +60,7 @@ class SystemTray(QSystemTrayIcon):
         settings = QSettings(self.config_path, QSettings.IniFormat)
         
         try:
-            self.thread.terminate()
+            self.thread.stop()
         except:
             pass
         self.thread = Thread(settings.value("APP/earthSource"))
