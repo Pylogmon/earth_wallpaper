@@ -22,6 +22,7 @@ class Thread(QThread):
         x = getattr(interfaces, self.class_name)()
         print(f"Start run {x.name()}...")
         x.run()
+        self.timer.stop()
         print("Run completed!")
     
     def on_timeout(self):
