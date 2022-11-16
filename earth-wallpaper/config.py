@@ -133,5 +133,5 @@ class Config(QWidget, Ui_Config):
 
     def select_file(self):
         file = QFileDialog.getOpenFileName(self, "选择24h壁纸文件", "",
-                                           "24h壁纸文件 (*.ddw *.zip);; 所有文件 (*.*);; ")
-        self.wallpaperFile.setText(file)
+                                           "24h壁纸文件 (*.ddw *.zip);;")
+        self.wallpaperFile.setText(file[0])

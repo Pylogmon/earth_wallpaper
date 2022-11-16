@@ -52,13 +52,17 @@ class SystemTray(QSystemTrayIcon):
         if not os.path.exists(self.config_path):
             print("首次运行，打开设置页面")
             self.config_page = Config()
-
+            self.config_page.configChanged.connect(self.start_timer)
         else:
             self.start_timer()
 
     def start_timer(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
-
+        
+        try:
+            self.thread.terminate()
+        except:
+            pass
         self.thread = Thread(settings.value("APP/earthSource"))
         self.thread.start()
 
