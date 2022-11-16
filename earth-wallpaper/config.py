@@ -24,6 +24,7 @@ class Config(QWidget, Ui_Config):
         self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
+        self.check()
         self.read_config()
         self._update_layout_()
         self._connect_()
@@ -57,6 +58,26 @@ class Config(QWidget, Ui_Config):
         self.applyBtn.clicked.connect(self.write_config)
         self.selectFile.clicked.connect(self.select_file)
         self.selectDir.clicked.connect(self.select_dir)
+
+    def check(self):
+        if os.path.exists(self.config_path):
+            return
+        else:
+            settings = QSettings(self.config_path, QSettings.IniFormat)
+            settings.beginGroup("APP")
+            settings.setValue("earthSource", "风云四号")
+            settings.setValue("updateTime", 30)
+            settings.setValue("earthSize", 60)
+            settings.setValue("wallpaperDir", "/")
+            settings.setValue("wallpaperFile", "/")
+            settings.endGroup()
+
+            settings.beginGroup("System")
+            settings.setValue("proxy", 0)
+
+            settings.setValue("proxyAdd", "")
+            settings.setValue("proxyPort", "")
+            settings.endGroup()
 
     def read_config(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
