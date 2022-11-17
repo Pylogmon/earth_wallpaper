@@ -1,7 +1,6 @@
 from PIL import Image
 from PySide6.QtWidgets import QApplication
-from .utils.setWallpaper import set_wallpaper
-from .utils.PlatformInfo import PlatformInfo
+from .utils.platformInfo import PlatformInfo
 from PySide6.QtCore import QSettings, QStandardPaths
 import requests
 import datetime
@@ -29,7 +28,7 @@ class FengYun4(object):
         self.prx_add = self.settings.value("proxyAdd")
         self.prx_port = self.settings.value("proxyPort")
         self.settings.endGroup()
-        wallpaper_dir = PlatformInfo().getDownloadPath()
+        wallpaper_dir = PlatformInfo().download_dir()
         if os.path.exists(wallpaper_dir):
             shutil.rmtree(wallpaper_dir)
         os.makedirs(wallpaper_dir)
@@ -37,6 +36,7 @@ class FengYun4(object):
         self.today = datetime.datetime.utcnow()
         self.name_ = self.today.strftime("%Y%m%d%H%M%S") + ".png"
         self.path_today = ""
+        self.download_path = PlatformInfo().download_path(".png")
 
     def download(self, url, path_):
         header = {
@@ -71,8 +71,7 @@ class FengYun4(object):
         new_img = Image.new(img.mode, (width, height), color='black')
         new_img.paste(img, (int(width / 2 - 687), int(height / 2 - 687)))
 
-        new_img.save(self.path + self.name_ + ".png")
-        set_wallpaper(self.path + self.name_ + ".png")
+        return new_img.tobytes()
 
     def get_time_path(self):
         path_today_ = self.today.strftime("%Y%m%d%H%M")
@@ -95,7 +94,7 @@ class FengYun4(object):
         self.download(url4, self.path + '4' + self.name_)
 
         self.concat_images(['1' + self.name_, '2' + self.name_, '3' + self.name_, '4' + self.name_])
-        self.fill_img(self.path, self.name_)
+        return self.fill_img(self.path, self.name_)
 
     @staticmethod
     def name():

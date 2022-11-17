@@ -12,6 +12,7 @@ class SystemTray(QSystemTrayIcon):
 
     def __init__(self):
         super(SystemTray, self).__init__()
+        self.threads = []
         self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
                                         "earth-wallpaper/config")
         self.path = os.path.split(os.path.realpath(__file__))[0]
@@ -58,18 +59,18 @@ class SystemTray(QSystemTrayIcon):
 
     def start_timer(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
-        
-        try:
-            self.thread.stop()
-        except:
-            pass
-        self.thread = Thread(settings.value("APP/earthSource"))
-        self.thread.start()
 
+        for t in self.threads:
+            t.stop()
+            if t.isFinished():
+                t.deleteLater()
+                self.threads.remove(t)
+
+        self.threads.append(Thread(settings.value("APP/earthSource")))
+        self.threads[-1].start()
         self.timer.start(60000 * int(settings.value("APP/updateTime")))
 
     def save_current_img(self):
-        dir_path = ""
         if QSysInfo.productType() == "windows":
             dir_path = QStandardPaths.writableLocation(
                 QStandardPaths.HomeLocation) + "/AppData/Roaming/earth-wallpaper/wallpaper/"
@@ -78,8 +79,8 @@ class SystemTray(QSystemTrayIcon):
                 QStandardPaths.HomeLocation) + "/.cache/earth-wallpaper/wallpaper/"
 
         dir_ = QDir(dir_path)
-        nameFilters = ["[1-9]*"]
-        dir_.setNameFilters(nameFilters)
+        name_filters = ["[1-9]*"]
+        dir_.setNameFilters(name_filters)
         files = dir_.entryList(QDir.Files, QDir.Name)
         picturePath = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
         if not QDir(picturePath).exists():

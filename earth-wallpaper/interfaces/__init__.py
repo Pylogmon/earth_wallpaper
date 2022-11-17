@@ -2,9 +2,11 @@ from .anime import Anime
 from .bingRand import BingRand
 from .bingToday import BingToday
 from .localWallpaper import LocalWallpaper
+
 from .wallpaper24 import Wallpaper24
-from .fengYun4 import FengYun4
-from .himawari8 import Himawari8
+
+# from .fengYun4 import FengYun4
+# from .himawari8 import Himawari8
 
 __all__ = [
     "Anime",
@@ -12,6 +14,6 @@ __all__ = [
     "BingToday",
     "LocalWallpaper",
     "Wallpaper24",
-    "FengYun4",
-    "Himawari8"
+    # "FengYun4",
+    # "Himawari8"
 ]

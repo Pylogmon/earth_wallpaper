@@ -1,6 +1,5 @@
 from PIL import Image
-from .utils.setWallpaper import set_wallpaper
-from .utils.PlatformInfo import PlatformInfo
+from .utils.platformInfo import PlatformInfo
 from PySide6.QtCore import QSettings, QStandardPaths
 from PySide6.QtWidgets import QApplication
 import requests
@@ -29,13 +28,14 @@ class Himawari8(object):
         self.prx_add = self.settings.value("proxyAdd")
         self.prx_port = self.settings.value("proxyPort")
         self.settings.endGroup()
-        self.path = PlatformInfo().getDownloadPath()
+        self.path = PlatformInfo().download_dir()
         if os.path.exists(self.path):
             shutil.rmtree(self.path)
         os.makedirs(self.path)
         self.today = datetime.datetime.utcnow() - datetime.timedelta(minutes=30)
         self.name_ = self.today.strftime("%Y%m%d%H%M%S") + ".png"
         self.path_today = ""
+        self.download_path = PlatformInfo().download_path(".png")
 
     # 下载图像
     def download(self, url):
@@ -55,9 +55,7 @@ class Himawari8(object):
         img = Image.open(self.path + self.name_)
         new_img = Image.new(img.mode, (width, height), color='black')
         new_img.paste(img, (int(width / 2 - 250), int(height / 2 - 250)))
-
-        new_img.save(self.path + self.name_)
-        set_wallpaper(self.path + self.name_)
+        return new_img.tobytes()
 
     def get_time_path(self):
         path_today_ = self.today.strftime("%Y/%m/%d/%H%M")
@@ -71,7 +69,7 @@ class Himawari8(object):
 
         # name = "00_0_0.png"
         self.download(url)
-        self.fill_img()
+        return self.fill_img()
 
     @staticmethod
     def name():

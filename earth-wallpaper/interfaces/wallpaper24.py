@@ -1,6 +1,5 @@
-from .utils.setWallpaper import set_wallpaper
 from .utils.sunCalculator import SunCalculator, DateTime
-from .utils.PlatformInfo import PlatformInfo
+from .utils.platformInfo import PlatformInfo
 from PySide6.QtCore import QSettings, QStandardPaths
 import os
 import json
@@ -20,11 +19,9 @@ class Wallpaper24(object):
         self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
                                         "earth-wallpaper/config")
         self.settings = QSettings(self.config_path, QSettings.IniFormat)
-        self.settings.beginGroup("APP")
-        self.wallpaperFile = self.settings.value("wallpaperFile")
-
-        self.myPlatform = PlatformInfo()
-        self.cache = self.myPlatform.getDownloadPath()
+        self.wallpaperFile = self.settings.value("APP/wallpaperFile")
+        self.cache = PlatformInfo().download_dir()
+        self.download_path = PlatformInfo().download_path(".png")
         self.unpackDir = self.cache + self.wallpaperFile.split("/")[-1].split(".")[0]
 
     def check(self):
@@ -53,37 +50,37 @@ class Wallpaper24(object):
                 latitude = float(loc["latitude"])
                 longitude = float(loc["longitude"])
                 i = 3
-                self.calculate_sun(latitude, longitude)
+                return self.calculate_sun(latitude, longitude)
             except ConnectionResetError:
                 print(f"本机IP获取失败，第{i + 1}次重试")
                 if i == 3:
-                    self.calculate_time(5, 18)
+                    return self.calculate_time(5, 18)
                 else:
                     i += 1
             except KeyError:
                 print("API响应错误，使用默认时间")
                 i = 3
-                self.calculate_time(5, 18)
+                return self.calculate_time(5, 18)
             except TypeError:
                 print("该IP获取不到地理坐标，使用默认时间")
                 i = 3
-                self.calculate_time(5, 18)
+                return self.calculate_time(5, 18)
             except requests.exceptions.ReadTimeout:
                 print(f"请求超时,第{i + 1}次重试...")
                 if i == 3:
-                    self.calculate_time(5, 18)
+                    return self.calculate_time(5, 18)
                 else:
                     i += 1
             except requests.exceptions.ConnectionError:
                 print("无网络连接,使用默认时间")
                 i = 3
-                self.calculate_time(5, 18)
+                return self.calculate_time(5, 18)
 
     def calculate_sun(self, la, lo):
         dt = DateTime()
         sun_calculator = SunCalculator(dt.Y, dt.M, dt.D, la, lo)
         st = sun_calculator.getSunTimes()
-        self.calculate_time(int(st.sunrise), int(st.sunset))
+        return self.calculate_time(int(st.sunrise), int(st.sunset))
 
     def calculate_time(self, sunrise_time, sunset_time):
         sunrise = list(range(sunrise_time, sunrise_time + 4))
@@ -93,7 +90,7 @@ class Wallpaper24(object):
             night = list(range(sunset[-1], sunrise_time))
         else:
             night = list(range(sunset_time + 4, 24)) + list(range(0, sunrise_time))
-        self.read_json(sunrise, day, sunset, night)
+        return self.read_json(sunrise, day, sunset, night)
 
     def read_json(self, sunrise, day, sunset, night):
         json_name = find_first_json(self.unpackDir)
@@ -108,38 +105,46 @@ class Wallpaper24(object):
             index = sunrise.index(hour) // num
             if index >= len(theme["sunriseImageList"]):
                 index = -1
-            set_wallpaper(self.unpackDir + "/" + theme["imageFilename"].replace(
-                "*", str(theme["sunriseImageList"][index])))
+            with open(self.unpackDir + "/" + theme["imageFilename"].replace(
+                    "*", str(theme["sunriseImageList"][index])), 'rb') as fp:
+                data = fp.read()
+                return data
         elif hour in day:
             print('day')
             num = len(day) // len(theme["dayImageList"])
             index = day.index(hour) // num
             if index >= len(theme["dayImageList"]):
                 index = -1
-            set_wallpaper(self.unpackDir + "/" + theme["imageFilename"].replace(
-                "*", str(theme["dayImageList"][index])))
+            with open(self.unpackDir + "/" + theme["imageFilename"].replace(
+                    "*", str(theme["dayImageList"][index])), 'rb') as fp:
+                data = fp.read()
+            return data
         elif hour in sunset:
             print('sunset')
             num = len(sunset) // len(theme["sunsetImageList"])
             index = sunset.index(hour) // num
             if index >= len(theme["sunsetImageList"]):
                 index = -1
-            set_wallpaper(self.unpackDir + "/" + theme["imageFilename"].replace(
-                "*", str(theme["sunsetImageList"][index])))
+            with open(self.unpackDir + "/" + theme["imageFilename"].replace(
+                    "*", str(theme["sunsetImageList"][index])), 'rb') as fp:
+                data = fp.read()
+            return data
         elif hour in night:
             print('night')
             num = len(night) // len(theme["nightImageList"])
             index = night.index(hour) // num
             if index >= len(theme["nightImageList"]):
                 index = -1
-            set_wallpaper(self.unpackDir + "/" + theme["imageFilename"].replace(
-                "*", str(theme["nightImageList"][index])))
+            with open(self.unpackDir + "/" + theme["imageFilename"].replace(
+                    "*", str(theme["nightImageList"][index])), 'rb') as fp:
+                data = fp.read()
+            return data
         else:
             print("Error")
 
     def run(self):
         self.check()
-        self.get_location()
+        return self.get_location()
 
     @staticmethod
     def name():
