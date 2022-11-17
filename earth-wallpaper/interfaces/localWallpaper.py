@@ -1,7 +1,6 @@
 import os
 from PySide6.QtCore import QSettings, QStandardPaths, QDir
 
-
 class LocalWallpaper(object):
 
     def __init__(self):
@@ -33,11 +32,11 @@ class LocalWallpaper(object):
                 if self.files[i] == self.files[-1]:
                     with open(self.currentFile, 'w') as f:
                         f.write(self.files[0])
-                    return self.files[0]
+                    return os.path.join(self.wallpaperDir,self.files[0])
                 else:
                     with open(self.currentFile, 'w') as f:
                         f.write(self.files[i + 1])
-                    return self.files[i + 1]
+                    return os.path.join(self.wallpaperDir,self.files[i+1])
 
     def run(self):
         self.get_files()
