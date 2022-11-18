@@ -1,25 +1,14 @@
-from .utils.platformInfo import PlatformInfo
-from PySide6.QtCore import QSettings, QStandardPaths
-import requests
-import os
 from requests.structures import CaseInsensitiveDict
+from .utils.platformInfo import PlatformInfo
+from .utils.settings import Settings
+import requests
 import json
 
 
 class BingToday(object):
-    def __init__(self, proxy="None"):
-        config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
-        config_path = os.path.join(config_dir, "earth-wallpaper/config")
-        settings = QSettings(config_path, QSettings.IniFormat)
-        type_list = ["None", "http", "socks"]
-        prx_add = settings.value("System/proxyAdd")
-        prx_port = settings.value("System/proxyPort")
-        self.prx_type = type_list[int(settings.value("System/proxy"))]
-        if self.prx_type == "None":
-            self.proxies = {}
-        else:
-            self.proxies = {"http": f"{self.prx_type}://{prx_add}:{prx_port}",
-                            "https": f"{self.prx_type}://{prx_add}:{prx_port}"}
+    def __init__(self):
+        self.prx_type = Settings().prx_type()
+        self.proxies = Settings().proxies()
         self.bing_addr = "https://www.bing.com"
         self.request_url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
         self.download_path = PlatformInfo().download_path(".png")

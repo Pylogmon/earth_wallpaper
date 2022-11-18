@@ -1,6 +1,6 @@
 from .utils.sunCalculator import SunCalculator, DateTime
 from .utils.platformInfo import PlatformInfo
-from PySide6.QtCore import QSettings, QStandardPaths
+from .utils.settings import Settings
 import os
 import json
 import time
@@ -16,10 +16,7 @@ def find_first_json(dir_):
 
 class Wallpaper24(object):
     def __init__(self):
-        self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
-                                        "earth-wallpaper/config")
-        self.settings = QSettings(self.config_path, QSettings.IniFormat)
-        self.wallpaperFile = self.settings.value("APP/wallpaperFile")
+        self.wallpaperFile = Settings().wallpaper_file()
         self.cache = PlatformInfo().download_dir()
         self.download_path = PlatformInfo().download_path(".png")
         self.unpackDir = self.cache + self.wallpaperFile.split("/")[-1].split(".")[0]

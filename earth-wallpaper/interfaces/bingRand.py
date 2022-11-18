@@ -1,25 +1,13 @@
 from .utils.platformInfo import PlatformInfo
-from PySide6.QtCore import QSettings, QStandardPaths
+from .utils.settings import Settings
 import requests
-import os
-import json
 import hashlib
+import json
 
 
 class BingRand(object):
     def __init__(self):
-        config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
-        config_path = os.path.join(config_dir, "earth-wallpaper/config")
-        settings = QSettings(config_path, QSettings.IniFormat)
-        type_list = ["None", "http", "socks"]
-        prx_add = settings.value("System/proxyAdd")
-        prx_port = settings.value("System/proxyPort")
-        self.prx_type = type_list[int(settings.value("System/proxy"))]
-        if self.prx_type == "None":
-            self.proxies = {}
-        else:
-            self.proxies = {"http": f"{self.prx_type}://{prx_add}:{prx_port}",
-                            "https": f"{self.prx_type}://{prx_add}:{prx_port}"}
+        self.proxies = Settings().proxies()
         self.request_url = "https://bing.ioliu.cn/v1/rand?type=json"
         self.download_path = PlatformInfo().download_path(".png")
 
