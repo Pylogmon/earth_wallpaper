@@ -5,7 +5,7 @@ import os
 def set_wallpaper(file):
     sys = PlatformInfo().get_os()
 
-    if sys == "Windows":
+    if sys == "WINDOWS":
         import win32api, win32gui, win32con
         key = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,
                                     "Control Panel\\Desktop", 0,
@@ -16,7 +16,7 @@ def set_wallpaper(file):
         win32gui.SystemParametersInfo(win32con.SPI_SETDESKWALLPAPER, file,
                                       win32con.SPIF_SENDWININICHANGE)
 
-    elif sys == "Linux":
+    elif sys == "LINUX":
         de = os.getenv('XDG_CURRENT_DESKTOP')
         if de == "Deepin":
             import dbus
