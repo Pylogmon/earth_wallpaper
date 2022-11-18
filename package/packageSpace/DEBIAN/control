@@ -1,6 +1,0 @@
-Package: earth-wallpaper
-Version: 1.8.5.r10.g9df4c46
-Architecture: amd64
-Maintainer: ambition-echo <ambition_echo@outlook.com>
-Description: Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
-Depends: python3-dbus,python3-pil.imagetk,python3-requests,python3-PySide6

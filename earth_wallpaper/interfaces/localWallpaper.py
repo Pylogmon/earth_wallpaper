@@ -1,4 +1,4 @@
-from interfaces.utils.settings import Settings
+from .utils.settings import Settings
 from PySide6.QtCore import QDir
 import os
 

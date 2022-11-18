@@ -1,6 +1,6 @@
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QWidget
+from PySide6.QtCore import Qt, QUrl
+from PySide6.QtGui import QIcon, QDesktopServices
+from PySide6.QtWidgets import QWidget, QApplication
 from earth_wallpaper.ui.UI_about import Ui_About
 import os
 
@@ -21,4 +21,8 @@ class About(QWidget, Ui_About):
         self.version.setText("1.9.0")
 
     def _connect_(self):
-        pass
+        self.aboutQt.clicked.connect(QApplication.aboutQt)
+        self.checkUpdate.clicked.connect(self.check_update)
+
+    def check_update(self):
+        QDesktopServices.openUrl(QUrl("https://github.com/ambition-echo/earth_wallpaper/releases"))

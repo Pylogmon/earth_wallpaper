@@ -1,6 +1,6 @@
-from interfaces.utils.sunCalculator import SunCalculator, DateTime
-from interfaces.utils.platformInfo import PlatformInfo
-from interfaces.utils.settings import Settings
+from .utils.sunCalculator import SunCalculator, DateTime
+from .utils.platformInfo import PlatformInfo
+from .utils.settings import Settings
 import os
 import json
 import time

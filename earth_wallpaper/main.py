@@ -4,7 +4,8 @@ from PySide6.QtCore import QSharedMemory
 from earth_wallpaper.systemtray import SystemTray
 import sys
 
-if __name__ == "__main__":
+
+def main():
     app = QApplication()
 
     QApplication.setQuitOnLastWindowClosed(False)
@@ -18,3 +19,7 @@ if __name__ == "__main__":
 
     tray = SystemTray()
     sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    main()

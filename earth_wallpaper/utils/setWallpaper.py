@@ -1,4 +1,4 @@
-from utils.platformInfo import PlatformInfo
+from .platformInfo import PlatformInfo
 import os
 
 
