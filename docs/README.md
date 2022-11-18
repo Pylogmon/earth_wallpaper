@@ -6,32 +6,17 @@ Get real-time earth photos as wallpapers
 
 Not only real-time earth
 
-[![Build](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/build.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/build.yml)
-[![Aur](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/aur.yml/badge.svg)](https://github.com/ambition-echo/earth_wallpaper/actions/workflows/aur.yml)
-[![pipeline](https://jihulab.com/ambition-echo/earth_wallpaper/badges/main/pipeline.svg)](https://jihulab.com/ambition-echo/earth_wallpaper/commits/main)
-
 [![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![Release](https://img.shields.io/github/v/release/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![License](https://img.shields.io/github/license/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/blob/main/LICENSE)
 
 ## Quick Start
 
-### Deepin
+### Install
 
-Go to the [release](https://github.com/ambition-echo/earth_wallpaper/releases) page to download the installation
-package ```earth-wallpaper-deepin-amd64.deb```
-
-### Debian/Ubuntu
-
-Go to the [release](https://github.com/ambition-echo/earth_wallpaper/releases)page to download the installation
-package ```earth-wallpaper-other-amd64.deb```
-
-### Arch
-
-[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
-[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
-
-Download PKGBUILD from [AUR](https://aur.archlinux.org/packages/earth-wallpaper-bin)
+```shell
+pip install earth-wallpaper
+```
 
 ### Usage Notice
 
@@ -73,35 +58,18 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 
 ## Depends
 
-- Qt5
-- Python3
-- qdbus
-- python3-pil.imagetk
-- python3-requests
+- Pillow
+- PySide6
+- requests
+- setuptools
+- pywin32 (Only Windows)
 
-## Compile Manually
-
-- Clone the repository
+## Install Manually
 
 ```shell
 git clone https://jihulab.com/ambition-echo/earth_wallpaper.git
 cd earth_wallpaper
-mkdir build && cd build
-```
-
-- Compile and Build
-
-```shell
-cmake ..
-make
-```
-
-- Package
-
-```shell
-cd ../package
-chmod +x ./package.sh
-./package.sh
+python3 setup.py install
 ```
 
 ## Public API
