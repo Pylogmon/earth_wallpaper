@@ -1,8 +1,9 @@
 #!/bin/python3
+import sys
+sys.path.append(".")
 from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtCore import QSharedMemory
 from earth_wallpaper.systemtray import SystemTray
-import sys
 
 
 def main():
