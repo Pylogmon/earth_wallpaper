@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2.0.1 (2022-11-18)
+
+### New feature:
+
+- **ALL**: 完全使用PySide6重构 (by ambition_echo)
+- **interfaces**: 完成接口重构([`e7c69ef`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/e7c69eff21eb150f7440def2209c8e31b94a36bf)) (by ambition_echo)
+- **somewhere**: 完善线程安全([`0af698e`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/0af698e4ddd5613e2f3c3fcbc9a732f96f1511bc)) (by ambition_echo)
+- **somewhere**: 完善基本功能([`9df4c46`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/9df4c469be48599477394b898cb2ae7b1bd6a44c)) (by ambition_echo)
+
 ## 1.8.5 (2022-09-29)
 
 ### New feature:
