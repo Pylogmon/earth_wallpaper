@@ -1,6 +1,6 @@
 from requests.structures import CaseInsensitiveDict
-from .utils.platformInfo import PlatformInfo
-from .utils.settings import Settings
+from interfaces.utils.platformInfo import PlatformInfo
+from interfaces.utils.settings import Settings
 import requests
 import json
 

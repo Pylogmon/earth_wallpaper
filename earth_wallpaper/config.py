@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt, QSettings, QStandardPaths, Signal
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
-from ui.UI_config import Ui_Config
+from earth_wallpaper.ui.UI_config import Ui_Config
 import interfaces
 import os
 

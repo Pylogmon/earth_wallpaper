@@ -1,5 +1,5 @@
-from .utils.platformInfo import PlatformInfo
-from .utils.settings import Settings
+from interfaces.utils.platformInfo import PlatformInfo
+from interfaces.utils.settings import Settings
 from os.path import join
 from PIL import Image
 import requests

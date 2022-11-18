@@ -1,9 +1,9 @@
 from PySide6.QtCore import QStandardPaths, QTimer, QSettings, QSysInfo, QDir, QFile
 from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox
-from about import About
-from config import Config
-from thread import Thread
+from earth_wallpaper.about import About
+from earth_wallpaper.config import Config
+from earth_wallpaper.thread import Thread
 import sys
 import os
 

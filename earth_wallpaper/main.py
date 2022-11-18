@@ -1,7 +1,7 @@
 #!/bin/python3
 from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtCore import QSharedMemory
-from systemtray import SystemTray
+from earth_wallpaper.systemtray import SystemTray
 import sys
 
 if __name__ == "__main__":

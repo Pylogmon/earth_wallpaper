@@ -1,7 +1,7 @@
 from PySide6.QtCore import QThread
-from utils.setWallpaper import set_wallpaper
-from utils.platformInfo import PlatformInfo
-import interfaces
+from earth_wallpaper.utils.setWallpaper import set_wallpaper
+from earth_wallpaper.utils.platformInfo import PlatformInfo
+from earth_wallpaper import interfaces
 
 
 def get_class_name(name: str):

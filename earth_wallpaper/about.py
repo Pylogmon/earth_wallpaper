@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget
-from ui.UI_about import Ui_About
+from earth_wallpaper.ui.UI_about import Ui_About
 import os
 
 

@@ -1,9 +1,9 @@
+from utils.platformInfo import PlatformInfo
 import os
-import platform
 
 
 def set_wallpaper(file):
-    sys = platform.system()
+    sys = PlatformInfo().get_os()
 
     if sys == "Windows":
         import win32api, win32gui, win32con
