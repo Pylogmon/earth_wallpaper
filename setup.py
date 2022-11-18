@@ -9,6 +9,7 @@ requires_list=[
     'PySide6',
     'requests',
     'setuptools',
+    'dbus-python'
 ]
 if platform.system()=="Windows":
     requires_list.append('pywin32')
