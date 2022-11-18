@@ -5,7 +5,7 @@ from earth_wallpaper.ui.UI_about import Ui_About
 import os
 
 
-def version():
+def get_version():
     return "2.0.1"
 
 
@@ -22,7 +22,7 @@ class About(QWidget, Ui_About):
         self.show()
 
     def initUI(self):
-        self.version.setText(version())
+        self.version.setText(get_version())
 
     def _connect_(self):
         self.aboutQt.clicked.connect(QApplication.aboutQt)

@@ -1,6 +1,6 @@
 #!/bin/python3
 from setuptools import setup, find_packages
-from earth_wallpaper.about import version
+from earth_wallpaper.about import get_version
 import platform
 
 
@@ -18,7 +18,7 @@ with open("README.md", "r", encoding='utf-8') as fh:
 
 setup(
     name='earth-wallpaper',
-    version=version(),
+    version=get_version(),
     url='https://github.com/ambition-echo/earth_wallpaper',
     description='Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件',
     long_description=long_description,
