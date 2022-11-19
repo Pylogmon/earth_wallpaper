@@ -30,7 +30,7 @@ class BingRand(object):
         }
         while True:
             img_url = self.get_img_url()
-            print(img_url, end=" ")
+            print(img_url)
             img = requests.get(img_url, headers=headers, proxies=self.proxies)
             # 检测无效数据
             if len(img.text)==1170:
