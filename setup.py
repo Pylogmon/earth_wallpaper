@@ -1,17 +1,7 @@
 #!/bin/python3
 from setuptools import setup, find_packages
 from earth_wallpaper.about import get_version
-import platform
 
-
-requires_list=[
-    'Pillow',
-    'PySide6',
-    'requests',
-    'dbus'
-]
-if platform.system()=="Windows":
-    requires_list.append('pywin32')
 
 with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
@@ -34,5 +24,11 @@ setup(
     entry_points={
         'console_scripts': ['earth-wallpaper = earth_wallpaper.main:main']
     },
-    install_requires=requires_list
+    install_requires=[
+        'Pillow',
+        'PySide6',
+        'requests',
+        'dbus-python; platform_system == "Linux"',
+        'pywin32; platform_system == "Windows"'
+    ]
 )
