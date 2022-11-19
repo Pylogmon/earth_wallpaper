@@ -8,7 +8,7 @@ requires_list=[
     'Pillow',
     'PySide6',
     'requests',
-    'setuptools',
+    'dbus'
 ]
 if platform.system()=="Windows":
     requires_list.append('pywin32')
