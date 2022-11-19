@@ -7,7 +7,6 @@ import json
 
 class BingToday(object):
     def __init__(self):
-        self.prx_type = Settings().prx_type()
         self.proxies = Settings().proxies()
         self.bing_addr = "https://www.bing.com"
         self.request_url = "http://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1"
