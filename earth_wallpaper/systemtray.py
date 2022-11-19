@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox
 from earth_wallpaper.about import About
 from earth_wallpaper.config import Config
 from earth_wallpaper.thread import Thread
+from earth_wallpaper.utils.platformInfo import PlatformInfo
 import sys
 import os
 
@@ -71,12 +72,7 @@ class SystemTray(QSystemTrayIcon):
         self.timer.start(60000 * int(settings.value("APP/updateTime")))
 
     def save_current_img(self):
-        if QSysInfo.productType() == "windows":
-            dir_path = QStandardPaths.writableLocation(
-                QStandardPaths.HomeLocation) + "/AppData/Roaming/earth-wallpaper/wallpaper/"
-        else:
-            dir_path = QStandardPaths.writableLocation(
-                QStandardPaths.HomeLocation) + "/.cache/earth-wallpaper/wallpaper/"
+        dir_path=PlatformInfo.download_dir()
 
         dir_ = QDir(dir_path)
         name_filters = ["[1-9]*"]

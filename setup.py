@@ -34,5 +34,5 @@ setup(
     entry_points={
         'console_scripts': ['earth-wallpaper = earth_wallpaper.main:main']
     },
-    requires=requires_list
+    install_requires=requires_list
 )
