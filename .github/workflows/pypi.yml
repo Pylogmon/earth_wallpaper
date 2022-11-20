@@ -22,6 +22,8 @@ jobs:
           python-version: '3.10' 
       - name: Install Python Models
         run: |
+          sudo apt update
+          sudo apt install -y dbus
           pip install --upgrade pip
           pip install pillow requests dbus-python pyside6
       - name: Build Python package
