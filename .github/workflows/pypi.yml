@@ -23,7 +23,7 @@ jobs:
       - name: Install Python Models
         run: |
           pip install --upgrade pip
-          pip install pillow request dbus-python pyside6
+          pip install pillow requests dbus-python pyside6
       - name: Build Python package
         run: bash ./pypi/upload.sh
       - name: Publish package
