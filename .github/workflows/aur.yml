@@ -17,11 +17,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: change nightly version
-        if: startsWith(github.ref, 'refs/heads')
         run: |
           sed -i "s/pkgver=.*/pkgver=$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" aur/nightly/PKGBUILD
       - name: Upload Release to AUR
-        if: startsWith(github.ref, 'refs/heads')
         uses: KSXGitHub/github-actions-deploy-aur@v2.4.1
         with:
           pkgname: earth-wallpaper-nightly
@@ -41,11 +39,9 @@ jobs:
         with:
           fetch-depth: 0
       - name: change bin version
-        if: startsWith(github.ref, 'refs/tags')
         run: |
           sed -i "s/pkgver=.*/pkgver=$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" aur/bin/PKGBUILD
       - name: Upload Release to AUR
-        if: startsWith(github.ref, 'refs/tags')
         uses: KSXGitHub/github-actions-deploy-aur@v2.4.1
         with:
           pkgname: earth-wallpaper-bin
