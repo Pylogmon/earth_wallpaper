@@ -8,6 +8,7 @@ package:
   stage: package
   image: ubuntu:latest
   script:
+    - sudo apt-get install -y git
     - mkdir -p deb/opt/earth-wallpaper
     - cp -r earth_wallpaper deb/opt/earth-wallpaper/earth_wallpaper
     - |
