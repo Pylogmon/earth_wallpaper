@@ -1,3 +1,4 @@
 #!/bin/bash
-python3 -m pip install pyside6 pillow requests dbus-python
-chmod +x /opt/earth-wallpaper/earth_wallpaper
+python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
+python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyside6 pillow requests dbus-python
+chmod +x /opt/earth-wallpaper/earth_wallpaper/main.py
