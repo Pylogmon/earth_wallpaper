@@ -1,4 +1,4 @@
-name: telegram message
+name: Notify
 on: [issues, issue_comment, pull_request]
 jobs:
   notify:
@@ -18,4 +18,4 @@ jobs:
 
             earth-wallpaper 仓库有新的动态。
             
-            事件类型: ${{ github.event——name }}
+            事件类型: ${{ github.event_name }}
