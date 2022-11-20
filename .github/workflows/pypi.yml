@@ -18,8 +18,8 @@ jobs:
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v4
-      with:
-        python-version: '3.10' 
+        with:
+          python-version: '3.10' 
       - run: pip install pillow request dbus-python pyside6
       - name: Build Python package
         run: bash ./pypi/upload.sh
