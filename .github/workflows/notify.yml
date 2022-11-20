@@ -1,5 +1,5 @@
 name: Notify
-on: [issues, issue_comment, pull_request]
+on: [issues, issue_comment, pull_request_target]
 jobs:
   notify:
     name: Notify
