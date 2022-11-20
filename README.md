@@ -2,37 +2,43 @@
 
 ### [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
 
-实时获取地球照片作为壁纸
-
-不仅仅是地球壁纸
+简单好用的多功能壁纸软件
 
 [![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![Release](https://img.shields.io/github/v/release/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![License](https://img.shields.io/github/license/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/blob/main/LICENSE)
 
-## 快速开始
+[![PyPI](https://img.shields.io/pypi/v/earth-wallpaper?logo=python)](https://pypi.org/project/earth-wallpaper/)
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin?label=earth-wallpaper-bin&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
 
-### 安装
+## 安装
 
-#### Linux
-##### Debian
+### Linux
+
+#### Debian
+
 下载`earth-wallpaper-amd64.deb`后使用apt或dpkg安装
-##### Arch
-通过AUR安装
+
+#### Arch
+
+通过[AUR](https://aur.archlinux.org/packages?O=0&K=earth-wallpaper-)安装
 ```shell
 # paru
-paru -S earth-wallpaper-bin
+paru -S earth-wallpaper-bin # or earth-wallpaper-nightly
 # yay
-yay -S earth-wallpaper-bin
+yay -S earth-wallpaper-bin  # or earth-wallpaper-nightly
 ```
-#### Windows
+### Windows
+
 Windows推荐使用pip安装
 需要实现安装好python3
 ```shell
-pip install earth-wallpaper
+pip install earth-wallpaper # 安装
+pip install earth-wallpaper --upgrade # 更新
 ```
 
-### 使用须知
+## 使用须知
 
 第一次运行时会弹出设置窗口，点击```应用```即可开始运行
 

@@ -2,22 +2,32 @@
 
 ### [中文](https://github.com/ambition-echo/earth_wallpaper#readme)
 
-Get real-time earth photos as wallpapers
-
-Not only real-time earth
+Simple and easy to use multifunctional wallpaper software
 
 [![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![Release](https://img.shields.io/github/v/release/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![License](https://img.shields.io/github/license/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/blob/main/LICENSE)
 
-## Quick Start
+[![PyPI](https://img.shields.io/pypi/v/earth-wallpaper?logo=python)](https://pypi.org/project/earth-wallpaper/)
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin?label=earth-wallpaper-bin&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
+[![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
 
-### Install
+## Install
 
+### Linux
+
+#### Debian
+Download `earth-wallpaper-amd64.deb` and install via apt or dpkg
+#### Arch
+Install from [AUR](https://aur.archlinux.org/packages?O=0&K=earth-wallpaper-)
+
+### Windows
+Install via pip
+need python3 installed
 ```shell
-pip install earth-wallpaper
+pip install earth-wallpaper # install
+pip install earth-wallpaper --upgrade #update
 ```
-
 ### Usage Notice
 
 When you run it for the first time, the settings window will pop up, click ```Apply``` to start running
