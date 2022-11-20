@@ -64,8 +64,9 @@ def set_wallpaper(file):
             gs = "gsettings set org.mate.background picture-filename {}".format(
                 file)
             os.system(gs)
-        elif de == 'LXQt' or de == 'LXDE':
+        elif de == 'LXQt':
             os.system("pcmanfm-qt -w {}".format(file))
+        elif de == 'LXDE':
             os.system("pcmanfm -w {}".format(file))
         else:
             print("该桌面环境暂不支持")
