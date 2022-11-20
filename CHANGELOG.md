@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.4 (2022-11-20)
+
+### Bugs fixed:
+
+- **interfaces**: 修复随机壁纸资源占用过高的问题([`59a8bc9`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/59a8bc91618020e4df768e7c58bcfa970f7b64b0)) (by ambition_echo)
+
 ## 2.0.1 (2022-11-18)
 
 ### New feature:
