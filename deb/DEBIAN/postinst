@@ -1,0 +1,3 @@
+#!/bin/bash
+python3 -m pip install pyside6 pillow requests dbus-python
+chmod +x /opt/earth-wallpaper/earth_wallpaper
