@@ -5,3 +5,5 @@ __py*
 cmake-build*
 .idea
 .vscode
+dist
+*egg-info*

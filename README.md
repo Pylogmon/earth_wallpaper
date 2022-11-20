@@ -14,7 +14,20 @@
 
 ### 安装
 
-推荐使用pip安装
+#### Linux
+##### Debian
+下载`earth-wallpaper-amd64.deb`后使用apt或dpkg安装
+##### Arch
+通过AUR安装
+```shell
+# paru
+paru -S earth-wallpaper-bin
+# yay
+yay -S earth-wallpaper-bin
+```
+#### Windows
+Windows推荐使用pip安装
+需要实现安装好python3
 ```shell
 pip install earth-wallpaper
 ```

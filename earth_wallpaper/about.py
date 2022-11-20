@@ -6,7 +6,7 @@ import os
 
 
 def get_version():
-    return "2.0.3"
+    return "2.0.5"
 
 
 class About(QWidget, Ui_About):
