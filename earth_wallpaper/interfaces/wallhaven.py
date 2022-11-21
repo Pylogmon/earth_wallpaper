@@ -69,5 +69,5 @@ class Wallhaven(object):
 
     @staticmethod
     def layout():
-        layout_list = ["apikeyGroup", "categoriesGroup", "purityGroup", "sortingGroup"]
+        layout_list = ["updateTimeGroup", "apikeyGroup", "categoriesGroup", "purityGroup", "sortingGroup"]
         return layout_list
