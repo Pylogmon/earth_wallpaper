@@ -59,7 +59,7 @@ class Settings(object):
         return trans(str(self.settings.value("APP/NSFW")))
 
     def sorting(self):
-        return self.settings.value("APP/sorting")
+        return self.settings.value("APP/sorting").lower().replace(" ", "_")
 
     @staticmethod
     def desktop_res() -> (int, int):

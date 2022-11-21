@@ -40,7 +40,7 @@ class Wallhaven(object):
         self.search_url += f"&sorting={self.sorting}"
         if not len(self.apikey) == 0:
             self.search_url += f"&apikey={self.apikey}"
-        print(self.search_url)
+        print("列表json: " + self.search_url)
 
     def get_img_url(self):
         img_info = requests.get(self.search_url, proxies=self.proxies)
@@ -49,12 +49,13 @@ class Wallhaven(object):
             self.img_url += img_info_json[randint(0, len(img_info_json) - 1)]["id"]
             if not len(self.apikey) == 0:
                 self.img_url += f"?apikey={self.apikey}"
-            print(self.img_url)
+            print("图像信息json: " + self.img_url)
 
     def download(self):
         img_info = requests.get(self.img_url, proxies=self.proxies)
         if img_info.ok:
             download_url = json.loads(img_info.content.decode())["data"]["path"]
+            print("图像url: " + download_url)
             img = requests.get(download_url, proxies=self.proxies)
             return img.content
 
