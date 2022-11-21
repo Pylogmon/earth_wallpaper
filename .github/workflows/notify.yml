@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get issue_comment content
-        if: ${{ git.event.issues_comment }}
+        if: ${{ github.event.issues_comment }}
         run: |
             echo "CONTENT=${{ github.event.comment.body }}" >> $GITHUB_ENV
       - name: get issues content
