@@ -1,12 +1,25 @@
-from PySide6.QtCore import Qt, QUrl
-from PySide6.QtGui import QIcon, QDesktopServices
-from PySide6.QtWidgets import QWidget, QApplication
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QWidget, QApplication, QMessageBox
 from earth_wallpaper.ui.UI_about import Ui_About
+import requests
+import json
 import os
 
 
 def get_version():
-    return "2.0.5"
+    return "2.0.9"
+
+
+def compare(remote, local):
+    if int(remote[0]) > int(local[0]):
+        return True
+    elif int(remote[1]) > int(local[1]):
+        return True
+    elif int(remote[2]) > int(local[2]):
+        return True
+    else:
+        return False
 
 
 class About(QWidget, Ui_About):
@@ -29,4 +42,14 @@ class About(QWidget, Ui_About):
         self.checkUpdate.clicked.connect(self.check_update)
 
     def check_update(self):
-        QDesktopServices.openUrl(QUrl("https://github.com/ambition-echo/earth_wallpaper/releases"))
+        url = "https://api.github.com/repos/ambition-echo/earth_wallpaper/tags"
+        tags_json = requests.get(url)
+        if tags_json.ok:
+            remote_tag = json.loads(tags_json.content.decode())[0]["name"]
+            local_tag = get_version().split('.')
+            message = QMessageBox()
+            if compare(remote_tag.split('.'), local_tag):
+                QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
+                                        QMessageBox.Yes)
+            else:
+                QMessageBox.information(message, "无可用更新", f"当前版本为最新版本，无需更新", QMessageBox.Yes)
