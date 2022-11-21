@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2.0.7 (2022-11-21)
+
+### New feature:
+
+- **interfaces**: 添加wallhaven网站接口([`59e97e0`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/59e97e068e95f1f3b5181d6ddf939166aa6a79c5)) (by ambition_echo)
+
 ## 2.0.4 (2022-11-20)
 
 ### Bugs fixed:
