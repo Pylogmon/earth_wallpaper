@@ -3,6 +3,13 @@ from PySide6.QtWidgets import QApplication
 import os
 
 
+def trans(i: str) -> bool:
+    if i == "true" or i == "True":
+        return True
+    if i == "false" or i == "False":
+        return False
+
+
 class Settings(object):
     def __init__(self):
         config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
@@ -29,6 +36,30 @@ class Settings(object):
 
     def earth_size(self) -> int:
         return int(self.settings.value("APP/earthSize"))
+
+    def apikey(self) -> str:
+        return self.settings.value("APP/apikey")
+
+    def general(self):
+        return trans(str(self.settings.value("APP/General")))
+
+    def anime(self):
+        return trans(str(self.settings.value("APP/Anime")))
+
+    def people(self):
+        return trans(str(self.settings.value("APP/People")))
+
+    def sfw(self):
+        return trans(str(self.settings.value("APP/SFW")))
+
+    def sketchy(self):
+        return trans(str(self.settings.value("APP/Sketchy")))
+
+    def nsfw(self):
+        return trans(str(self.settings.value("APP/NSFW")))
+
+    def sorting(self):
+        return self.settings.value("APP/sorting")
 
     @staticmethod
     def desktop_res() -> (int, int):

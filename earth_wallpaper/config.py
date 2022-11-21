@@ -13,6 +13,13 @@ def _get_class_name_(name: str):
             return i
 
 
+def trans(i: str) -> bool:
+    if i == "true" or i == "True":
+        return True
+    if i == "false" or i == "False":
+        return False
+
+
 class Config(QWidget, Ui_Config):
     configChanged = Signal()
 
@@ -36,13 +43,25 @@ class Config(QWidget, Ui_Config):
                 break
             name = getattr(interfaces, i).name()
             self.source.addItem(name)
+        self.sorting.addItem("Relevance")
+        self.sorting.addItem("Random")
+        self.sorting.addItem("Date Added")
+        self.sorting.addItem("Views")
+        self.sorting.addItem("Favorites")
+        self.sorting.addItem("Toplist")
+        self.sorting.addItem("Hot")
 
     def _update_layout_(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
         earthSizeGroup = [self.earthSize, self.earthSize_l]
         wallpaperDirGroup = [self.wallpaperDir, self.wallpaperDir_l, self.selectDir]
         wallpaperFileGroup = [self.wallpaperFile, self.wallpaperFile_l, self.selectFile]
-        all_layout = [updateTimeGroup, earthSizeGroup, wallpaperDirGroup, wallpaperFileGroup]
+        apikeyGroup = [self.apikey_l, self.apikey]
+        categoriesGroup = [self.categories_l, self.General, self.Anime, self.People]
+        purityGroup = [self.purity_l, self.SFW, self.Sketchy, self.NSFW]
+        sortingGroup = [self.sorting_l, self.sorting]
+        all_layout = [updateTimeGroup, earthSizeGroup, wallpaperDirGroup, wallpaperFileGroup, apikeyGroup,
+                      categoriesGroup, purityGroup, sortingGroup]
         class_name = _get_class_name_(self.source.currentText())
         layout_list = getattr(interfaces, class_name).layout()
         for i in all_layout:
@@ -61,23 +80,35 @@ class Config(QWidget, Ui_Config):
 
     def check(self):
         if os.path.exists(self.config_path):
-            return
-        else:
             settings = QSettings(self.config_path, QSettings.IniFormat)
-            settings.beginGroup("APP")
-            settings.setValue("wallpaperSource", "风云四号")
-            settings.setValue("updateTime", 30)
-            settings.setValue("earthSize", 60)
-            settings.setValue("wallpaperDir", "/")
-            settings.setValue("wallpaperFile", "/")
-            settings.endGroup()
+            if 'APP/apikey' not in settings.allKeys():
+                self.set_default_config()
+            else:
+                return
+        else:
+            self.set_default_config()
 
-            settings.beginGroup("System")
-            settings.setValue("proxy", 0)
+    def set_default_config(self):
+        settings = QSettings(self.config_path, QSettings.IniFormat)
+        settings.beginGroup("APP")
+        settings.setValue("wallpaperSource", "风云四号")
+        settings.setValue("updateTime", 30)
+        settings.setValue("earthSize", 60)
+        settings.setValue("General", True)
+        settings.setValue("Anime", False)
+        settings.setValue("People", False)
+        settings.setValue("SFW", True)
+        settings.setValue("Sketchy", False)
+        settings.setValue("NSFW", False)
+        settings.setValue("sorting", "Random")
+        settings.endGroup()
 
-            settings.setValue("proxyAdd", "")
-            settings.setValue("proxyPort", "")
-            settings.endGroup()
+        settings.beginGroup("System")
+        settings.setValue("proxy", 0)
+
+        settings.setValue("proxyAdd", "")
+        settings.setValue("proxyPort", "")
+        settings.endGroup()
 
     def read_config(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
@@ -88,6 +119,18 @@ class Config(QWidget, Ui_Config):
         self.earthSize.setValue(int(settings.value("earthSize")))
         self.wallpaperDir.setText(settings.value("wallpaperDir"))
         self.wallpaperFile.setText(settings.value("wallpaperFile"))
+        self.apikey.setText(settings.value("apikey"))
+        # setting.value('General')
+        # 返回的值有时候是str 'false'
+        # 有时候是bool False
+        # 猜测是因为从内存中读的是bool,从文件中读的是str
+        self.General.setChecked(trans(str(settings.value("General"))))
+        self.Anime.setChecked(trans(str(settings.value("Anime"))))
+        self.People.setChecked(trans(str(settings.value("People"))))
+        self.SFW.setChecked(trans(str(settings.value("SFW"))))
+        self.Sketchy.setChecked(trans(str(settings.value("Sketchy"))))
+        self.NSFW.setChecked(trans(str(settings.value("NSFW"))))
+        self.sorting.setCurrentText(settings.value("sorting"))
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -110,6 +153,14 @@ class Config(QWidget, Ui_Config):
         settings.setValue("earthSize", self.earthSize.value())
         settings.setValue("wallpaperDir", self.wallpaperDir.text())
         settings.setValue("wallpaperFile", self.wallpaperFile.text())
+        settings.setValue("apikey", self.apikey.text())
+        settings.setValue("General", self.General.isChecked())
+        settings.setValue("Anime", self.Anime.isChecked())
+        settings.setValue("People", self.People.isChecked())
+        settings.setValue("SFW", self.SFW.isChecked())
+        settings.setValue("Sketchy", self.Sketchy.isChecked())
+        settings.setValue("NSFW", self.NSFW.isChecked())
+        settings.setValue("sorting", self.sorting.currentText())
         settings.endGroup()
 
         settings.beginGroup("System")

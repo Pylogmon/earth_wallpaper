@@ -5,6 +5,7 @@ from .localWallpaper import LocalWallpaper
 from .wallpaper24 import Wallpaper24
 from .fengYun4 import FengYun4
 from .himawari8 import Himawari8
+from .wallhaven import Wallhaven
 
 __all__ = [
     "Anime",
@@ -13,5 +14,6 @@ __all__ = [
     "LocalWallpaper",
     "Wallpaper24",
     "FengYun4",
-    "Himawari8"
+    "Himawari8",
+    "Wallhaven"
 ]
