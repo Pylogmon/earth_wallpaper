@@ -18,7 +18,7 @@ jobs:
       - name: get issues content
         if: github.event_name == 'issues'
         run: |
-          echo "CONTENT=${{ github.event.changes.old_issue.body }}" >> $GITHUB_ENV
+          echo "CONTENT=${{ github.event.issue.title }}" >> $GITHUB_ENV
       - name: get pull_request content
         if: github.event_name == 'pull_request_target'
         run: |
