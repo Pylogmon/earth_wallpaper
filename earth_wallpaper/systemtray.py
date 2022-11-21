@@ -1,4 +1,4 @@
-from PySide6.QtCore import QStandardPaths, QTimer, QSettings, QSysInfo, QDir, QFile
+from PySide6.QtCore import QStandardPaths, QTimer, QSettings, QDir, QFile
 from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox
 from earth_wallpaper.about import About
@@ -14,8 +14,9 @@ class SystemTray(QSystemTrayIcon):
     def __init__(self):
         super(SystemTray, self).__init__()
         self.threads = []
-        self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
-                                        "earth-wallpaper/config")
+        self.config_page = None
+        self.about_page = None
+        self.config_path = PlatformInfo.config_path()
         self.path = os.path.split(os.path.realpath(__file__))[0]
         self.setIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.save = QAction("保存当前壁纸")
@@ -67,23 +68,24 @@ class SystemTray(QSystemTrayIcon):
                 t.deleteLater()
                 self.threads.remove(t)
 
-        self.threads.append(Thread(settings.value("APP/earthSource")))
+        self.threads.append(Thread(settings.value("APP/wallpaperSource")))
         self.threads[-1].start()
         self.timer.start(60000 * int(settings.value("APP/updateTime")))
 
-    def save_current_img(self):
-        dir_path=PlatformInfo.download_dir()
+    @staticmethod
+    def save_current_img():
+        img_dir = PlatformInfo.download_dir()
 
-        dir_ = QDir(dir_path)
+        dir_ = QDir(img_dir)
         name_filters = ["[1-9]*"]
         dir_.setNameFilters(name_filters)
         files = dir_.entryList(QDir.Files, QDir.Name)
-        picturePath = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
-        if not QDir(picturePath).exists():
-            QDir(picturePath).mkpath(picturePath)
-        source = QFile(dir_path + files[0])
+        picture_dir = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
+        if not QDir(picture_dir).exists():
+            QDir(picture_dir).mkpath(picture_dir)
+        source = QFile(os.path.join(img_dir, files[0]))
 
-        target = QFile(picturePath + "/" + files[len(files) - 1])
+        target = QFile(os.path.join(picture_dir, files[0]))
         message = QMessageBox()
         if not target.exists():
             if source.copy(target.fileName()):

@@ -6,7 +6,7 @@ import os
 class Settings(object):
     def __init__(self):
         config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
-        config_path = os.path.join(config_dir, "earth-wallpaper/config")
+        config_path = os.path.join(config_dir, "earth-wallpaper/earth-wallpaper.conf")
         self.settings = QSettings(config_path, QSettings.IniFormat)
 
     def proxies(self) -> dict:

@@ -1,7 +1,8 @@
-from PySide6.QtCore import Qt, QSettings, QStandardPaths, Signal
+from PySide6.QtCore import Qt, QSettings, Signal
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from earth_wallpaper.ui.UI_config import Ui_Config
+from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper import interfaces
 import os
 
@@ -18,8 +19,7 @@ class Config(QWidget, Ui_Config):
     def __init__(self):
         super(Config, self).__init__()
         self.setAttribute(Qt.WA_DeleteOnClose)
-        self.config_path = os.path.join(QStandardPaths.writableLocation(QStandardPaths.ConfigLocation),
-                                        "earth-wallpaper/config")
+        self.config_path = PlatformInfo.config_path()
         self.path = os.path.split(os.path.realpath(__file__))[0]
         self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
@@ -65,7 +65,7 @@ class Config(QWidget, Ui_Config):
         else:
             settings = QSettings(self.config_path, QSettings.IniFormat)
             settings.beginGroup("APP")
-            settings.setValue("earthSource", "风云四号")
+            settings.setValue("wallpaperSource", "风云四号")
             settings.setValue("updateTime", 30)
             settings.setValue("earthSize", 60)
             settings.setValue("wallpaperDir", "/")
@@ -83,7 +83,7 @@ class Config(QWidget, Ui_Config):
         settings = QSettings(self.config_path, QSettings.IniFormat)
 
         settings.beginGroup("APP")
-        self.source.setCurrentText(settings.value("earthSource"))
+        self.source.setCurrentText(settings.value("wallpaperSource"))
         self.updateTime.setValue(int(settings.value("updateTime")))
         self.earthSize.setValue(int(settings.value("earthSize")))
         self.wallpaperDir.setText(settings.value("wallpaperDir"))
@@ -105,7 +105,7 @@ class Config(QWidget, Ui_Config):
     def write_config(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
         settings.beginGroup("APP")
-        settings.setValue("earthSource", self.source.currentText())
+        settings.setValue("wallpaperSource", self.source.currentText())
         settings.setValue("updateTime", self.updateTime.value())
         settings.setValue("earthSize", self.earthSize.value())
         settings.setValue("wallpaperDir", self.wallpaperDir.text())
