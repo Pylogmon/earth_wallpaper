@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get issue_comment content
-        if: ${{ github.event.issues_comment }}
+        if: github.event_name == 'issue_comment'
         run: |
             echo "CONTENT=${{ github.event.comment.body }}" >> $GITHUB_ENV
       - name: get issues content
-        if: ${{ github.event.issues }}
+        if: github.event_name == 'issues'
         run: |
           echo "CONTENT=${{ github.event.changes.old_issue.body }}" >> $GITHUB_ENV
       - name: get pull_request content
-        if: ${{ github.event.pull_request_target }}
+        if: github.event_name == 'pull_request_target'
         run: |
           echo "CONTENT=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
       # 发送到Telegram
