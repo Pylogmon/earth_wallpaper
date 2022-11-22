@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 2.1.2 (2022-11-22)
+
+### New feature:
+
+- **config**: 新增删除缓存功能([`d484a42`](https://github.com/ambition-echo/earth_wallpaper/commit/d484a42ca7cb2a371ec8ba8fe97fcbb4f45564c1)) (by ambition_echo)
+
+### Bugs fixed:
+
+- **deb**: 修复control格式([`97b410f`](https://github.com/ambition-echo/earth_wallpaper/commit/97b410fa174a6596220a51b7a95ca6810b83cfa1)) (by ambition_echo)
+- **package**: 修复deb包依赖([`aa3b7df`](https://github.com/ambition-echo/earth_wallpaper/commit/aa3b7df50cc20be946ab400eb6bfef52d63c2bb3)) (by ambition_echo)
+- **wallhaven**: 只获取横版图片([`c8771a0`](https://github.com/ambition-echo/earth_wallpaper/commit/c8771a02aad12023c6b8e1c6d0e5f654b2d4e603)) (by ambition_echo)
+
 ## 2.1.1 (2022-11-22)
 
 ### Bugs fixed:
