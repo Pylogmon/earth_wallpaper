@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2.1.1 (2022-11-22)
+
+### Bugs fixed:
+
+- **ci**: 修复打包脚本导致的版本异常问题([`8632db8`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/8632db88a2ecf174100e2e829bbdc13ee52c0236)) (by ambition_echo)
 ## 2.1.0 (2022-11-22)
 
 ### New feature:
