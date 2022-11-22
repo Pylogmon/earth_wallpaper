@@ -70,6 +70,7 @@ class Config(QWidget, Ui_Config):
         for i in layout_list:
             for j in locals()[i]:
                 j.show()
+        self.resize(1, 1)
 
     def _connect_(self):
         self.source.currentIndexChanged.connect(self._update_layout_)
