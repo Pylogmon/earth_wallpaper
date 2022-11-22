@@ -1,10 +1,13 @@
 #!/bin/python3
 import sys, os
+
 # 添加path路径，否则有可能会找不到模块
 sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 from PySide6.QtWidgets import QApplication, QMessageBox
 from earth_wallpaper.systemtray import SystemTray
 from PySide6.QtCore import QSharedMemory
+from earth_wallpaper.about import check_update
+
 
 def main():
     app = QApplication()
@@ -19,6 +22,7 @@ def main():
     lock.create(10)
 
     tray = SystemTray()
+    check_update()
     sys.exit(app.exec())
 
 

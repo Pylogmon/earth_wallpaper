@@ -22,6 +22,23 @@ def compare(remote, local):
         return False
 
 
+def check_update():
+    print("检查更新")
+    url = "https://api.github.com/repos/ambition-echo/earth_wallpaper/tags"
+    tags_json = requests.get(url)
+    if tags_json.ok:
+        remote_tag = json.loads(tags_json.content.decode())[0]["name"]
+        local_tag = get_version().split('.')
+        if compare(remote_tag.split('.'), local_tag):
+            message = QMessageBox()
+            QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
+                                    QMessageBox.Yes)
+            return True
+        else:
+            print("最新")
+            return False
+
+
 class About(QWidget, Ui_About):
 
     def __init__(self):
@@ -39,17 +56,12 @@ class About(QWidget, Ui_About):
 
     def _connect_(self):
         self.aboutQt.clicked.connect(QApplication.aboutQt)
-        self.checkUpdate.clicked.connect(self.check_update)
+        self.checkUpdate.clicked.connect(self.check)
 
-    def check_update(self):
-        url = "https://api.github.com/repos/ambition-echo/earth_wallpaper/tags"
-        tags_json = requests.get(url)
-        if tags_json.ok:
-            remote_tag = json.loads(tags_json.content.decode())[0]["name"]
-            local_tag = get_version().split('.')
-            message = QMessageBox()
-            if compare(remote_tag.split('.'), local_tag):
-                QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
-                                        QMessageBox.Yes)
-            else:
-                QMessageBox.information(message, "无可用更新", f"当前版本为最新版本，无需更新", QMessageBox.Yes)
+    @staticmethod
+    def check(self):
+        message = QMessageBox()
+        if check_update():
+            pass
+        else:
+            QMessageBox.information(message, "无可用更新", f"当前版本为最新版本，无需更新", QMessageBox.Yes)
