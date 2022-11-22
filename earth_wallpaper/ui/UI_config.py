@@ -24,7 +24,7 @@ class Ui_Config(object):
     def setupUi(self, Config):
         if not Config.objectName():
             Config.setObjectName(u"Config")
-        Config.resize(346, 534)
+        Config.resize(346, 572)
         self.gridLayout_3 = QGridLayout(Config)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.AppSettings = QGroupBox(Config)
@@ -182,6 +182,20 @@ class Ui_Config(object):
 
         self.gridLayout_3.addWidget(self.AppSettings, 0, 0, 1, 3)
 
+        self.applySpacer = QSpacerItem(57, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.applySpacer, 2, 0, 1, 1)
+
+        self.applyBtn = QPushButton(Config)
+        self.applyBtn.setObjectName(u"applyBtn")
+
+        self.gridLayout_3.addWidget(self.applyBtn, 2, 1, 1, 1)
+
+        self.closeBtn = QPushButton(Config)
+        self.closeBtn.setObjectName(u"closeBtn")
+
+        self.gridLayout_3.addWidget(self.closeBtn, 2, 2, 1, 1)
+
         self.SystemSettings = QGroupBox(Config)
         self.SystemSettings.setObjectName(u"SystemSettings")
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
@@ -248,22 +262,13 @@ class Ui_Config(object):
 
         self.gridLayout.addLayout(self.addGroup, 1, 0, 1, 1)
 
+        self.clearCache = QPushButton(self.SystemSettings)
+        self.clearCache.setObjectName(u"clearCache")
+
+        self.gridLayout.addWidget(self.clearCache, 2, 0, 1, 1)
+
 
         self.gridLayout_3.addWidget(self.SystemSettings, 1, 0, 1, 3)
-
-        self.applySpacer = QSpacerItem(57, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_3.addItem(self.applySpacer, 2, 0, 1, 1)
-
-        self.applyBtn = QPushButton(Config)
-        self.applyBtn.setObjectName(u"applyBtn")
-
-        self.gridLayout_3.addWidget(self.applyBtn, 2, 1, 1, 1)
-
-        self.closeBtn = QPushButton(Config)
-        self.closeBtn.setObjectName(u"closeBtn")
-
-        self.gridLayout_3.addWidget(self.closeBtn, 2, 2, 1, 1)
 
 
         self.retranslateUi(Config)
@@ -297,6 +302,8 @@ class Ui_Config(object):
         self.People.setText(QCoreApplication.translate("Config", u"People", None))
         self.selectFile.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
         self.selectDir.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
+        self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
+        self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
         self.SystemSettings.setTitle(QCoreApplication.translate("Config", u"\u7cfb\u7edf\u8bbe\u7f6e", None))
         self.proxy_l.setText(QCoreApplication.translate("Config", u"\u7f51\u7edc\u4ee3\u7406\uff1a", None))
         self.proxyNone.setText(QCoreApplication.translate("Config", u"\u65e0", None))
@@ -304,7 +311,6 @@ class Ui_Config(object):
         self.proxySocks.setText(QCoreApplication.translate("Config", u"socks", None))
         self.add_l.setText(QCoreApplication.translate("Config", u"\u5730\u5740\uff1a", None))
         self.port_l.setText(QCoreApplication.translate("Config", u":", None))
-        self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
-        self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
+        self.clearCache.setText(QCoreApplication.translate("Config", u"\u5220\u9664\u7f13\u5b58", None))
     # retranslateUi
 

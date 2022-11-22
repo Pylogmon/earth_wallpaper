@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>346</width>
-    <height>534</height>
+    <height>572</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -238,6 +238,33 @@ color: #774444;</string>
      </layout>
     </widget>
    </item>
+   <item row="2" column="0">
+    <spacer name="applySpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>57</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="applyBtn">
+     <property name="text">
+      <string>应用</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="closeBtn">
+     <property name="text">
+      <string>关闭</string>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="0" colspan="3">
     <widget class="QGroupBox" name="SystemSettings">
      <property name="sizePolicy">
@@ -322,34 +349,14 @@ color: #774444;</string>
         </item>
        </layout>
       </item>
+      <item row="2" column="0">
+       <widget class="QPushButton" name="clearCache">
+        <property name="text">
+         <string>删除缓存</string>
+        </property>
+       </widget>
+      </item>
      </layout>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <spacer name="applySpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>57</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="applyBtn">
-     <property name="text">
-      <string>应用</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="closeBtn">
-     <property name="text">
-      <string>关闭</string>
-     </property>
     </widget>
    </item>
   </layout>

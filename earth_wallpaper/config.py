@@ -1,3 +1,5 @@
+import shutil
+
 from PySide6.QtCore import Qt, QSettings, Signal
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
@@ -82,6 +84,7 @@ class Config(QWidget, Ui_Config):
         self.applyBtn.clicked.connect(self.write_config)
         self.selectFile.clicked.connect(self.select_file)
         self.selectDir.clicked.connect(self.select_dir)
+        self.clearCache.clicked.connect(self.clear_cache)
 
     def check(self):
         if os.path.exists(self.config_path):
@@ -196,3 +199,12 @@ class Config(QWidget, Ui_Config):
                                            "24h壁纸文件 (*.ddw *.zip);;")
         logger.info(f"获取到文件地址{file}")
         self.wallpaperFile.setText(file[0])
+
+    @staticmethod
+    def clear_cache():
+        cache = PlatformInfo.download_dir()
+        if os.path.exists(cache):
+            shutil.rmtree(cache)
+            logger.info(f"删除缓存目录: {cache}")
+        message = QMessageBox()
+        QMessageBox.information(message, "清理缓存", "已删除全部缓存壁纸", QMessageBox.Yes)
