@@ -27,4 +27,5 @@ package() {
     mkdir -p $pkgdir/opt/$pkgname/$resname
     cp -r $resname/* $pkgdir/opt/$pkgname/$resname
     chmod +x $pkgdir/opt/$pkgname/$resname/main.py
+    sed -i "s/return \".*/return \"$pkgver\"/g" $pkgdir/opt/$pkgname/$resname/about.py
 }

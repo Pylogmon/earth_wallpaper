@@ -23,7 +23,7 @@ jobs:
       - name: Package
         run: |
           sed -i "s/Version:.*/Version: $(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" deb/DEBIAN/control
-          sed -i "s/return.*/return \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" earth_wallpaper/about.py
+          sed -i "s/return \".*/return \"$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')\"/g" earth_wallpaper/about.py
           mkdir -p deb/opt/earth-wallpaper
           cp -r earth_wallpaper deb/opt/earth-wallpaper/earth_wallpaper
           chmod 755 deb/DEBIAN/* && chmod 755 deb/DEBIAN
