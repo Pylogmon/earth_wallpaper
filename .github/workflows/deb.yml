@@ -7,7 +7,6 @@ on:
       - 'LICENSE'
 
 jobs:
-  #Linux编译
   Package:
     name: Package
     runs-on: ubuntu-latest
@@ -34,7 +33,7 @@ jobs:
           name: earth-wallpaper-amd64.deb
           path: earth-wallpaper-amd64.deb
           if-no-files-found: error
-      #6发布release
+
       - name: Upload Release
         if: startsWith(github.ref, 'refs/tags')
         uses: svenstaro/upload-release-action@v2
