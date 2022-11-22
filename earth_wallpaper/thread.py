@@ -2,6 +2,9 @@ from PySide6.QtCore import QThread
 from earth_wallpaper.utils.setWallpaper import set_wallpaper
 from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper import interfaces
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def get_class_name(name: str):
@@ -18,8 +21,8 @@ class Thread(QThread):
         self.flag = True
 
     def run(self):
+        logger.info(f"启动{self.class_name}子线程")
         x = getattr(interfaces, self.class_name)()
-        print(f"Start run {x.name()}...")
         if x.name() == "本地壁纸":
             img_path = x.run()
             set_wallpaper(img_path)
@@ -30,7 +33,8 @@ class Thread(QThread):
                 with open(x.download_path, "wb") as f:
                     f.write(img)
                 set_wallpaper(x.download_path)
-        print("Run completed!")
+        logger.info(f"{self.class_name}子线程运行完成")
 
     def stop(self):
         self.flag = False
+        logger.info(f"{self.class_name}子线程被中断，等待线程结束")

@@ -4,6 +4,9 @@ from os.path import join
 from PIL import Image
 import requests
 import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class Himawari8(object):
@@ -21,8 +24,12 @@ class Himawari8(object):
         url = f"https://himawari8-dl.nict.go.jp/himawari8/img/D531106/1d/550/{self.path_today}00_0_0.png"
 
         img = requests.get(url, proxies=self.proxies)
-        with open(join(self.temp_dir, "himawari.png"), "wb") as f:
-            f.write(img.content)
+        if img.ok:
+            logger.info("图像himawari.png下载成功")
+            with open(join(self.temp_dir, "himawari.png"), "wb") as f:
+                f.write(img.content)
+        else:
+            logger.fatal(f"图像下载失败: {img.status_code}")
 
     # 填充黑色适配屏幕尺寸
     def fill_img(self):

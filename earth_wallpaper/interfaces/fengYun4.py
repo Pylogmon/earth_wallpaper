@@ -4,6 +4,9 @@ from os.path import join
 from PIL import Image
 import requests
 import datetime
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class FengYun4(object):
@@ -38,8 +41,12 @@ class FengYun4(object):
         ]
         for i in range(4):
             img = requests.get(img_urls[i], headers=header, proxies=self.proxies)
-            with open(join(self.temp_dir, f"fenYun{i}.png"), "wb") as f:
-                f.write(img.content)
+            if img.ok:
+                logger.info(f"图像fenyun{i}.png下载成功")
+                with open(join(self.temp_dir, f"fenYun{i}.png"), "wb") as f:
+                    f.write(img.content)
+            else:
+                logger.fatal(f"图像fenyun{i}.png下载失败: {img.status_code}")
 
     def concat_images(self, image_files):
         target = Image.new('RGB', (687 * 2, 687 * 2))

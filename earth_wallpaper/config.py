@@ -4,7 +4,10 @@ from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from earth_wallpaper.ui.UI_config import Ui_Config
 from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper import interfaces
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 
 def _get_class_name_(name: str):
@@ -42,6 +45,7 @@ class Config(QWidget, Ui_Config):
             if i[0] == '_':
                 break
             name = getattr(interfaces, i).name()
+            logger.info(f"获取到可用接口: {name}")
             self.source.addItem(name)
         self.sorting.addItem("Relevance")
         self.sorting.addItem("Random")
@@ -110,6 +114,7 @@ class Config(QWidget, Ui_Config):
         settings.setValue("proxyAdd", "")
         settings.setValue("proxyPort", "")
         settings.endGroup()
+        logger.info("写入默认设置")
 
     def read_config(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
@@ -145,6 +150,7 @@ class Config(QWidget, Ui_Config):
         self.addEdit.setText(settings.value("proxyAdd"))
         self.portEdit.setText(settings.value("proxyPort"))
         settings.endGroup()
+        logger.info("读取设置")
 
     def write_config(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
@@ -175,15 +181,18 @@ class Config(QWidget, Ui_Config):
         settings.setValue("proxyAdd", self.addEdit.text())
         settings.setValue("proxyPort", self.portEdit.text())
         settings.endGroup()
+        logger.info("写入设置")
         message = QMessageBox()
         QMessageBox.information(message, "设置", "设置保存成功！", QMessageBox.Yes)
         self.configChanged.emit()
 
     def select_dir(self):
-        dir = QFileDialog.getExistingDirectory(self, "选择壁纸文件夹")
-        self.wallpaperDir.setText(dir)
+        wallpaper_dir = QFileDialog.getExistingDirectory(self, "选择壁纸文件夹")
+        logger.info(f"获取到文件夹地址{wallpaper_dir}")
+        self.wallpaperDir.setText(wallpaper_dir)
 
     def select_file(self):
         file = QFileDialog.getOpenFileName(self, "选择24h壁纸文件", "",
                                            "24h壁纸文件 (*.ddw *.zip);;")
+        logger.info(f"获取到文件地址{file}")
         self.wallpaperFile.setText(file[0])

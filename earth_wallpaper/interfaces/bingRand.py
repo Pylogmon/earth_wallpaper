@@ -1,7 +1,10 @@
 from .utils.platformInfo import PlatformInfo
 from .utils.settings import Settings
 import requests
+import logging
 import json
+
+logger = logging.getLogger(__name__)
 
 
 class BingRand(object):
@@ -16,12 +19,16 @@ class BingRand(object):
                 "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0"
         }
         img_json = requests.get(self.request_url, headers=headers, proxies=self.proxies)
-        img_url = json.loads(img_json.content.decode())["data"]["url"]
-        img_url = img_url.replace("http://h1.ioliu.cn/bing/",
-                                  "https://cn.bing.com/th?id=OHR.")
-        img_url = img_url.replace("1920x1080", "UHD")
-        img_url = img_url[:-10]
-        return img_url
+        if img_json.ok:
+            img_url = json.loads(img_json.content.decode())["data"]["url"]
+            img_url = img_url.replace("http://h1.ioliu.cn/bing/",
+                                      "https://cn.bing.com/th?id=OHR.")
+            img_url = img_url.replace("1920x1080", "UHD")
+            img_url = img_url[:-10]
+            logger.info(f"img_url获取成功: {img_url}")
+            return img_url
+        else:
+            logger.fatal(f"img_url请求失败: {img_json.status_code}")
 
     def download(self):
         headers = {
@@ -30,13 +37,12 @@ class BingRand(object):
         }
         while True:
             img_url = self.get_img_url()
-            print(img_url)
             img = requests.get(img_url, headers=headers, proxies=self.proxies)
-            # 检测无效数据
-            if len(img.text)==1170:
-                print("数据无效，重新下载")
-            else:
+            if img.ok:
+                logger.info("图像下载成功")
                 return img.content
+            else:
+                logger.fatal(f"图像下载失败: {img.status_code}")
 
     def run(self):
         return self.download()

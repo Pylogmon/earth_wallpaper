@@ -2,7 +2,10 @@ from requests.structures import CaseInsensitiveDict
 from .utils.platformInfo import PlatformInfo
 from .utils.settings import Settings
 import requests
+import logging
 import json
+
+logger = logging.getLogger(__name__)
 
 
 class BingToday(object):
@@ -21,13 +24,19 @@ class BingToday(object):
             web_json = json.loads(resp.content.decode())
             img_url = (self.bing_addr + web_json['images'][0]['url']).replace(
                 "1920x1080", "UHD")
+            logger.info(f"img_url获取成功: {img_url}")
             return img_url
+        else:
+            logger.fatal(f"img_url获取失败: {resp.status_code}")
 
     def download(self):
         img_url = self.get_img_url()
-        print(img_url)
         img = requests.get(img_url, proxies=self.proxies)
-        return img.content
+        if img.ok:
+            logger.info("图像下载成功")
+            return img.content
+        else:
+            logger.fatal(f"图像下载失败: {img.status_code}")
 
     def run(self):
         return self.download()

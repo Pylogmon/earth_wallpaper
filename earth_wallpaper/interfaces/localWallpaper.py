@@ -1,6 +1,9 @@
 from .utils.settings import Settings
 from PySide6.QtCore import QDir
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 
 class LocalWallpaper(object):
@@ -21,6 +24,7 @@ class LocalWallpaper(object):
         if os.path.exists(self.currentFile):
             with open(self.currentFile, 'r') as f:
                 self.currentWallpaper = f.readline()
+                logger.info(f"当前壁纸为 {self.currentWallpaper}")
         else:
             with open(self.currentFile, 'w') as f:
                 f.write(self.files[0])

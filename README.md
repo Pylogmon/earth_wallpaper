@@ -23,16 +23,19 @@
 #### Arch
 
 通过[AUR](https://aur.archlinux.org/packages?O=0&K=earth-wallpaper-)安装
+
 ```shell
 # paru
 paru -S earth-wallpaper-bin # or earth-wallpaper-nightly
 # yay
 yay -S earth-wallpaper-bin  # or earth-wallpaper-nightly
 ```
+
 ### Windows
 
 Windows推荐使用pip安装
 需要实现安装好python3
+
 ```shell
 pip install earth-wallpaper # 安装
 pip install earth-wallpaper --upgrade # 更新
@@ -57,10 +60,10 @@ pip install earth-wallpaper --upgrade # 更新
 >
 > [https://windd.info/themes/index.html](https://windd.info/themes/index.html)
 
-
 ## 支持桌面环境
 
 ### Linux
+
 - [x] KDE Plasma
 - [x] Deepin
 - [x] GNOME
@@ -73,6 +76,7 @@ pip install earth-wallpaper --upgrade # 更新
 - [x] LXDE (pcmanfm)
 
 ### Windows
+
 - [x] Windows 10 (测试环境：Windows 10 专业版 21H1，其他版本自行测试)
 
 ## 依赖
@@ -97,7 +101,9 @@ bing 壁纸: [https://github.com/xCss/bing](https://github.com/xCss/bing)
 
 waifu.im 动漫壁纸: [https://waifu.im/](https://waifu.im/)
 
-ipapi 获取ip地理位置：[https://ipapi.co](https://ipapi.co)
+ipapi 获取ip地理位置: [https://ipapi.co](https://ipapi.co)
+
+wallhaven 壁纸: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 
 ## 软件截图
 

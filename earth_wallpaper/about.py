@@ -3,8 +3,11 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QApplication, QMessageBox
 from earth_wallpaper.ui.UI_about import Ui_About
 import requests
+import logging
 import json
 import os
+
+logger = logging.getLogger(__name__)
 
 
 def get_version():
@@ -23,19 +26,20 @@ def compare(remote, local):
 
 
 def check_update():
-    print("检查更新")
+    logger.info("检查软件更新")
     url = "https://api.github.com/repos/ambition-echo/earth_wallpaper/tags"
     tags_json = requests.get(url)
     if tags_json.ok:
         remote_tag = json.loads(tags_json.content.decode())[0]["name"]
         local_tag = get_version().split('.')
         if compare(remote_tag.split('.'), local_tag):
+            logger.info(f"新版本可用，最新版本为{remote_tag}")
             message = QMessageBox()
             QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
                                     QMessageBox.Yes)
             return True
         else:
-            print("最新")
+            logger.info("软件为最新版本")
             return False
 
 
@@ -60,6 +64,7 @@ class About(QWidget, Ui_About):
 
     @staticmethod
     def check(self):
+
         message = QMessageBox()
         if check_update():
             pass

@@ -1,10 +1,13 @@
 from .platformInfo import PlatformInfo
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 
 
 def set_wallpaper(file):
     sys = PlatformInfo().get_os()
-
+    logger.info(f"当前系统为{sys}")
     if sys == "WINDOWS":
         import win32api, win32gui, win32con
         key = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,
@@ -18,6 +21,7 @@ def set_wallpaper(file):
 
     elif sys == "LINUX":
         de = os.getenv('XDG_CURRENT_DESKTOP')
+        logger.info(f"当前桌面环境为{de}")
         if de == "Deepin":
             import dbus
             primary_screen = os.popen("xrandr|grep 'connected primary'")
@@ -71,4 +75,4 @@ def set_wallpaper(file):
         elif de == 'LXDE':
             os.system("pcmanfm -w {}".format(file))
         else:
-            print("该桌面环境暂不支持")
+            logger.info("当前桌面环境暂不支持")

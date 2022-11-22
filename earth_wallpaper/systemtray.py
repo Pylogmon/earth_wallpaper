@@ -5,8 +5,11 @@ from earth_wallpaper.about import About
 from earth_wallpaper.config import Config
 from earth_wallpaper.thread import Thread
 from earth_wallpaper.utils.platformInfo import PlatformInfo
+import logging
 import sys
 import os
+
+logger = logging.getLogger(__name__)
 
 
 class SystemTray(QSystemTrayIcon):
@@ -53,7 +56,7 @@ class SystemTray(QSystemTrayIcon):
 
     def check_config(self):
         if not os.path.exists(self.config_path):
-            print("首次运行，打开设置页面")
+            logger.info("首次运行，打开设置页面")
             self.config_page = Config()
             self.config_page.configChanged.connect(self.start_timer)
         else:
@@ -89,9 +92,12 @@ class SystemTray(QSystemTrayIcon):
         message = QMessageBox()
         if not target.exists():
             if source.copy(target.fileName()):
+                logger.info(f"保存{os.path.join(img_dir, files[0])}到{os.path.join(picture_dir, files[0])}")
                 QMessageBox.information(message, "保存", "保存成功，已保存到用户Picture目录", QMessageBox.Yes)
             else:
+                logger.warning("保存失败，原因未知")
                 QMessageBox.warning(message, "保存", "保存失败，原因未知（懒）", QMessageBox.Yes)
 
         else:
+            logger.info("当前壁纸已存在")
             QMessageBox.information(message, "保存", "当前壁纸已存在，未做任何处理", QMessageBox.Yes)

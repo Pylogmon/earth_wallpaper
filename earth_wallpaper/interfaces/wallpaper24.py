@@ -1,10 +1,13 @@
 from .utils.sunCalculator import SunCalculator, DateTime
 from .utils.platformInfo import PlatformInfo
 from .utils.settings import Settings
-import os
+import requests
+import logging
 import json
 import time
-import requests
+import os
+
+logger = logging.getLogger(__name__)
 
 
 def find_first_json(dir_):
@@ -12,6 +15,8 @@ def find_first_json(dir_):
     for file in files:
         if file.endswith(".json"):
             return file
+    else:
+        logger.fatal("找不到json文件")
 
 
 class Wallpaper24(object):
@@ -40,36 +45,36 @@ class Wallpaper24(object):
             try:
                 ip = session.get("https://checkip.amazonaws.com/",
                                  timeout=5).text.strip()
-                print(ip)
+                logger.info(f"ip获取成功: {ip}")
                 loc = session.get("https://ipapi.co/{}/json/".format(ip),
                                   timeout=5).json()
-                print(loc)
                 latitude = float(loc["latitude"])
                 longitude = float(loc["longitude"])
+                logger.info(f"经纬度获取成功: ({latitude},{longitude})")
                 i = 3
                 return self.calculate_sun(latitude, longitude)
             except ConnectionResetError:
-                print(f"本机IP获取失败，第{i + 1}次重试")
+                logger.warning(f"本机IP获取失败，第{i + 1}次重试")
                 if i == 3:
                     return self.calculate_time(5, 18)
                 else:
                     i += 1
             except KeyError:
-                print("API响应错误，使用默认时间")
+                logger.warning("API响应错误，使用默认时间")
                 i = 3
                 return self.calculate_time(5, 18)
             except TypeError:
-                print("该IP获取不到地理坐标，使用默认时间")
+                logger.warning("该IP获取不到地理坐标，使用默认时间")
                 i = 3
                 return self.calculate_time(5, 18)
             except requests.exceptions.ReadTimeout:
-                print(f"请求超时,第{i + 1}次重试...")
+                logger.warning(f"请求超时,第{i + 1}次重试...")
                 if i == 3:
                     return self.calculate_time(5, 18)
                 else:
                     i += 1
             except requests.exceptions.ConnectionError:
-                print("无网络连接,使用默认时间")
+                logger.warning("无网络连接,使用默认时间")
                 i = 3
                 return self.calculate_time(5, 18)
 
@@ -107,7 +112,6 @@ class Wallpaper24(object):
                 data = fp.read()
                 return data
         elif hour in day:
-            print('day')
             num = len(day) // len(theme["dayImageList"])
             index = day.index(hour) // num
             if index >= len(theme["dayImageList"]):
@@ -117,7 +121,6 @@ class Wallpaper24(object):
                 data = fp.read()
             return data
         elif hour in sunset:
-            print('sunset')
             num = len(sunset) // len(theme["sunsetImageList"])
             index = sunset.index(hour) // num
             if index >= len(theme["sunsetImageList"]):
@@ -127,7 +130,6 @@ class Wallpaper24(object):
                 data = fp.read()
             return data
         elif hour in night:
-            print('night')
             num = len(night) // len(theme["nightImageList"])
             index = night.index(hour) // num
             if index >= len(theme["nightImageList"]):
@@ -137,7 +139,7 @@ class Wallpaper24(object):
                 data = fp.read()
             return data
         else:
-            print("Error")
+            logger.fatal("壁纸解析出错")
 
     def run(self):
         self.check()
