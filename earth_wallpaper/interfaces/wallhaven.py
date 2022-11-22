@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class Wallhaven(object):
     def __init__(self):
         self.proxies = Settings().proxies()
-        self.search_url = "https://wallhaven.cc/api/v1/search"
+        self.search_url = "https://wallhaven.cc/api/v1/search?ratios=landscape"
         self.img_url = "https://wallhaven.cc/api/v1/w/"
         self.apikey = Settings().apikey()
         self.general = Settings().general()
@@ -31,7 +31,7 @@ class Wallhaven(object):
             categories[1] = '1'
         if self.people:
             categories[2] = '1'
-        self.search_url += f"?categories={''.join(categories)}"
+        self.search_url += f"&categories={''.join(categories)}"
         purity = ['0', '0', '0']
         if self.sfw:
             purity[0] = '1'
