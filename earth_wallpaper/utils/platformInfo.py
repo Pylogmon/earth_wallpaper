@@ -35,8 +35,10 @@ class PlatformInfo:
 
     def check(self):
         if os.path.exists(self.download_dir()):
-            shutil.rmtree(self.download_dir())
-        os.makedirs(self.download_dir())
+            pass
+            # shutil.rmtree(self.download_dir())
+        else:
+            os.makedirs(self.download_dir())
 
     def get_os(self):
         return self.sys

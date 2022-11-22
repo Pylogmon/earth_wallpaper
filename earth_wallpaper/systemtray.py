@@ -86,13 +86,13 @@ class SystemTray(QSystemTrayIcon):
         picture_dir = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
         if not QDir(picture_dir).exists():
             QDir(picture_dir).mkpath(picture_dir)
-        source = QFile(os.path.join(img_dir, files[0]))
+        source = QFile(os.path.join(img_dir, files[-1]))
 
-        target = QFile(os.path.join(picture_dir, files[0]))
+        target = QFile(os.path.join(picture_dir, files[-1]))
         message = QMessageBox()
         if not target.exists():
             if source.copy(target.fileName()):
-                logger.info(f"保存{os.path.join(img_dir, files[0])}到{os.path.join(picture_dir, files[0])}")
+                logger.info(f"保存{os.path.join(img_dir, files[-1])}到{os.path.join(picture_dir, files[-1])}")
                 QMessageBox.information(message, "保存", "保存成功，已保存到用户Picture目录", QMessageBox.Yes)
             else:
                 logger.warning("保存失败，原因未知")
