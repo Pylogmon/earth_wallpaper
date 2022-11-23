@@ -54,6 +54,7 @@ pip install earth-wallpaper --upgrade # 更新
 - [x] 动漫壁纸 (调用 [waifu.im](https://waifu.im/) API)
 - [x] 本地壁纸 (注：目前Windows下使用本地壁纸，路径需要全英文且无空格)
 - [x] 24h壁纸 (灵感来自于[windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
+- [x] wallhaven.cc ([wallhaven.cc](https://wallhaven.cc))
 
 > 24h壁纸推荐下载地址:
 >
@@ -75,6 +76,7 @@ pip install earth-wallpaper --upgrade # 更新
 - [x] Cutefish
 - [x] LXQt (pcmanfm-qt)
 - [x] LXDE (pcmanfm)
+- [x] 自定义脚本设置壁纸
 
 ### Windows
 

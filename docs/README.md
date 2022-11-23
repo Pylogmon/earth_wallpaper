@@ -46,6 +46,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] Anime Wallpaper (Call [waifu.im](https://waifu.im/) API)
 - [x] Local Wallpaper
 - [x] 24h Wallpaper (Inspired by [windynamicdesktop](https://github.com/t1m0thyj/windynamicdesktop))
+- [x] wallhaven.cc ([wallhaven.cc](https://wallhaven.cc))
 
 > 24h Wallpaper recommended download address:
 >
@@ -67,6 +68,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - [x] Cutefish
 - [x] LXQt (pcmanfm-qt 或者 pcmanfm)
 - [x] LXDE (pcmanfm)
+- [x] Custom script
 
 ### Windows
 
