@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2.1.3 (2022-11-23)
+
+### New feature:
+
+- **wallhaven**: 添加搜索关键词和颜色选项([`879296f`](https://github.com/ambition-echo/earth_wallpaper/commit/879296fc690c4e583daec69a030cc5042622ebe8)) (by ambition_echo)
+
+### Bugs fixed:
+
+- **proxy**: 修复socks5代理设置无效的问题([`2594125`](https://github.com/ambition-echo/earth_wallpaper/commit/2594125281010940a62d94ad28a87d8e45e0698f)) (by ambition_echo)
+
 ## 2.1.2 (2022-11-22)
 
 ### New feature:
@@ -64,6 +74,7 @@
 ## 1.8.5 (2022-09-29)
 
 ### New feature:
+
 - **scripts**: 增加对 Linux 桌面环境 Cutefish 的支持([`#9`](https://github.com/ambition-echo/earth_wallpaper/pull/9)) (by [lisuke](https://github.com/lisuke))
 
 ## 1.8.4 (2022-09-19)
