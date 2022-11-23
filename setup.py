@@ -2,7 +2,6 @@
 from setuptools import setup, find_packages
 from earth_wallpaper.about import get_version
 
-
 with open("README.md", "r", encoding='utf-8') as fh:
     long_description = fh.read()
 
@@ -19,7 +18,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        'earth_wallpaper': ['resource/earth-wallpaper.png','utils/xfce.sh']
+        'earth_wallpaper': ['resource/earth-wallpaper.png', 'utils/xfce.sh']
     },
     entry_points={
         'console_scripts': ['earth-wallpaper = earth_wallpaper.main:main']
@@ -28,6 +27,7 @@ setup(
         'Pillow',
         'PySide6',
         'requests',
+        'pysocks',
         'dbus-python; platform_system == "Linux"',
         'pywin32; platform_system == "Windows"'
     ]
