@@ -21,6 +21,8 @@ class Wallhaven(object):
         self.sketchy = Settings().sketchy()
         self.nsfw = Settings().nsfw()
         self.sorting = Settings().sorting()
+        self.searchkey = Settings().searchkey()
+        self.color = Settings().color()
         self.download_path = PlatformInfo().download_path(".png")
 
     def build_search_url(self):
@@ -41,6 +43,10 @@ class Wallhaven(object):
             purity[2] = '1'
         self.search_url += f"&purity={''.join(purity)}"
         self.search_url += f"&sorting={self.sorting}"
+        if not len(self.searchkey) == 0:
+            self.search_url += f"&q={self.searchkey}"
+        if not self.color == "不选择":
+            self.search_url += f"&colors={self.color}"
         if not len(self.apikey) == 0:
             self.search_url += f"&apikey={self.apikey}"
         logger.info(f"search_url构造完成:{self.search_url}")
@@ -81,5 +87,6 @@ class Wallhaven(object):
 
     @staticmethod
     def layout():
-        layout_list = ["updateTimeGroup", "apikeyGroup", "categoriesGroup", "purityGroup", "sortingGroup"]
+        layout_list = ["updateTimeGroup", "apikeyGroup", "categoriesGroup", "purityGroup", "sortingGroup",
+                       "searchkeyGroup", "colorGroup"]
         return layout_list

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>346</width>
-    <height>572</height>
+    <width>344</width>
+    <height>640</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,41 +20,38 @@
       <string>应用设置</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="5" column="2" colspan="2">
-       <widget class="QLineEdit" name="apikey">
-        <property name="inputMask">
-         <string/>
-        </property>
+      <item row="0" column="0" colspan="2">
+       <widget class="QLabel" name="source_l">
         <property name="text">
-         <string/>
-        </property>
-        <property name="placeholderText">
-         <string>使用NSFW需要提供apikey</string>
+         <string>壁纸来源：</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2" colspan="2">
-       <widget class="QSpinBox" name="earthSize">
-        <property name="suffix">
-         <string>%</string>
-        </property>
-        <property name="minimum">
-         <number>20</number>
-        </property>
-        <property name="maximum">
-         <number>100</number>
+      <item row="0" column="2" colspan="3">
+       <widget class="QComboBox" name="source">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
       </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="earthSize_l">
+      <item row="1" column="0" colspan="2">
+       <widget class="QLabel" name="updateTime_l">
         <property name="text">
-         <string>地球大小：</string>
+         <string>更新间隔：</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2" colspan="2">
+      <item row="1" column="2" colspan="3">
        <widget class="QSpinBox" name="updateTime">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="suffix">
          <string>(分钟)</string>
         </property>
@@ -72,7 +69,141 @@
         </property>
        </widget>
       </item>
-      <item row="7" column="0" colspan="4">
+      <item row="2" column="0">
+       <widget class="QLabel" name="earthSize_l">
+        <property name="text">
+         <string>地球大小：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="3" colspan="2">
+       <widget class="QSpinBox" name="earthSize">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="suffix">
+         <string>%</string>
+        </property>
+        <property name="minimum">
+         <number>20</number>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0" colspan="3">
+       <widget class="QLabel" name="wallpaperDir_l">
+        <property name="text">
+         <string>壁纸文件夹：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QLineEdit" name="wallpaperDir"/>
+      </item>
+      <item row="3" column="4">
+       <widget class="QPushButton" name="selectDir">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="wallpaperFile_l">
+        <property name="text">
+         <string>壁纸文件：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="3">
+       <widget class="QLineEdit" name="wallpaperFile"/>
+      </item>
+      <item row="4" column="4">
+       <widget class="QPushButton" name="selectFile">
+        <property name="minimumSize">
+         <size>
+          <width>80</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>浏览</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="apikey_l">
+        <property name="text">
+         <string>apiKey：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="2" colspan="3">
+       <widget class="QLineEdit" name="apikey">
+        <property name="inputMask">
+         <string/>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="placeholderText">
+         <string>使用NSFW需要提供apikey</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="searchkey_l">
+        <property name="text">
+         <string>关键词：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" colspan="4">
+       <widget class="QLineEdit" name="searchkey"/>
+      </item>
+      <item row="7" column="0" colspan="5">
+       <layout class="QHBoxLayout" name="categoriesGroup">
+        <item>
+         <widget class="QLabel" name="categories_l">
+          <property name="text">
+           <string>分类：</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="General">
+          <property name="text">
+           <string>General</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="Anime">
+          <property name="text">
+           <string>Anime</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="People">
+          <property name="text">
+           <string>People</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="8" column="0" colspan="5">
        <layout class="QHBoxLayout" name="purityGroup">
         <item>
          <widget class="QLabel" name="purity_l">
@@ -116,50 +247,15 @@ color: #774444;</string>
         </item>
        </layout>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="updateTime_l">
-        <property name="text">
-         <string>更新间隔：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0" colspan="2">
+      <item row="9" column="0">
        <widget class="QLabel" name="sorting_l">
         <property name="text">
          <string>随机列表：</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="apikey_l">
-        <property name="text">
-         <string>apiKey：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="wallpaperFile_l">
-        <property name="text">
-         <string>壁纸文件：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0" colspan="2">
-       <widget class="QLabel" name="wallpaperDir_l">
-        <property name="text">
-         <string>壁纸文件夹：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="source_l">
-        <property name="text">
-         <string>壁纸来源：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2" colspan="2">
-       <widget class="QComboBox" name="source">
+      <item row="9" column="2" colspan="3">
+       <widget class="QComboBox" name="sorting">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -168,101 +264,24 @@ color: #774444;</string>
         </property>
        </widget>
       </item>
-      <item row="8" column="2" colspan="2">
-       <widget class="QComboBox" name="sorting"/>
-      </item>
-      <item row="6" column="0" colspan="4">
-       <layout class="QHBoxLayout" name="categoriesGroup">
-        <item>
-         <widget class="QLabel" name="categories_l">
-          <property name="text">
-           <string>分类：</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="General">
-          <property name="text">
-           <string>General</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="Anime">
-          <property name="text">
-           <string>Anime</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QCheckBox" name="People">
-          <property name="text">
-           <string>People</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="4" column="3">
-       <widget class="QPushButton" name="selectFile">
-        <property name="minimumSize">
-         <size>
-          <width>80</width>
-          <height>0</height>
-         </size>
-        </property>
+      <item row="10" column="0">
+       <widget class="QLabel" name="color_l">
         <property name="text">
-         <string>浏览</string>
+         <string>颜色：</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
-       <widget class="QPushButton" name="selectDir">
-        <property name="minimumSize">
-         <size>
-          <width>80</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>浏览</string>
+      <item row="10" column="1" colspan="4">
+       <widget class="QComboBox" name="color">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
        </widget>
-      </item>
-      <item row="4" column="1" colspan="2">
-       <widget class="QLineEdit" name="wallpaperFile"/>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLineEdit" name="wallpaperDir"/>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <spacer name="applySpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>57</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="applyBtn">
-     <property name="text">
-      <string>应用</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QPushButton" name="closeBtn">
-     <property name="text">
-      <string>关闭</string>
-     </property>
     </widget>
    </item>
    <item row="1" column="0" colspan="3">
@@ -357,6 +376,33 @@ color: #774444;</string>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <spacer name="applySpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>57</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="applyBtn">
+     <property name="text">
+      <string>应用</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QPushButton" name="closeBtn">
+     <property name="text">
+      <string>关闭</string>
+     </property>
     </widget>
    </item>
   </layout>

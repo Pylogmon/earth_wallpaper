@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_version():
-    return "2.0.9"
+    return "2.1.3"
 
 
 def compare(remote, local):

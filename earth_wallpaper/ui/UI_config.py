@@ -24,37 +24,133 @@ class Ui_Config(object):
     def setupUi(self, Config):
         if not Config.objectName():
             Config.setObjectName(u"Config")
-        Config.resize(346, 572)
+        Config.resize(344, 640)
         self.gridLayout_3 = QGridLayout(Config)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.AppSettings = QGroupBox(Config)
         self.AppSettings.setObjectName(u"AppSettings")
         self.gridLayout_2 = QGridLayout(self.AppSettings)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.apikey = QLineEdit(self.AppSettings)
-        self.apikey.setObjectName(u"apikey")
+        self.source_l = QLabel(self.AppSettings)
+        self.source_l.setObjectName(u"source_l")
 
-        self.gridLayout_2.addWidget(self.apikey, 5, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.source_l, 0, 0, 1, 2)
 
-        self.earthSize = QSpinBox(self.AppSettings)
-        self.earthSize.setObjectName(u"earthSize")
-        self.earthSize.setMinimum(20)
-        self.earthSize.setMaximum(100)
+        self.source = QComboBox(self.AppSettings)
+        self.source.setObjectName(u"source")
+        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.source.sizePolicy().hasHeightForWidth())
+        self.source.setSizePolicy(sizePolicy)
 
-        self.gridLayout_2.addWidget(self.earthSize, 2, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.source, 0, 2, 1, 3)
+
+        self.updateTime_l = QLabel(self.AppSettings)
+        self.updateTime_l.setObjectName(u"updateTime_l")
+
+        self.gridLayout_2.addWidget(self.updateTime_l, 1, 0, 1, 2)
+
+        self.updateTime = QSpinBox(self.AppSettings)
+        self.updateTime.setObjectName(u"updateTime")
+        sizePolicy.setHeightForWidth(self.updateTime.sizePolicy().hasHeightForWidth())
+        self.updateTime.setSizePolicy(sizePolicy)
+        self.updateTime.setMinimum(1)
+        self.updateTime.setMaximum(1440)
+        self.updateTime.setValue(30)
+
+        self.gridLayout_2.addWidget(self.updateTime, 1, 2, 1, 3)
 
         self.earthSize_l = QLabel(self.AppSettings)
         self.earthSize_l.setObjectName(u"earthSize_l")
 
         self.gridLayout_2.addWidget(self.earthSize_l, 2, 0, 1, 1)
 
-        self.updateTime = QSpinBox(self.AppSettings)
-        self.updateTime.setObjectName(u"updateTime")
-        self.updateTime.setMinimum(1)
-        self.updateTime.setMaximum(1440)
-        self.updateTime.setValue(30)
+        self.earthSize = QSpinBox(self.AppSettings)
+        self.earthSize.setObjectName(u"earthSize")
+        sizePolicy.setHeightForWidth(self.earthSize.sizePolicy().hasHeightForWidth())
+        self.earthSize.setSizePolicy(sizePolicy)
+        self.earthSize.setMinimum(20)
+        self.earthSize.setMaximum(100)
 
-        self.gridLayout_2.addWidget(self.updateTime, 1, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.earthSize, 2, 3, 1, 2)
+
+        self.wallpaperDir_l = QLabel(self.AppSettings)
+        self.wallpaperDir_l.setObjectName(u"wallpaperDir_l")
+
+        self.gridLayout_2.addWidget(self.wallpaperDir_l, 3, 0, 1, 3)
+
+        self.wallpaperDir = QLineEdit(self.AppSettings)
+        self.wallpaperDir.setObjectName(u"wallpaperDir")
+
+        self.gridLayout_2.addWidget(self.wallpaperDir, 3, 3, 1, 1)
+
+        self.selectDir = QPushButton(self.AppSettings)
+        self.selectDir.setObjectName(u"selectDir")
+        self.selectDir.setMinimumSize(QSize(80, 0))
+
+        self.gridLayout_2.addWidget(self.selectDir, 3, 4, 1, 1)
+
+        self.wallpaperFile_l = QLabel(self.AppSettings)
+        self.wallpaperFile_l.setObjectName(u"wallpaperFile_l")
+
+        self.gridLayout_2.addWidget(self.wallpaperFile_l, 4, 0, 1, 1)
+
+        self.wallpaperFile = QLineEdit(self.AppSettings)
+        self.wallpaperFile.setObjectName(u"wallpaperFile")
+
+        self.gridLayout_2.addWidget(self.wallpaperFile, 4, 3, 1, 1)
+
+        self.selectFile = QPushButton(self.AppSettings)
+        self.selectFile.setObjectName(u"selectFile")
+        self.selectFile.setMinimumSize(QSize(80, 0))
+
+        self.gridLayout_2.addWidget(self.selectFile, 4, 4, 1, 1)
+
+        self.apikey_l = QLabel(self.AppSettings)
+        self.apikey_l.setObjectName(u"apikey_l")
+
+        self.gridLayout_2.addWidget(self.apikey_l, 5, 0, 1, 1)
+
+        self.apikey = QLineEdit(self.AppSettings)
+        self.apikey.setObjectName(u"apikey")
+
+        self.gridLayout_2.addWidget(self.apikey, 5, 2, 1, 3)
+
+        self.searchkey_l = QLabel(self.AppSettings)
+        self.searchkey_l.setObjectName(u"searchkey_l")
+
+        self.gridLayout_2.addWidget(self.searchkey_l, 6, 0, 1, 1)
+
+        self.searchkey = QLineEdit(self.AppSettings)
+        self.searchkey.setObjectName(u"searchkey")
+
+        self.gridLayout_2.addWidget(self.searchkey, 6, 1, 1, 4)
+
+        self.categoriesGroup = QHBoxLayout()
+        self.categoriesGroup.setObjectName(u"categoriesGroup")
+        self.categories_l = QLabel(self.AppSettings)
+        self.categories_l.setObjectName(u"categories_l")
+
+        self.categoriesGroup.addWidget(self.categories_l)
+
+        self.General = QCheckBox(self.AppSettings)
+        self.General.setObjectName(u"General")
+
+        self.categoriesGroup.addWidget(self.General)
+
+        self.Anime = QCheckBox(self.AppSettings)
+        self.Anime.setObjectName(u"Anime")
+
+        self.categoriesGroup.addWidget(self.Anime)
+
+        self.People = QCheckBox(self.AppSettings)
+        self.People.setObjectName(u"People")
+
+        self.categoriesGroup.addWidget(self.People)
+
+
+        self.gridLayout_2.addLayout(self.categoriesGroup, 7, 0, 1, 5)
 
         self.purityGroup = QHBoxLayout()
         self.purityGroup.setObjectName(u"purityGroup")
@@ -85,116 +181,34 @@ class Ui_Config(object):
         self.purityGroup.addWidget(self.NSFW)
 
 
-        self.gridLayout_2.addLayout(self.purityGroup, 7, 0, 1, 4)
-
-        self.updateTime_l = QLabel(self.AppSettings)
-        self.updateTime_l.setObjectName(u"updateTime_l")
-
-        self.gridLayout_2.addWidget(self.updateTime_l, 1, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.purityGroup, 8, 0, 1, 5)
 
         self.sorting_l = QLabel(self.AppSettings)
         self.sorting_l.setObjectName(u"sorting_l")
 
-        self.gridLayout_2.addWidget(self.sorting_l, 8, 0, 1, 2)
-
-        self.apikey_l = QLabel(self.AppSettings)
-        self.apikey_l.setObjectName(u"apikey_l")
-
-        self.gridLayout_2.addWidget(self.apikey_l, 5, 0, 1, 1)
-
-        self.wallpaperFile_l = QLabel(self.AppSettings)
-        self.wallpaperFile_l.setObjectName(u"wallpaperFile_l")
-
-        self.gridLayout_2.addWidget(self.wallpaperFile_l, 4, 0, 1, 1)
-
-        self.wallpaperDir_l = QLabel(self.AppSettings)
-        self.wallpaperDir_l.setObjectName(u"wallpaperDir_l")
-
-        self.gridLayout_2.addWidget(self.wallpaperDir_l, 3, 0, 1, 2)
-
-        self.source_l = QLabel(self.AppSettings)
-        self.source_l.setObjectName(u"source_l")
-
-        self.gridLayout_2.addWidget(self.source_l, 0, 0, 1, 1)
-
-        self.source = QComboBox(self.AppSettings)
-        self.source.setObjectName(u"source")
-        sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.source.sizePolicy().hasHeightForWidth())
-        self.source.setSizePolicy(sizePolicy)
-
-        self.gridLayout_2.addWidget(self.source, 0, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.sorting_l, 9, 0, 1, 1)
 
         self.sorting = QComboBox(self.AppSettings)
         self.sorting.setObjectName(u"sorting")
+        sizePolicy.setHeightForWidth(self.sorting.sizePolicy().hasHeightForWidth())
+        self.sorting.setSizePolicy(sizePolicy)
 
-        self.gridLayout_2.addWidget(self.sorting, 8, 2, 1, 2)
+        self.gridLayout_2.addWidget(self.sorting, 9, 2, 1, 3)
 
-        self.categoriesGroup = QHBoxLayout()
-        self.categoriesGroup.setObjectName(u"categoriesGroup")
-        self.categories_l = QLabel(self.AppSettings)
-        self.categories_l.setObjectName(u"categories_l")
+        self.color_l = QLabel(self.AppSettings)
+        self.color_l.setObjectName(u"color_l")
 
-        self.categoriesGroup.addWidget(self.categories_l)
+        self.gridLayout_2.addWidget(self.color_l, 10, 0, 1, 1)
 
-        self.General = QCheckBox(self.AppSettings)
-        self.General.setObjectName(u"General")
+        self.color = QComboBox(self.AppSettings)
+        self.color.setObjectName(u"color")
+        sizePolicy.setHeightForWidth(self.color.sizePolicy().hasHeightForWidth())
+        self.color.setSizePolicy(sizePolicy)
 
-        self.categoriesGroup.addWidget(self.General)
-
-        self.Anime = QCheckBox(self.AppSettings)
-        self.Anime.setObjectName(u"Anime")
-
-        self.categoriesGroup.addWidget(self.Anime)
-
-        self.People = QCheckBox(self.AppSettings)
-        self.People.setObjectName(u"People")
-
-        self.categoriesGroup.addWidget(self.People)
-
-
-        self.gridLayout_2.addLayout(self.categoriesGroup, 6, 0, 1, 4)
-
-        self.selectFile = QPushButton(self.AppSettings)
-        self.selectFile.setObjectName(u"selectFile")
-        self.selectFile.setMinimumSize(QSize(80, 0))
-
-        self.gridLayout_2.addWidget(self.selectFile, 4, 3, 1, 1)
-
-        self.selectDir = QPushButton(self.AppSettings)
-        self.selectDir.setObjectName(u"selectDir")
-        self.selectDir.setMinimumSize(QSize(80, 0))
-
-        self.gridLayout_2.addWidget(self.selectDir, 3, 3, 1, 1)
-
-        self.wallpaperFile = QLineEdit(self.AppSettings)
-        self.wallpaperFile.setObjectName(u"wallpaperFile")
-
-        self.gridLayout_2.addWidget(self.wallpaperFile, 4, 1, 1, 2)
-
-        self.wallpaperDir = QLineEdit(self.AppSettings)
-        self.wallpaperDir.setObjectName(u"wallpaperDir")
-
-        self.gridLayout_2.addWidget(self.wallpaperDir, 3, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.color, 10, 1, 1, 4)
 
 
         self.gridLayout_3.addWidget(self.AppSettings, 0, 0, 1, 3)
-
-        self.applySpacer = QSpacerItem(57, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
-
-        self.gridLayout_3.addItem(self.applySpacer, 2, 0, 1, 1)
-
-        self.applyBtn = QPushButton(Config)
-        self.applyBtn.setObjectName(u"applyBtn")
-
-        self.gridLayout_3.addWidget(self.applyBtn, 2, 1, 1, 1)
-
-        self.closeBtn = QPushButton(Config)
-        self.closeBtn.setObjectName(u"closeBtn")
-
-        self.gridLayout_3.addWidget(self.closeBtn, 2, 2, 1, 1)
 
         self.SystemSettings = QGroupBox(Config)
         self.SystemSettings.setObjectName(u"SystemSettings")
@@ -270,6 +284,20 @@ class Ui_Config(object):
 
         self.gridLayout_3.addWidget(self.SystemSettings, 1, 0, 1, 3)
 
+        self.applySpacer = QSpacerItem(57, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.applySpacer, 2, 0, 1, 1)
+
+        self.applyBtn = QPushButton(Config)
+        self.applyBtn.setObjectName(u"applyBtn")
+
+        self.gridLayout_3.addWidget(self.applyBtn, 2, 1, 1, 1)
+
+        self.closeBtn = QPushButton(Config)
+        self.closeBtn.setObjectName(u"closeBtn")
+
+        self.gridLayout_3.addWidget(self.closeBtn, 2, 2, 1, 1)
+
 
         self.retranslateUi(Config)
 
@@ -279,31 +307,31 @@ class Ui_Config(object):
     def retranslateUi(self, Config):
         Config.setWindowTitle(QCoreApplication.translate("Config", u"\u8bbe\u7f6e", None))
         self.AppSettings.setTitle(QCoreApplication.translate("Config", u"\u5e94\u7528\u8bbe\u7f6e", None))
+        self.source_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6765\u6e90\uff1a", None))
+        self.updateTime_l.setText(QCoreApplication.translate("Config", u"\u66f4\u65b0\u95f4\u9694\uff1a", None))
+        self.updateTime.setSuffix(QCoreApplication.translate("Config", u"(\u5206\u949f)", None))
+        self.updateTime.setPrefix("")
+        self.earthSize_l.setText(QCoreApplication.translate("Config", u"\u5730\u7403\u5927\u5c0f\uff1a", None))
+        self.earthSize.setSuffix(QCoreApplication.translate("Config", u"%", None))
+        self.wallpaperDir_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6587\u4ef6\u5939\uff1a", None))
+        self.selectDir.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
+        self.wallpaperFile_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6587\u4ef6\uff1a", None))
+        self.selectFile.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
+        self.apikey_l.setText(QCoreApplication.translate("Config", u"apiKey\uff1a", None))
         self.apikey.setInputMask("")
         self.apikey.setText("")
         self.apikey.setPlaceholderText(QCoreApplication.translate("Config", u"\u4f7f\u7528NSFW\u9700\u8981\u63d0\u4f9bapikey", None))
-        self.earthSize.setSuffix(QCoreApplication.translate("Config", u"%", None))
-        self.earthSize_l.setText(QCoreApplication.translate("Config", u"\u5730\u7403\u5927\u5c0f\uff1a", None))
-        self.updateTime.setSuffix(QCoreApplication.translate("Config", u"(\u5206\u949f)", None))
-        self.updateTime.setPrefix("")
-        self.purity_l.setText(QCoreApplication.translate("Config", u"\u5206\u7ea7\uff1a", None))
-        self.SFW.setText(QCoreApplication.translate("Config", u"SFW", None))
-        self.Sketchy.setText(QCoreApplication.translate("Config", u"Sketchy", None))
-        self.NSFW.setText(QCoreApplication.translate("Config", u"NSFW", None))
-        self.updateTime_l.setText(QCoreApplication.translate("Config", u"\u66f4\u65b0\u95f4\u9694\uff1a", None))
-        self.sorting_l.setText(QCoreApplication.translate("Config", u"\u968f\u673a\u5217\u8868\uff1a", None))
-        self.apikey_l.setText(QCoreApplication.translate("Config", u"apiKey\uff1a", None))
-        self.wallpaperFile_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6587\u4ef6\uff1a", None))
-        self.wallpaperDir_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6587\u4ef6\u5939\uff1a", None))
-        self.source_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6765\u6e90\uff1a", None))
+        self.searchkey_l.setText(QCoreApplication.translate("Config", u"\u5173\u952e\u8bcd\uff1a", None))
         self.categories_l.setText(QCoreApplication.translate("Config", u"\u5206\u7c7b\uff1a", None))
         self.General.setText(QCoreApplication.translate("Config", u"General", None))
         self.Anime.setText(QCoreApplication.translate("Config", u"Anime", None))
         self.People.setText(QCoreApplication.translate("Config", u"People", None))
-        self.selectFile.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
-        self.selectDir.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
-        self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
-        self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
+        self.purity_l.setText(QCoreApplication.translate("Config", u"\u5206\u7ea7\uff1a", None))
+        self.SFW.setText(QCoreApplication.translate("Config", u"SFW", None))
+        self.Sketchy.setText(QCoreApplication.translate("Config", u"Sketchy", None))
+        self.NSFW.setText(QCoreApplication.translate("Config", u"NSFW", None))
+        self.sorting_l.setText(QCoreApplication.translate("Config", u"\u968f\u673a\u5217\u8868\uff1a", None))
+        self.color_l.setText(QCoreApplication.translate("Config", u"\u989c\u8272\uff1a", None))
         self.SystemSettings.setTitle(QCoreApplication.translate("Config", u"\u7cfb\u7edf\u8bbe\u7f6e", None))
         self.proxy_l.setText(QCoreApplication.translate("Config", u"\u7f51\u7edc\u4ee3\u7406\uff1a", None))
         self.proxyNone.setText(QCoreApplication.translate("Config", u"\u65e0", None))
@@ -312,5 +340,7 @@ class Ui_Config(object):
         self.add_l.setText(QCoreApplication.translate("Config", u"\u5730\u5740\uff1a", None))
         self.port_l.setText(QCoreApplication.translate("Config", u":", None))
         self.clearCache.setText(QCoreApplication.translate("Config", u"\u5220\u9664\u7f13\u5b58", None))
+        self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
+        self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
     # retranslateUi
 

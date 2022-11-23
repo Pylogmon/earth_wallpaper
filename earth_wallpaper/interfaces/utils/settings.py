@@ -61,6 +61,12 @@ class Settings(object):
     def sorting(self):
         return self.settings.value("APP/sorting").lower().replace(" ", "_")
 
+    def searchkey(self):
+        return self.settings.value("APP/searchkey")
+
+    def color(self):
+        return self.settings.value("APP/color")
+
     @staticmethod
     def desktop_res() -> (int, int):
         desktop = QApplication.primaryScreen()

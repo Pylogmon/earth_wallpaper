@@ -1,7 +1,7 @@
 import shutil
 
 from PySide6.QtCore import Qt, QSettings, Signal
-from PySide6.QtGui import QIcon
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from earth_wallpaper.ui.UI_config import Ui_Config
 from earth_wallpaper.utils.platformInfo import PlatformInfo
@@ -33,7 +33,8 @@ class Config(QWidget, Ui_Config):
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.config_path = PlatformInfo.config_path()
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
+        self.setWindowIcon(
+            QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
         self.check()
@@ -56,18 +57,24 @@ class Config(QWidget, Ui_Config):
         self.sorting.addItem("Favorites")
         self.sorting.addItem("Toplist")
         self.sorting.addItem("Hot")
+        self.init_color_select()
 
     def _update_layout_(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
         earthSizeGroup = [self.earthSize, self.earthSize_l]
-        wallpaperDirGroup = [self.wallpaperDir, self.wallpaperDir_l, self.selectDir]
-        wallpaperFileGroup = [self.wallpaperFile, self.wallpaperFile_l, self.selectFile]
+        wallpaperDirGroup = [self.wallpaperDir,
+                             self.wallpaperDir_l, self.selectDir]
+        wallpaperFileGroup = [self.wallpaperFile,
+                              self.wallpaperFile_l, self.selectFile]
         apikeyGroup = [self.apikey_l, self.apikey]
-        categoriesGroup = [self.categories_l, self.General, self.Anime, self.People]
+        categoriesGroup = [self.categories_l,
+                           self.General, self.Anime, self.People]
         purityGroup = [self.purity_l, self.SFW, self.Sketchy, self.NSFW]
         sortingGroup = [self.sorting_l, self.sorting]
+        searchkeyGroup = [self.searchkey_l, self.searchkey]
+        colorGroup = [self.color_l, self.color]
         all_layout = [updateTimeGroup, earthSizeGroup, wallpaperDirGroup, wallpaperFileGroup, apikeyGroup,
-                      categoriesGroup, purityGroup, sortingGroup]
+                      categoriesGroup, purityGroup, sortingGroup, searchkeyGroup, colorGroup]
         class_name = _get_class_name_(self.source.currentText())
         layout_list = getattr(interfaces, class_name).layout()
         for i in all_layout:
@@ -109,6 +116,7 @@ class Config(QWidget, Ui_Config):
         settings.setValue("Sketchy", False)
         settings.setValue("NSFW", False)
         settings.setValue("sorting", "Random")
+        settings.setValue("color", "不选择")
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -140,6 +148,8 @@ class Config(QWidget, Ui_Config):
         self.Sketchy.setChecked(trans(str(settings.value("Sketchy"))))
         self.NSFW.setChecked(trans(str(settings.value("NSFW"))))
         self.sorting.setCurrentText(settings.value("sorting"))
+        self.searchkey.setText(settings.value("searchkey"))
+        self.color.setCurrentText(settings.value("color"))
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -171,6 +181,8 @@ class Config(QWidget, Ui_Config):
         settings.setValue("Sketchy", self.Sketchy.isChecked())
         settings.setValue("NSFW", self.NSFW.isChecked())
         settings.setValue("sorting", self.sorting.currentText())
+        settings.setValue("searchkey", self.searchkey.text())
+        settings.setValue("color", self.color.currentText())
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -208,3 +220,65 @@ class Config(QWidget, Ui_Config):
             logger.info(f"删除缓存目录: {cache}")
         message = QMessageBox()
         QMessageBox.information(message, "清理缓存", "已删除全部缓存壁纸", QMessageBox.Yes)
+
+    def init_color_select(self):
+        pix = QPixmap(16, 16)
+        painter = QPainter(pix)
+        painter.fillRect(0, 0, 16, 16, QColor("#660000"))
+        self.color.addItem(QIcon(pix), "660000")
+        painter.fillRect(0, 0, 16, 16, QColor("#990000"))
+        self.color.addItem(QIcon(pix), "990000")
+        painter.fillRect(0, 0, 16, 16, QColor("#cc0000"))
+        self.color.addItem(QIcon(pix), "cc0000")
+        painter.fillRect(0, 0, 16, 16, QColor("#cc3333"))
+        self.color.addItem(QIcon(pix), "cc3333")
+        painter.fillRect(0, 0, 16, 16, QColor("#ea4c88"))
+        self.color.addItem(QIcon(pix), "ea4c88")
+        painter.fillRect(0, 0, 16, 16, QColor("#993399"))
+        self.color.addItem(QIcon(pix), "993399")
+        painter.fillRect(0, 0, 16, 16, QColor("#663399"))
+        self.color.addItem(QIcon(pix), "663399")
+        painter.fillRect(0, 0, 16, 16, QColor("#333399"))
+        self.color.addItem(QIcon(pix), "333399")
+        painter.fillRect(0, 0, 16, 16, QColor("#0066cc"))
+        self.color.addItem(QIcon(pix), "0066cc")
+        painter.fillRect(0, 0, 16, 16, QColor("#0099cc"))
+        self.color.addItem(QIcon(pix), "0099cc")
+        painter.fillRect(0, 0, 16, 16, QColor("#66cccc"))
+        self.color.addItem(QIcon(pix), "66cccc")
+        painter.fillRect(0, 0, 16, 16, QColor("#77cc33"))
+        self.color.addItem(QIcon(pix), "77cc33")
+        painter.fillRect(0, 0, 16, 16, QColor("#669900"))
+        self.color.addItem(QIcon(pix), "669900")
+        painter.fillRect(0, 0, 16, 16, QColor("#336600"))
+        self.color.addItem(QIcon(pix), "336600")
+        painter.fillRect(0, 0, 16, 16, QColor("#666600"))
+        self.color.addItem(QIcon(pix), "666600")
+        painter.fillRect(0, 0, 16, 16, QColor("#cccc33"))
+        self.color.addItem(QIcon(pix), "cccc33")
+        painter.fillRect(0, 0, 16, 16, QColor("#ffff00"))
+        self.color.addItem(QIcon(pix), "ffff00")
+        painter.fillRect(0, 0, 16, 16, QColor("#ffcc33"))
+        self.color.addItem(QIcon(pix), "ffcc33")
+        painter.fillRect(0, 0, 16, 16, QColor("#ff9900"))
+        self.color.addItem(QIcon(pix), "ff9900")
+        painter.fillRect(0, 0, 16, 16, QColor("#ff6600"))
+        self.color.addItem(QIcon(pix), "ff6600")
+        painter.fillRect(0, 0, 16, 16, QColor("#cc6633"))
+        self.color.addItem(QIcon(pix), "cc6633")
+        painter.fillRect(0, 0, 16, 16, QColor("#996633"))
+        self.color.addItem(QIcon(pix), "996633")
+        painter.fillRect(0, 0, 16, 16, QColor("#663300"))
+        self.color.addItem(QIcon(pix), "663300")
+        painter.fillRect(0, 0, 16, 16, QColor("#000000"))
+        self.color.addItem(QIcon(pix), "000000")
+        painter.fillRect(0, 0, 16, 16, QColor("#999999"))
+        self.color.addItem(QIcon(pix), "999999")
+        painter.fillRect(0, 0, 16, 16, QColor("#cccccc"))
+        self.color.addItem(QIcon(pix), "cccccc")
+        painter.fillRect(0, 0, 16, 16, QColor("#ffffff"))
+        self.color.addItem(QIcon(pix), "ffffff")
+        painter.fillRect(0, 0, 16, 16, QColor("#424153"))
+        self.color.addItem(QIcon(pix), "424153")
+        self.color.addItem("不选择")
+        painter.end()
