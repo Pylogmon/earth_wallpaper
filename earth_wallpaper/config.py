@@ -162,6 +162,7 @@ class Config(QWidget, Ui_Config):
 
         self.addEdit.setText(settings.value("proxyAdd"))
         self.portEdit.setText(settings.value("proxyPort"))
+        self.scripts.setText(settings.value("scripts"))
         settings.endGroup()
         logger.info("读取设置")
 
@@ -195,6 +196,7 @@ class Config(QWidget, Ui_Config):
 
         settings.setValue("proxyAdd", self.addEdit.text())
         settings.setValue("proxyPort", self.portEdit.text())
+        settings.setValue("scripts", self.scripts.text())
         settings.endGroup()
         logger.info("写入设置")
         message = QMessageBox()

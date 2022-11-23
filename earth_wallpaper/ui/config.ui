@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>344</width>
-    <height>640</height>
+    <height>674</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -296,7 +296,7 @@ color: #774444;</string>
       <string>系统设置</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+      <item row="0" column="0" colspan="2">
        <layout class="QHBoxLayout" name="proxyTypeGroup">
         <item>
          <widget class="QLabel" name="proxy_l">
@@ -331,7 +331,7 @@ color: #774444;</string>
         </item>
        </layout>
       </item>
-      <item row="1" column="0">
+      <item row="1" column="0" colspan="2">
        <layout class="QHBoxLayout" name="addGroup">
         <item>
          <widget class="QLabel" name="add_l">
@@ -368,10 +368,24 @@ color: #774444;</string>
         </item>
        </layout>
       </item>
-      <item row="2" column="0">
+      <item row="2" column="0" colspan="2">
        <widget class="QPushButton" name="clearCache">
         <property name="text">
          <string>删除缓存</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="scripts_l">
+        <property name="text">
+         <string>外部脚本：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLineEdit" name="scripts">
+        <property name="placeholderText">
+         <string>正常使用不需要填写，用来设置壁纸的脚本</string>
         </property>
        </widget>
       </item>

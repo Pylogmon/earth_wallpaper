@@ -24,7 +24,7 @@ class Ui_Config(object):
     def setupUi(self, Config):
         if not Config.objectName():
             Config.setObjectName(u"Config")
-        Config.resize(344, 640)
+        Config.resize(344, 674)
         self.gridLayout_3 = QGridLayout(Config)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.AppSettings = QGroupBox(Config)
@@ -243,7 +243,7 @@ class Ui_Config(object):
         self.proxyTypeGroup.addWidget(self.proxySocks)
 
 
-        self.gridLayout.addLayout(self.proxyTypeGroup, 0, 0, 1, 1)
+        self.gridLayout.addLayout(self.proxyTypeGroup, 0, 0, 1, 2)
 
         self.addGroup = QHBoxLayout()
         self.addGroup.setObjectName(u"addGroup")
@@ -274,12 +274,22 @@ class Ui_Config(object):
         self.addGroup.addWidget(self.portEdit)
 
 
-        self.gridLayout.addLayout(self.addGroup, 1, 0, 1, 1)
+        self.gridLayout.addLayout(self.addGroup, 1, 0, 1, 2)
 
         self.clearCache = QPushButton(self.SystemSettings)
         self.clearCache.setObjectName(u"clearCache")
 
-        self.gridLayout.addWidget(self.clearCache, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.clearCache, 2, 0, 1, 2)
+
+        self.scripts_l = QLabel(self.SystemSettings)
+        self.scripts_l.setObjectName(u"scripts_l")
+
+        self.gridLayout.addWidget(self.scripts_l, 3, 0, 1, 1)
+
+        self.scripts = QLineEdit(self.SystemSettings)
+        self.scripts.setObjectName(u"scripts")
+
+        self.gridLayout.addWidget(self.scripts, 3, 1, 1, 1)
 
 
         self.gridLayout_3.addWidget(self.SystemSettings, 1, 0, 1, 3)
@@ -340,6 +350,8 @@ class Ui_Config(object):
         self.add_l.setText(QCoreApplication.translate("Config", u"\u5730\u5740\uff1a", None))
         self.port_l.setText(QCoreApplication.translate("Config", u":", None))
         self.clearCache.setText(QCoreApplication.translate("Config", u"\u5220\u9664\u7f13\u5b58", None))
+        self.scripts_l.setText(QCoreApplication.translate("Config", u"\u5916\u90e8\u811a\u672c\uff1a", None))
+        self.scripts.setPlaceholderText(QCoreApplication.translate("Config", u"\u6b63\u5e38\u4f7f\u7528\u4e0d\u9700\u8981\u586b\u5199\uff0c\u7528\u6765\u8bbe\u7f6e\u58c1\u7eb8\u7684\u811a\u672c", None))
         self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
         self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
     # retranslateUi
