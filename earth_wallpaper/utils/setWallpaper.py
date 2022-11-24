@@ -1,5 +1,5 @@
 from .platformInfo import PlatformInfo
-from PySide2.QtCore import QSettings, QStandardPaths
+from PySide6.QtCore import QSettings, QStandardPaths
 import logging
 import os
 
@@ -8,8 +8,7 @@ logger = logging.getLogger(__name__)
 
 def set_wallpaper(file):
     config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
-    config_path = os.path.join(
-        config_dir, "earth-wallpaper/earth-wallpaper.conf")
+    config_path = os.path.join(config_dir, "earth-wallpaper/earth-wallpaper.conf")
     settings = QSettings(config_path, QSettings.IniFormat)
     scripts = settings.value("System/scripts")
     if not len(scripts) == 0:
@@ -18,9 +17,7 @@ def set_wallpaper(file):
     sys = PlatformInfo().get_os()
     logger.info(f"当前系统为{sys}")
     if sys == "WINDOWS":
-        import win32api
-        import win32gui
-        import win32con
+        import win32api, win32gui, win32con
         key = win32api.RegOpenKeyEx(win32con.HKEY_CURRENT_USER,
                                     "Control Panel\\Desktop", 0,
                                     win32con.KEY_SET_VALUE)

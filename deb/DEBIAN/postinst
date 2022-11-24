@@ -1,4 +1,4 @@
 #!/bin/bash
 python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple --upgrade pip
-python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyside2 pillow requests dbus-python pysocks
+python3 -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pyside6 pillow requests dbus-python pysocks
 chmod +x /opt/earth-wallpaper/earth_wallpaper/main.py

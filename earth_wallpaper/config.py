@@ -1,8 +1,8 @@
 import shutil
 
-from PySide2.QtCore import Qt, QSettings, Signal
-from PySide2.QtGui import QIcon, QPixmap, QPainter, QColor
-from PySide2.QtWidgets import QWidget, QMessageBox, QFileDialog
+from PySide6.QtCore import Qt, QSettings, Signal
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor
+from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
 from earth_wallpaper.ui.UI_config import Ui_Config
 from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper import interfaces
