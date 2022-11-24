@@ -102,10 +102,10 @@ wallhaven: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 
 ## ScreenShot
 
-![image-20220917003305855](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003305855.png)
+![bing](./assets/bing.png)
 
-![image-20220917003345620](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003345620.png)
+![wallpaper24](./assets/wallpaper24.png)
 
-![image-20220917003459088](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003459088.png)
+![fengyun4](./assets/fengyun4.png)
 
-![image-20220917003531050](https://jihulab.com/ambition-echo/img_bed/-/raw/main/img/image-20220917003531050.png)
+![wallhaven](./assets/wallhaven.png)

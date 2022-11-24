@@ -1,5 +1,3 @@
-import shutil
-
 from PySide6.QtCore import Qt, QSettings, Signal
 from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
@@ -7,6 +5,7 @@ from earth_wallpaper.ui.UI_config import Ui_Config
 from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper import interfaces
 import logging
+import shutil
 import os
 
 logger = logging.getLogger(__name__)
@@ -33,14 +32,13 @@ class Config(QWidget, Ui_Config):
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.config_path = PlatformInfo.config_path()
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setWindowIcon(
-            QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
+        self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
         self.check()
         self.read_config()
-        self._update_layout_()
-        self._connect_()
+        self.update_layout()
+        self.init_connect()
         self.show()
 
     def initUI(self):
@@ -59,7 +57,7 @@ class Config(QWidget, Ui_Config):
         self.sorting.addItem("Hot")
         self.init_color_select()
 
-    def _update_layout_(self):
+    def update_layout(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
         earthSizeGroup = [self.earthSize, self.earthSize_l]
         wallpaperDirGroup = [self.wallpaperDir,
@@ -85,8 +83,8 @@ class Config(QWidget, Ui_Config):
                 j.show()
         self.resize(1, 1)
 
-    def _connect_(self):
-        self.source.currentIndexChanged.connect(self._update_layout_)
+    def init_connect(self):
+        self.source.currentIndexChanged.connect(self.update_layout)
         self.closeBtn.clicked.connect(self.close)
         self.applyBtn.clicked.connect(self.write_config)
         self.selectFile.clicked.connect(self.select_file)
