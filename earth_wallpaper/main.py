@@ -1,6 +1,6 @@
 #!/bin/python3
-import sys, os
-
+import sys
+import os
 # 添加path路径，否则有可能会找不到模块
 sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 from PySide6.QtWidgets import QApplication, QMessageBox
