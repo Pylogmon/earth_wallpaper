@@ -1,15 +1,17 @@
 #!/bin/python3
-import logging
-from earth_wallpaper.utils.platformInfo import PlatformInfo
-from earth_wallpaper.about import check_update
-# from PySide2.QtCore import QSharedMemory
-from earth_wallpaper.systemtray import SystemTray
-from PySide2.QtWidgets import QApplication, QMessageBox
 import sys
 import os
 
 # 添加path路径，否则有可能会找不到模块
 sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+from PySide2.QtWidgets import QApplication
+from earth_wallpaper.systemtray import SystemTray
+from earth_wallpaper.about import check_update
+from earth_wallpaper.utils.platformInfo import PlatformInfo
+import logging
+
+
+# from PySide2.QtCore import QSharedMemory
 
 
 def main():
