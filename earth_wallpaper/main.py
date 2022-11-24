@@ -23,12 +23,10 @@ def main():
                                   datefmt='%H:%M:%S')
     # 输出到文件
     fh = logging.FileHandler(PlatformInfo.log_path())
-    fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
 
     # 输出到控制台
     ch = logging.StreamHandler()
-    ch.setLevel(logging.INFO)
     ch.setFormatter(formatter)
 
     logger.addHandler(ch)
