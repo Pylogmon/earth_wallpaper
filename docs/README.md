@@ -77,7 +77,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 ## Depends
 
 - Pillow
-- PySide6
+- PySide2
 - requests
 - setuptools
 - pywin32 (Only Windows)

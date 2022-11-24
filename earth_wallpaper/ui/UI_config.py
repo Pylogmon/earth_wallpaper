@@ -1,24 +1,25 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'config.ui'
+# Form generated from reading UI file 'config.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+# Created by: Qt User Interface Compiler version 6.3.2
 ##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
+# WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
-from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGridLayout,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-    QSpinBox, QWidget)
+from PySide2.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
+from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide2.QtWidgets import (QApplication, QCheckBox, QComboBox, QGridLayout,
+                               QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+                               QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+                               QSpinBox, QWidget)
+
 
 class Ui_Config(object):
     def setupUi(self, Config):
@@ -41,7 +42,8 @@ class Ui_Config(object):
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.source.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.source.sizePolicy().hasHeightForWidth())
         self.source.setSizePolicy(sizePolicy)
 
         self.gridLayout_2.addWidget(self.source, 0, 2, 1, 3)
@@ -53,7 +55,8 @@ class Ui_Config(object):
 
         self.updateTime = QSpinBox(self.AppSettings)
         self.updateTime.setObjectName(u"updateTime")
-        sizePolicy.setHeightForWidth(self.updateTime.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.updateTime.sizePolicy().hasHeightForWidth())
         self.updateTime.setSizePolicy(sizePolicy)
         self.updateTime.setMinimum(1)
         self.updateTime.setMaximum(1440)
@@ -68,7 +71,8 @@ class Ui_Config(object):
 
         self.earthSize = QSpinBox(self.AppSettings)
         self.earthSize.setObjectName(u"earthSize")
-        sizePolicy.setHeightForWidth(self.earthSize.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.earthSize.sizePolicy().hasHeightForWidth())
         self.earthSize.setSizePolicy(sizePolicy)
         self.earthSize.setMinimum(20)
         self.earthSize.setMaximum(100)
@@ -149,7 +153,6 @@ class Ui_Config(object):
 
         self.categoriesGroup.addWidget(self.People)
 
-
         self.gridLayout_2.addLayout(self.categoriesGroup, 7, 0, 1, 5)
 
         self.purityGroup = QHBoxLayout()
@@ -162,24 +165,23 @@ class Ui_Config(object):
         self.SFW = QCheckBox(self.AppSettings)
         self.SFW.setObjectName(u"SFW")
         self.SFW.setStyleSheet(u"font: 700;\n"
-"color: #447744;")
+                               "color: #447744;")
 
         self.purityGroup.addWidget(self.SFW)
 
         self.Sketchy = QCheckBox(self.AppSettings)
         self.Sketchy.setObjectName(u"Sketchy")
         self.Sketchy.setStyleSheet(u"font: 700;\n"
-"color: #777744;")
+                                   "color: #777744;")
 
         self.purityGroup.addWidget(self.Sketchy)
 
         self.NSFW = QCheckBox(self.AppSettings)
         self.NSFW.setObjectName(u"NSFW")
         self.NSFW.setStyleSheet(u"font: 700;\n"
-"color: #774444;")
+                                "color: #774444;")
 
         self.purityGroup.addWidget(self.NSFW)
-
 
         self.gridLayout_2.addLayout(self.purityGroup, 8, 0, 1, 5)
 
@@ -190,7 +192,8 @@ class Ui_Config(object):
 
         self.sorting = QComboBox(self.AppSettings)
         self.sorting.setObjectName(u"sorting")
-        sizePolicy.setHeightForWidth(self.sorting.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.sorting.sizePolicy().hasHeightForWidth())
         self.sorting.setSizePolicy(sizePolicy)
 
         self.gridLayout_2.addWidget(self.sorting, 9, 2, 1, 3)
@@ -202,11 +205,11 @@ class Ui_Config(object):
 
         self.color = QComboBox(self.AppSettings)
         self.color.setObjectName(u"color")
-        sizePolicy.setHeightForWidth(self.color.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(
+            self.color.sizePolicy().hasHeightForWidth())
         self.color.setSizePolicy(sizePolicy)
 
         self.gridLayout_2.addWidget(self.color, 10, 1, 1, 4)
-
 
         self.gridLayout_3.addWidget(self.AppSettings, 0, 0, 1, 3)
 
@@ -215,7 +218,8 @@ class Ui_Config(object):
         sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Minimum)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.SystemSettings.sizePolicy().hasHeightForWidth())
+        sizePolicy1.setHeightForWidth(
+            self.SystemSettings.sizePolicy().hasHeightForWidth())
         self.SystemSettings.setSizePolicy(sizePolicy1)
         self.gridLayout = QGridLayout(self.SystemSettings)
         self.gridLayout.setObjectName(u"gridLayout")
@@ -242,7 +246,6 @@ class Ui_Config(object):
 
         self.proxyTypeGroup.addWidget(self.proxySocks)
 
-
         self.gridLayout.addLayout(self.proxyTypeGroup, 0, 0, 1, 2)
 
         self.addGroup = QHBoxLayout()
@@ -267,12 +270,12 @@ class Ui_Config(object):
         sizePolicy2 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.portEdit.sizePolicy().hasHeightForWidth())
+        sizePolicy2.setHeightForWidth(
+            self.portEdit.sizePolicy().hasHeightForWidth())
         self.portEdit.setSizePolicy(sizePolicy2)
         self.portEdit.setMinimumSize(QSize(20, 0))
 
         self.addGroup.addWidget(self.portEdit)
-
 
         self.gridLayout.addLayout(self.addGroup, 1, 0, 1, 2)
 
@@ -291,10 +294,10 @@ class Ui_Config(object):
 
         self.gridLayout.addWidget(self.scripts, 3, 1, 1, 1)
 
-
         self.gridLayout_3.addWidget(self.SystemSettings, 1, 0, 1, 3)
 
-        self.applySpacer = QSpacerItem(57, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+        self.applySpacer = QSpacerItem(
+            57, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.gridLayout_3.addItem(self.applySpacer, 2, 0, 1, 1)
 
@@ -308,51 +311,82 @@ class Ui_Config(object):
 
         self.gridLayout_3.addWidget(self.closeBtn, 2, 2, 1, 1)
 
-
         self.retranslateUi(Config)
 
         QMetaObject.connectSlotsByName(Config)
     # setupUi
 
     def retranslateUi(self, Config):
-        Config.setWindowTitle(QCoreApplication.translate("Config", u"\u8bbe\u7f6e", None))
-        self.AppSettings.setTitle(QCoreApplication.translate("Config", u"\u5e94\u7528\u8bbe\u7f6e", None))
-        self.source_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6765\u6e90\uff1a", None))
-        self.updateTime_l.setText(QCoreApplication.translate("Config", u"\u66f4\u65b0\u95f4\u9694\uff1a", None))
-        self.updateTime.setSuffix(QCoreApplication.translate("Config", u"(\u5206\u949f)", None))
+        Config.setWindowTitle(QCoreApplication.translate(
+            "Config", u"\u8bbe\u7f6e", None))
+        self.AppSettings.setTitle(QCoreApplication.translate(
+            "Config", u"\u5e94\u7528\u8bbe\u7f6e", None))
+        self.source_l.setText(QCoreApplication.translate(
+            "Config", u"\u58c1\u7eb8\u6765\u6e90\uff1a", None))
+        self.updateTime_l.setText(QCoreApplication.translate(
+            "Config", u"\u66f4\u65b0\u95f4\u9694\uff1a", None))
+        self.updateTime.setSuffix(QCoreApplication.translate(
+            "Config", u"(\u5206\u949f)", None))
         self.updateTime.setPrefix("")
-        self.earthSize_l.setText(QCoreApplication.translate("Config", u"\u5730\u7403\u5927\u5c0f\uff1a", None))
-        self.earthSize.setSuffix(QCoreApplication.translate("Config", u"%", None))
-        self.wallpaperDir_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6587\u4ef6\u5939\uff1a", None))
-        self.selectDir.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
-        self.wallpaperFile_l.setText(QCoreApplication.translate("Config", u"\u58c1\u7eb8\u6587\u4ef6\uff1a", None))
-        self.selectFile.setText(QCoreApplication.translate("Config", u"\u6d4f\u89c8", None))
-        self.apikey_l.setText(QCoreApplication.translate("Config", u"apiKey\uff1a", None))
+        self.earthSize_l.setText(QCoreApplication.translate(
+            "Config", u"\u5730\u7403\u5927\u5c0f\uff1a", None))
+        self.earthSize.setSuffix(
+            QCoreApplication.translate("Config", u"%", None))
+        self.wallpaperDir_l.setText(QCoreApplication.translate(
+            "Config", u"\u58c1\u7eb8\u6587\u4ef6\u5939\uff1a", None))
+        self.selectDir.setText(QCoreApplication.translate(
+            "Config", u"\u6d4f\u89c8", None))
+        self.wallpaperFile_l.setText(QCoreApplication.translate(
+            "Config", u"\u58c1\u7eb8\u6587\u4ef6\uff1a", None))
+        self.selectFile.setText(QCoreApplication.translate(
+            "Config", u"\u6d4f\u89c8", None))
+        self.apikey_l.setText(QCoreApplication.translate(
+            "Config", u"apiKey\uff1a", None))
         self.apikey.setInputMask("")
         self.apikey.setText("")
-        self.apikey.setPlaceholderText(QCoreApplication.translate("Config", u"\u4f7f\u7528NSFW\u9700\u8981\u63d0\u4f9bapikey", None))
-        self.searchkey_l.setText(QCoreApplication.translate("Config", u"\u5173\u952e\u8bcd\uff1a", None))
-        self.categories_l.setText(QCoreApplication.translate("Config", u"\u5206\u7c7b\uff1a", None))
-        self.General.setText(QCoreApplication.translate("Config", u"General", None))
-        self.Anime.setText(QCoreApplication.translate("Config", u"Anime", None))
-        self.People.setText(QCoreApplication.translate("Config", u"People", None))
-        self.purity_l.setText(QCoreApplication.translate("Config", u"\u5206\u7ea7\uff1a", None))
+        self.apikey.setPlaceholderText(QCoreApplication.translate(
+            "Config", u"\u4f7f\u7528NSFW\u9700\u8981\u63d0\u4f9bapikey", None))
+        self.searchkey_l.setText(QCoreApplication.translate(
+            "Config", u"\u5173\u952e\u8bcd\uff1a", None))
+        self.categories_l.setText(QCoreApplication.translate(
+            "Config", u"\u5206\u7c7b\uff1a", None))
+        self.General.setText(QCoreApplication.translate(
+            "Config", u"General", None))
+        self.Anime.setText(QCoreApplication.translate(
+            "Config", u"Anime", None))
+        self.People.setText(QCoreApplication.translate(
+            "Config", u"People", None))
+        self.purity_l.setText(QCoreApplication.translate(
+            "Config", u"\u5206\u7ea7\uff1a", None))
         self.SFW.setText(QCoreApplication.translate("Config", u"SFW", None))
-        self.Sketchy.setText(QCoreApplication.translate("Config", u"Sketchy", None))
+        self.Sketchy.setText(QCoreApplication.translate(
+            "Config", u"Sketchy", None))
         self.NSFW.setText(QCoreApplication.translate("Config", u"NSFW", None))
-        self.sorting_l.setText(QCoreApplication.translate("Config", u"\u968f\u673a\u5217\u8868\uff1a", None))
-        self.color_l.setText(QCoreApplication.translate("Config", u"\u989c\u8272\uff1a", None))
-        self.SystemSettings.setTitle(QCoreApplication.translate("Config", u"\u7cfb\u7edf\u8bbe\u7f6e", None))
-        self.proxy_l.setText(QCoreApplication.translate("Config", u"\u7f51\u7edc\u4ee3\u7406\uff1a", None))
-        self.proxyNone.setText(QCoreApplication.translate("Config", u"\u65e0", None))
-        self.proxyHttp.setText(QCoreApplication.translate("Config", u"http", None))
-        self.proxySocks.setText(QCoreApplication.translate("Config", u"socks", None))
-        self.add_l.setText(QCoreApplication.translate("Config", u"\u5730\u5740\uff1a", None))
+        self.sorting_l.setText(QCoreApplication.translate(
+            "Config", u"\u968f\u673a\u5217\u8868\uff1a", None))
+        self.color_l.setText(QCoreApplication.translate(
+            "Config", u"\u989c\u8272\uff1a", None))
+        self.SystemSettings.setTitle(QCoreApplication.translate(
+            "Config", u"\u7cfb\u7edf\u8bbe\u7f6e", None))
+        self.proxy_l.setText(QCoreApplication.translate(
+            "Config", u"\u7f51\u7edc\u4ee3\u7406\uff1a", None))
+        self.proxyNone.setText(
+            QCoreApplication.translate("Config", u"\u65e0", None))
+        self.proxyHttp.setText(
+            QCoreApplication.translate("Config", u"http", None))
+        self.proxySocks.setText(
+            QCoreApplication.translate("Config", u"socks", None))
+        self.add_l.setText(QCoreApplication.translate(
+            "Config", u"\u5730\u5740\uff1a", None))
         self.port_l.setText(QCoreApplication.translate("Config", u":", None))
-        self.clearCache.setText(QCoreApplication.translate("Config", u"\u5220\u9664\u7f13\u5b58", None))
-        self.scripts_l.setText(QCoreApplication.translate("Config", u"\u5916\u90e8\u811a\u672c\uff1a", None))
-        self.scripts.setPlaceholderText(QCoreApplication.translate("Config", u"\u6b63\u5e38\u4f7f\u7528\u4e0d\u9700\u8981\u586b\u5199\uff0c\u7528\u6765\u8bbe\u7f6e\u58c1\u7eb8\u7684\u811a\u672c", None))
-        self.applyBtn.setText(QCoreApplication.translate("Config", u"\u5e94\u7528", None))
-        self.closeBtn.setText(QCoreApplication.translate("Config", u"\u5173\u95ed", None))
+        self.clearCache.setText(QCoreApplication.translate(
+            "Config", u"\u5220\u9664\u7f13\u5b58", None))
+        self.scripts_l.setText(QCoreApplication.translate(
+            "Config", u"\u5916\u90e8\u811a\u672c\uff1a", None))
+        self.scripts.setPlaceholderText(QCoreApplication.translate(
+            "Config", u"\u6b63\u5e38\u4f7f\u7528\u4e0d\u9700\u8981\u586b\u5199\uff0c\u7528\u6765\u8bbe\u7f6e\u58c1\u7eb8\u7684\u811a\u672c", None))
+        self.applyBtn.setText(QCoreApplication.translate(
+            "Config", u"\u5e94\u7528", None))
+        self.closeBtn.setText(QCoreApplication.translate(
+            "Config", u"\u5173\u95ed", None))
     # retranslateUi
-

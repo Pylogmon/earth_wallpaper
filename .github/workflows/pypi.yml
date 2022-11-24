@@ -24,7 +24,7 @@ jobs:
           sudo apt update
           sudo apt install -y libdbus-glib-1-dev libdbus-1-dev libegl1 libegl-dev
           pip install --upgrade pip
-          pip install pillow requests dbus-python pyside6 wheel
+          pip install pillow requests dbus-python pyside2 wheel
       - name: Build Python package
         run: bash ./pypi/upload.sh
       - name: Publish package

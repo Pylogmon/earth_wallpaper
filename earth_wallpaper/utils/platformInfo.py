@@ -1,4 +1,4 @@
-from PySide6.QtCore import QStandardPaths
+from PySide2.QtCore import QStandardPaths
 import datetime
 import platform
 import shutil
@@ -12,7 +12,8 @@ class PlatformInfo:
 
     @staticmethod
     def download_dir() -> str:
-        cache = QStandardPaths.writableLocation(QStandardPaths.GenericCacheLocation)
+        cache = QStandardPaths.writableLocation(
+            QStandardPaths.GenericCacheLocation)
         return os.path.join(cache, 'earth-wallpaper/wallpaper/')
 
     @staticmethod
@@ -23,7 +24,8 @@ class PlatformInfo:
     @staticmethod
     def log_path() -> str:
         today = datetime.datetime.utcnow()
-        cache = QStandardPaths.writableLocation(QStandardPaths.GenericCacheLocation)
+        cache = QStandardPaths.writableLocation(
+            QStandardPaths.GenericCacheLocation)
         log_dir = os.path.join(cache, 'earth-wallpaper/logs/')
         if not os.path.exists(log_dir):
             os.makedirs(log_dir)

@@ -1,14 +1,15 @@
 #!/bin/python3
-import sys, os
+import logging
+from earth_wallpaper.utils.platformInfo import PlatformInfo
+from earth_wallpaper.about import check_update
+# from PySide2.QtCore import QSharedMemory
+from earth_wallpaper.systemtray import SystemTray
+from PySide2.QtWidgets import QApplication, QMessageBox
+import sys
+import os
 
 # 添加path路径，否则有可能会找不到模块
 sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
-from PySide6.QtWidgets import QApplication, QMessageBox
-from earth_wallpaper.systemtray import SystemTray
-from PySide6.QtCore import QSharedMemory
-from earth_wallpaper.about import check_update
-from earth_wallpaper.utils.platformInfo import PlatformInfo
-import logging
 
 
 def main():
@@ -33,17 +34,10 @@ def main():
     logger.addHandler(fh)
 
     logger.info('日志系统启动')
-    lock = QSharedMemory("earth-wallpaper-PySide6")
-    if lock.attach():
-        logger.warning('程序已经运行，请勿重复启动！')
-        message = QMessageBox()
-        QMessageBox.information(message, "警告", "程序已经运行", QMessageBox.Yes)
-        sys.exit(0)
-    lock.create(10)
 
     tray = SystemTray()
     check_update()
-    sys.exit(app.exec())
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-from PySide6.QtCore import QSettings, QStandardPaths
-from PySide6.QtWidgets import QApplication
+from PySide2.QtCore import QSettings, QStandardPaths
+from PySide2.QtWidgets import QApplication
 import os
 
 
@@ -12,8 +12,10 @@ def trans(i: str) -> bool:
 
 class Settings(object):
     def __init__(self):
-        config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
-        config_path = os.path.join(config_dir, "earth-wallpaper/earth-wallpaper.conf")
+        config_dir = QStandardPaths.writableLocation(
+            QStandardPaths.ConfigLocation)
+        config_path = os.path.join(
+            config_dir, "earth-wallpaper/earth-wallpaper.conf")
         self.settings = QSettings(config_path, QSettings.IniFormat)
 
     def proxies(self) -> dict:

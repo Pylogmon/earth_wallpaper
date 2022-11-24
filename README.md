@@ -85,7 +85,7 @@ pip install earth-wallpaper --upgrade # 更新
 ## 依赖
 
 - Pillow
-- PySide6
+- PySide2
 - requests
 - setuptools
 - pywin32 (Only Windows)

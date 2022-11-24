@@ -25,7 +25,7 @@ setup(
     },
     install_requires=[
         'Pillow',
-        'PySide6',
+        'PySide2',
         'requests',
         'pysocks',
         'dbus-python; platform_system == "Linux"',

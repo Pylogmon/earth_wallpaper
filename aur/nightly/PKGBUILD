@@ -10,7 +10,7 @@ arch=('x86_64')
 url="https://jihulab.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
 
-depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6' 'python-pysocks')
+depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside2' 'python-pysocks')
 
 source=(
     "git+$url.git"

@@ -10,7 +10,7 @@ pkgdesc="Simple and easy to use multifunctional wallpaper software 简单好用�
 arch=('x86_64')
 url="https://github.com/ambition-echo/earth_wallpaper"
 license=('GPL3')
-depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside6' 'python-pysocks')
+depends=('dbus-python' 'python' 'python-pillow' 'python-requests' 'pyside2' 'python-pysocks')
 
 source=(
     "$name-$pkgver.tar.gz::${url}/archive/refs/tags/${pkgver}.tar.gz"

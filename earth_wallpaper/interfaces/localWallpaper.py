@@ -1,5 +1,5 @@
 from .utils.settings import Settings
-from PySide6.QtCore import QDir
+from PySide2.QtCore import QDir
 import logging
 import os
 

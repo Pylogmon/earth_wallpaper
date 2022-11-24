@@ -1,6 +1,6 @@
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon
-from PySide6.QtWidgets import QWidget, QApplication, QMessageBox
+from PySide2.QtCore import Qt
+from PySide2.QtGui import QIcon
+from PySide2.QtWidgets import QWidget, QApplication, QMessageBox
 from earth_wallpaper.ui.UI_about import Ui_About
 import requests
 import logging
@@ -49,7 +49,8 @@ class About(QWidget, Ui_About):
         super(About, self).__init__()
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
+        self.setWindowIcon(
+            QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
         self._connect_()
@@ -69,4 +70,5 @@ class About(QWidget, Ui_About):
         if check_update():
             pass
         else:
-            QMessageBox.information(message, "无可用更新", f"当前版本为最新版本，无需更新", QMessageBox.Yes)
+            QMessageBox.information(
+                message, "无可用更新", f"当前版本为最新版本，无需更新", QMessageBox.Yes)

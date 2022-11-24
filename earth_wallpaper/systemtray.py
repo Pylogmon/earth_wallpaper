@@ -1,6 +1,6 @@
-from PySide6.QtCore import QStandardPaths, QTimer, QSettings, QDir, QFile
-from PySide6.QtGui import QIcon, QAction
-from PySide6.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox
+from PySide2.QtCore import QStandardPaths, QTimer, QSettings, QDir, QFile
+from PySide2.QtGui import QIcon
+from PySide2.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox, QAction
 from earth_wallpaper.about import About
 from earth_wallpaper.config import Config
 from earth_wallpaper.thread import Thread
@@ -21,7 +21,8 @@ class SystemTray(QSystemTrayIcon):
         self.about_page = None
         self.config_path = PlatformInfo.config_path()
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
+        self.setIcon(
+            QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.save = QAction("保存当前壁纸")
         self.update = QAction("更新壁纸")
         self.config = QAction("设置")
@@ -64,14 +65,14 @@ class SystemTray(QSystemTrayIcon):
 
     def start_timer(self):
         settings = QSettings(self.config_path, QSettings.IniFormat)
-
+        settings.setIniCodec('utf8')
         for t in self.threads:
             t.stop()
             if t.isFinished():
                 t.deleteLater()
                 self.threads.remove(t)
 
-        self.threads.append(Thread(settings.value("APP/wallpaperSource")))
+        self.threads.append(Thread(str(settings.value("APP/wallpaperSource"))))
         self.threads[-1].start()
         self.timer.start(60000 * int(settings.value("APP/updateTime")))
 
@@ -83,7 +84,8 @@ class SystemTray(QSystemTrayIcon):
         name_filters = ["[1-9]*"]
         dir_.setNameFilters(name_filters)
         files = dir_.entryList(QDir.Files, QDir.Name)
-        picture_dir = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
+        picture_dir = QStandardPaths.writableLocation(
+            QStandardPaths.PicturesLocation) + "/earth-wallpaper"
         if not QDir(picture_dir).exists():
             QDir(picture_dir).mkpath(picture_dir)
         source = QFile(os.path.join(img_dir, files[-1]))
@@ -92,12 +94,16 @@ class SystemTray(QSystemTrayIcon):
         message = QMessageBox()
         if not target.exists():
             if source.copy(target.fileName()):
-                logger.info(f"保存{os.path.join(img_dir, files[-1])}到{os.path.join(picture_dir, files[-1])}")
-                QMessageBox.information(message, "保存", "保存成功，已保存到用户Picture目录", QMessageBox.Yes)
+                logger.info(
+                    f"保存{os.path.join(img_dir, files[-1])}到{os.path.join(picture_dir, files[-1])}")
+                QMessageBox.information(
+                    message, "保存", "保存成功，已保存到用户Picture目录", QMessageBox.Yes)
             else:
                 logger.warning("保存失败，原因未知")
-                QMessageBox.warning(message, "保存", "保存失败，原因未知（懒）", QMessageBox.Yes)
+                QMessageBox.warning(
+                    message, "保存", "保存失败，原因未知（懒）", QMessageBox.Yes)
 
         else:
             logger.info("当前壁纸已存在")
-            QMessageBox.information(message, "保存", "当前壁纸已存在，未做任何处理", QMessageBox.Yes)
+            QMessageBox.information(
+                message, "保存", "当前壁纸已存在，未做任何处理", QMessageBox.Yes)
