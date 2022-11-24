@@ -226,14 +226,15 @@ class Config(QWidget, Ui_Config):
     def init_color_select(self):
         pix = QPixmap(16, 16)
         painter = QPainter(pix)
-        color_list = ['660000', '990000', 'cc0000', 'cc3333', 'ea4c88',
-                      '993399', '663399', '333399', '0066cc', '0099cc',
-                      '66cccc', '77cc33', '669900', '336600', '666600',
-                      '999900', 'cccc33', 'ffff00', 'ffcc33', 'ff9900',
-                      'ff6600', 'cc6633', '996633', '663300', '000000',
-                      '999999', 'cccccc', 'ffffff', '424153']
+        color_list = ['#660000', '#990000', '#cc0000', '#cc3333', '#ea4c88',
+                      '#993399', '#663399', '#333399', '#0066cc', '#0099cc',
+                      '#66cccc', '#77cc33', '#669900', '#336600', '#666600',
+                      '#999900', '#cccc33', '#ffff00', '#ffcc33', '#ff9900',
+                      '#ff6600', '#cc6633', '#996633', '#663300', '#000000',
+                      '#999999', '#cccccc', '#ffffff', '#424153']
         for i in color_list:
-            painter.fillRect(0, 0, 16, 16, QColor("#" + i))
+            painter.fillRect(0, 0, 16, 16, QColor(i))
             self.color.addItem(QIcon(pix), i)
         self.color.addItem("不选择")
         painter.end()
+        self.color.setFont("MonoSpace")

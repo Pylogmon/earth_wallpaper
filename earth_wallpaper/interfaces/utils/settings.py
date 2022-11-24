@@ -62,10 +62,10 @@ class Settings(object):
         return self.settings.value("APP/sorting").lower().replace(" ", "_")
 
     def searchkey(self):
-        return self.settings.value("APP/searchkey")
+        return self.settings.value("APP/searchkey").replace(" ", "+")
 
     def color(self):
-        return self.settings.value("APP/color")
+        return self.settings.value("APP/color").replace('#', '')
 
     @staticmethod
     def desktop_res() -> (int, int):
