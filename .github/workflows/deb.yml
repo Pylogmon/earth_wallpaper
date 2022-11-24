@@ -9,7 +9,7 @@ on:
 jobs:
   Package:
     name: Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Install git
         run: |
