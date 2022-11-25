@@ -28,19 +28,24 @@ def compare(remote, local):
 def check_update():
     logger.info("检查软件更新")
     url = "https://api.github.com/repos/ambition-echo/earth_wallpaper/tags"
-    tags_json = requests.get(url)
-    if tags_json.ok:
-        remote_tag = json.loads(tags_json.content.decode())[0]["name"]
-        local_tag = get_version().split('.')
-        if compare(remote_tag.split('.'), local_tag):
-            logger.info(f"新版本可用，最新版本为{remote_tag}")
-            message = QMessageBox()
-            QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
-                                    QMessageBox.Yes)
-            return True
+    try:
+        tags_json = requests.get(url)
+        if tags_json.ok:
+            remote_tag = json.loads(tags_json.content.decode())[0]["name"]
+            local_tag = get_version().split('.')
+            if compare(remote_tag.split('.'), local_tag):
+                logger.info(f"新版本可用，最新版本为{remote_tag}")
+                message = QMessageBox()
+                QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
+                                        QMessageBox.Yes)
+                return True
+            else:
+                logger.info("软件为最新版本")
+                return False
         else:
-            logger.info("软件为最新版本")
-            return False
+            logger.fatal("检查更新失败")
+    except:
+        logger.fatal("检查更新失败")
 
 
 class About(QWidget, Ui_About):
