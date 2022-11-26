@@ -36,9 +36,10 @@ def check_update():
             if compare(remote_tag.split('.'), local_tag):
                 logger.info(f"新版本可用，最新版本为{remote_tag}")
                 message = QMessageBox()
-                QMessageBox.information(message, "有可用更新",
-                                        f"最新版本为{remote_tag}，请及时更新版本",
-                                        QMessageBox.Yes)
+                QMessageBox.information(
+                    message, "有可用更新",
+                    f"earth-wallpaper最新版本为{remote_tag}，请及时更新版本",
+                    QMessageBox.Yes)
                 return True
             else:
                 logger.info("软件为最新版本")
