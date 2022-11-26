@@ -1,8 +1,16 @@
-# 🌏earth_wallpaper
-
-### [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
-
-简单好用的多功能壁纸软件
+<p align="center">
+  <a href="#">
+  </a>
+  <p align="center">
+   <img width="150" height="150" src="assets/earth-wallpaper.png" alt="Logo">
+  </p>
+  <h1 align="center"><b>earth-wallpaper</b></h1>
+  <p align="center">
+  简单好用的多功能壁纸软件
+    <br />
+  </p>
+</p>
+<div align="center">
 
 [![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
 [![Release](https://img.shields.io/github/v/release/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/releases)
@@ -12,6 +20,10 @@
 [![PyPI](https://img.shields.io/pypi/v/earth-wallpaper?logo=python)](https://pypi.org/project/earth-wallpaper/)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin?label=earth-wallpaper-bin&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
+## [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
+</div>
+<hr>
+<br/>
 
 ## 安装
 
