@@ -20,7 +20,7 @@
 [![PyPI](https://img.shields.io/pypi/v/earth-wallpaper?logo=python)](https://pypi.org/project/earth-wallpaper/)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin?label=earth-wallpaper-bin&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
-## [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
+## [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/docs/README.md)
 </div>
 <br/>
 
