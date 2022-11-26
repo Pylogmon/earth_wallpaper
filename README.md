@@ -22,7 +22,6 @@
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
 ## [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/doc/README.md)
 </div>
-<hr>
 <br/>
 
 ## 安装
