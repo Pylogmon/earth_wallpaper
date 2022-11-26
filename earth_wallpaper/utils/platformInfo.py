@@ -1,7 +1,6 @@
 from PySide6.QtCore import QStandardPaths
 import datetime
 import platform
-import shutil
 import os
 
 
@@ -36,7 +35,6 @@ class PlatformInfo:
     def check(self):
         if os.path.exists(self.download_dir()):
             pass
-            # shutil.rmtree(self.download_dir())
         else:
             os.makedirs(self.download_dir())
 

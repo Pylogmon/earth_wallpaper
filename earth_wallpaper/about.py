@@ -1,7 +1,7 @@
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QWidget, QApplication, QMessageBox
 from earth_wallpaper.ui.UI_about import Ui_About
+from PySide6.QtGui import QIcon
+from PySide6.QtCore import Qt
 import requests
 import logging
 import json
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_version():
-    return "2.1.3"
+    return "2.1.5"
 
 
 def compare(remote, local):
@@ -36,7 +36,8 @@ def check_update():
             if compare(remote_tag.split('.'), local_tag):
                 logger.info(f"新版本可用，最新版本为{remote_tag}")
                 message = QMessageBox()
-                QMessageBox.information(message, "有可用更新", f"最新版本为{remote_tag}，请及时更新版本",
+                QMessageBox.information(message, "有可用更新",
+                                        f"最新版本为{remote_tag}，请及时更新版本",
                                         QMessageBox.Yes)
                 return True
             else:
@@ -54,7 +55,8 @@ class About(QWidget, Ui_About):
         super(About, self).__init__()
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
+        self.setWindowIcon(
+            QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
         self._connect_()
@@ -74,4 +76,5 @@ class About(QWidget, Ui_About):
         if check_update():
             pass
         else:
-            QMessageBox.information(message, "无可用更新", f"当前版本为最新版本，无需更新", QMessageBox.Yes)
+            QMessageBox.information(message, "无可用更新", "当前版本为最新版本，无需更新",
+                                    QMessageBox.Yes)

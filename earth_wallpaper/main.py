@@ -3,11 +3,11 @@ import sys
 import os
 # 添加path路径，否则有可能会找不到模块
 sys.path.append(os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+from earth_wallpaper.utils.platformInfo import PlatformInfo
 from PySide6.QtWidgets import QApplication, QMessageBox
 from earth_wallpaper.systemtray import SystemTray
-from PySide6.QtCore import QSharedMemory
 from earth_wallpaper.about import check_update
-from earth_wallpaper.utils.platformInfo import PlatformInfo
+from PySide6.QtCore import QSharedMemory
 import logging
 
 
@@ -19,8 +19,9 @@ def main():
     # 初始化日志系统
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
-    formatter = logging.Formatter('%(asctime)s %(levelname)s: [%(filename)s](%(funcName)s) -> %(message)s',
-                                  datefmt='%H:%M:%S')
+    formatter = logging.Formatter(
+        '%(asctime)s %(levelname)s: [%(filename)s](%(funcName)s) -> %(message)s',
+        datefmt='%H:%M:%S')
     # 输出到文件
     fh = logging.FileHandler(PlatformInfo.log_path())
     fh.setFormatter(formatter)
@@ -42,6 +43,7 @@ def main():
     lock.create(10)
 
     tray = SystemTray()
+    tray.show()
     check_update()
     sys.exit(app.exec())
 

@@ -1,8 +1,8 @@
-from PySide6.QtCore import Qt, QSettings, Signal
-from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor
 from PySide6.QtWidgets import QWidget, QMessageBox, QFileDialog
-from earth_wallpaper.ui.UI_config import Ui_Config
 from earth_wallpaper.utils.platformInfo import PlatformInfo
+from PySide6.QtGui import QIcon, QPixmap, QPainter, QColor
+from earth_wallpaper.ui.UI_config import Ui_Config
+from PySide6.QtCore import Qt, QSettings, Signal
 from earth_wallpaper import interfaces
 import logging
 import shutil
@@ -32,7 +32,8 @@ class Config(QWidget, Ui_Config):
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.config_path = PlatformInfo.config_path()
         self.path = os.path.split(os.path.realpath(__file__))[0]
-        self.setWindowIcon(QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
+        self.setWindowIcon(
+            QIcon(os.path.join(self.path, "resource/earth-wallpaper.png")))
         self.setupUi(self)
         self.initUI()
         self.check()
@@ -48,33 +49,41 @@ class Config(QWidget, Ui_Config):
             name = getattr(interfaces, i).name()
             logger.info(f"获取到可用接口: {name}")
             self.source.addItem(name)
-        self.sorting.addItem("Relevance")
-        self.sorting.addItem("Random")
-        self.sorting.addItem("Date Added")
-        self.sorting.addItem("Views")
-        self.sorting.addItem("Favorites")
-        self.sorting.addItem("Toplist")
-        self.sorting.addItem("Hot")
+        sorting_list = [
+            "Relevance", "Random", "Date Added", "Views", "Favorites",
+            "Toplist", "Hot"
+        ]
+        for i in sorting_list:
+            self.sorting.addItem(i)
         self.init_color_select()
 
     def update_layout(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
         earthSizeGroup = [self.earthSize, self.earthSize_l]
-        wallpaperDirGroup = [self.wallpaperDir,
-                             self.wallpaperDir_l, self.selectDir]
-        wallpaperFileGroup = [self.wallpaperFile,
-                              self.wallpaperFile_l, self.selectFile]
+        wallpaperDirGroup = [
+            self.wallpaperDir, self.wallpaperDir_l, self.selectDir
+        ]
+        wallpaperFileGroup = [
+            self.wallpaperFile, self.wallpaperFile_l, self.selectFile
+        ]
         apikeyGroup = [self.apikey_l, self.apikey]
-        categoriesGroup = [self.categories_l,
-                           self.General, self.Anime, self.People]
+        categoriesGroup = [
+            self.categories_l, self.General, self.Anime, self.People
+        ]
         purityGroup = [self.purity_l, self.SFW, self.Sketchy, self.NSFW]
         sortingGroup = [self.sorting_l, self.sorting]
         searchkeyGroup = [self.searchkey_l, self.searchkey]
         colorGroup = [self.color_l, self.color]
-        all_layout = [updateTimeGroup, earthSizeGroup, wallpaperDirGroup, wallpaperFileGroup, apikeyGroup,
-                      categoriesGroup, purityGroup, sortingGroup, searchkeyGroup, colorGroup]
+
+        all_layout = [
+            updateTimeGroup, earthSizeGroup, wallpaperDirGroup,
+            wallpaperFileGroup, apikeyGroup, categoriesGroup, purityGroup,
+            sortingGroup, searchkeyGroup, colorGroup
+        ]
+
         class_name = _get_class_name_(self.source.currentText())
         layout_list = getattr(interfaces, class_name).layout()
+
         for i in all_layout:
             for j in i:
                 j.hide()

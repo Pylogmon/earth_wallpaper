@@ -1,7 +1,7 @@
-from PySide6.QtCore import QThread
 from earth_wallpaper.utils.setWallpaper import set_wallpaper
 from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper import interfaces
+from PySide6.QtCore import QThread
 import logging
 
 logger = logging.getLogger(__name__)

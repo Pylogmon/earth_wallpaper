@@ -1,10 +1,10 @@
 from PySide6.QtCore import QStandardPaths, QTimer, QSettings, QDir, QFile
-from PySide6.QtGui import QIcon, QAction
 from PySide6.QtWidgets import QSystemTrayIcon, QMenu, QMessageBox
-from earth_wallpaper.about import About
+from earth_wallpaper.utils.platformInfo import PlatformInfo
 from earth_wallpaper.config import Config
 from earth_wallpaper.thread import Thread
-from earth_wallpaper.utils.platformInfo import PlatformInfo
+from PySide6.QtGui import QIcon, QAction
+from earth_wallpaper.about import About
 import logging
 import sys
 import os
@@ -34,7 +34,6 @@ class SystemTray(QSystemTrayIcon):
         self.menu.addAction(self.about)
         self.menu.addAction(self.exit)
         self.setContextMenu(self.menu)
-        self.show()
         self.timer = QTimer()
         self._connect_()
         self.check_config()
