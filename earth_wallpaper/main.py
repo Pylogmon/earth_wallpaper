@@ -8,12 +8,16 @@ from PySide6.QtWidgets import QApplication, QMessageBox
 from earth_wallpaper.systemtray import SystemTray
 from earth_wallpaper.about import check_update
 from PySide6.QtCore import QSharedMemory
+from PySide6.QtGui import QIcon
+from os.path import join
 import logging
 
 
 def main():
     app = QApplication()
-
+    path = os.path.split(os.path.realpath(__file__))[0]
+    icon_path = join(path, "resource/earth-wallpaper.png")
+    app.setWindowIcon(QIcon(icon_path))
     QApplication.setQuitOnLastWindowClosed(False)
     if PlatformInfo().get_os() == "WINDOWS":
         import ctypes
