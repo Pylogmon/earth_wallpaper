@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## 2.1.6 (2022-11-27)
+
+### New feature:
+
+- 添加缓存大小显示功能([`5800aad`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/5800aada1e60d970e0096af92e0512d9aa7bab0d)) (by ambition_echo)
+
+### Bugs fixed:
+
+- 修复windows任务栏图标问题([`46a7984`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/46a7984d40f4828f6167b10bbb4b4e5c6fc0acd4)) (by ambition_echo)
+
+## 2.1.5 (2022-11-26)
+
+### Bugs fixed:
+
+- **about**: 完善主线程异常处理([`3e8c7c2`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/3e8c7c21df5c1898e163a3e1d32b4369ae6cc72e)) (by ambition_echo)
+- **main**: 修复import路径([`da12a01`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/da12a01eba11df49d9aab48b58a2a4a5210f852f)) (by ambition_echo)
+
+### Revert:
+
+- revert [`1af7849`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/1af7849e), refactor: 改用pyside2([`e7f00a8`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/e7f00a886fb755760187f6390aa3ad573e4a01be))
+
+## 2.1.4 (2022-11-24)
+
+### New feature:
+
+- **setWallpaper**: 添加外部脚本，解决无法识别的桌面的壁纸设置问题([`e62ae07`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/e62ae076fa3b34ef079853d5c03d115e2faa661d)) (by ambition_echo)
+
+### Bugs fixed:
+
+- **ci**: 改用ubuntu20.04进行打包([`60d791a`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/60d791a95707e5f4e2f2a9369ce8852afe3388dc)) (by 派了个萌)
+
 ## 2.1.3 (2022-11-23)
 
 ### New feature:
