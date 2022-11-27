@@ -1,15 +1,11 @@
-<p align="center">
-  <a href="#">
-  </a>
-  <p align="center">
+<div align="center">
    <img width="150" height="150" src="https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/earth-wallpaper.png" alt="Logo">
-  </p>
+   <br/>
   <h1 align="center"><b>earth-wallpaper</b></h1>
-  <p align="center">
   简单好用的多功能壁纸软件
-    <br />
-  </p>
-</p>
+  <br/>
+</div>
+
 <div align="center">
 
 [![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
