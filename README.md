@@ -100,6 +100,7 @@ pip install earth-wallpaper --upgrade # 更新
 - requests
 - setuptools
 - pywin32 (Only Windows)
+- dbus-python (Only Linux)
 
 ## 手动安装
 

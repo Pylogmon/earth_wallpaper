@@ -93,6 +93,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 - requests
 - setuptools
 - pywin32 (Only Windows)
+- dbus-python (Only Linux)
 
 ## Install Manually
 
