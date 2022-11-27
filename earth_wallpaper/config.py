@@ -56,6 +56,7 @@ class Config(QWidget, Ui_Config):
         for i in sorting_list:
             self.sorting.addItem(i)
         self.init_color_select()
+        self.get_cache_size()
 
     def update_layout(self):
         updateTimeGroup = [self.updateTime, self.updateTime_l]
@@ -221,14 +222,14 @@ class Config(QWidget, Ui_Config):
         logger.info(f"获取到文件地址{file}")
         self.wallpaperFile.setText(file[0])
 
-    @staticmethod
-    def clear_cache():
+    def clear_cache(self):
         cache = PlatformInfo.download_dir()
         if os.path.exists(cache):
             shutil.rmtree(cache)
             logger.info(f"删除缓存目录: {cache}")
         message = QMessageBox()
         QMessageBox.information(message, "清理缓存", "已删除全部缓存壁纸", QMessageBox.Yes)
+        self.get_cache_size()
 
     def init_color_select(self):
         pix = QPixmap(16, 16)
@@ -245,3 +246,20 @@ class Config(QWidget, Ui_Config):
         self.color.addItem("不选择")
         painter.end()
         self.color.setFont("MonoSpace")
+
+    def get_cache_size(self):
+        unit_list = ['B', 'KB', 'MB', 'GB']
+        cache_size = 0
+        unit = 0
+        cache = PlatformInfo.download_dir()
+        if not os.path.exists(cache):
+            self.clearCache.setText(f"删除缓存({cache_size} {unit_list[unit]})")
+        else:
+            for r, dirs, files in os.walk(cache):
+                for i in files:
+                    cache_size += os.path.getsize(os.path.join(r, i))
+            while (cache_size >= 1024):
+                cache_size = cache_size / 1024
+                unit += 1
+            self.clearCache.setText(
+                f"删除缓存({round(cache_size,2)} {unit_list[unit]})")
