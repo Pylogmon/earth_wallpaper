@@ -29,7 +29,7 @@ def set_wallpaper(file):
     if sys == "WINDOWS":
         from .systems.windows.windows import Windows
         x = Windows(file)
-        x.run
+        x.run()
 
     if sys == "LINUX":
         from .systems.linux.cutefish import Cutefish
