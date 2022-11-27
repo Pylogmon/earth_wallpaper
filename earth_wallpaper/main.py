@@ -15,7 +15,10 @@ def main():
     app = QApplication()
 
     QApplication.setQuitOnLastWindowClosed(False)
-
+    if PlatformInfo().get_os() == "WINDOWS":
+        import ctypes
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+            "earth-wallpaper")
     # 初始化日志系统
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
