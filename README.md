@@ -2,7 +2,7 @@
   <a href="#">
   </a>
   <p align="center">
-   <img width="150" height="150" src="assets/earth-wallpaper.png" alt="Logo">
+   <img width="150" height="150" src="https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/earth-wallpaper.png" alt="Logo">
   </p>
   <h1 align="center"><b>earth-wallpaper</b></h1>
   <p align="center">
@@ -122,10 +122,10 @@ wallhaven 壁纸: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 
 ## 软件截图
 
-![bing](./assets/bing.png)
+![bing](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/bing.png)
 
-![wallpaper24](./assets/wallpaper24.png)
+![wallpaper24](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/wallpaper24.png)
 
-![fengyun4](./assets/fengyun4.png)
+![fengyun4](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/fengyun4.png)
 
-![wallhaven](./assets/wallhaven.png)
+![wallhaven](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/wallhaven.png)
