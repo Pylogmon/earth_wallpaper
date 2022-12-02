@@ -44,7 +44,7 @@ class Himawari8(object):
         return data
 
     def get_time_path(self):
-        today = datetime.datetime.utcnow()
+        today = datetime.datetime.utcnow() - datetime.timedelta(minutes=30)
         path_today_ = today.strftime("%Y/%m/%d/%H%M")
         temp_list = list(path_today_)
         temp_list[-1] = "0"
