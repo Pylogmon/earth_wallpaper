@@ -38,6 +38,7 @@ class Himawari8(object):
         img = Image.open(join(self.temp_dir, "himawari.png"))
         new_img = Image.new(img.mode, (width, height), color='black')
         new_img.paste(img, (int(width / 2 - 250), int(height / 2 - 250)))
+        new_img.save(join(self.temp_dir, "himawari.png"))
         with open(join(self.temp_dir, "himawari.png"), "rb") as f:
             data = f.read()
         return data
