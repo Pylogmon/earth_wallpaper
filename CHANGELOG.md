@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2.1.7 (2022-12-02)
+
+### Bugs fixed:
+
+- 修复向日葵八号获取不到图片的问题([`3a558aa`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/3a558aa5f4da9812952c1a9b8b3d5897b28999c4)) (by 派了个萌)
+- 修复向日葵八号壁纸没有填充的问题([`2bab7a0`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/2bab7a0c00377d0830d77dc76c628ce326eff12a)) (by 派了个萌)
+- 修复对话框没有图标([`2b0d15d`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/2b0d15d5af5f7a508f2f0b193ada935c7987caa5)) (by ambition_echo)
+- 修复windows壁纸设置失效的问题([`576b55f`](https://jihulab.com/ambition-echo/earth_wallpaper/commit/576b55f806f424dc18b51431d34c8d2fafbcedf1)) (by ambition_echo)
+
 ## 2.1.6 (2022-11-27)
 
 ### New feature:
