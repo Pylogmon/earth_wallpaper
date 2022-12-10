@@ -12,11 +12,12 @@ class Anime(object):
         self.proxies = Settings().proxies()
         self.download_dir = PlatformInfo().download_dir()
         self.download_path = None
-        self.request_url = "https://api.waifu.im/random?orientation=LANDSCAPE"
+        self.request_url = "https://api.waifu.im/search?orientation=LANDSCAPE"
         self.img_url = None
 
     def get_img_url(self):
-        res = requests.get(self.request_url, proxies=self.proxies)
+        headers = {'Accept-Version': 'v4'}
+        res = requests.get(self.request_url, headers=headers, proxies=self.proxies)
         if res.ok:
             res = json.loads(res.text)
             self.img_url = res["images"][0]["url"]
