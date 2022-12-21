@@ -125,3 +125,11 @@ wallhaven 壁纸: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 ![fengyun4](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/fengyun4.png)
 
 ![wallhaven](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/wallhaven.png)
+
+## 感谢
+
+<img src="https://www.jetbrains.com/shop/static/images/jetbrains-logo-inv.svg" height="100">
+
+感谢由 [Jetbrains](https://www.jetbrains.com) 提供的 [开源许可证书](https://www.jetbrains.com/community/opensource/) 
+
+此项目部分内容通过 [PyCharm](https://www.jetbrains.com/pycharm/) 进行开发.

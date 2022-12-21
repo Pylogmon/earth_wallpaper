@@ -118,3 +118,11 @@ wallhaven: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 ![fengyun4](./assets/fengyun4.png)
 
 ![wallhaven](./assets/wallhaven.png)
+
+## Thanks
+
+<img src="https://www.jetbrains.com/shop/static/images/jetbrains-logo-inv.svg" height="100">
+
+Thanks to the [open source license](https://www.jetbrains.com/community/opensource/) provided by [Jetbrains](https://www.jetbrains.com)
+
+Parts of this project were developed through [PyCharm](https://www.jetbrains.com/pycharm/).
