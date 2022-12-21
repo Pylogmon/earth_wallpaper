@@ -1,5 +1,5 @@
 <div align="center">
-   <img width="150" height="150" src="https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/earth-wallpaper.png" alt="Logo">
+   <img width="150" height="150" src="../assets/earth-wallpaper.png" alt="Logo">
    <br/>
   <h1 align="center"><b>earth-wallpaper</b></h1>
   Simple and easy to use multifunctional wallpaper software
@@ -111,13 +111,13 @@ wallhaven: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 
 ## ScreenShot
 
-![bing](./assets/bing.png)
+![bing](../assets/bing.png)
 
-![wallpaper24](./assets/wallpaper24.png)
+![wallpaper24](../assets/wallpaper24.png)
 
-![fengyun4](./assets/fengyun4.png)
+![fengyun4](../assets/fengyun4.png)
 
-![wallhaven](./assets/wallhaven.png)
+![wallhaven](../assets/wallhaven.png)
 
 ## Thanks
 
