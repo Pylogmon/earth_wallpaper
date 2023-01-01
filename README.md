@@ -42,13 +42,20 @@ yay -S earth-wallpaper-bin  # or earth-wallpaper-nightly
 ### Windows
 
 Windows推荐使用pip安装
-需要实现安装好python3
+需要事先安装好python3
 
 ```shell
 pip install earth-wallpaper # 安装
 pip install earth-wallpaper --upgrade # 更新
 ```
 
+要取消启动时的命令行窗口，可以使用vbs脚本启动：
+脚本内容如下：
+```vbs
+CreateObject("WScript.Shell").Run "earth-wallpaper",0,True
+```
+
+将此vbs脚本复制到`C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`目录可以实现开机启动
 ## 使用须知
 
 第一次运行时会弹出设置窗口，点击```应用```即可开始运行
