@@ -81,7 +81,7 @@ class SystemTray(QSystemTrayIcon):
         dir_ = QDir(img_dir)
         name_filters = ["[1-9]*"]
         dir_.setNameFilters(name_filters)
-        files = dir_.entryList(QDir.Name)
+        files = dir_.entryList(sort=QDir.Name)
         picture_dir = QStandardPaths.writableLocation(QStandardPaths.PicturesLocation) + "/earth-wallpaper"
         if not QDir(picture_dir).exists():
             QDir(picture_dir).mkpath(picture_dir)
