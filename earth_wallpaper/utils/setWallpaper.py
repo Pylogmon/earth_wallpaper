@@ -47,6 +47,8 @@ def set_wallpaper(file):
         de_list = {
             "X-Cinnamon": Cinnamon,
             "ubuntu:Gnome": Gnome,
+            "ubuntu:GNOME": Gnome,
+            "GNOME": Gnome,
             "Cutefish": Cutefish,
             "Deepin": Deepin,
             "Gnome": Gnome,
