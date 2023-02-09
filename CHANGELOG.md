@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## 2.2.0 (2023-02-09)
+
+### New feature:
+
+- wallhaven 添加最小尺寸选择，扩展wallhaven壁纸随机范围([`e1b4139`](https://github.com/ambition-echo/earth_wallpaper/commit/e1b413903bddbc8147d5b828edd38ade25fcf010)) (by ambition-echo)
+
+### Bugs fixed:
+
+- 适配最新版gnome([`1c317cb`](https://github.com/ambition-echo/earth_wallpaper/commit/1c317cbb18a82a63793e00171b442f7781fe4194)) (by ambition-echo)
+
+## 2.1.9 (2023-02-01)
+
+### Bugs fixed:
+
+- 修复windows无法保存壁纸的问题([`cf6229e`](https://github.com/ambition-echo/earth_wallpaper/commit/cf6229e1c391918e068f029d9872cecade9f89ae)) (by ambition-echo)
+- 修复多显示器设置失败问题([`3d86a0c`](https://github.com/ambition-echo/earth_wallpaper/commit/3d86a0ce829c004546ab3f36d135da4e05a1805e)) (by ambition_echo)
+
 ## 2.1.7 (2022-12-02)
 
 ### Bugs fixed:
