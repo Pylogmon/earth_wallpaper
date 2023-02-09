@@ -7,5 +7,9 @@ class XFCE(object):
         self.file = file
 
     def run(self):
-        path = os.path.split(os.path.realpath(__file__))[0]
-        os.system(path + "/xfce.sh {}".format(self.file))
+        output = os.popen("xfconf-query -c xfce4-desktop -p /backdrop -l")
+        output = output.splitlines()
+        for i in output:
+            if "last-image" in i:
+                os.system(
+                    f"xfconf-query -c xfce4-desktop -p {i} -s {self.file}")

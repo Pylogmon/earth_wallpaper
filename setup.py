@@ -18,7 +18,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        'earth_wallpaper': ['resource/earth-wallpaper.png', 'utils/xfce.sh']
+        'earth_wallpaper': ['resource/earth-wallpaper.png']
     },
     entry_points={
         'console_scripts': ['earth-wallpaper = earth_wallpaper.main:main']
