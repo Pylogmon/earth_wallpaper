@@ -11,9 +11,12 @@ def trans(i: str) -> bool:
 
 
 class Settings(object):
+
     def __init__(self):
-        config_dir = QStandardPaths.writableLocation(QStandardPaths.ConfigLocation)
-        config_path = os.path.join(config_dir, "earth-wallpaper/earth-wallpaper.conf")
+        config_dir = QStandardPaths.writableLocation(
+            QStandardPaths.ConfigLocation)
+        config_path = os.path.join(config_dir,
+                                   "earth-wallpaper/earth-wallpaper.conf")
         self.settings = QSettings(config_path, QSettings.IniFormat)
 
     def proxies(self) -> dict:
@@ -24,8 +27,10 @@ class Settings(object):
         if prx_type == "None":
             proxies = {}
         else:
-            proxies = {"http": f"{prx_type}://{prx_add}:{prx_port}",
-                       "https": f"{prx_type}://{prx_add}:{prx_port}"}
+            proxies = {
+                "http": f"{prx_type}://{prx_add}:{prx_port}",
+                "https": f"{prx_type}://{prx_add}:{prx_port}"
+            }
         return proxies
 
     def wallpaper_dir(self) -> str:
@@ -66,6 +71,9 @@ class Settings(object):
 
     def color(self):
         return self.settings.value("APP/color").replace('#', '')
+
+    def atleast(self):
+        return self.settings.value("APP/atleast")
 
     @staticmethod
     def desktop_res() -> (int, int):

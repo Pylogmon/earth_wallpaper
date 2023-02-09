@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>344</width>
-    <height>674</height>
+    <width>376</width>
+    <height>737</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,14 +20,14 @@
       <string>应用设置</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0" colspan="2">
+      <item row="0" column="0">
        <widget class="QLabel" name="source_l">
         <property name="text">
          <string>壁纸来源：</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2" colspan="3">
+      <item row="0" column="1" colspan="3">
        <widget class="QComboBox" name="source">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -37,14 +37,14 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="0" colspan="2">
+      <item row="1" column="0">
        <widget class="QLabel" name="updateTime_l">
         <property name="text">
          <string>更新间隔：</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2" colspan="3">
+      <item row="1" column="1" colspan="3">
        <widget class="QSpinBox" name="updateTime">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -76,7 +76,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3" colspan="2">
+      <item row="2" column="2" colspan="2">
        <widget class="QSpinBox" name="earthSize">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -95,17 +95,17 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="0" colspan="3">
+      <item row="3" column="0" colspan="2">
        <widget class="QLabel" name="wallpaperDir_l">
         <property name="text">
          <string>壁纸文件夹：</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="3">
+      <item row="3" column="2">
        <widget class="QLineEdit" name="wallpaperDir"/>
       </item>
-      <item row="3" column="4">
+      <item row="3" column="3">
        <widget class="QPushButton" name="selectDir">
         <property name="minimumSize">
          <size>
@@ -125,10 +125,10 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="3">
+      <item row="4" column="2">
        <widget class="QLineEdit" name="wallpaperFile"/>
       </item>
-      <item row="4" column="4">
+      <item row="4" column="3">
        <widget class="QPushButton" name="selectFile">
         <property name="minimumSize">
          <size>
@@ -148,7 +148,7 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="2" colspan="3">
+      <item row="5" column="1" colspan="3">
        <widget class="QLineEdit" name="apikey">
         <property name="inputMask">
          <string/>
@@ -168,10 +168,10 @@
         </property>
        </widget>
       </item>
-      <item row="6" column="1" colspan="4">
+      <item row="6" column="1" colspan="3">
        <widget class="QLineEdit" name="searchkey"/>
       </item>
-      <item row="7" column="0" colspan="5">
+      <item row="7" column="0" colspan="4">
        <layout class="QHBoxLayout" name="categoriesGroup">
         <item>
          <widget class="QLabel" name="categories_l">
@@ -203,7 +203,7 @@
         </item>
        </layout>
       </item>
-      <item row="8" column="0" colspan="5">
+      <item row="8" column="0" colspan="4">
        <layout class="QHBoxLayout" name="purityGroup">
         <item>
          <widget class="QLabel" name="purity_l">
@@ -254,7 +254,7 @@ color: #774444;</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="2" colspan="3">
+      <item row="9" column="1" colspan="3">
        <widget class="QComboBox" name="sorting">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -271,7 +271,7 @@ color: #774444;</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="1" colspan="4">
+      <item row="10" column="1" colspan="3">
        <widget class="QComboBox" name="color">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -280,6 +280,16 @@ color: #774444;</string>
          </sizepolicy>
         </property>
        </widget>
+      </item>
+      <item row="11" column="0">
+       <widget class="QLabel" name="atleast_l">
+        <property name="text">
+         <string>最小尺寸：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1" colspan="3">
+       <widget class="QComboBox" name="atleast"/>
       </item>
      </layout>
     </widget>

@@ -55,6 +55,9 @@ class Config(QWidget, Ui_Config):
         ]
         for i in sorting_list:
             self.sorting.addItem(i)
+        atleast_list = ["1920x1080", "2160x1440", "3840x2160"]
+        for i in atleast_list:
+            self.atleast.addItem(i)
         self.init_color_select()
         self.get_cache_size()
 
@@ -75,11 +78,11 @@ class Config(QWidget, Ui_Config):
         sortingGroup = [self.sorting_l, self.sorting]
         searchkeyGroup = [self.searchkey_l, self.searchkey]
         colorGroup = [self.color_l, self.color]
-
+        atleastGroup = [self.atleast_l, self.atleast]
         all_layout = [
             updateTimeGroup, earthSizeGroup, wallpaperDirGroup,
             wallpaperFileGroup, apikeyGroup, categoriesGroup, purityGroup,
-            sortingGroup, searchkeyGroup, colorGroup
+            sortingGroup, searchkeyGroup, colorGroup, atleastGroup
         ]
 
         class_name = _get_class_name_(self.source.currentText())
@@ -125,6 +128,7 @@ class Config(QWidget, Ui_Config):
         settings.setValue("NSFW", False)
         settings.setValue("sorting", "Random")
         settings.setValue("color", "不选择")
+        settings.setValue("atleast", "1920x1080")
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -158,6 +162,7 @@ class Config(QWidget, Ui_Config):
         self.sorting.setCurrentText(settings.value("sorting"))
         self.searchkey.setText(settings.value("searchkey"))
         self.color.setCurrentText(settings.value("color"))
+        self.atleast.setCurrentText(settings.value("atleast"))
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -192,6 +197,7 @@ class Config(QWidget, Ui_Config):
         settings.setValue("sorting", self.sorting.currentText())
         settings.setValue("searchkey", self.searchkey.text())
         settings.setValue("color", self.color.currentText())
+        settings.setValue("atleast", self.atleast.currentText())
         settings.endGroup()
 
         settings.beginGroup("System")
@@ -234,12 +240,13 @@ class Config(QWidget, Ui_Config):
     def init_color_select(self):
         pix = QPixmap(16, 16)
         painter = QPainter(pix)
-        color_list = ['#660000', '#990000', '#cc0000', '#cc3333', '#ea4c88',
-                      '#993399', '#663399', '#333399', '#0066cc', '#0099cc',
-                      '#66cccc', '#77cc33', '#669900', '#336600', '#666600',
-                      '#999900', '#cccc33', '#ffff00', '#ffcc33', '#ff9900',
-                      '#ff6600', '#cc6633', '#996633', '#663300', '#000000',
-                      '#999999', '#cccccc', '#ffffff', '#424153']
+        color_list = [
+            '#660000', '#990000', '#cc0000', '#cc3333', '#ea4c88', '#993399',
+            '#663399', '#333399', '#0066cc', '#0099cc', '#66cccc', '#77cc33',
+            '#669900', '#336600', '#666600', '#999900', '#cccc33', '#ffff00',
+            '#ffcc33', '#ff9900', '#ff6600', '#cc6633', '#996633', '#663300',
+            '#000000', '#999999', '#cccccc', '#ffffff', '#424153'
+        ]
         for i in color_list:
             painter.fillRect(0, 0, 16, 16, QColor(i))
             self.color.addItem(QIcon(pix), i)

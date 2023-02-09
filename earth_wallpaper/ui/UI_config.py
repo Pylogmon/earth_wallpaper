@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'config.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.3.2
+## Created by: Qt User Interface Compiler version 6.4.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -24,7 +24,7 @@ class Ui_Config(object):
     def setupUi(self, Config):
         if not Config.objectName():
             Config.setObjectName(u"Config")
-        Config.resize(344, 674)
+        Config.resize(376, 737)
         self.gridLayout_3 = QGridLayout(Config)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.AppSettings = QGroupBox(Config)
@@ -34,7 +34,7 @@ class Ui_Config(object):
         self.source_l = QLabel(self.AppSettings)
         self.source_l.setObjectName(u"source_l")
 
-        self.gridLayout_2.addWidget(self.source_l, 0, 0, 1, 2)
+        self.gridLayout_2.addWidget(self.source_l, 0, 0, 1, 1)
 
         self.source = QComboBox(self.AppSettings)
         self.source.setObjectName(u"source")
@@ -44,12 +44,12 @@ class Ui_Config(object):
         sizePolicy.setHeightForWidth(self.source.sizePolicy().hasHeightForWidth())
         self.source.setSizePolicy(sizePolicy)
 
-        self.gridLayout_2.addWidget(self.source, 0, 2, 1, 3)
+        self.gridLayout_2.addWidget(self.source, 0, 1, 1, 3)
 
         self.updateTime_l = QLabel(self.AppSettings)
         self.updateTime_l.setObjectName(u"updateTime_l")
 
-        self.gridLayout_2.addWidget(self.updateTime_l, 1, 0, 1, 2)
+        self.gridLayout_2.addWidget(self.updateTime_l, 1, 0, 1, 1)
 
         self.updateTime = QSpinBox(self.AppSettings)
         self.updateTime.setObjectName(u"updateTime")
@@ -59,7 +59,7 @@ class Ui_Config(object):
         self.updateTime.setMaximum(1440)
         self.updateTime.setValue(30)
 
-        self.gridLayout_2.addWidget(self.updateTime, 1, 2, 1, 3)
+        self.gridLayout_2.addWidget(self.updateTime, 1, 1, 1, 3)
 
         self.earthSize_l = QLabel(self.AppSettings)
         self.earthSize_l.setObjectName(u"earthSize_l")
@@ -73,23 +73,23 @@ class Ui_Config(object):
         self.earthSize.setMinimum(20)
         self.earthSize.setMaximum(100)
 
-        self.gridLayout_2.addWidget(self.earthSize, 2, 3, 1, 2)
+        self.gridLayout_2.addWidget(self.earthSize, 2, 2, 1, 2)
 
         self.wallpaperDir_l = QLabel(self.AppSettings)
         self.wallpaperDir_l.setObjectName(u"wallpaperDir_l")
 
-        self.gridLayout_2.addWidget(self.wallpaperDir_l, 3, 0, 1, 3)
+        self.gridLayout_2.addWidget(self.wallpaperDir_l, 3, 0, 1, 2)
 
         self.wallpaperDir = QLineEdit(self.AppSettings)
         self.wallpaperDir.setObjectName(u"wallpaperDir")
 
-        self.gridLayout_2.addWidget(self.wallpaperDir, 3, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.wallpaperDir, 3, 2, 1, 1)
 
         self.selectDir = QPushButton(self.AppSettings)
         self.selectDir.setObjectName(u"selectDir")
         self.selectDir.setMinimumSize(QSize(80, 0))
 
-        self.gridLayout_2.addWidget(self.selectDir, 3, 4, 1, 1)
+        self.gridLayout_2.addWidget(self.selectDir, 3, 3, 1, 1)
 
         self.wallpaperFile_l = QLabel(self.AppSettings)
         self.wallpaperFile_l.setObjectName(u"wallpaperFile_l")
@@ -99,13 +99,13 @@ class Ui_Config(object):
         self.wallpaperFile = QLineEdit(self.AppSettings)
         self.wallpaperFile.setObjectName(u"wallpaperFile")
 
-        self.gridLayout_2.addWidget(self.wallpaperFile, 4, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.wallpaperFile, 4, 2, 1, 1)
 
         self.selectFile = QPushButton(self.AppSettings)
         self.selectFile.setObjectName(u"selectFile")
         self.selectFile.setMinimumSize(QSize(80, 0))
 
-        self.gridLayout_2.addWidget(self.selectFile, 4, 4, 1, 1)
+        self.gridLayout_2.addWidget(self.selectFile, 4, 3, 1, 1)
 
         self.apikey_l = QLabel(self.AppSettings)
         self.apikey_l.setObjectName(u"apikey_l")
@@ -115,7 +115,7 @@ class Ui_Config(object):
         self.apikey = QLineEdit(self.AppSettings)
         self.apikey.setObjectName(u"apikey")
 
-        self.gridLayout_2.addWidget(self.apikey, 5, 2, 1, 3)
+        self.gridLayout_2.addWidget(self.apikey, 5, 1, 1, 3)
 
         self.searchkey_l = QLabel(self.AppSettings)
         self.searchkey_l.setObjectName(u"searchkey_l")
@@ -125,7 +125,7 @@ class Ui_Config(object):
         self.searchkey = QLineEdit(self.AppSettings)
         self.searchkey.setObjectName(u"searchkey")
 
-        self.gridLayout_2.addWidget(self.searchkey, 6, 1, 1, 4)
+        self.gridLayout_2.addWidget(self.searchkey, 6, 1, 1, 3)
 
         self.categoriesGroup = QHBoxLayout()
         self.categoriesGroup.setObjectName(u"categoriesGroup")
@@ -150,7 +150,7 @@ class Ui_Config(object):
         self.categoriesGroup.addWidget(self.People)
 
 
-        self.gridLayout_2.addLayout(self.categoriesGroup, 7, 0, 1, 5)
+        self.gridLayout_2.addLayout(self.categoriesGroup, 7, 0, 1, 4)
 
         self.purityGroup = QHBoxLayout()
         self.purityGroup.setObjectName(u"purityGroup")
@@ -181,7 +181,7 @@ class Ui_Config(object):
         self.purityGroup.addWidget(self.NSFW)
 
 
-        self.gridLayout_2.addLayout(self.purityGroup, 8, 0, 1, 5)
+        self.gridLayout_2.addLayout(self.purityGroup, 8, 0, 1, 4)
 
         self.sorting_l = QLabel(self.AppSettings)
         self.sorting_l.setObjectName(u"sorting_l")
@@ -193,7 +193,7 @@ class Ui_Config(object):
         sizePolicy.setHeightForWidth(self.sorting.sizePolicy().hasHeightForWidth())
         self.sorting.setSizePolicy(sizePolicy)
 
-        self.gridLayout_2.addWidget(self.sorting, 9, 2, 1, 3)
+        self.gridLayout_2.addWidget(self.sorting, 9, 1, 1, 3)
 
         self.color_l = QLabel(self.AppSettings)
         self.color_l.setObjectName(u"color_l")
@@ -205,7 +205,17 @@ class Ui_Config(object):
         sizePolicy.setHeightForWidth(self.color.sizePolicy().hasHeightForWidth())
         self.color.setSizePolicy(sizePolicy)
 
-        self.gridLayout_2.addWidget(self.color, 10, 1, 1, 4)
+        self.gridLayout_2.addWidget(self.color, 10, 1, 1, 3)
+
+        self.atleast_l = QLabel(self.AppSettings)
+        self.atleast_l.setObjectName(u"atleast_l")
+
+        self.gridLayout_2.addWidget(self.atleast_l, 11, 0, 1, 1)
+
+        self.atleast = QComboBox(self.AppSettings)
+        self.atleast.setObjectName(u"atleast")
+
+        self.gridLayout_2.addWidget(self.atleast, 11, 1, 1, 3)
 
 
         self.gridLayout_3.addWidget(self.AppSettings, 0, 0, 1, 3)
@@ -342,6 +352,7 @@ class Ui_Config(object):
         self.NSFW.setText(QCoreApplication.translate("Config", u"NSFW", None))
         self.sorting_l.setText(QCoreApplication.translate("Config", u"\u968f\u673a\u5217\u8868\uff1a", None))
         self.color_l.setText(QCoreApplication.translate("Config", u"\u989c\u8272\uff1a", None))
+        self.atleast_l.setText(QCoreApplication.translate("Config", u"\u6700\u5c0f\u5c3a\u5bf8\uff1a", None))
         self.SystemSettings.setTitle(QCoreApplication.translate("Config", u"\u7cfb\u7edf\u8bbe\u7f6e", None))
         self.proxy_l.setText(QCoreApplication.translate("Config", u"\u7f51\u7edc\u4ee3\u7406\uff1a", None))
         self.proxyNone.setText(QCoreApplication.translate("Config", u"\u65e0", None))
