@@ -23,17 +23,24 @@ jobs:
         if: github.event_name == 'pull_request_target'
         run: |
           echo "CONTENT=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
-      # 发送到Telegram
-      - uses: colutius/Telegram-Msg@main
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          chatid: ${{ secrets.TELEGRAM_TO }}
-          button: true
-          button_name: 👀在Github查看👀
-          button_url: https://github.com/ambition-echo/earth_wallpaper
-          message: |
+          fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - run: pip install matrix_client
+      - name: send message
+        run: python3 matrix_notify.py
+        env:
+          SERVER: https://matrix.org
+          ROOMID: ${{ secrets.ROOM_ID }}
+          USERNAME: ${{ secrets.MATRIX_USER }}
+          PASSWD: ${{ secrets.MATRIX_PASSWORD }}
+          MESSAGE: |
             🌟叮~
-
             earth-wallpaper 仓库有新的动态。
             
             发起者: ${{ github.event.sender.login }}
@@ -41,3 +48,4 @@ jobs:
             事件类型: ${{ github.event_name }}
             
             内容: ${{ env.CONTENT }}
+            
