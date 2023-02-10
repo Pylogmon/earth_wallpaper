@@ -33,7 +33,7 @@ jobs:
           python-version: '3.11'
       - run: pip install matrix_client
       - name: send message
-        run: python3 matrix_notify.py
+        run: python3 notify.py
         env:
           SERVER: https://matrix.org
           ROOMID: ${{ secrets.ROOM_ID }}
