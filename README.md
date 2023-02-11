@@ -1,5 +1,5 @@
 <div align="center">
-   <img width="150" height="150" src="https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/earth-wallpaper.png" alt="Logo">
+   <img width="150" height="150" src="https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/earth-wallpaper.png" alt="Logo">
    <br/>
   <h1 align="center"><b>earth-wallpaper</b></h1>
   简单好用的多功能壁纸软件
@@ -8,15 +8,15 @@
 
 <div align="center">
 
-[![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
-[![Release](https://img.shields.io/github/v/release/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/releases)
-[![License](https://img.shields.io/github/license/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/blob/main/LICENSE)
-[![Visitor](https://visitor-badge.glitch.me/badge?page_id=ambition-echo.earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper)
+[![downloads](https://img.shields.io/github/downloads/Pylogmon/earth_wallpaper/total)](https://github.com/Pylogmon/earth_wallpaper/releases)
+[![Release](https://img.shields.io/github/v/release/Pylogmon/earth_wallpaper)](https://github.com/Pylogmon/earth_wallpaper/releases)
+[![License](https://img.shields.io/github/license/Pylogmon/earth_wallpaper)](https://github.com/Pylogmon/earth_wallpaper/blob/main/LICENSE)
+[![Visitor](https://visitor-badge.glitch.me/badge?page_id=Pylogmon.earth_wallpaper)](https://github.com/Pylogmon/earth_wallpaper)
 
 [![PyPI](https://img.shields.io/pypi/v/earth-wallpaper?logo=python)](https://pypi.org/project/earth-wallpaper/)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin?label=earth-wallpaper-bin&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
-## [English](https://github.com/ambition-echo/earth_wallpaper/blob/main/docs/README.md)
+## [English](https://github.com/Pylogmon/earth_wallpaper/blob/main/docs/README.md)
 </div>
 <br/>
 
@@ -108,7 +108,7 @@ CreateObject("WScript.Shell").Run "earth-wallpaper",0,True
 ## 手动安装
 
 ```shell
-git clone https://jihulab.com/ambition-echo/earth_wallpaper.git
+git clone https://jihulab.com/Pylogmon/earth_wallpaper.git
 cd earth_wallpaper
 python3 setup.py install
 ```
@@ -125,13 +125,13 @@ wallhaven 壁纸: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 
 ## 软件截图
 
-![bing](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/bing.png)
+![bing](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/bing.png)
 
-![wallpaper24](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/wallpaper24.png)
+![wallpaper24](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/wallpaper24.png)
 
-![fengyun4](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/fengyun4.png)
+![fengyun4](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/fengyun4.png)
 
-![wallhaven](https://jihulab.com/ambition-echo/earth_wallpaper/-/raw/main/assets/wallhaven.png)
+![wallhaven](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/wallhaven.png)
 
 ## 感谢
 

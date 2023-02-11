@@ -76,9 +76,9 @@ class Ui_About(object):
         self.version.setText(QCoreApplication.translate("About", u"1.3.0", None))
         self.aboutQt.setText(QCoreApplication.translate("About", u"Qt", None))
         self.checkUpdate.setText(QCoreApplication.translate("About", u"\u68c0\u67e5\u66f4\u65b0", None))
-        self.label_2.setText(QCoreApplication.translate("About", u"<html><head/><body><p>\u6781\u72d0: <a href=\"https://jihulab.com/ambition-echo/earth_wallpaper\"><span\n"
+        self.label_2.setText(QCoreApplication.translate("About", u"<html><head/><body><p>\u6781\u72d0: <a href=\"https://jihulab.com/Pylogmon/earth_wallpaper\"><span\n"
 "                            style=\" text-decoration: underline; color:#255fff;\">earth_wallpaper</span></a></p><p>Github:\n"
-"                            <a href=\"https://github.com/ambition-echo/earth_wallpaper\"><span style=\"\n"
+"                            <a href=\"https://github.com/Pylogmon/earth_wallpaper\"><span style=\"\n"
 "                            text-decoration: underline; color:#255fff;\">earth_wallpaper</span></a></p><p>Email:\n"
 "                            <a href=\"mailto://ambition_echo@outlook.com\"><span style=\"\n"
 "                            text-decoration: underline; color:#255fff;\">ambition_echo@outlook.com</span></a></p></body></html>\n"

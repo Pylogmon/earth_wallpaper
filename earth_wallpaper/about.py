@@ -27,7 +27,7 @@ def compare(remote, local):
 
 def check_update():
     logger.info("检查软件更新")
-    url = "https://api.github.com/repos/ambition-echo/earth_wallpaper/tags"
+    url = "https://api.github.com/repos/Pylogmon/earth_wallpaper/tags"
     try:
         tags_json = requests.get(url)
         if tags_json.ok:

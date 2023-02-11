@@ -8,15 +8,15 @@
 
 <div align="center">
 
-[![downloads](https://img.shields.io/github/downloads/ambition-echo/earth_wallpaper/total)](https://github.com/ambition-echo/earth_wallpaper/releases)
-[![Release](https://img.shields.io/github/v/release/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/releases)
-[![License](https://img.shields.io/github/license/ambition-echo/earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper/blob/main/LICENSE)
-[![Visitor](https://visitor-badge.glitch.me/badge?page_id=ambition-echo.earth_wallpaper)](https://github.com/ambition-echo/earth_wallpaper)
+[![downloads](https://img.shields.io/github/downloads/Pylogmon/earth_wallpaper/total)](https://github.com/Pylogmon/earth_wallpaper/releases)
+[![Release](https://img.shields.io/github/v/release/Pylogmon/earth_wallpaper)](https://github.com/Pylogmon/earth_wallpaper/releases)
+[![License](https://img.shields.io/github/license/Pylogmon/earth_wallpaper)](https://github.com/Pylogmon/earth_wallpaper/blob/main/LICENSE)
+[![Visitor](https://visitor-badge.glitch.me/badge?page_id=Pylogmon.earth_wallpaper)](https://github.com/Pylogmon/earth_wallpaper)
 
 [![PyPI](https://img.shields.io/pypi/v/earth-wallpaper?logo=python)](https://pypi.org/project/earth-wallpaper/)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-bin?label=earth-wallpaper-bin&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-bin)
 [![AUR version](https://img.shields.io/aur/version/earth-wallpaper-nightly?label=earth-wallpaper-nightly&logo=archlinux)](https://aur.archlinux.org/packages/earth-wallpaper-nightly)
-## [中文](https://github.com/ambition-echo/earth_wallpaper#readme)
+## [中文](https://github.com/Pylogmon/earth_wallpaper#readme)
 </div>
 <br/>
 
@@ -94,7 +94,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 ## Install Manually
 
 ```shell
-git clone https://jihulab.com/ambition-echo/earth_wallpaper.git
+git clone https://jihulab.com/Pylogmon/earth_wallpaper.git
 cd earth_wallpaper
 python3 setup.py install
 ```

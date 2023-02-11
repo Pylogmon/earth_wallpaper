@@ -1,6 +1,6 @@
 Package: earth-wallpaper
 Version: ---
 Architecture: amd64
-Maintainer: ambition-echo <ambition_echo@outlook.com>
+Maintainer: Pylogmon <ambition_echo@outlook.com>
 Description: Simple and easy to use multifunctional wallpaper software 简单好用的多功能壁纸软件
 Depends: python3-pip, libdbus-glib-1-dev
