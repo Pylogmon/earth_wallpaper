@@ -94,7 +94,7 @@ When you run it for the first time, the settings window will pop up, click ```Ap
 ## Install Manually
 
 ```shell
-git clone https://jihulab.com/Pylogmon/earth_wallpaper.git
+git clone https://github.com/Pylogmon/earth_wallpaper.git
 cd earth_wallpaper
 python3 setup.py install
 ```

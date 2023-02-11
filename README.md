@@ -1,5 +1,5 @@
 <div align="center">
-   <img width="150" height="150" src="https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/earth-wallpaper.png" alt="Logo">
+   <img width="150" height="150" src="https://raw.githubusercontent.com/Pylogmon/earth_wallpaper/main/assets/earth-wallpaper.png" alt="Logo">
    <br/>
   <h1 align="center"><b>earth-wallpaper</b></h1>
   简单好用的多功能壁纸软件
@@ -108,7 +108,7 @@ CreateObject("WScript.Shell").Run "earth-wallpaper",0,True
 ## 手动安装
 
 ```shell
-git clone https://jihulab.com/Pylogmon/earth_wallpaper.git
+git clone https://github.com/Pylogmon/earth_wallpaper.git
 cd earth_wallpaper
 python3 setup.py install
 ```
@@ -125,13 +125,13 @@ wallhaven 壁纸: [https://wallhaven.cc/help/api](https://wallhaven.cc/help/api)
 
 ## 软件截图
 
-![bing](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/bing.png)
+![bing](https://raw.githubusercontent.com/Pylogmon/earth_wallpaper/main/assets/bing.png)
 
-![wallpaper24](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/wallpaper24.png)
+![wallpaper24](https://raw.githubusercontent.com/Pylogmon/earth_wallpaper/main/assets/wallpaper24.png)
 
-![fengyun4](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/fengyun4.png)
+![fengyun4](https://raw.githubusercontent.com/Pylogmon/earth_wallpaper/main/assets/fengyun4.png)
 
-![wallhaven](https://jihulab.com/Pylogmon/earth_wallpaper/-/raw/main/assets/wallhaven.png)
+![wallhaven](https://raw.githubusercontent.com/Pylogmon/earth_wallpaper/main/assets/wallhaven.png)
 
 ## 感谢
 
