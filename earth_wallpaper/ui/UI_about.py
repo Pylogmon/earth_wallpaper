@@ -80,8 +80,8 @@ class Ui_About(object):
 "                            style=\" text-decoration: underline; color:#255fff;\">earth_wallpaper</span></a></p><p>Github:\n"
 "                            <a href=\"https://github.com/Pylogmon/earth_wallpaper\"><span style=\"\n"
 "                            text-decoration: underline; color:#255fff;\">earth_wallpaper</span></a></p><p>Email:\n"
-"                            <a href=\"mailto://ambition_echo@outlook.com\"><span style=\"\n"
-"                            text-decoration: underline; color:#255fff;\">ambition_echo@outlook.com</span></a></p></body></html>\n"
+"                            <a href=\"mailto://pylogmon@outlook.com\"><span style=\"\n"
+"                            text-decoration: underline; color:#255fff;\">pylogmon@outlook.com</span></a></p></body></html>\n"
 "                        ", None))
     # retranslateUi
 

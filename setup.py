@@ -14,7 +14,7 @@ setup(
     long_description_content_type="text/markdown",
     license="GPLv3",
     author='Pylogmon',
-    author_email='ambition_echo@outlook.com',
+    author_email='pylogmon@outlook.com',
     packages=find_packages(),
     include_package_data=True,
     package_data={
