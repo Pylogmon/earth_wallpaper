@@ -9,7 +9,6 @@ on:
 jobs:
   nightly:
     name: Publish nightly to AUR
-    if: startsWith(github.ref, 'refs/heads')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,28 +23,6 @@ jobs:
         with:
           pkgname: earth-wallpaper-nightly
           pkgbuild: aur/nightly/PKGBUILD
-          commit_username: ${{ secrets.AUR_USERNAME }}
-          commit_email: ${{ secrets.AUR_EMAIL }}
-          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: Update AUR package
-          ssh_keyscan_types: rsa,dsa,ecdsa,ed25519
-  bin:
-    name: Publish bin to AUR
-    if: startsWith(github.ref, 'refs/tags')
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: change bin version
-        run: |
-          sed -i "s/pkgver=.*/pkgver=$(git describe --tags |  sed  's/\([^-]*-g\)/r\1/;s/-/./g')/g" aur/bin/PKGBUILD
-      - name: Upload Release to AUR
-        uses: KSXGitHub/github-actions-deploy-aur@v2.4.1
-        with:
-          pkgname: earth-wallpaper-bin
-          pkgbuild: aur/bin/PKGBUILD
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}
           ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
