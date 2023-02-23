@@ -8,7 +8,7 @@ class XFCE(object):
 
     def run(self):
         output = os.popen("xfconf-query -c xfce4-desktop -p /backdrop -l")
-        output = output.splitlines()
+        output = output.read().splitlines()
         for i in output:
             if "last-image" in i:
                 os.system(
